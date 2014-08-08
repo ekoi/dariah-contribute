@@ -1,0 +1,42 @@
+<!--{% load temptags %}-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" >
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />        
+        <title>Dariah Contributions</title>
+        <link rel="shortcut icon" type="image/x-icon" href="/templates/images/favicon.ico" />
+        <link href="/templates/styles.css" rel="stylesheet" type="text/css" />
+        {% block head %}{% endblock %}
+    </head>
+    <body>
+        <a id="top"></a>
+        <p id="top-info">
+        {% if request.user.is_authenticated %}
+        	Welcome {{request.user.get_profile.title}} {{request.user.first_name}} {{request.user.get_profile.last_name_prefix}} {{request.user.last_name}} | <a href="/accounts/details/" title="Your Details">Your Details</a> | <a href="/accounts/logout/" title="Log out">Log out</a>
+        {% else %}
+            <a href="/accounts/login/" title="Login">Log in</a>
+        {% endif %}
+        </p>
+        <div id="container">
+            <div id="header">
+                <h1>Dariah Contributions</h1>
+                {% block menu %}
+                    {% normal_menu %}
+                {% endblock %}
+            </div>
+            <div id="content" {% if submenu %}style="margin-top: 4em;"{% endif %}>
+                <ul id="breadcrumbs" >
+                    {% block breadcrumbs %}
+                        <li>{{current_item.title}}</li>
+                    {% endblock %}
+                </ul>
+
+                {% block content %}{% endblock %}
+            </div>
+            <div id="footer">
+                {% block footer %}{% endblock %}
+            </div>
+        </div>
+    </body>
+</html>
+

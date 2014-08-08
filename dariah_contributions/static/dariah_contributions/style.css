@@ -1,0 +1,32 @@
+body {
+	background-color: #E6E6FA;
+	margin-top:20px;
+	margin-left:50px;
+}
+
+h1 {
+	color: blue
+}
+
+th {
+	text-align: left;
+}
+
+a {
+	text-decoration:NONE;
+}
+
+#edit_link {
+	color: blue
+}
+
+#login_logout_link {
+	float: right;
+	margin-right:100px;
+}
+
+#presentation_button {
+	float: right;
+	margin-right:100px;
+}
+

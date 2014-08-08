@@ -1,0 +1,7 @@
+*.pyc 
+*settings.py 
+*.json 
+*~ 
+media/temp 
+*.sql*
+.DS_Store

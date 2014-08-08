@@ -1,0 +1,20 @@
+{% load staticfiles %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" >
+    <head>
+        <title>Dariah Contributions</title>
+		<link rel="stylesheet" type="text/css" href="{% static 'dariah_contributions/style.css' %}" />
+    </head>
+    <body>
+        <div id="container">
+            <div id="header">
+                <h1>Dariah Contributions</h1>
+            </div>
+            <div id="content">
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+    </body>
+</html>
+
