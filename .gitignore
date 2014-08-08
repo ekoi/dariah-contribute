@@ -3,5 +3,4 @@
 *.json 
 *~ 
 media/temp 
-*.sql*
 .DS_Store

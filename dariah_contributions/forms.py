@@ -5,9 +5,10 @@ from dariah_contributions import models
 class ContributionForm(ModelForm):
     class Meta:
         model = models.Contribution
-        fields = ['title', 'contributor', 'description', 'publish_date']
+        fields = ['title', 'date', 'relation', 'publisher', 'coverage', 'subject', 'abstract', 'description', 'contributor', 'vocabulary', ]
         widgets = {
+            'abstract': forms.Textarea(attrs={'cols': 80, 'rows': 10}),
             'description': forms.Textarea(attrs={'cols': 80, 'rows': 20}),
-            'publish_date': forms.DateTimeInput(attrs={'readonly':'readonly', "size":21}),
+            'date': forms.DateTimeInput(attrs={"size":10}),
         }
     
