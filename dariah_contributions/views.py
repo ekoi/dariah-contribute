@@ -40,7 +40,7 @@ def detail_view_rdf(request, pk):
 
         fields= contribution.__dict__
         for field, value in fields.items():
-            g.add( ( n.field, FOAF.field, Literal(value) ) )
+            g.add( ( n.field, FOAF.about, Literal(value) ) )
         rdf = g.serialize(format='pretty-xml')
     except:
         contribution = None
