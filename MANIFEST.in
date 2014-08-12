@@ -1,0 +1,17 @@
+include LICENSE
+include README.rst
+include requirements.pip
+include contributions/settings/local.py.default
+exclude contributions/settings/local.py
+
+recursive-include docs *
+recursive-exclude docs/_build *
+
+recursive-include contributions/formats *
+recursive-include contributions/locale *
+recursive-include contributions/static *
+recursive-include contributions/templates *
+recursive-include contributions/apps *.html *.txt
+
+recursive-exclude * *.pyc
+recursive-exclude * .DS_Store
