@@ -1,0 +1,21 @@
+{% extends "content_left_sidebar.html" %}
+{% load i18n %}
+
+{% block breadcrumbs %}
+{% endblock %}
+
+{% block content %}
+<h3>Your account has been blocked temporarily</h3>
+
+<p>{% blocktrans with failure_limit_pluralize=failure_limit|pluralize cooloff_time_pluralize=cooloff_time|pluralize %}Unfortunately you have entered the wrong password and/or username more than {{ failure_limit }} time{{ failure_limit_pluralize }}. Therefore your account has been blocked for {{ cooloff_time }} hour{{ cooloff_time_pluralize }}.{% endblocktrans %}</p>
+
+{% url 'password_reset' as password_reset_url %}
+<p>{% blocktrans %}If you have forgotten your password you can <a href="{{ password_reset_url }}" title="Password reset">request a password reset</a>.{% endblocktrans %}</p>
+
+
+<p>{% blocktrans %}If you have forgotten both your password and the e-mail address you registered with you can contact the <a href="mailto:info@datasealofapproval.org" title="E-mail the administrator">administrator</a>.{% endblocktrans %}</p>
+
+<p>&nbsp;</p>
+{% trans "Go back to the homepage" as back_to_homepage %}
+<p><a href="/" title="{{ back_to_homepage }}">{{ back_to_homepage }}</a></p>
+{% endblock %}

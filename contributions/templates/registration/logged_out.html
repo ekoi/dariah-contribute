@@ -1,0 +1,12 @@
+{% extends "content_left_sidebar.html" %}
+{% load i18n %}
+{% load bootstrap3 %}
+
+{% block content %}
+<p>
+    {% trans 'You have been successfully logged out.' %}<br />
+    <a href="{% url 'login' %}" title="{% trans 'Log back in' %}">{% trans 'Log back in' %}</a>
+</p>
+
+{% endblock %}
+

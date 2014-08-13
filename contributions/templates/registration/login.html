@@ -1,0 +1,31 @@
+{% extends "content_left_sidebar.html" %}
+{% load bootstrap3 %}
+{% load i18n %}
+
+{% block content %}
+    <h3>Login</h3>
+
+    <form method="post" action="{% url 'login' %}" name="loginform">{% csrf_token %}
+        {% bootstrap_form form layout='inline' %}
+        <input type="submit" value="{% trans 'Log in' %}" class="btn btn-default"/>
+        <input type="hidden" name="next" value="{{ next }}" />
+    </form>
+
+    <p>&nbsp;</p>
+    <p>
+        <a href="{% url "password_reset" %}" title="{% trans 'Reset your password' %}">{% trans 'Reset your password' %}</a> {% trans 'if your username and password do not match or if you have forgotten your password.' %}<br />
+        {% trans 'Contact the' %} <a href="mailto: {% trans 'info@dariah.org' %}" title="{% trans 'administrator' %}">{% trans 'administrator' %}</a> {% trans 'if you have forgotten your username, password and sign-up e-mail adres' %}.
+    </p>
+    <p>&nbsp;</p>
+    <p>
+        <a href="" title="{% trans 'Register to create an account' %}">
+            {% trans "Don't have an account yet?" %}
+        </a>
+    </p>
+
+    <script type="text/javascript">
+        window.onload=function() {
+            document.loginform.username.focus();
+        }
+    </script>
+{% endblock %}

@@ -6,14 +6,11 @@ from django.contrib.auth import urls as auth_urls
 admin.autodiscover()
 urlpatterns = auth_urls.urlpatterns  # Password reset and login urls
 
-urlpatterns = patterns('',
+urlpatterns += patterns('',
     url(r'^grappelli/', include('grappelli.urls')), # grappelli URLS
     url(r'^admin/', include(admin.site.urls)),
     url(r'^dariah_contributions/', include('dariah_contributions.urls', namespace="dariah_contributions")),
-    # Login/Logout URL
-    url(r'^accounts/login/$', 'django.contrib.auth.views.login', name='login'),
-    url(r'^accounts/logout/$', 'django.contrib.auth.views.logout', name='logout'),
-    # /accounts/lockout displays a message when someone's account is blocked (django-axes)
+    # /lockout displays a message when someone's account is blocked (django-axes)
 )
 
 #urlpatterns += patterns(settings.APPS_PREFIX + 'contact_data.views',

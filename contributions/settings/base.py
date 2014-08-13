@@ -175,7 +175,7 @@ TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'templates'),
 )
 
-LOGIN_REDIRECT_URL = '/dariah_contributions/'
+LOGIN_REDIRECT_URL = '/dariah_contributions/list'
 
 MAINTENANCE_IGNORE_URLS = (
     r'^' + STATIC_URL + '.*',
@@ -187,7 +187,7 @@ MAINTENANCE_IGNORE_URLS = (
 # django-axes (limit login attempts) settings
 AXES_LOGIN_FAILURE_LIMIT = 5
 AXES_COOLOFF_TIME = 1
-AXES_LOCKOUT_URL = '/accounts/lockout'
+AXES_LOCKOUT_URL = '/lockout'
 AXES_LOCKOUT_TEMPLATE = 'axes/lockout.html'
 AXES_USE_USER_AGENT = True
 
