@@ -79,7 +79,9 @@ INSTALLED_APPS = (
     'dariah_contributions',
     'south',
     'axes',  # Limit login attempts
+    'bootstrap3',
     'grappelli',
+
     'django.contrib.flatpages',
 
     'django.contrib.admin',
