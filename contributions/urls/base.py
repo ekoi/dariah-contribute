@@ -7,6 +7,7 @@ admin.autodiscover()
 urlpatterns = auth_urls.urlpatterns  # Password reset and login urls
 
 urlpatterns = patterns('',
+    url(r'^grappelli/', include('grappelli.urls')), # grappelli URLS
     url(r'^admin/', include(admin.site.urls)),
     url(r'^dariah_contributions/', include('dariah_contributions.urls', namespace="dariah_contributions")),
     # Login/Logout URL

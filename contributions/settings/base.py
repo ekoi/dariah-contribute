@@ -79,6 +79,7 @@ INSTALLED_APPS = (
     'dariah_contributions',
     'south',
     'axes',  # Limit login attempts
+    'grappelli',
     'django.contrib.flatpages',
 
     'django.contrib.admin',
@@ -160,6 +161,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.static',
     'django.contrib.auth.context_processors.auth',
     'django.contrib.messages.context_processors.messages',
+    "django.core.context_processors.request",  # Necessary for Grappelli
 )
 
 TEMPLATE_DIRS = (
@@ -184,3 +186,5 @@ AXES_COOLOFF_TIME = 1
 AXES_LOCKOUT_URL = '/accounts/lockout'
 AXES_LOCKOUT_TEMPLATE = 'axes/lockout.html'
 AXES_USE_USER_AGENT = True
+
+GRAPPELLI_ADMIN_TITLE = ugettext("Dariah Contributions Admin")
