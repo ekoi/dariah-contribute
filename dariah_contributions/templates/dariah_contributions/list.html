@@ -1,7 +1,6 @@
-{% extends "base.html" %}
+{% extends "content_left_sidebar.html" %}
 
 {% block content %}
-<body>
 	{% if user.is_authenticated %}
 		<div id="login_logout_link"><button type="button"><a href="/dariah_contributions/logout/">Logout</a></button></div>
 	{% endif %}
@@ -29,7 +28,4 @@
      <br><br><br>
      <div id="new_contribution_link"><button type="button"><a href="{% url 'dariah_contributions:contribution' 0 %}">Add new contribution</a></button></div>
      <div id="home_link"><button type="button"><a href="{% url 'dariah_contributions:index' %}">Homepage</a></button></div>
-</body>
 {% endblock %}
-
-

@@ -1,20 +1,51 @@
-{% load staticfiles %}
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" >
-    <head>
-        <title>Dariah Contributions</title>
-		<link rel="stylesheet" type="text/css" href="{% static 'dariah_contributions/style.css' %}" />
-    </head>
-    <body>
-        <div id="container">
-            <div id="header">
-                <h1>Dariah Contributions</h1>
+{% extends 'bootstrap.html' %}
+{% load static %}
+{% load url from future %}
+{% load bootstrap3 %}
+{% load i18n %}
+{% block bootstrap3_content %}
+    <div role="navigation" class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
+                    <span class="sr-only">{% trans 'Toggle navigation' %}</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">{% block title %}{% trans 'Dariah Contributions' %}{% endblock %}</a>
             </div>
-            <div id="content">
-                {% block content %}{% endblock %}
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">Browse Contributions</a></li>
+                    {% if user.is_authenticated %}
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Profile<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">My Contributions</a></li>
+                            <li><a href="#">Settings</a></li>
+                            <li class="divider"></li>
+                            <li><a href="{% url 'logout' %}">Log out</a></li>
+                        </ul>
+                    </li>
+                    {% else %}
+                        <li><a href="{% url 'login' %}" title="Log in">Log in</a></li>
+                    {% endif %}
+                    <li><a href="#">Help</a></li>
+                </ul>
+                {% comment %}
+                <form class="navbar-form navbar-right">
+                    <input type="text" placeholder="{% trans 'Search...' %}" class="form-control">
+                </form>
+                {% endcomment %}
             </div>
         </div>
-    </body>
-</html>
+    </div>
+    <div class="container-fluid content-container">
+        {% block main %}{% trans '(no content)' %}{% endblock %}
+    </div>
+{% endblock %}
 
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" type="text/css" media="screen" />
+{% endblock %}
