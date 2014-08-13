@@ -17,21 +17,23 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Browse Contributions</a></li>
+                    <li><a href="#">{% trans 'Browse Contributions' %}</a></li>
                     {% if user.is_authenticated %}
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Profile<span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="{% trans 'My Profile' %}">
+                            {% trans 'My Profile' %}<span class="caret"></span>
+                        </a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">My Contributions</a></li>
-                            <li><a href="#">Settings</a></li>
+                            <li><a href="#" title="{% trans 'My Contributions' %}">{% trans 'My Contributions' %}</a></li>
+                            <li><a href="#" title="{% trans 'Settings' %}">{% trans 'Settings' %}</a></li>
                             <li class="divider"></li>
-                            <li><a href="{% url 'logout' %}">Log out</a></li>
+                            <li><a href="{% url 'logout' %}" title="{% trans 'Log out' %}">{% trans 'Log out' %}</a></li>
                         </ul>
                     </li>
                     {% else %}
-                        <li><a href="{% url 'login' %}" title="Log in">Log in</a></li>
+                        <li><a href="{% url 'login' %}" title="{% trans 'Log in' %}">{% trans 'Log in' %}</a></li>
                     {% endif %}
-                    <li><a href="#">Help</a></li>
+                    <li><a href="#" title="">{% trans 'Help' %}</a></li>
                 </ul>
                 {% comment %}
                 <form class="navbar-form navbar-right">

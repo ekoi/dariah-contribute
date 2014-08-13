@@ -1,0 +1,71 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-08-13 14:44+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: settings/base.py:55
+msgid "English"
+msgstr "Engels"
+
+#: settings/base.py:56
+msgid "Dutch"
+msgstr "Nederlands"
+
+#: settings/base.py:193
+msgid "Dariah Contributions Admin"
+msgstr "Dariah contributies admin"
+
+#: templates/base.html:11
+msgid "Toggle navigation"
+msgstr "Toggle navigatie"
+
+#: templates/base.html:16
+msgid "Dariah Contributions"
+msgstr "Dariah contributies"
+
+#: templates/base.html:20
+msgid "Browse Contributions"
+msgstr "Blader door contributies"
+
+#: templates/base.html:23 templates/base.html.py:24
+msgid "My Profile"
+msgstr "Mijn profiel"
+
+#: templates/base.html:27
+msgid "My Contributions"
+msgstr "Mijn contributies"
+
+#: templates/base.html:28
+msgid "Settings"
+msgstr "Instellingen"
+
+#: templates/base.html:30
+msgid "Log out"
+msgstr "Log uit"
+
+#: templates/base.html:34
+msgid "Log in"
+msgstr ""
+
+#: templates/base.html:36
+msgid "Help"
+msgstr ""
+
+#: templates/base.html:48
+msgid "(no content)"
+msgstr "(geen content)"

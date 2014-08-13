@@ -53,6 +53,7 @@ USE_I18N = True
 ugettext = lambda s: s
 LANGUAGES = (
     ('en', ugettext("English")),
+    ('nl', ugettext("Dutch")),
 )
 FORMAT_MODULE_PATH = PROJECT_NAME + '.formats'
 # If you set this to False, Django will not format dates, numbers and
@@ -103,6 +104,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
 
     'maintenancemode.middleware.MaintenanceModeMiddleware',
     'axes.middleware.FailedLoginMiddleware',  # Limit login attempts
