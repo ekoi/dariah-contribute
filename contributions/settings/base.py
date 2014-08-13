@@ -14,9 +14,6 @@ import os
 SITE_ROOT = os.path.dirname(os.path.realpath(__file__)).rsplit('/', 2)[0]
 PROJECT_NAME = os.path.dirname(os.path.realpath(__file__)).rsplit('/', 2)[1]
 BASE_DIR = os.path.join(SITE_ROOT, PROJECT_NAME)
-print SITE_ROOT
-print PROJECT_NAME
-print BASE_DIR
 
 
 ROOT_URLCONF = PROJECT_NAME + '.urls.prod'
