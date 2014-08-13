@@ -2,30 +2,55 @@
 
 {% block content %}
 	{% if user.is_authenticated %}
-		<div id="login_logout_link"><button type="button"><a href="/dariah_contributions/logout/">Logout</a></button></div>
+    <div class="pull-right">
+        <p>
+            <a href="{% url 'dariah_contributions:contribution' 0 %}" class="btn btn-default">Add new contribution</a>
+        </p>
+    </div>
 	{% endif %}
 
 	{% if contribution_list %}
-    	<table>
+    <div class="table-responsive clearfix">
+    	<table class="table table-striped table-bordered">
     		<tbody>
 				<tr>
-					<th> Contribution</th>
-					<th> Contributor</th>
+					<th>Contribution</th>
+					<th>Contributor</th>
+                    <th></th>
 				</tr>
     			{% for contribution in contribution_list %}
         			<tr>
-			        	<td width="500"><a href="{% url 'dariah_contributions:detail' contribution.id %}">{{ contribution.title }}</td>
-         				<td width="200">{{ contribution.contributor }}</td>
-       					<td><a href="{% url 'dariah_contributions:contribution' contribution.id %}"><div id="edit_link">Edit</div></a></td>
+                        <td><a href="{% url 'dariah_contributions:detail' contribution.id %}">{{ contribution.title }}</a></td>
+         				<td>{{ contribution.contributor }}</td>
+       					<td><a href="{% url 'dariah_contributions:contribution' contribution.id %}">Edit</a></td>
         			</tr>
     			{% endfor %}
     		</tbody>
     	</table>
+    </div>
 	{% else %}
     	<p>No contributions are available.</p>
 	{% endif %}
-     <br><br><br>
-     <br><br><br>
-     <div id="new_contribution_link"><button type="button"><a href="{% url 'dariah_contributions:contribution' 0 %}">Add new contribution</a></button></div>
-     <div id="home_link"><button type="button"><a href="{% url 'dariah_contributions:index' %}">Homepage</a></button></div>
+{% endblock %}
+
+{% block sidebar %}
+    <h1>Filter by...</h1>
+    <h2>Type</h2>
+    <ul class="nav nav-sidebar">
+        <li><a href="" title="test">test</a></li>
+        <li><a href="" title="test">test2</a></li>
+        <li><a href="" title="test">test3</a></li>
+    </ul>
+    <h2>Creator</h2>
+    <ul class="nav nav-sidebar">
+        <li><a href="" title="test">test</a></li>
+        <li><a href="" title="test">test2</a></li>
+        <li><a href="" title="test">test3</a></li>
+    </ul>
+    <h2>Contributor</h2>
+    <ul class="nav nav-sidebar">
+        <li><a href="" title="test">test</a></li>
+        <li><a href="" title="test">test2</a></li>
+        <li><a href="" title="test">test3</a></li>
+    </ul>
 {% endblock %}
