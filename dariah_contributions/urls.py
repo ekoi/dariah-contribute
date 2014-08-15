@@ -7,7 +7,7 @@ from .views import ContributionCreate, ContributionDelete, ContributionUpdate, C
 
 
 urlpatterns = patterns('',
-    url(r'^(all)?/$', ListView.as_view(model=Contribution, queryset=Contribution.published.all()), name='list'),
+    url(r'^(all/)?$', ListView.as_view(model=Contribution, queryset=Contribution.published.all()), name='list'),
     # example: /contribution/
     # example: /contribution/all/
     url(r'^add/$', ContributionCreate.as_view(), name='add'),
