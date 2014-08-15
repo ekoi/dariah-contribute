@@ -10,27 +10,75 @@ class Migration(SchemaMigration):
     def forwards(self, orm):
         # Adding model 'Contribution'
         db.create_table(u'dariah_contributions_contribution', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('title', self.gf('django.db.models.fields.CharField')(max_length=100)),
-            ('relation', self.gf('django.db.models.fields.CharField')(max_length=200, blank=True)),
-            ('publisher', self.gf('django.db.models.fields.CharField')(max_length=200, blank=True)),
-            ('coverage', self.gf('django.db.models.fields.CharField')(max_length=200, blank=True)),
-            ('subject', self.gf('django.db.models.fields.CharField')(max_length=50, blank=True)),
-            ('abstract', self.gf('django.db.models.fields.CharField')(max_length=2000, blank=True)),
-            ('description', self.gf('django.db.models.fields.CharField')(max_length=5000, blank=True)),
-            ('contributor', self.gf('django.db.models.fields.CharField')(max_length=50, blank=True)),
-            ('vocabulary', self.gf('django.db.models.fields.CharField')(max_length=50, blank=True)),
-            ('creator', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['auth.User'], unique=True)),
-            ('date', self.gf('django.db.models.fields.DateTimeField')(default='2014-01-01')),
-            ('publish_date', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime.now)),
-            ('modify_date', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime.now)),
+            ('dc_identifier', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('dc_title', self.gf('django.db.models.fields.CharField')(max_length=100)),
+            ('dc_date', self.gf('django.db.models.fields.DateTimeField')()),
+            ('dc_relation', self.gf('django.db.models.fields.CharField')(max_length=200, blank=True)),
+            ('dc_publisher', self.gf('django.db.models.fields.CharField')(max_length=200, blank=True)),
+            ('dc_coverage', self.gf('django.db.models.fields.CharField')(max_length=200, blank=True)),
+            ('dc_subject', self.gf('django.db.models.fields.CharField')(max_length=50, blank=True)),
+            ('dcterms_abstract', self.gf('django.db.models.fields.TextField')(blank=True)),
+            ('dcterms_abstract_lang', self.gf('django.db.models.fields.CharField')(default='en', max_length=2)),
+            ('dc_description', self.gf('django.db.models.fields.TextField')(blank=True)),
+            ('author', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.User'], null=True, blank=True)),
+            ('is_published', self.gf('django.db.models.fields.BooleanField')(default=False)),
+            ('published_on', self.gf('django.db.models.fields.DateTimeField')(null=True, blank=True)),
+            ('last_modified_on', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime.now)),
         ))
         db.send_create_signal(u'dariah_contributions', ['Contribution'])
+
+        # Adding M2M table for field dc_creator on 'Contribution'
+        m2m_table_name = db.shorten_name(u'dariah_contributions_contribution_dc_creator')
+        db.create_table(m2m_table_name, (
+            ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True)),
+            ('contribution', models.ForeignKey(orm[u'dariah_contributions.contribution'], null=False)),
+            ('dccreator', models.ForeignKey(orm[u'dariah_contributions.dccreator'], null=False))
+        ))
+        db.create_unique(m2m_table_name, ['contribution_id', 'dccreator_id'])
+
+        # Adding M2M table for field dc_contributor on 'Contribution'
+        m2m_table_name = db.shorten_name(u'dariah_contributions_contribution_dc_contributor')
+        db.create_table(m2m_table_name, (
+            ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True)),
+            ('contribution', models.ForeignKey(orm[u'dariah_contributions.contribution'], null=False)),
+            ('dccontributor', models.ForeignKey(orm[u'dariah_contributions.dccontributor'], null=False))
+        ))
+        db.create_unique(m2m_table_name, ['contribution_id', 'dccontributor_id'])
+
+        # Adding model 'DcCreator'
+        db.create_table(u'dariah_contributions_dccreator', (
+            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('foaf_person', self.gf('django.db.models.fields.CharField')(max_length=50, blank=True)),
+            ('foaf_name', self.gf('django.db.models.fields.CharField')(max_length=50, blank=True)),
+            ('foaf_publications', self.gf('django.db.models.fields.CharField')(max_length=50, blank=True)),
+        ))
+        db.send_create_signal(u'dariah_contributions', ['DcCreator'])
+
+        # Adding model 'DcContributor'
+        db.create_table(u'dariah_contributions_dccontributor', (
+            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('foaf_person', self.gf('django.db.models.fields.CharField')(max_length=50, blank=True)),
+            ('foaf_name', self.gf('django.db.models.fields.CharField')(max_length=50, blank=True)),
+            ('foaf_publications', self.gf('django.db.models.fields.CharField')(max_length=50, blank=True)),
+        ))
+        db.send_create_signal(u'dariah_contributions', ['DcContributor'])
 
 
     def backwards(self, orm):
         # Deleting model 'Contribution'
         db.delete_table(u'dariah_contributions_contribution')
+
+        # Removing M2M table for field dc_creator on 'Contribution'
+        db.delete_table(db.shorten_name(u'dariah_contributions_contribution_dc_creator'))
+
+        # Removing M2M table for field dc_contributor on 'Contribution'
+        db.delete_table(db.shorten_name(u'dariah_contributions_contribution_dc_contributor'))
+
+        # Deleting model 'DcCreator'
+        db.delete_table(u'dariah_contributions_dccreator')
+
+        # Deleting model 'DcContributor'
+        db.delete_table(u'dariah_contributions_dccontributor')
 
 
     models = {
@@ -71,21 +119,37 @@ class Migration(SchemaMigration):
             'name': ('django.db.models.fields.CharField', [], {'max_length': '100'})
         },
         u'dariah_contributions.contribution': {
-            'Meta': {'object_name': 'Contribution'},
-            'abstract': ('django.db.models.fields.CharField', [], {'max_length': '2000', 'blank': 'True'}),
-            'contributor': ('django.db.models.fields.CharField', [], {'max_length': '50', 'blank': 'True'}),
-            'coverage': ('django.db.models.fields.CharField', [], {'max_length': '200', 'blank': 'True'}),
-            'creator': ('django.db.models.fields.related.OneToOneField', [], {'to': u"orm['auth.User']", 'unique': 'True'}),
-            'date': ('django.db.models.fields.DateTimeField', [], {'default': "'2014-01-01'"}),
-            'description': ('django.db.models.fields.CharField', [], {'max_length': '5000', 'blank': 'True'}),
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'modify_date': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now'}),
-            'publish_date': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now'}),
-            'publisher': ('django.db.models.fields.CharField', [], {'max_length': '200', 'blank': 'True'}),
-            'relation': ('django.db.models.fields.CharField', [], {'max_length': '200', 'blank': 'True'}),
-            'subject': ('django.db.models.fields.CharField', [], {'max_length': '50', 'blank': 'True'}),
-            'title': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
-            'vocabulary': ('django.db.models.fields.CharField', [], {'max_length': '50', 'blank': 'True'})
+            'Meta': {'ordering': "['-published_on']", 'object_name': 'Contribution'},
+            'author': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['auth.User']", 'null': 'True', 'blank': 'True'}),
+            'dc_contributor': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'to': u"orm['dariah_contributions.DcContributor']", 'null': 'True', 'blank': 'True'}),
+            'dc_coverage': ('django.db.models.fields.CharField', [], {'max_length': '200', 'blank': 'True'}),
+            'dc_creator': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'to': u"orm['dariah_contributions.DcCreator']", 'null': 'True', 'blank': 'True'}),
+            'dc_date': ('django.db.models.fields.DateTimeField', [], {}),
+            'dc_description': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
+            'dc_identifier': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'dc_publisher': ('django.db.models.fields.CharField', [], {'max_length': '200', 'blank': 'True'}),
+            'dc_relation': ('django.db.models.fields.CharField', [], {'max_length': '200', 'blank': 'True'}),
+            'dc_subject': ('django.db.models.fields.CharField', [], {'max_length': '50', 'blank': 'True'}),
+            'dc_title': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
+            'dcterms_abstract': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
+            'dcterms_abstract_lang': ('django.db.models.fields.CharField', [], {'default': "'en'", 'max_length': '2'}),
+            'is_published': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
+            'last_modified_on': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now'}),
+            'published_on': ('django.db.models.fields.DateTimeField', [], {'null': 'True', 'blank': 'True'})
+        },
+        u'dariah_contributions.dccontributor': {
+            'Meta': {'object_name': 'DcContributor'},
+            'foaf_name': ('django.db.models.fields.CharField', [], {'max_length': '50', 'blank': 'True'}),
+            'foaf_person': ('django.db.models.fields.CharField', [], {'max_length': '50', 'blank': 'True'}),
+            'foaf_publications': ('django.db.models.fields.CharField', [], {'max_length': '50', 'blank': 'True'}),
+            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'})
+        },
+        u'dariah_contributions.dccreator': {
+            'Meta': {'object_name': 'DcCreator'},
+            'foaf_name': ('django.db.models.fields.CharField', [], {'max_length': '50', 'blank': 'True'}),
+            'foaf_person': ('django.db.models.fields.CharField', [], {'max_length': '50', 'blank': 'True'}),
+            'foaf_publications': ('django.db.models.fields.CharField', [], {'max_length': '50', 'blank': 'True'}),
+            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'})
         }
     }
 

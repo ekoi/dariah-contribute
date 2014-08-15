@@ -11,6 +11,7 @@ User = get_user_model()
 class PublishedContributionsManager(models.Manager):
     """Filters out all unpublished items and items with a publication date in the future"""
     def get_query_set(self):
+        print "test"
         return super(PublishedContributionsManager, self).get_query_set() \
             .filter(is_published=True) \
             .filter(published_on__lte=timezone.now())
@@ -32,8 +33,7 @@ class Contribution(models.Model):
         verbose_name=_("dc:title"),
         max_length=100)
     dc_date = models.DateTimeField(
-        verbose_name=_("dc:date"),
-        default="2014-01-01")
+        verbose_name=_("dc:date"), )
     dc_relation = models.CharField(
         verbose_name=_("dc:relation"),
         max_length=200,
@@ -78,7 +78,7 @@ class Contribution(models.Model):
         verbose_name=_("dc:contributor"))
 
     # Meta-Metadata fields ####################################################
-    author = models.ForeignKey(User, editable=False)
+    author = models.ForeignKey(User, editable=False, blank=True, null=True)
     is_published = models.BooleanField(default=False, )
     published_on = models.DateTimeField(
         verbose_name=_('published on'),
@@ -86,7 +86,8 @@ class Contribution(models.Model):
         null=True)
     last_modified_on = models.DateTimeField(
         verbose_name=_('last modified on'),
-        default=timezone.now)
+        default=timezone.now,
+        editable=False)
 
     # Managers ################################################################
     objects = models.Manager()
