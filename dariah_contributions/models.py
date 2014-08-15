@@ -1,5 +1,5 @@
 from django.db import models
-from django.utils.translation import ugettext as _
+from django.utils.translation import ugettext_lazy as _
 from django.utils import timezone
 from django.core.urlresolvers import reverse
 from pycountry import languages as l
@@ -28,65 +28,72 @@ class Contribution(models.Model):
     #dc_type
     #vcard_category
     dc_identifier = models.AutoField(
-        verbose_name=_("dc:identifier"),
+        _("dc:identifier"),
         primary_key=True)
     dc_title = models.CharField(
-        verbose_name=_("dc:title"),
+        _("dc:title"),
         max_length=100)
     dc_date = models.DateTimeField(
-        verbose_name=_("dc:date"), )
+        _("dc:date"), )
     dc_relation = models.CharField(
-        verbose_name=_("dc:relation"),
+        _("dc:relation"),
         max_length=200,
         blank=True)
     #vcard_logo
     dc_publisher = models.CharField(
-        verbose_name=_("dc:publisher"),
+        _("dc:publisher"),
         max_length=200,
         blank=True)
     #dcterms_spatial
     dc_coverage = models.CharField(
-        verbose_name=_("dc:coverage"),
+        _("dc:coverage"),
         max_length=200,
         blank=True)
     #vcard_organization
     dc_subject = models.CharField(
-        verbose_name=_("dc:subject"),
+        _("dc:subject"),
         max_length=50,
         blank=True)
     dcterms_abstract = models.TextField(
-        verbose_name=_("dcterms:abstract"),
+        _("dcterms:abstract"),
         blank=True)
     dcterms_abstract_lang = models.CharField(
-        verbose_name=_("dcterms:abstract lang"),
+        _("dcterms:abstract lang"),
         max_length=2,
         choices=DCTERMS_ABSTRACT_LANG_CHOICES,
         default='en')
     dc_description = models.TextField(
-        verbose_name=_("dc:description"),
+        _("dc:description"),
         blank=True)
     #sioc_topic
     #sioc_has_scope
     dc_creator = models.ManyToManyField(
         'DcCreator',
+        _("dc:creator"),
         blank=True,
-        null=True,
-        verbose_name=_("dc:creator"))
+        null=True)
     dc_contributor = models.ManyToManyField(
         'DcContributor',
+        _("dc:contributor"),
         blank=True,
-        null=True,
-        verbose_name=_("dc:contributor"))
+        null=True)
 
     # Meta-Metadata fields ####################################################
-    author = models.ForeignKey(User, editable=False, blank=True, null=True)
-    is_published = models.BooleanField(default=False, )
+    author = models.ForeignKey(
+        User,
+        verbose_name=_('author'),
+        editable=False,
+        blank=True,
+        null=True)
+    is_published = models.BooleanField(
+        _('is published?'),
+        default=False)
     published_on = models.DateTimeField(
-        verbose_name=_('published on'),
+        _('published on'),
         blank=True,
         null=True)
     last_modified_on = models.DateTimeField(
-        verbose_name=_('last modified on'),
+        _('last modified on'),
         default=timezone.now,
         editable=False)
 

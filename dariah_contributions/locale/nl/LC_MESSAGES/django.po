@@ -1,0 +1,137 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-08-15 14:55+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: models.py:31
+msgid "dc:identifier"
+msgstr ""
+
+#: models.py:34
+msgid "dc:title"
+msgstr ""
+
+#: models.py:37
+msgid "dc:date"
+msgstr ""
+
+#: models.py:39
+msgid "dc:relation"
+msgstr ""
+
+#: models.py:44
+msgid "dc:publisher"
+msgstr ""
+
+#: models.py:49
+msgid "dc:coverage"
+msgstr ""
+
+#: models.py:54
+msgid "dc:subject"
+msgstr ""
+
+#: models.py:58
+msgid "dcterms:abstract"
+msgstr ""
+
+#: models.py:61
+msgid "dcterms:abstract lang"
+msgstr ""
+
+#: models.py:66
+msgid "dc:description"
+msgstr ""
+
+#: models.py:74
+msgid "dc:creator"
+msgstr ""
+
+#: models.py:79
+msgid "dc:contributor"
+msgstr ""
+
+#: models.py:84
+msgid "author"
+msgstr "auteur"
+
+#: models.py:90
+msgid "is published?"
+msgstr "is gepubliceerd?"
+
+#: models.py:92
+msgid "published on"
+msgstr "gepubliceerd op"
+
+#: models.py:96
+msgid "last modified on"
+msgstr "laatst bewerkt op"
+
+#: models.py:120 templates/dariah_contributions/contribution_form.html:13
+msgid "contribution"
+msgstr "contributie"
+
+#: models.py:121
+msgid "contributions"
+msgstr "contributies"
+
+#: views.py:49
+msgid "{model} was created successfully."
+msgstr "{model} is succesvol aangemaakt."
+
+#: views.py:62
+msgid "{model} was updated successfully."
+msgstr "{model} is succesvol bijgewerkt."
+
+#: views.py:73
+msgid "{model} was deleted successfully."
+msgstr "{model} is succesvol verwijderd."
+
+#: templates/dariah_contributions/contribution_confirm_delete.html:6
+msgid "Confirm deletion of contribution"
+msgstr "Bevestig verwijderen van contributie"
+
+#: templates/dariah_contributions/contribution_confirm_delete.html:8
+#, python-format
+msgid "Are you sure you want to delete %(object)s?"
+msgstr "Weet je zeker dat je de contrubitie %(object)s wilt verwijderen?"
+
+#: templates/dariah_contributions/contribution_confirm_delete.html:9
+#: templates/dariah_contributions/contribution_detail.html:8
+msgid "Delete"
+msgstr "Verwijder"
+
+#: templates/dariah_contributions/contribution_confirm_delete.html:10
+msgid "Cancel"
+msgstr "Annuleer"
+
+#: templates/dariah_contributions/contribution_detail.html:6
+msgid "Show as RDF"
+msgstr "Toon als RDF"
+
+#: templates/dariah_contributions/contribution_detail.html:7
+msgid "Edit"
+msgstr "Bewerken"
+
+#: templates/dariah_contributions/contribution_form.html:8
+msgid "Add"
+msgstr "Voeg toe"
+
+#: templates/dariah_contributions/contribution_form.html:10
+msgid "Update"
+msgstr "Bewerken"

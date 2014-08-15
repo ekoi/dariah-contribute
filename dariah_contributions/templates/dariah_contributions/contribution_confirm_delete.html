@@ -5,7 +5,7 @@
 {% block content %}
 <h1>{% trans 'Confirm deletion of contribution' %} {{ object }}</h1>
 <form action="" method="post">{% csrf_token %}
-    <p>{% trans 'Are you sure you want to delete' %} "{{ object }}"{% trans '?' %}</p>
+    <p>{% blocktrans %}Are you sure you want to delete {{ object }}?{% endblocktrans %}</p>
     <input type="submit" value="{% trans 'Delete' %}" class="btn btn-danger"/>
     <a href="{% url 'dariah_contributions:list' %}" title="{% trans 'Cancel' %}" class="btn btn-default">{% trans 'Cancel' %}</a>
 </form>
