@@ -3,7 +3,10 @@ from django.utils.decorators import method_decorator
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.contrib.messages.views import SuccessMessageMixin
 from django.core.urlresolvers import reverse_lazy
+from django.contrib import messages
+from django.utils.translation import ugettext as _
 
 from rdflib import Literal, Namespace, Graph
 from rdflib.namespace import FOAF
@@ -41,8 +44,9 @@ class ContributionRDF(DetailView):
         return context
 
 
-class ContributionCreate(CreateView):
+class ContributionCreate(SuccessMessageMixin, CreateView):
     model = Contribution
+    success_message = _("{model} was created successfully.").format(model=model.__name__)
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
@@ -53,8 +57,9 @@ class ContributionCreate(CreateView):
         return super(ContributionCreate, self).form_valid(form)
 
 
-class ContributionUpdate(UpdateView):
+class ContributionUpdate(SuccessMessageMixin, UpdateView):
     model = Contribution
+    success_message = _("{model} was updated successfully.").format(model=model.__name__)
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
@@ -64,6 +69,11 @@ class ContributionUpdate(UpdateView):
 class ContributionDelete(DeleteView):
     model = Contribution
     success_url = reverse_lazy('dariah_contributions:list')
+    success_message = _("{model} was deleted successfully.").format(model=model.__name__)
+
+    def delete(self, request, *args, **kwargs):
+        messages.success(self.request, self.success_message)
+        return super(ContributionDelete, self).delete(request, *args, **kwargs)
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
