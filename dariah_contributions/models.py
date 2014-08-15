@@ -3,6 +3,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.utils import timezone
 from django.core.urlresolvers import reverse
 from pycountry import languages as l
+import re
 
 from django.contrib.auth import get_user_model
 User = get_user_model()
@@ -108,9 +109,10 @@ class Contribution(models.Model):
         return reverse('dariah_contributions:detail', kwargs={'pk': self.pk})
 
     def attrs(self):
+        patt = re.compile('_id$')
         for attr, value in self.__dict__.iteritems():
             if not attr.startswith('_'):  # Extract private attributes
-                yield attr, value
+                yield self._meta.get_field(patt.sub('', attr)).verbose_name, value
 
     class Meta:
         ordering = ['-published_on', ]
