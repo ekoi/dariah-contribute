@@ -175,7 +175,7 @@ TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'templates'),
 )
 
-LOGIN_REDIRECT_URL = '/dariah_contributions/list'
+LOGIN_REDIRECT_URL = '/contribution/'
 
 MAINTENANCE_IGNORE_URLS = (
     r'^' + STATIC_URL + '.*',
