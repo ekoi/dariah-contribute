@@ -133,8 +133,12 @@ class Person(models.Model):
 
 
 class DcCreator(Person):
-    pass
+    class Meta:
+        verbose_name = 'dc:creator'
+        verbose_name_plural = 'dc:creator'
 
 
 class DcContributor(Person):
-    pass
+    class Meta:
+        verbose_name = 'dc:contributor'
+        verbose_name_plural = 'dc:contributor'
