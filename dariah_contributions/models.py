@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.translation import ugettext as _
 from django.utils import timezone
+from django.core.urlresolvers import reverse
 from pycountry import languages as l
 
 from django.contrib.auth import get_user_model
@@ -97,7 +98,7 @@ class Contribution(models.Model):
         return self.dc_title
 
     def get_absolute_url(self):
-        return reverse('detail', kwargs={'pk': self.pk})
+        return reverse('dariah_contributions:detail', kwargs={'pk': self.pk})
 
     class Meta:
         ordering = ['-published_on', ]
