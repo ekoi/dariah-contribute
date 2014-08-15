@@ -22,7 +22,8 @@
         			<tr>
                         <td><a href="{% url 'dariah_contributions:detail' contribution.dc_identifier %}">{{ contribution.dc_title }}</a></td>
          				<td>{{ contribution.author }}</td>
-       					<td><a href="{% url 'dariah_contributions:update' contribution.dc_identifier %}">Edit</a></td>
+       					<td><a href="{% url 'dariah_contributions:update' contribution.dc_identifier %}">Edit</a> |
+       					<a href="{% url 'dariah_contributions:delete' contribution.dc_identifier %}">Delete</a></td>
         			</tr>
     			{% endfor %}
     		</tbody>
