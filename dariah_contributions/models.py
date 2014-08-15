@@ -15,8 +15,9 @@ class PublishedContributionsManager(models.Manager):
     def get_query_set(self):
         print "test"
         return super(PublishedContributionsManager, self).get_query_set() \
+            .filter(is_deleted=False) \
             .filter(is_published=True) \
-            .filter(published_on__lte=timezone.now())
+            .filter(published_on__lte=timezone.now)
 
 
 class Contribution(models.Model):
@@ -96,6 +97,10 @@ class Contribution(models.Model):
     last_modified_on = models.DateTimeField(
         _('last modified on'),
         default=timezone.now,
+        editable=False)
+    is_deleted = models.BooleanField(
+        _('is deleted?'),
+        default=False,
         editable=False)
 
     # Managers ################################################################

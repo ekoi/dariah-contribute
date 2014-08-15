@@ -1,3 +1,4 @@
+from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.views.generic.detail import DetailView
@@ -18,7 +19,7 @@ class MyContributions(ListView):
     model = Contribution
 
     def get_queryset(self):
-        return Contribution.objects.filter(author=self.request.user)
+        return Contribution.objects.filter(author=self.request.user, is_deleted=False)
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
@@ -73,7 +74,11 @@ class ContributionDelete(DeleteView):
 
     def delete(self, request, *args, **kwargs):
         messages.success(self.request, self.success_message)
-        return super(ContributionDelete, self).delete(request, *args, **kwargs)
+        self.object = self.get_object()
+        success_url = self.get_success_url()
+        self.object.is_deleted = True
+        self.object.save()
+        return HttpResponseRedirect(success_url)
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
