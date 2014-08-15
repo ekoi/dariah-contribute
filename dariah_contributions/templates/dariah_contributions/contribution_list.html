@@ -1,4 +1,5 @@
 {% extends "content_left_sidebar.html" %}
+{% load i18n %}
 
 {% block content %}
 	{% if user.is_authenticated %}
@@ -9,6 +10,13 @@
     </div>
 	{% endif %}
 
+    {% if request.resolver_match.url_name == 'mine' %}
+        {% trans 'My' as title_type %}
+    {% else %}
+        {% trans 'All' as title_type %}
+    {% endif %}
+
+    <h1>{{ title_type }} {% trans 'contributions' %}</h1>
 	{% if object_list %}
     <div class="table-responsive clearfix">
     	<table class="table table-striped table-bordered">
@@ -22,7 +30,7 @@
         			<tr>
                         <td><a href="{% url 'dariah_contributions:detail' contribution.dc_identifier %}">{{ contribution.dc_title }}</a></td>
          				<td>{{ contribution.author }}</td>
-       					<td><a href="{% url 'dariah_contributions:update' contribution.dc_identifier %}">Edit</a> |
+       					<td><a href="{% url 'dariah_contributions:update' contribution.dc_identifier %}">Update</a> |
        					<a href="{% url 'dariah_contributions:delete' contribution.dc_identifier %}">Delete</a></td>
         			</tr>
     			{% endfor %}
@@ -30,7 +38,7 @@
     	</table>
     </div>
 	{% else %}
-    	<p>No contributions are available.</p>
+        <p>{% trans 'No contributions are available.' %}</p>
 	{% endif %}
 {% endblock %}
 

@@ -3,13 +3,14 @@ from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 
 from .models import Contribution
-from .views import ContributionCreate, ContributionDelete, ContributionUpdate, ContributionRDF
+from .views import ContributionCreate, ContributionDelete, ContributionUpdate, ContributionRDF, MyContributions
 
 
 urlpatterns = patterns('',
     url(r'^(all/)?$', ListView.as_view(model=Contribution, queryset=Contribution.published.all()), name='list'),
     # example: /contribution/
     # example: /contribution/all/
+    url(r'^mine/$', MyContributions.as_view(), name='mine'),
     url(r'^add/$', ContributionCreate.as_view(), name='add'),
     # example: /contribution/add/
     url(r'^(?P<pk>\d+)/update/$', ContributionUpdate.as_view(), name='update'),

@@ -14,7 +14,7 @@ from rdflib.namespace import FOAF
 from dariah_contributions.models import Contribution
 
 
-class MyContributionsView(ListView):
+class MyContributions(ListView):
     model = Contribution
 
     def get_queryset(self):
@@ -22,7 +22,7 @@ class MyContributionsView(ListView):
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
-        return super(MyContributionsView, self).dispatch(*args, **kwargs)
+        return super(MyContributions, self).dispatch(*args, **kwargs)
 
 
 class ContributionRDF(DetailView):

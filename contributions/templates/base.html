@@ -24,7 +24,7 @@
                             {% trans 'My Profile' %}<span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="#" title="{% trans 'My Contributions' %}">{% trans 'My Contributions' %}</a></li>
+                            <li><a href="{% url 'dariah_contributions:mine' %}" title="{% trans 'My Contributions' %}">{% trans 'My Contributions' %}</a></li>
                             <li><a href="#" title="{% trans 'Settings' %}">{% trans 'Settings' %}</a></li>
                             <li class="divider"></li>
                             <li><a href="{% url 'logout' %}" title="{% trans 'Log out' %}">{% trans 'Log out' %}</a></li>
