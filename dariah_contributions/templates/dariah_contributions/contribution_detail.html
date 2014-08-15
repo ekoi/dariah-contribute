@@ -6,18 +6,14 @@
             <a href="{% url 'dariah_contributions:update' contribution.dc_identifier %}">Edit</a> |
        		<a href="{% url 'dariah_contributions:delete' contribution.dc_identifier %}">Delete</a>
         </p>
-		<h3>{{ contribution.dc_title }}</h3>
-		<ul>
-  			<li>Date: {{ contribution.dc_date }}</li><br>
-  			<li>Relation: {{ contribution.dc_relation }}</li><br>
-  			<li>Publisher: {{ contribution.dc_publisher }}</li><br>
-  			<li>Coverage: {{ contribution.dc_coverage }}</li><br>
-  			<li>Subject: {{ contribution.dc_subject }}</li><br>
-  			<li>Abstract: {{ contribution.dc_abstract }}</li><br>
-  			<li>Description: {{ contribution.dc_description }}</li><br>
-  			<li>Contributor: {{ contribution.dc_contributor }}</li><br>
-  			<li>Published on: {{ contribution.published_on }}</li><br>
-  			<li>Last modified on: {{ contribution.last_modified_on }}</li><br>
-		</ul>    
-{% endblock %}
 
+		<h3>{{ contribution.dc_title }}</h3>
+        <table class="table">
+        {% for field, value in contribution.attrs %}
+            <tr>
+                <td>{{ field }}</td>
+                <td>{{ value }}</td>
+            </tr>
+        {% endfor %}
+        </table>
+{% endblock %}

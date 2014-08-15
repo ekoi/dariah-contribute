@@ -100,6 +100,11 @@ class Contribution(models.Model):
     def get_absolute_url(self):
         return reverse('dariah_contributions:detail', kwargs={'pk': self.pk})
 
+    def attrs(self):
+        for attr, value in self.__dict__.iteritems():
+            if not attr.startswith('_'):  # Extract private attributes
+                yield attr, value
+
     class Meta:
         ordering = ['-published_on', ]
         get_latest_by = 'published_on'

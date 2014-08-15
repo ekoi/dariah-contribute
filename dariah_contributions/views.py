@@ -33,8 +33,7 @@ class ContributionRDF(DetailView):
         n = Namespace("http://dariah.eu/contributions/")
         g = Graph()
 
-        fields = context['object'].__dict__
-        for field, value in fields.items():
+        for field, value in context['object'].attrs():
             g.add((n.field, FOAF.about, Literal(value)))
         rdf = g.serialize(format='pretty-xml')
         #######################################################################
