@@ -1,0 +1,19 @@
+{% extends "content_left_sidebar.html" %}
+
+{% block content %}
+		<div id='presentation_button'><a href="{% url 'dariah_contributions:detail_rdf' contribution.dc_identifier %}">Show as RDF</a></div>
+		<h3>{{ contribution.dc_title }}</h3>
+		<ul>
+  			<li>Date: {{ contribution.dc_date }}</li><br>
+  			<li>Relation: {{ contribution.dc_relation }}</li><br>
+  			<li>Publisher: {{ contribution.dc_publisher }}</li><br>
+  			<li>Coverage: {{ contribution.dc_coverage }}</li><br>
+  			<li>Subject: {{ contribution.dc_subject }}</li><br>
+  			<li>Abstract: {{ contribution.dc_abstract }}</li><br>
+  			<li>Description: {{ contribution.dc_description }}</li><br>
+  			<li>Contributor: {{ contribution.dc_contributor }}</li><br>
+  			<li>Published on: {{ contribution.published_on }}</li><br>
+  			<li>Last modified on: {{ contribution.last_modified_on }}</li><br>
+		</ul>    
+{% endblock %}
+

@@ -1,75 +1,71 @@
-from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse, HttpResponseRedirect
-from django.core.urlresolvers import reverse
-from django.views import generic
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import logout
-from datetime import datetime
+from django.utils.decorators import method_decorator
+from django.views.generic.detail import DetailView
+from django.views.generic.list import ListView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.core.urlresolvers import reverse_lazy
 
-from rdflib import URIRef, BNode, Literal, Namespace, Graph
-from rdflib.namespace import RDF, FOAF
-
+from rdflib import Literal, Namespace, Graph
+from rdflib.namespace import FOAF
 
 from dariah_contributions.models import Contribution
-from dariah_contributions.forms import ContributionForm
 
-def index(request):
-    return render(request, 'dariah_contributions/index.html')
 
-class list_view(generic.ListView):
-    template_name = 'dariah_contributions/list.html'
-    context_object_name = 'contribution_list'
+class MyContributionsView(ListView):
+    model = Contribution
 
     def get_queryset(self):
-        return Contribution.objects.order_by('-publish_date')
+        return Contribution.objects.filter(author=self.request.user)
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(MyContributionsView, self).dispatch(*args, **kwargs)
 
 
-##def list_view_own(request):
-##    contribution_list = Contribution.objects.filter(contributor="Vesa").order_by('-publish_date')
-##    return object_list(request, queryset=contribution_list)
-
-class detail_view(generic.DetailView):
+class ContributionRDF(DetailView):
     model = Contribution
-    template_name = 'dariah_contributions/detail.html'
+    content_type = 'application/xml'
+    template_name = 'dariah_contributions/contribution_detail.xml'
 
-def detail_view_rdf(request, pk):
-    try:
-        contribution = Contribution.objects.get(pk=pk)
+    def get_context_data(self, **kwargs):
+        context = super(ContributionRDF, self).get_context_data(**kwargs)
+        # Produce the RDF data ################################################
         n = Namespace("http://dariah.eu/contributions/")
         g = Graph()
 
-        fields= contribution.__dict__
+        fields = context['object'].__dict__
         for field, value in fields.items():
-            g.add( ( n.field, FOAF.about, Literal(value) ) )
+            g.add((n.field, FOAF.about, Literal(value)))
         rdf = g.serialize(format='pretty-xml')
-    except:
-        contribution = None
-        rdf = None
-        
-    return render(request, 'dariah_contributions/detail_rdf.html', {'contribution': contribution, 'rdf': rdf})
-        
-@login_required
-def contribution(request, contribution_id):
-    try:
-        contribution = Contribution.objects.get(pk=contribution_id)
-    except:
-        contribution = None
-    form = ContributionForm(instance=contribution)
-    
-    if request.method == 'POST':
-        form = ContributionForm(request.POST, instance=contribution)
-        if form.is_valid():
-            # can this be done otherwise?
-            obj = form.save(commit=False)
-            obj.creator = request.user
-            obj.modify_date = datetime.now()
-            obj.save()
-            return HttpResponseRedirect('/dariah_contributions/list/')
-
-    return render(request, 'dariah_contributions/contribution.html', {'form': form})
-
-def dariah_logout(request):
-    logout(request)
-    return HttpResponseRedirect('/dariah_contributions/')
+        #######################################################################
+        context['rdf'] = rdf
+        return context
 
 
+class ContributionCreate(CreateView):
+    model = Contribution
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(ContributionCreate, self).dispatch(*args, **kwargs)
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super(ContributionCreate, self).form_valid(form)
+
+
+class ContributionUpdate(UpdateView):
+    model = Contribution
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(ContributionUpdate, self).dispatch(*args, **kwargs)
+
+
+class ContributionDelete(DeleteView):
+    model = Contribution
+    success_url = reverse_lazy('dariah_contributions:list')
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(ContributionDelete, self).dispatch(*args, **kwargs)

@@ -1,0 +1,21 @@
+{% extends "content_left_sidebar.html" %}
+{% load bootstrap3 %}
+{% load i18n %}
+
+{% block content %}
+
+    {% if request.resolver_match.url_name == 'add' %}
+        {% trans 'Add' as title_type %}
+    {% elif request.resolver_match.url_name == 'update' %}
+        {% trans 'Update' as title_type %}
+    {% else %}
+        {% trans 'Delete' as title_type %}
+    {% endif %}
+
+    <h1>{{ title_type }} {% trans 'contribution' %}</h1>
+    <form action="" method="post">{% csrf_token %}
+        {% bootstrap_form form %}
+    <input type="submit" value="{{ title_type }}" class="btn btn-default"/>
+</form>
+{% endblock %}
+
