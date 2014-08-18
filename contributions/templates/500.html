@@ -1,0 +1,14 @@
+{% extends 'content.html' %}
+{% load i18n %}
+
+{% block content %}
+
+<h1>{% trans '500 - Server error' %}</h1>
+<p>{% trans 'Unfortunately something went wrong with your request. Please contact the '%}
+{% trans 'administrator' as admin %}
+{% trans 'if this problem persists.' as rest %}
+{% trans 'admin@dariah.org' as email-address %}
+{% trans 'Contact the administrator' as title %}
+<a href="{{ email-address }}" title="{{ title }}">{{ admin }}</a> {{ rest }}</p>
+
+{% endblock %}
