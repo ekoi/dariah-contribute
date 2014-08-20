@@ -19,6 +19,7 @@ from dariah_contributions.models import Contribution
 
 class ContributionList(ListView):
     model = Contribution
+    paginate_by = 25
 
     def get_queryset(self):
         return Contribution.objects.published()
@@ -26,6 +27,7 @@ class ContributionList(ListView):
 
 class MyContributions(ListView):
     model = Contribution
+    paginate_by = 25
 
     def get_queryset(self):
         return Contribution.objects.by_author(self.request.user)
