@@ -8,6 +8,8 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.core.urlresolvers import reverse_lazy
 from django.contrib import messages
 from django.utils.translation import ugettext as _
+from django.db.models import Q
+from django.utils import timezone
 
 from rdflib import Literal, Namespace, Graph
 from rdflib.namespace import FOAF
@@ -37,7 +39,10 @@ class ContributionDetail(DetailView):
     model = Contribution
 
     def get_queryset(self):
-        return Contribution.published.all()
+        return Contribution.objects.filter(Q(is_deleted=False) &                     # Not deleted and
+                                           ((Q(is_published=True) &
+                                             Q(published_on__lte=timezone.now())) |  # Either Published
+                                            Q(author=self.request.user)))            # or by current user
 
 
 class ContributionRDF(DetailView):
