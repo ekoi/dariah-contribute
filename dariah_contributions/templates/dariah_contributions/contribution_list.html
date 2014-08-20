@@ -30,8 +30,11 @@
         			<tr>
                         <td><a href="{% url 'dariah_contributions:detail' contribution.dc_identifier %}">{{ contribution.dc_title }}</a></td>
          				<td>{{ contribution.author }}</td>
-       					<td><a href="{% url 'dariah_contributions:update' contribution.dc_identifier %}">Update</a> |
-       					<a href="{% url 'dariah_contributions:delete' contribution.dc_identifier %}">Delete</a></td>
+                        <td>{% if contribution.author == request.user %}
+                            <a href="{% url 'dariah_contributions:update' contribution.dc_identifier %}">Update</a> |
+       					    <a href="{% url 'dariah_contributions:delete' contribution.dc_identifier %}">Delete</a>
+                            {% endif %}
+                        </td>
         			</tr>
     			{% endfor %}
     		</tbody>
