@@ -3,9 +3,11 @@
 
 {% block content %}
 		<p>
-        <a href="{% url 'dariah_contributions:detail_rdf' contribution.dc_identifier %}">{% trans "Show as RDF" %}</a> |
-        <a href="{% url 'dariah_contributions:update' contribution.dc_identifier %}">{% trans 'Edit' %}</a> |
-            <a href="{% url 'dariah_contributions:delete' contribution.dc_identifier %}">{% trans 'Delete' %}</a>
+        <a href="{% url 'dariah_contributions:detail_rdf' contribution.dc_identifier %}">{% trans "Show as RDF" %}</a>
+        {% if contribution.author == request.user %}
+        | <a href="{% url 'dariah_contributions:update' contribution.dc_identifier %}">{% trans 'Edit' %}</a>
+        | <a href="{% url 'dariah_contributions:delete' contribution.dc_identifier %}">{% trans 'Delete' %}</a>
+        {% endif %}
         </p>
 
 		<h3>{{ contribution.dc_title }}</h3>

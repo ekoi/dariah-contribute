@@ -62,6 +62,9 @@ class ContributionRDF(DetailView):
         return context
 
 
+###############################################################################
+# FORMS
+###############################################################################
 class ContributionCreate(SuccessMessageMixin, CreateView):
     model = Contribution
     success_message = _("{model} was created successfully.").format(model=model.__name__)
@@ -83,11 +86,25 @@ class ContributionUpdate(SuccessMessageMixin, UpdateView):
     def dispatch(self, *args, **kwargs):
         return super(ContributionUpdate, self).dispatch(*args, **kwargs)
 
+    def get(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        if not self.object.has_owner(request.user):
+            from django.core.exceptions import PermissionDenied
+            raise PermissionDenied
+        return super(ContributionUpdate, self).get(self, *args, **kwargs)
+
 
 class ContributionDelete(DeleteView):
     model = Contribution
     success_url = reverse_lazy('dariah_contributions:list')
     success_message = _("{model} was deleted successfully.").format(model=model.__name__)
+
+    def get(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        if not self.object.has_owner(request.user):
+            from django.core.exceptions import PermissionDenied
+            raise PermissionDenied
+        return super(ContributionDelete, self).get(self, *args, **kwargs)
 
     def delete(self, request, *args, **kwargs):
         messages.success(self.request, self.success_message)

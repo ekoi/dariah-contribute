@@ -141,6 +141,9 @@ class Contribution(models.Model):
             if not attr.startswith('_'):  # Extract private attributes
                 yield self._meta.get_field(patt.sub('', attr)).verbose_name, value
 
+    def has_owner(self, user):
+        return self.author == user
+
     class Meta:
         ordering = ['-published_on', ]
         get_latest_by = 'published_on'
