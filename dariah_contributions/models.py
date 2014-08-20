@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models.query import QuerySet
 from django.utils.translation import ugettext_lazy as _
 from django.utils import timezone
 from django.core.urlresolvers import reverse
@@ -10,6 +11,28 @@ User = get_user_model()
 
 
 # Managers
+class ContributionMixin(object):
+    def by_author(self, user):
+        kwargs = {'is_deleted': False,
+                  'author': user}
+        return self.filter(**kwargs)
+
+    def published(self):
+        kwargs = {'is_deleted': False,
+                  'is_published': True,
+                  'published_on__lte': timezone.now()}
+        return self.filter(**kwargs)
+
+
+class ContributionQuerySet(QuerySet, ContributionMixin):
+    pass
+
+
+class ContributionManager(models.Manager, ContributionMixin):
+    def get_query_set(self):
+        return ContributionQuerySet(self.model, using=self._db)
+
+
 class PublishedContributionsManager(models.Manager):
     """Filters out all unpublished items and items with a publication date in the future."""
     def get_queryset(self):
@@ -103,7 +126,7 @@ class Contribution(models.Model):
         editable=False)
 
     # Managers ################################################################
-    objects = models.Manager()
+    objects = ContributionManager()
     published = PublishedContributionsManager()
 
     def __unicode__(self):

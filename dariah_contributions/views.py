@@ -19,14 +19,14 @@ class ContributionList(ListView):
     model = Contribution
 
     def get_queryset(self):
-        return Contribution.published.all()
+        return Contribution.objects.published()
 
 
 class MyContributions(ListView):
     model = Contribution
 
     def get_queryset(self):
-        return Contribution.objects.filter(author=self.request.user, is_deleted=False)
+        return Contribution.objects.by_author(self.request.user)
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
@@ -46,7 +46,7 @@ class ContributionRDF(DetailView):
     content_type = 'application/xml'
 
     def get_queryset(self):
-        return Contribution.published.all()
+        return Contribution.objects.published()
 
     def get_context_data(self, **kwargs):
         context = super(ContributionRDF, self).get_context_data(**kwargs)
