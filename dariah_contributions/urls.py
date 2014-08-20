@@ -1,13 +1,16 @@
 from django.conf.urls import patterns, url
-from django.views.generic.detail import DetailView
-from django.views.generic.list import ListView
 
-from .models import Contribution
-from .views import ContributionCreate, ContributionDelete, ContributionUpdate, ContributionRDF, MyContributions
+from .views import ContributionCreate
+from .views import ContributionDelete
+from .views import ContributionUpdate
+from .views import ContributionRDF
+from .views import MyContributions
+from .views import ContributionDetail
+from .views import ContributionList
 
 
 urlpatterns = patterns('',
-    url(r'^(all/)?$', ListView.as_view(model=Contribution, queryset=Contribution.published.all()), name='list'),
+    url(r'^(all/)?$', ContributionList.as_view(), name='list'),
     # example: /contribution/
     # example: /contribution/all/
     url(r'^mine/$', MyContributions.as_view(), name='mine'),
@@ -19,6 +22,6 @@ urlpatterns = patterns('',
     # example: /contribution/5/delete/
     url(r'^(?P<pk>\d+)\.xml$', ContributionRDF.as_view(), name='detail_rdf'),
     # example: /contribution/detail_rdf/5/
-    url(r'^(?P<pk>\d+)/$', DetailView.as_view(model=Contribution, queryset=Contribution.published.all()), name='detail'),
+    url(r'^(?P<pk>\d+)/$', ContributionDetail.as_view(), name='detail'),
     # example: /contribution/5/
 )

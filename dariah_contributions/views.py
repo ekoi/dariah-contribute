@@ -15,6 +15,13 @@ from rdflib.namespace import FOAF
 from dariah_contributions.models import Contribution
 
 
+class ContributionList(ListView):
+    model = Contribution
+
+    def get_queryset(self):
+        return Contribution.published.all()
+
+
 class MyContributions(ListView):
     model = Contribution
 
@@ -26,10 +33,20 @@ class MyContributions(ListView):
         return super(MyContributions, self).dispatch(*args, **kwargs)
 
 
+class ContributionDetail(DetailView):
+    model = Contribution
+
+    def get_queryset(self):
+        return Contribution.published.all()
+
+
 class ContributionRDF(DetailView):
     model = Contribution
-    content_type = 'application/xml'
     template_name = 'dariah_contributions/contribution_detail.xml'
+    content_type = 'application/xml'
+
+    def get_queryset(self):
+        return Contribution.published.all()
 
     def get_context_data(self, **kwargs):
         context = super(ContributionRDF, self).get_context_data(**kwargs)

@@ -11,13 +11,12 @@ User = get_user_model()
 
 # Managers
 class PublishedContributionsManager(models.Manager):
-    """Filters out all unpublished items and items with a publication date in the future"""
-    def get_query_set(self):
-        print "test"
-        return super(PublishedContributionsManager, self).get_query_set() \
-            .filter(is_deleted=False) \
-            .filter(is_published=True) \
-            .filter(published_on__lte=timezone.now)
+    """Filters out all unpublished items and items with a publication date in the future."""
+    def get_queryset(self):
+        kwargs = {'is_deleted': False,
+                  'is_published': True,
+                  'published_on__lte': timezone.now()}
+        return super(PublishedContributionsManager, self).get_query_set().filter(**kwargs)
 
 
 class Contribution(models.Model):
