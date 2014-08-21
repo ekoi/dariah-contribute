@@ -1,4 +1,5 @@
 from django.http import HttpResponseRedirect
+from django.core.exceptions import PermissionDenied
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.views.generic.detail import DetailView
@@ -99,6 +100,49 @@ class ContributionUpdate(SuccessMessageMixin, UpdateView):
             from django.core.exceptions import PermissionDenied
             raise PermissionDenied
         return super(ContributionUpdate, self).get(self, *args, **kwargs)
+
+
+class ContributionPublish(DetailView):
+    model = Contribution
+    success_message = _("{model} was published successfully.").format(model=model.__name__)
+    error_message = _("Something went wrong while publishing the {model}.").format(model=model.__name__)
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(ContributionPublish, self).dispatch(*args, **kwargs)
+
+    def action(self):
+        self.object.is_published = True
+        self.object.save()
+        return True
+
+    def get(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        # Check if user has permission to publish item
+        if not self.object.has_owner(request.user):
+            raise PermissionDenied
+        # Publish the item
+        if self.action():
+            # Set the successmessage
+            messages.success(self.request, self.success_message)
+        else:
+            messages.error(self.request, self.error_message)
+        # Redirect to original page
+        if request.META.get('HTTP_REFERER'):
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+        context = self.get_context_data(object=self.object)
+        return self.render_to_response(context)
+
+
+class ContributionUnpublish(ContributionPublish):
+    model = Contribution
+    success_message = _("{model} was unpublished successfully.").format(model=model.__name__)
+    error_message = _("Something went wrong while unpublishing the {model}.").format(model=model.__name__)
+
+    def action(self):
+        self.object.is_published = False
+        self.object.save()
+        return True
 
 
 class ContributionDelete(DeleteView):

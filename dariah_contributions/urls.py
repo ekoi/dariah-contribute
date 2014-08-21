@@ -3,6 +3,8 @@ from django.conf.urls import patterns, url
 from .views import ContributionCreate
 from .views import ContributionDelete
 from .views import ContributionUpdate
+from .views import ContributionPublish
+from .views import ContributionUnpublish
 from .views import ContributionRDF
 from .views import MyContributions
 from .views import ContributionDetail
@@ -20,6 +22,10 @@ urlpatterns = patterns('',
     # example: /contribution/5/update/
     url(r'^(?P<pk>\d+)/delete/$', ContributionDelete.as_view(), name='delete'),
     # example: /contribution/5/delete/
+    url(r'^(?P<pk>\d+)/publish/$', ContributionPublish.as_view(), name='publish'),
+    # example: /contribution/5/publish/
+    url(r'^(?P<pk>\d+)/unpublish/$', ContributionUnpublish.as_view(), name='unpublish'),
+    # example: /contribution/5/unpublish/
     url(r'^(?P<pk>\d+)\.xml$', ContributionRDF.as_view(), name='detail_rdf'),
     # example: /contribution/detail_rdf/5/
     url(r'^(?P<pk>\d+)/$', ContributionDetail.as_view(), name='detail'),
