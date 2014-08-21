@@ -97,7 +97,6 @@ class ContributionUpdate(SuccessMessageMixin, UpdateView):
     def get(self, request, *args, **kwargs):
         self.object = self.get_object()
         if not self.object.has_owner(request.user):
-            from django.core.exceptions import PermissionDenied
             raise PermissionDenied
         return super(ContributionUpdate, self).get(self, *args, **kwargs)
 
@@ -153,7 +152,6 @@ class ContributionDelete(DeleteView):
     def get(self, request, *args, **kwargs):
         self.object = self.get_object()
         if not self.object.has_owner(request.user):
-            from django.core.exceptions import PermissionDenied
             raise PermissionDenied
         return super(ContributionDelete, self).get(self, *args, **kwargs)
 
