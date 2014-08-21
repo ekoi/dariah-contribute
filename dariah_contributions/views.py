@@ -75,7 +75,7 @@ class ContributionRDF(DetailView):
 ###############################################################################
 class ContributionCreate(SuccessMessageMixin, CreateView):
     model = Contribution
-    success_message = _("{model} was created successfully.").format(model=model.__name__)
+    success_message = _("Contribution was created successfully.")
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
@@ -88,7 +88,7 @@ class ContributionCreate(SuccessMessageMixin, CreateView):
 
 class ContributionUpdate(SuccessMessageMixin, UpdateView):
     model = Contribution
-    success_message = _("{model} was updated successfully.").format(model=model.__name__)
+    success_message = _("Contribution was updated successfully.")
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
@@ -103,8 +103,8 @@ class ContributionUpdate(SuccessMessageMixin, UpdateView):
 
 class ContributionPublish(DetailView):
     model = Contribution
-    success_message = _("{model} was published successfully.").format(model=model.__name__)
-    error_message = _("Something went wrong while publishing the {model}.").format(model=model.__name__)
+    success_message = _("Contribution was published successfully.")
+    error_message = _("Something went wrong while publishing the contribution.")
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
@@ -134,9 +134,8 @@ class ContributionPublish(DetailView):
 
 
 class ContributionUnpublish(ContributionPublish):
-    model = Contribution
-    success_message = _("{model} was unpublished successfully.").format(model=model.__name__)
-    error_message = _("Something went wrong while unpublishing the {model}.").format(model=model.__name__)
+    success_message = _("Contribution was unpublished successfully.")
+    error_message = _("Something went wrong while unpublishing the contribution.")
 
     def action(self):
         self.object.is_published = False
@@ -147,7 +146,7 @@ class ContributionUnpublish(ContributionPublish):
 class ContributionDelete(DeleteView):
     model = Contribution
     success_url = reverse_lazy('dariah_contributions:list')
-    success_message = _("{model} was deleted successfully.").format(model=model.__name__)
+    success_message = _("Contribution was deleted successfully.")
 
     def get(self, request, *args, **kwargs):
         self.object = self.get_object()

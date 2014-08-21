@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-15 14:55+0200\n"
+"POT-Creation-Date: 2014-08-21 10:22+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,88 +17,116 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: models.py:31
+#: models.py:55
 msgid "dc:identifier"
 msgstr ""
 
-#: models.py:34
+#: models.py:58
 msgid "dc:title"
 msgstr ""
 
-#: models.py:37
+#: models.py:61
 msgid "dc:date"
 msgstr ""
 
-#: models.py:39
+#: models.py:63
 msgid "dc:relation"
 msgstr ""
 
-#: models.py:44
+#: models.py:68
 msgid "dc:publisher"
 msgstr ""
 
-#: models.py:49
+#: models.py:73
 msgid "dc:coverage"
 msgstr ""
 
-#: models.py:54
+#: models.py:78
 msgid "dc:subject"
 msgstr ""
 
-#: models.py:58
+#: models.py:82
 msgid "dcterms:abstract"
 msgstr ""
 
-#: models.py:61
+#: models.py:85
 msgid "dcterms:abstract lang"
 msgstr ""
 
-#: models.py:66
+#: models.py:90
 msgid "dc:description"
 msgstr ""
 
-#: models.py:74
+#: models.py:96
 msgid "dc:creator"
 msgstr ""
 
-#: models.py:79
+#: models.py:101
 msgid "dc:contributor"
 msgstr ""
 
-#: models.py:84
+#: models.py:108
 msgid "author"
 msgstr ""
 
-#: models.py:90
+#: models.py:113
 msgid "is published?"
 msgstr ""
 
-#: models.py:92
+#: models.py:116
 msgid "published on"
 msgstr ""
 
-#: models.py:96
+#: models.py:120
 msgid "last modified on"
 msgstr ""
 
-#: models.py:120 templates/dariah_contributions/contribution_form.html:13
+#: models.py:124
+msgid "is deleted?"
+msgstr ""
+
+#: models.py:150 templates/dariah_contributions/contribution_form.html:13
 msgid "contribution"
 msgstr ""
 
-#: models.py:121
+#: models.py:151 templates/dariah_contributions/contribution_list.html:20
 msgid "contributions"
 msgstr ""
 
-#: views.py:49
-msgid "{model} was created successfully."
+#: views.py:107
+msgid "Contribution was created successfully."
 msgstr ""
 
-#: views.py:62
-msgid "{model} was updated successfully."
+#: views.py:121
+msgid "Contribution was updated successfully."
 msgstr ""
 
-#: views.py:73
-msgid "{model} was deleted successfully."
+#: views.py:136
+msgid "Contribution was published successfully."
+msgstr ""
+
+#: views.py:137
+msgid "Something went wrong while publishing the contribution."
+msgstr ""
+
+#: views.py:167
+msgid "Contribution was unpublished successfully."
+msgstr ""
+
+#: views.py:168
+msgid "Something went wrong while unpublishing the contribution."
+msgstr ""
+
+#: views.py:179
+msgid "Contribution was deleted successfully."
+msgstr ""
+
+#: views.py:202
+msgid "dc:creator was created successfully."
+msgstr ""
+
+#: views.py:211
+msgid "dc:contributor was created successfully."
 msgstr ""
 
 #: templates/dariah_contributions/contribution_confirm_delete.html:6
@@ -111,7 +139,8 @@ msgid "Are you sure you want to delete %(object)s?"
 msgstr ""
 
 #: templates/dariah_contributions/contribution_confirm_delete.html:9
-#: templates/dariah_contributions/contribution_detail.html:8
+#: templates/dariah_contributions/contribution_detail.html:9
+#: templates/dariah_contributions/contribution_list.html:42
 msgid "Delete"
 msgstr ""
 
@@ -123,7 +152,7 @@ msgstr ""
 msgid "Show as RDF"
 msgstr ""
 
-#: templates/dariah_contributions/contribution_detail.html:7
+#: templates/dariah_contributions/contribution_detail.html:8
 msgid "Edit"
 msgstr ""
 
@@ -132,5 +161,30 @@ msgid "Add"
 msgstr ""
 
 #: templates/dariah_contributions/contribution_form.html:10
+#: templates/dariah_contributions/contribution_list.html:41
 msgid "Update"
+msgstr ""
+
+#: templates/dariah_contributions/contribution_list.html:15
+msgid "My"
+msgstr ""
+
+#: templates/dariah_contributions/contribution_list.html:17
+msgid "All"
+msgstr ""
+
+#: templates/dariah_contributions/contribution_list.html:38
+msgid "Yes,No"
+msgstr ""
+
+#: templates/dariah_contributions/contribution_list.html:44
+msgid "Unpublish"
+msgstr ""
+
+#: templates/dariah_contributions/contribution_list.html:46
+msgid "Publish"
+msgstr ""
+
+#: templates/dariah_contributions/contribution_list.html:59
+msgid "No contributions are available."
 msgstr ""
