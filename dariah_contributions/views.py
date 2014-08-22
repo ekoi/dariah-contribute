@@ -73,8 +73,39 @@ class ContributionRDF(DetailView):
 ###############################################################################
 # FORMS
 ###############################################################################
+from django.forms import ModelForm
+from django.forms.extras.widgets import SelectDateWidget
+
+
+class ContributionForm(ModelForm):
+    class Meta:
+        model = Contribution
+        fields = [
+            #'dc_identifier',
+            'dc_title',
+            'dc_date',
+            'dc_relation',
+            'dc_publisher',
+            'dc_coverage',
+            'dc_subject',
+            'dcterms_abstract',
+            'dcterms_abstract_lang',
+            'dc_description',
+            'dc_creator',
+            'dc_contributor',
+            #'author',
+            'is_published',
+            'published_on',
+            #'last_modified_on',
+            #'is_deleted'
+        ]
+        widgets = {'dc_date': SelectDateWidget,
+                   'published_on': SelectDateWidget}
+
+
 class ContributionCreate(SuccessMessageMixin, CreateView):
     model = Contribution
+    form_class = ContributionForm
     success_message = _("Contribution was created successfully.")
 
     @method_decorator(login_required)
@@ -88,6 +119,7 @@ class ContributionCreate(SuccessMessageMixin, CreateView):
 
 class ContributionUpdate(SuccessMessageMixin, UpdateView):
     model = Contribution
+    form_class = ContributionForm
     success_message = _("Contribution was updated successfully.")
 
     @method_decorator(login_required)
