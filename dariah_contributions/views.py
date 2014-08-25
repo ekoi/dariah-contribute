@@ -183,6 +183,10 @@ class ContributionDelete(DeleteView):
     success_url = reverse_lazy('dariah_contributions:list')
     success_message = _("Contribution was deleted successfully.")
 
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(ContributionDelete, self).dispatch(*args, **kwargs)
+
     def get(self, request, *args, **kwargs):
         self.object = self.get_object()
         if not self.object.has_owner(request.user):
@@ -190,11 +194,11 @@ class ContributionDelete(DeleteView):
         return super(ContributionDelete, self).get(self, *args, **kwargs)
 
     def delete(self, request, *args, **kwargs):
-        messages.success(self.request, self.success_message)
         self.object = self.get_object()
         success_url = self.get_success_url()
         self.object.is_deleted = True
         self.object.save()
+        messages.success(self.request, self.success_message)
         return HttpResponseRedirect(success_url)
 
     @method_decorator(login_required)
