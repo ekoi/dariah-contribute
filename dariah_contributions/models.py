@@ -59,21 +59,23 @@ class Contribution(models.Model):
         max_length=100)
     dc_date = models.DateTimeField(
         _("dc:date"), )
-    dc_relation = models.CharField(
+    dc_relation = models.URLField(
         _("dc:relation"),
         max_length=200,
-        blank=True)
     #vcard_logo
+        blank=True,
+        help_text=_("The URI of the relation, example: http://easy.dans.knaw.nl."))
     dc_publisher = models.CharField(
         _("dc:publisher"),
         max_length=200,
         blank=True)
     #dcterms_spatial
-    dc_coverage = models.CharField(
-        _("dc:coverage"),
-        max_length=200,
-        blank=True)
     #vcard_organization
+    dc_coverage = models.ForeignKey(
+        'dariah_static_data.Country',
+        verbose_name=_("dc:coverage"),
+        blank=True,
+        null=True)
     dc_subject = models.CharField(
         _("dc:subject"),
         max_length=50,
@@ -160,7 +162,7 @@ class Contribution(models.Model):
 
 
 class Person(models.Model):
-    foaf_person = models.CharField(max_length=50, blank=True)
+    foaf_person = models.URLField(blank=True)
     foaf_name = models.CharField(max_length=50, blank=True)
     foaf_publications = models.CharField(max_length=50, blank=True)
 
