@@ -42,10 +42,12 @@ class ContributionDetail(DetailView):
     model = Contribution
 
     def get_queryset(self):
-        return Contribution.objects.filter(Q(is_deleted=False) &                     # Not deleted and
-                                           ((Q(is_published=True) &
-                                             Q(published_on__lte=timezone.now())) |  # Either Published
-                                            Q(author=self.request.user)))            # or by current user
+        if self.request.user.is_authenticated():
+            return Contribution.objects.filter(Q(is_deleted=False) &                     # Not deleted and
+                                               ((Q(is_published=True) &
+                                                 Q(published_on__lte=timezone.now())) |  # Either Published
+                                                Q(author=self.request.user)))            # or by current user
+        return Contribution.objects.published()
 
 
 class ContributionRDF(DetailView):
