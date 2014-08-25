@@ -80,14 +80,20 @@ class Contribution(models.Model):
         _("dc:subject"),
         max_length=50,
         blank=True)
+    dcterms_abstract_en = models.TextField(
+        _("dcterms:abstract English"),
+        blank=True,
+        help_text=_('The abstract in English'))
     dcterms_abstract = models.TextField(
-        _("dcterms:abstract"),
-        blank=True)
+        _("dcterms:abstract alternative language"),
+        blank=True,
+        help_text=_('The abstract in an alternative language'))
     dcterms_abstract_lang = models.CharField(
-        _("dcterms:abstract lang"),
+        _("dcterms:abstract language"),
         max_length=2,
         choices=DCTERMS_ABSTRACT_LANG_CHOICES,
-        default='en')
+        default='en',
+        help_text=_('The language of dcterms:abstract alternative language'))
     dc_description = models.TextField(
         _("dc:description"),
         blank=True)

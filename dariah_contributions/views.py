@@ -88,6 +88,7 @@ class ContributionForm(ModelForm):
             'dc_publisher',
             'dc_coverage',
             'dc_subject',
+            'dcterms_abstract_en',
             'dcterms_abstract',
             'dcterms_abstract_lang',
             'dc_description',
