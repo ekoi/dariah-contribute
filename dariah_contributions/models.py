@@ -5,10 +5,12 @@ from django.utils import timezone
 from django.core.urlresolvers import reverse
 from pycountry import languages as l
 import re
+import os.path
 
 from django.contrib.auth import get_user_model
 User = get_user_model()
 
+from .storage import OverwriteStorage
 
 # Managers
 class ContributionMixin(object):
@@ -42,6 +44,17 @@ class PublishedContributionsManager(models.Manager):
         return super(PublishedContributionsManager, self).get_query_set().filter(**kwargs)
 
 
+def contribution_vcardlogo_uploadto(instance, filename):
+    # get extension from raw filename
+    fn, ext = os.path.splitext(filename)
+    new_filename = instance.dc_identifier
+    path = 'contribution_vcardlogo'
+    # return new filename, including its parent directories (based on MEDIA_ROOT)
+    return "{path}/{new_filename}{ext}".format(path=path,
+                                               new_filename=new_filename,
+                                               ext=ext)
+
+
 class Contribution(models.Model):
     # CHOICES Definitions #####################################################
     DCTERMS_ABSTRACT_LANG_CHOICES = filter(lambda x: x[0] and x[1],
@@ -62,20 +75,29 @@ class Contribution(models.Model):
     dc_relation = models.URLField(
         _("dc:relation"),
         max_length=200,
-    #vcard_logo
         blank=True,
         help_text=_("The URI of the relation, example: http://easy.dans.knaw.nl."))
+    vcard_logo = models.ImageField(
+        _("vcard:logo"),
+        upload_to=contribution_vcardlogo_uploadto,
+        storage=OverwriteStorage(),
+        blank=True,
+        null=True)
     dc_publisher = models.CharField(
         _("dc:publisher"),
         max_length=200,
         blank=True)
     #dcterms_spatial
-    #vcard_organization
     dc_coverage = models.ForeignKey(
         'dariah_static_data.Country',
         verbose_name=_("dc:coverage"),
         blank=True,
         null=True)
+    vcard_organization = models.CharField(
+        _("vcard:organization"),
+        max_length=50,
+        blank=True,
+        help_text=_("The name of the organization, example: DANS."))
     dc_subject = models.CharField(
         _("dc:subject"),
         max_length=50,

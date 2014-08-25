@@ -11,9 +11,9 @@
     {% endif %}
 
     <h1>{{ title_type }} {% trans 'contribution' %}</h1>
-    <form action="" method="post">{% csrf_token %}
+    <form enctype="multipart/form-data" action="" method="post" role="form">{% csrf_token %}
         {% bootstrap_form form %}
-    <input type="submit" value="{{ title_type }}" class="btn btn-default"/>
-</form>
+        <input type="submit" value="{{ title_type }}" class="btn btn-default"/>
+    </form>
 {% endblock %}
 
