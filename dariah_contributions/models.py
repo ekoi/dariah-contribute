@@ -86,7 +86,8 @@ class Contribution(models.Model):
     dc_publisher = models.CharField(
         _("dc:publisher"),
         max_length=200,
-        blank=True)
+        blank=True,
+        help_text=_("The name of the publisher, example: Data Archiving and Networked Services."))
     #dcterms_spatial
     dc_coverage = models.ForeignKey(
         'dariah_static_data.Country',
