@@ -15,7 +15,7 @@ from django.utils import timezone
 from rdflib import Literal, Namespace, Graph
 from rdflib.namespace import FOAF
 
-from dariah_contributions.models import Contribution
+from dariah_contributions.models import Contribution, DcCreator, DcContributor
 
 
 class ContributionList(ListView):
@@ -68,8 +68,6 @@ class ContributionRDF(DetailView):
         #######################################################################
         context['rdf'] = rdf
         return context
-
-
 ###############################################################################
 # FORMS
 ###############################################################################
@@ -201,6 +199,20 @@ class ContributionDelete(DeleteView):
         messages.success(self.request, self.success_message)
         return HttpResponseRedirect(success_url)
 
+
+class DcCreatorCreate(SuccessMessageMixin, CreateView):
+    model = DcCreator
+    success_message = _("dc:creator was created successfully.")
+
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
-        return super(ContributionDelete, self).dispatch(*args, **kwargs)
+        return super(DcCreatorCreate, self).dispatch(*args, **kwargs)
+
+
+class DcContributorCreate(SuccessMessageMixin, CreateView):
+    model = DcContributor
+    success_message = _("dc:contributor was created successfully.")
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(DcContributorCreate, self).dispatch(*args, **kwargs)
