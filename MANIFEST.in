@@ -11,7 +11,16 @@ recursive-include contributions/formats *
 recursive-include contributions/locale *
 recursive-include contributions/static *
 recursive-include contributions/templates *
-recursive-include contributions/apps *.html *.txt
+
+recursive-include dariah_contributions/formats *
+recursive-include dariah_contributions/locale *
+recursive-include dariah_contributions/static *
+recursive-include dariah_contributions/templates *
+
+recursive-include dariah_static_data/formats *
+recursive-include dariah_static_data/locale *
+recursive-include dariah_static_data/static *
+recursive-include dariah_static_data/templates *
 
 recursive-exclude * *.pyc
 recursive-exclude * .DS_Store
