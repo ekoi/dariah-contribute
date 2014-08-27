@@ -105,8 +105,7 @@ class ContributionForm(autocomplete_light.ModelForm):
             #'last_modified_on',
             #'is_deleted'
         ]
-        widgets = {'dc_date': SelectDateWidget,
-                   'published_on': SelectDateWidget}
+        widgets = {'published_on': SelectDateWidget, }
         autocomplete_names = {'skos_preflabel_technique': 'TADIRAHTechniqueAutocomplete', }
 
 

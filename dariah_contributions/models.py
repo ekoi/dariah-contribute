@@ -62,6 +62,7 @@ class Contribution(models.Model):
                                            map(lambda x: (getattr(x, 'alpha2', None),
                                                           getattr(x, 'name', None)),
                                                l))
+    DC_DATE_CHOICES = [(x, x) for x in xrange(1900, timezone.now().year + 1)]
     # Metadata fields #########################################################
     #dc_type
     #vcard_category
@@ -71,8 +72,11 @@ class Contribution(models.Model):
     dc_title = models.CharField(
         _("dc:title"),
         max_length=100)
-    dc_date = models.DateTimeField(
-        _("dc:date"), )
+    dc_date = models.PositiveIntegerField(
+        _("dc:date"),
+        choices=DC_DATE_CHOICES,
+        max_length=4,  # YYYY IS ISO-8601, see https://en.wikipedia.org/wiki/ISO_8601#Years
+        blank=True)
     dc_relation = models.URLField(
         _("dc:relation"),
         max_length=200,
