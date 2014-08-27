@@ -110,7 +110,6 @@ class Contribution(models.Model):
         blank=True)
     dcterms_abstract_en = models.TextField(
         _("dcterms:abstract English"),
-        blank=True,
         help_text=_('The abstract in English'))
     dcterms_abstract = models.TextField(
         _("dcterms:abstract alternative language"),
