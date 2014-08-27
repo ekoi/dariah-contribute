@@ -12,6 +12,7 @@ User = get_user_model()
 
 from .storage import OverwriteStorage
 
+
 # Managers
 class ContributionMixin(object):
     def by_author(self, user):
@@ -120,6 +121,12 @@ class Contribution(models.Model):
     dc_description = models.TextField(
         _("dc:description"),
         blank=True)
+    skos_preflabel_technique = models.ManyToManyField(
+        'dariah_static_data.TADIRAHTechnique',
+        verbose_name=_('sioc:topic/skos:Concept/skos:prefLabel Technique'),
+        blank=True,
+        null=True
+    )
     #sioc_topic
     #sioc_has_scope
     dc_creator = models.ManyToManyField(

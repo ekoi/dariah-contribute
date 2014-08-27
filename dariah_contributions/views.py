@@ -1,3 +1,6 @@
+import autocomplete_light
+autocomplete_light.autodiscover()
+
 from django.http import HttpResponseRedirect
 from django.core.exceptions import PermissionDenied
 from django.contrib.auth.decorators import login_required
@@ -73,14 +76,14 @@ class ContributionRDF(DetailView):
 ###############################################################################
 # FORMS
 ###############################################################################
-from django.forms import ModelForm
 from django.forms.extras.widgets import SelectDateWidget
 
 
-class ContributionForm(ModelForm):
+class ContributionForm(autocomplete_light.ModelForm):
     class Meta:
         model = Contribution
         fields = [
+            'skos_preflabel_technique',
             #'dc_identifier',
             'dc_title',
             'dc_date',
@@ -104,6 +107,7 @@ class ContributionForm(ModelForm):
         ]
         widgets = {'dc_date': SelectDateWidget,
                    'published_on': SelectDateWidget}
+        autocomplete_names = {'skos_preflabel_technique': 'TADIRAHTechniqueAutocomplete', }
 
 
 class ContributionCreate(SuccessMessageMixin, CreateView):

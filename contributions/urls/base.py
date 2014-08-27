@@ -10,6 +10,7 @@ urlpatterns = auth_urls.urlpatterns  # Password reset and login urls
 urlpatterns += patterns('',
     url(r'^grappelli/', include('grappelli.urls')),  # grappelli URLS
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^autocomplete/', include('autocomplete_light.urls')),
     # /lockout displays a message when someone's account is blocked (django-axes)
 
     url(r'^$', RedirectView.as_view(url='/about/', permanent=False)),

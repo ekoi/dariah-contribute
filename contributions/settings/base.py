@@ -83,6 +83,7 @@ INSTALLED_APPS = (
     'axes',  # Limit login attempts
     'bootstrap3',
     'grappelli',
+    'autocomplete_light',
 
     'django.contrib.flatpages',
 
