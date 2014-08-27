@@ -15,7 +15,7 @@ from django.utils import timezone
 from rdflib import Literal, Namespace, Graph
 from rdflib.namespace import FOAF
 
-from dariah_contributions.models import Contribution, DcCreator, DcContributor
+from .models import Contribution, DcCreator, DcContributor
 from .forms import ContributionForm
 
 
