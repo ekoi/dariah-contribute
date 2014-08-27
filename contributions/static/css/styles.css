@@ -24,3 +24,10 @@
 .center-pagination {
     text-align: center;
 }
+
+.autocomplete-light-widget {
+    display: block;
+}
+input.form-control.autocomplete {
+    width: 100%;
+}
