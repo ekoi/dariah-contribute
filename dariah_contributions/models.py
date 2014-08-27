@@ -125,7 +125,8 @@ class Contribution(models.Model):
         'dariah_static_data.TADIRAHTechnique',
         verbose_name=_('sioc:topic/skos:Concept/skos:prefLabel Technique'),
         blank=True,
-        null=True
+        null=True,
+        help_text=_('Start typing to get the options for this field.')
     )
     #sioc_topic
     #sioc_has_scope
