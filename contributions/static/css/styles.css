@@ -31,3 +31,6 @@
 input.form-control.autocomplete {
     width: 100%;
 }
+form .required label:after {
+    content: '*';
+}

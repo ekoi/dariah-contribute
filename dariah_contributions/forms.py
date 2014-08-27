@@ -7,6 +7,8 @@ from .models import Contribution
 
 
 class ContributionForm(autocomplete_light.ModelForm):
+    required_css_class = 'required'
+
     class Meta:
         model = Contribution
         fields = [

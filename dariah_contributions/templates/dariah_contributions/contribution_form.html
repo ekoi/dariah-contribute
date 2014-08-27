@@ -16,6 +16,7 @@
         {% bootstrap_form form %}
         <input type="submit" value="{{ title_type }}" class="btn btn-default"/>
     </form>
+    <p>{% trans 'Fields marked with a star (*) are compulsory.' %}</p>
 {% endblock %}
 
 {% block extra_script %}

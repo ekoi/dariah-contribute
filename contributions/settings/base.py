@@ -194,3 +194,7 @@ AXES_LOCKOUT_TEMPLATE = 'axes/lockout.html'
 AXES_USE_USER_AGENT = True
 
 GRAPPELLI_ADMIN_TITLE = ugettext("Dariah Contributions Admin")
+
+BOOTSTRAP3 = {
+    'set_placeholder': False,
+}
