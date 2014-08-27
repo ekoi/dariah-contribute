@@ -1,7 +1,7 @@
 import autocomplete_light
 autocomplete_light.autodiscover()
 
-from django.forms.extras.widgets import SelectDateWidget
+from bootstrap3_datetime.widgets import DateTimePicker
 
 from .models import Contribution
 
@@ -34,5 +34,8 @@ class ContributionForm(autocomplete_light.ModelForm):
             #'last_modified_on',
             #'is_deleted'
         ]
-        widgets = {'published_on': SelectDateWidget, }
+        widgets = {'published_on': DateTimePicker(options={"format": "YYYY-MM-DD HH:mm:ss",
+                                                           "pickTime": True,
+                                                           "useSeconds": False,
+                                                           }), }
         autocomplete_names = {'skos_preflabel_technique': 'TADIRAHTechniqueAutocomplete', }

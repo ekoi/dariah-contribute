@@ -82,6 +82,7 @@ INSTALLED_APPS = (
     'south',
     'axes',  # Limit login attempts
     'bootstrap3',
+    'bootstrap3_datetime',
     'grappelli',
     'autocomplete_light',
 
@@ -196,5 +197,6 @@ AXES_USE_USER_AGENT = True
 GRAPPELLI_ADMIN_TITLE = ugettext("Dariah Contributions Admin")
 
 BOOTSTRAP3 = {
+    'javascript_in_head': True,
     'set_placeholder': False,
 }
