@@ -1,5 +1,6 @@
 from django.db import models
 from django.db.models.query import QuerySet
+from django.db.models import Q
 from django.utils.translation import ugettext_lazy as _
 from django.utils import timezone
 from django.core.urlresolvers import reverse
@@ -25,6 +26,14 @@ class ContributionMixin(object):
                   'is_published': True,
                   'published_on__lte': timezone.now()}
         return self.filter(**kwargs)
+
+    def published_or_by_author(self, user):
+        if user.is_authenticated():
+            return self.filter(Q(is_deleted=False) &                     # Not deleted and
+                               ((Q(is_published=True) &
+                                 Q(published_on__lte=timezone.now())) |  # Either Published
+                                Q(author=user)))                         # or by current user
+        return self.published()
 
 
 class ContributionQuerySet(QuerySet, ContributionMixin):
