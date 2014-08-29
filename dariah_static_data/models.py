@@ -73,6 +73,25 @@ class TADIRAHVCC(models.Model):
                                               description=self.description)
 
 
+class Discipline(models.Model):
+    name = models.CharField(
+        _('name'),
+        max_length=255)
+    uri = models.URLField(
+        _('uri'))
+    description = models.TextField(
+        _('description'),
+        max_length=255)
+
+    class Meta:
+        verbose_name = _('Discipline')
+        verbose_name_plural = _('Disciplines')
+
+    def __unicode__(self):
+        return "{name}, {description}".format(name=self.name,
+                                              description=self.description)
+
+
 class Country(models.Model):
     name = models.CharField(
         _('name'),
