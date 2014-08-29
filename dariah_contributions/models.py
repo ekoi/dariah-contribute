@@ -129,7 +129,8 @@ class Contribution(models.Model):
         max_length=2,
         choices=DCTERMS_ABSTRACT_LANG_CHOICES,
         default='en',
-        help_text=_('The language of dcterms:abstract alternative language'))
+        help_text=_('The language of dcterms:abstract alternative language'),
+        blank=True)
     dc_description = models.TextField(
         _("dc:description"),
         blank=True)
