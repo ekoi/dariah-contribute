@@ -7,6 +7,7 @@ django-cleanup==0.1.10
 django-grappelli==2.5.3
 django-maintenancemode==0.10
 django-autocomplete-light==2.0.0a18
+django-taggit==0.12.1
 rdflib==4.1.2
 pytz==2014.4
 pycountry==1.8

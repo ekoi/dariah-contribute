@@ -5,6 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.utils import timezone
 from django.core.urlresolvers import reverse
 from pycountry import languages as l
+from taggit.managers import TaggableManager
 import re
 import os.path
 
@@ -113,9 +114,8 @@ class Contribution(models.Model):
         max_length=50,
         blank=True,
         help_text=_("The name of the organization, example: DANS."))
-    dc_subject = models.CharField(
-        _("dc:subject"),
-        max_length=50,
+    dc_subject = TaggableManager(
+        verbose_name=_("dc:subject"),
         blank=True)
     dcterms_abstract_en = models.TextField(
         _("dcterms:abstract English"),

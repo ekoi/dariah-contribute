@@ -1,4 +1,5 @@
 import autocomplete_light
+from autocomplete_light.contrib.taggit_field import TaggitWidget
 autocomplete_light.autodiscover()
 
 from bootstrap3_datetime.widgets import DateTimePicker
@@ -37,5 +38,6 @@ class ContributionForm(autocomplete_light.ModelForm):
         widgets = {'published_on': DateTimePicker(options={"format": "YYYY-MM-DD HH:mm:ss",
                                                            "pickTime": True,
                                                            "useSeconds": False,
-                                                           }), }
+                                                           }),
+                   'dc_subject': TaggitWidget('TagAutocomplete'), }
         autocomplete_names = {'skos_preflabel_technique': 'TADIRAHTechniqueAutocomplete', }

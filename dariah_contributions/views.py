@@ -49,6 +49,7 @@ class ContributionDetail(DetailView):
         context['many2many_fields'] = {
             'skos_preflabel_technique': ', '.join(map(lambda x: str(x),
                                                       c.skos_preflabel_technique.all())),
+            'dc_subject': ', '.join(c.dc_subject.names()),
         }
         return context
 

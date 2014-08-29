@@ -85,6 +85,7 @@ INSTALLED_APPS = (
     'bootstrap3_datetime',
     'grappelli',
     'autocomplete_light',
+    'taggit',
 
     'django.contrib.flatpages',
 
@@ -199,4 +200,8 @@ GRAPPELLI_ADMIN_TITLE = ugettext("Dariah Contributions Admin")
 BOOTSTRAP3 = {
     'javascript_in_head': True,
     'set_placeholder': False,
+}
+
+SOUTH_MIGRATION_MODULES = {
+    'taggit': 'taggit.south_migrations',
 }
