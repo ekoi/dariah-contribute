@@ -82,7 +82,6 @@ INSTALLED_APPS = (
     'south',
     'axes',  # Limit login attempts
     'bootstrap3',
-    'bootstrap3_datetime',
     'grappelli',
     'autocomplete_light',
     'taggit',
