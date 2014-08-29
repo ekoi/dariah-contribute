@@ -14,9 +14,23 @@ class Command(BaseCommand):
     """Process a CSV file and add the data to a database table after emptying
     it first."""
     filename = 'tadirah_technique.csv'
-    fieldnames = ['name', 'uri', 'related_activity']  # Order is important!, should reflect the CSV file.
-    mapping = [('name', 'name', 1), ('uri', 'uri', 1)]  # [('model_fieldname', 'csv_fieldname', required?),...], omit fields that are not in the model
+    """
+    Mapping Example::
+
+        mapping = [('model_fieldname', required?),...]
+
+    * Order is important!, should reflect the CSV file.
+    * If a column will not be imported into the model use ``'_'`` for the
+      ``model_name`` and ``0`` for ``required?``.
+    """
+    mapping = [('name', 1), ('uri', 1), ('_', 0)]
     model = TADIRAHTechnique
+    delimiter = ';'
+    quotechar = '|'
+
+    @property
+    def fieldnames(self):
+        return map(lambda x: x[0], self.mapping)
 
     @property
     def name(self):
@@ -50,26 +64,28 @@ class Command(BaseCommand):
     def row_has_all_fields(self, row):
         """The row needs to have values for all mandatory fields in the model."""
         for f in self.mapping:
-            if f[2] and not row[f[1]]:
+            if f[0] != '_' and f[1] and not row[f[0]]:
                 return False
         return True
 
     def process_csv(self, csvfile):
         """Loop through the CSV file and add the data to the database."""
-        reader = csv.DictReader(ifilter(lambda row: row[0] != '#', csvfile), delimiter=";", quotechar="|", fieldnames=self.fieldnames)
+        reader = csv.DictReader(ifilter(lambda row: row[0] != '#', csvfile), delimiter=self.delimiter, quotechar=self.quotechar, fieldnames=self.fieldnames)
         # Write the items to the database
         self.stdout.write('Adding %s items to the database:' % self.name)
         for row in reader:
             # Check if row contains all necessary fields
             if self.row_has_all_fields(row):
                 kwargs = {}
-                for f in self.mapping:
-                    if '_' in row[f[1]] and not f[0] == 'uri':
+                # Fill up kwargs with attributes from row
+                for f in filter(lambda x: x[0] != '_', self.mapping):  # Only use the ones that have a model_fieldname specified
+                    if '_' in row[f[0]] and not f[0] == 'uri':
                         # If we're not dealing with an URI, replace all underscores with spaces
-                        kwargs[f[0]] = row[f[1]].replace('_', ' ')
+                        kwargs[f[0]] = row[f[0]].replace('_', ' ')
                     else:
                         # We ARE dealing with a URI
-                        kwargs[f[0]] = row[f[1]]
+                        kwargs[f[0]] = row[f[0]]
+                # Create and save the instance
                 t = self.model(**kwargs)
                 t.save()
                 self.stdout.write('Successfully added %s %s.' % (self.name, t))

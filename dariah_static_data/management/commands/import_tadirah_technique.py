@@ -4,6 +4,5 @@ from dariah_static_data.management.commands._private_helper import Command as Su
 
 class Command(SuperCommand):
     filename = 'tadirah_technique.csv'
-    fieldnames = ['name', 'uri', 'related_activity']
-    mapping = [('name', 'name', 1), ('uri', 'uri', 1)]  # [('model_fieldname', 'csv_fieldname', required?),...], omit fields that are not in the model
+    mapping = [('name', 1), ('uri', 1), ('_', 0)]  # [('model_fieldname', required?),...], order same as in CSV
     model = TADIRAHTechnique
