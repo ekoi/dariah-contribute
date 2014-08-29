@@ -59,7 +59,7 @@ FORMAT_MODULE_PATH = PROJECT_NAME + '.formats'
 # If you set this to False, Django will not format dates, numbers and
 # calendars according to the current locale.
 USE_L10N = True
-USE_THOUSAND_SEPARATOR = True
+USE_THOUSAND_SEPARATOR = False
 # If you set this to False, Django will not use timezone-aware datetimes.
 USE_TZ = True
 DATE_FORMAT = 'F j, Y'
