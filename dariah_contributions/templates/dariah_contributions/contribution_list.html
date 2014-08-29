@@ -28,8 +28,8 @@
                     {% if request.resolver_match.url_name == 'mine' %}
 					<th>Published?</th>
                     {% endif %}
-                    {% if contribution.author == request.user %}
-                    <th></th>
+                    {% if request.resolver_match.url_name == 'mine' %}
+                    <th>Available Actions</th>
                     {% endif %}
 				</tr>
     			{% for contribution in object_list %}
@@ -39,7 +39,7 @@
                         {% if request.resolver_match.url_name == 'mine' %}
                         <td>{{ contribution.is_published|yesno:_("Yes,No") }}</td>
                         {% endif %}
-                        {% if contribution.author == request.user %}
+                        {% if request.resolver_match.url_name == 'mine' %}
                             <td>
                                 <a href="{% url 'dariah_contributions:update' contribution.dc_identifier %}">{% trans 'Update' %}</a> |
                                 <a href="{% url 'dariah_contributions:delete' contribution.dc_identifier %}">{% trans 'Delete' %}</a> |
