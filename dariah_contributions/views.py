@@ -43,6 +43,15 @@ class ContributionDetail(DetailView):
     def get_queryset(self):
         return Contribution.objects.published_or_by_author(self.request.user)
 
+    def get_context_data(self, **kwargs):
+        context = super(ContributionDetail, self).get_context_data(**kwargs)
+        c = context['object']
+        context['many2many_fields'] = {
+            'skos_preflabel_technique': ', '.join(map(lambda x: str(x),
+                                                      c.skos_preflabel_technique.all())),
+        }
+        return context
+
 
 class ContributionRDF(DetailView):
     model = Contribution
