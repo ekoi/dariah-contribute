@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-21 10:26+0200\n"
+"POT-Creation-Date: 2014-08-29 11:39+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,115 +17,160 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: models.py:55
+#: models.py:80
 msgid "dc:identifier"
 msgstr ""
 
-#: models.py:58
+#: models.py:83
 msgid "dc:title"
 msgstr ""
 
-#: models.py:61
+#: models.py:86
 msgid "dc:date"
 msgstr ""
 
-#: models.py:63
+#: models.py:91
 msgid "dc:relation"
 msgstr ""
 
-#: models.py:68
-msgid "dc:publisher"
-msgstr ""
-
-#: models.py:73
-msgid "dc:coverage"
-msgstr ""
-
-#: models.py:78
-msgid "dc:subject"
-msgstr ""
-
-#: models.py:82
-msgid "dcterms:abstract"
-msgstr ""
-
-#: models.py:85
-msgid "dcterms:abstract lang"
-msgstr ""
-
-#: models.py:90
-msgid "dc:description"
+#: models.py:94
+msgid "The URI of the relation, example: http://easy.dans.knaw.nl."
 msgstr ""
 
 #: models.py:96
-msgid "dc:creator"
+msgid "vcard:logo"
 msgstr ""
 
-#: models.py:101
-msgid "dc:contributor"
+#: models.py:102
+msgid "dc:publisher"
 msgstr ""
 
-#: models.py:108
-msgid "author"
+#: models.py:105
+msgid ""
+"The name of the publisher, example: Data Archiving and Networked Services."
+msgstr ""
+
+#: models.py:109
+msgid "dc:coverage"
 msgstr ""
 
 #: models.py:113
-msgid "is published?"
+msgid "vcard:organization"
 msgstr ""
 
 #: models.py:116
-msgid "published on"
+msgid "The name of the organization, example: DANS."
 msgstr ""
 
-#: models.py:120
-msgid "last modified on"
+#: models.py:118
+msgid "dc:subject"
+msgstr ""
+
+#: models.py:121
+msgid "dcterms:abstract English"
+msgstr ""
+
+#: models.py:122
+msgid "The abstract in English"
 msgstr ""
 
 #: models.py:124
+msgid "dcterms:abstract alternative language"
+msgstr ""
+
+#: models.py:126
+msgid "The abstract in an alternative language"
+msgstr ""
+
+#: models.py:128
+msgid "dcterms:abstract language"
+msgstr ""
+
+#: models.py:132
+msgid "The language of dcterms:abstract alternative language"
+msgstr ""
+
+#: models.py:134
+msgid "dc:description"
+msgstr ""
+
+#: models.py:138
+msgid "sioc:topic/skos:Concept/skos:prefLabel Technique"
+msgstr ""
+
+#: models.py:141
+msgid "Start typing to get the options for this field."
+msgstr ""
+
+#: models.py:147
+msgid "dc:creator"
+msgstr ""
+
+#: models.py:152
+msgid "dc:contributor"
+msgstr ""
+
+#: models.py:159
+msgid "author"
+msgstr ""
+
+#: models.py:164
+msgid "is published?"
+msgstr ""
+
+#: models.py:167
+msgid "published on"
+msgstr ""
+
+#: models.py:171
+msgid "last modified on"
+msgstr ""
+
+#: models.py:175
 msgid "is deleted?"
 msgstr ""
 
-#: models.py:150 templates/dariah_contributions/contribution_form.html:13
+#: models.py:201 templates/dariah_contributions/contribution_form.html:14
 msgid "contribution"
 msgstr ""
 
-#: models.py:151 templates/dariah_contributions/contribution_list.html:20
+#: models.py:202 templates/dariah_contributions/contribution_list.html:20
 msgid "contributions"
 msgstr ""
 
-#: views.py:107
+#: views.py:85
 msgid "Contribution was created successfully."
 msgstr ""
 
-#: views.py:121
+#: views.py:99
 msgid "Contribution was updated successfully."
 msgstr ""
 
-#: views.py:136
+#: views.py:114
 msgid "Contribution was published successfully."
 msgstr ""
 
-#: views.py:137
+#: views.py:115
 msgid "Something went wrong while publishing the contribution."
 msgstr ""
 
-#: views.py:167
+#: views.py:145
 msgid "Contribution was unpublished successfully."
 msgstr ""
 
-#: views.py:168
+#: views.py:146
 msgid "Something went wrong while unpublishing the contribution."
 msgstr ""
 
-#: views.py:179
+#: views.py:157
 msgid "Contribution was deleted successfully."
 msgstr ""
 
-#: views.py:202
+#: views.py:180
 msgid "dc:creator was created successfully."
 msgstr ""
 
-#: views.py:211
+#: views.py:189
 msgid "dc:contributor was created successfully."
 msgstr ""
 
@@ -140,7 +185,7 @@ msgstr ""
 
 #: templates/dariah_contributions/contribution_confirm_delete.html:9
 #: templates/dariah_contributions/contribution_detail.html:9
-#: templates/dariah_contributions/contribution_list.html:42
+#: templates/dariah_contributions/contribution_list.html:45
 msgid "Delete"
 msgstr ""
 
@@ -156,13 +201,17 @@ msgstr ""
 msgid "Edit"
 msgstr ""
 
-#: templates/dariah_contributions/contribution_form.html:8
+#: templates/dariah_contributions/contribution_form.html:9
 msgid "Add"
 msgstr ""
 
-#: templates/dariah_contributions/contribution_form.html:10
-#: templates/dariah_contributions/contribution_list.html:41
+#: templates/dariah_contributions/contribution_form.html:11
+#: templates/dariah_contributions/contribution_list.html:44
 msgid "Update"
+msgstr ""
+
+#: templates/dariah_contributions/contribution_form.html:19
+msgid "Fields marked with a star (*) are compulsory."
 msgstr ""
 
 #: templates/dariah_contributions/contribution_list.html:15
@@ -173,18 +222,18 @@ msgstr ""
 msgid "All"
 msgstr ""
 
-#: templates/dariah_contributions/contribution_list.html:38
+#: templates/dariah_contributions/contribution_list.html:40
 msgid "Yes,No"
 msgstr ""
 
-#: templates/dariah_contributions/contribution_list.html:44
+#: templates/dariah_contributions/contribution_list.html:47
 msgid "Unpublish"
 msgstr ""
 
-#: templates/dariah_contributions/contribution_list.html:46
+#: templates/dariah_contributions/contribution_list.html:49
 msgid "Publish"
 msgstr ""
 
-#: templates/dariah_contributions/contribution_list.html:59
+#: templates/dariah_contributions/contribution_list.html:62
 msgid "No contributions are available."
 msgstr ""

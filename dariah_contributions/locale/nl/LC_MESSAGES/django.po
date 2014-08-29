@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-21 10:26+0200\n"
+"POT-Creation-Date: 2014-08-29 11:39+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,117 +18,162 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: models.py:55
+#: models.py:80
 msgid "dc:identifier"
 msgstr ""
 
-#: models.py:58
+#: models.py:83
 msgid "dc:title"
 msgstr ""
 
-#: models.py:61
+#: models.py:86
 msgid "dc:date"
 msgstr ""
 
-#: models.py:63
+#: models.py:91
 msgid "dc:relation"
 msgstr ""
 
-#: models.py:68
+#: models.py:94
+msgid "The URI of the relation, example: http://easy.dans.knaw.nl."
+msgstr "De URI van de relatie, bijvoorbeeld: http://easy.dans.knaw.nl."
+
+#: models.py:96
+msgid "vcard:logo"
+msgstr ""
+
+#: models.py:102
 msgid "dc:publisher"
 msgstr ""
 
-#: models.py:73
+#: models.py:105
+msgid ""
+"The name of the publisher, example: Data Archiving and Networked Services."
+msgstr "De naam van de uitgever, bijvoorbeeld: Data Archiving and Networked Services."
+
+#: models.py:109
 msgid "dc:coverage"
 msgstr ""
 
-#: models.py:78
+#: models.py:113
+msgid "vcard:organization"
+msgstr ""
+
+#: models.py:116
+msgid "The name of the organization, example: DANS."
+msgstr "De naam van de organisatie, bijvoorbeeld: DANS."
+
+#: models.py:118
 msgid "dc:subject"
 msgstr ""
 
-#: models.py:82
-msgid "dcterms:abstract"
-msgstr ""
+#: models.py:121
+msgid "dcterms:abstract English"
+msgstr "dcterms:abstract Engels"
 
-#: models.py:85
-msgid "dcterms:abstract lang"
-msgstr ""
+#: models.py:122
+msgid "The abstract in English"
+msgstr "De abstract in het engels"
 
-#: models.py:90
+#: models.py:124
+msgid "dcterms:abstract alternative language"
+msgstr "dcterms:abstract alternatieve taal"
+
+#: models.py:126
+msgid "The abstract in an alternative language"
+msgstr "De abstract in een alternatieve taal"
+
+#: models.py:128
+msgid "dcterms:abstract language"
+msgstr "dcterms:abstract taal"
+
+#: models.py:132
+msgid "The language of dcterms:abstract alternative language"
+msgstr "De taal gebruikt in dcterms:abstract alternatieve taal"
+
+#: models.py:134
 msgid "dc:description"
 msgstr ""
 
-#: models.py:96
+#: models.py:138
+msgid "sioc:topic/skos:Concept/skos:prefLabel Technique"
+msgstr ""
+
+#: models.py:141
+msgid "Start typing to get the options for this field."
+msgstr "Start met typen om die opties voor dit veld te krijgen."
+
+#: models.py:147
 msgid "dc:creator"
 msgstr ""
 
-#: models.py:101
+#: models.py:152
 msgid "dc:contributor"
 msgstr ""
 
-#: models.py:108
+#: models.py:159
 msgid "author"
 msgstr "auteur"
 
-#: models.py:113
+#: models.py:164
 msgid "is published?"
 msgstr "is gepubliceerd?"
 
-#: models.py:116
+#: models.py:167
 msgid "published on"
 msgstr "gepubliceerd op"
 
-#: models.py:120
+#: models.py:171
 msgid "last modified on"
 msgstr "laatst bewerkt op"
 
-#: models.py:124
+#: models.py:175
 msgid "is deleted?"
 msgstr "is verwijderd?"
 
-#: models.py:150 templates/dariah_contributions/contribution_form.html:13
+#: models.py:201 templates/dariah_contributions/contribution_form.html:14
 msgid "contribution"
 msgstr "contributie"
 
-#: models.py:151 templates/dariah_contributions/contribution_list.html:20
+#: models.py:202 templates/dariah_contributions/contribution_list.html:20
 msgid "contributions"
 msgstr "contributies"
 
-#: views.py:107
+#: views.py:85
 msgid "Contribution was created successfully."
 msgstr "Contributie is succesvol aangemaakt."
 
-#: views.py:121
+#: views.py:99
 msgid "Contribution was updated successfully."
 msgstr "Contributie is succesvol bijgewerkt."
 
-#: views.py:136
+#: views.py:114
 msgid "Contribution was published successfully."
 msgstr "Contributie is succesvol bijgewerkt."
 
-#: views.py:137
+#: views.py:115
 msgid "Something went wrong while publishing the contribution."
 msgstr "Er is iets verkeerd gegaan bij het publiceren van de contributie."
 
-#: views.py:167
+#: views.py:145
 msgid "Contribution was unpublished successfully."
 msgstr "Contributie is succesvol bijgewerkt."
 
-#: views.py:168
+#: views.py:146
 msgid "Something went wrong while unpublishing the contribution."
 msgstr ""
 "Er is iets verkeerd gegaan bij het intrekken van de gepubliceerde "
 "contributie."
 
-#: views.py:179
+#: views.py:157
 msgid "Contribution was deleted successfully."
 msgstr "Contributie is succesvol verwijderd."
 
-#: views.py:202
+#: views.py:180
 msgid "dc:creator was created successfully."
 msgstr "dc:creator is succesvol aangemaakt."
 
-#: views.py:211
+#: views.py:189
 msgid "dc:contributor was created successfully."
 msgstr "dc:contributor is succesvol aangemaakt."
 
@@ -143,7 +188,7 @@ msgstr "Weet je zeker dat je de contrubitie %(object)s wilt verwijderen?"
 
 #: templates/dariah_contributions/contribution_confirm_delete.html:9
 #: templates/dariah_contributions/contribution_detail.html:9
-#: templates/dariah_contributions/contribution_list.html:42
+#: templates/dariah_contributions/contribution_list.html:45
 msgid "Delete"
 msgstr "Verwijder"
 
@@ -159,14 +204,18 @@ msgstr "Toon als RDF"
 msgid "Edit"
 msgstr "Bewerken"
 
-#: templates/dariah_contributions/contribution_form.html:8
+#: templates/dariah_contributions/contribution_form.html:9
 msgid "Add"
 msgstr "Voeg toe"
 
-#: templates/dariah_contributions/contribution_form.html:10
-#: templates/dariah_contributions/contribution_list.html:41
+#: templates/dariah_contributions/contribution_form.html:11
+#: templates/dariah_contributions/contribution_list.html:44
 msgid "Update"
 msgstr "Bewerken"
+
+#: templates/dariah_contributions/contribution_form.html:19
+msgid "Fields marked with a star (*) are compulsory."
+msgstr "Velden gemarkeerd met een ster (*) zijn verplicht."
 
 #: templates/dariah_contributions/contribution_list.html:15
 msgid "My"
@@ -176,18 +225,18 @@ msgstr "Mijn"
 msgid "All"
 msgstr "Alle"
 
-#: templates/dariah_contributions/contribution_list.html:38
+#: templates/dariah_contributions/contribution_list.html:40
 msgid "Yes,No"
 msgstr "Ja,Nee"
 
-#: templates/dariah_contributions/contribution_list.html:44
+#: templates/dariah_contributions/contribution_list.html:47
 msgid "Unpublish"
 msgstr "Publicatie ongedaan maken"
 
-#: templates/dariah_contributions/contribution_list.html:46
+#: templates/dariah_contributions/contribution_list.html:49
 msgid "Publish"
 msgstr "Publiceer"
 
-#: templates/dariah_contributions/contribution_list.html:59
+#: templates/dariah_contributions/contribution_list.html:62
 msgid "No contributions are available."
 msgstr "Er zijn geen contributies beschikbaar."

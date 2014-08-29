@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-13 16:42+0200\n"
+"POT-Creation-Date: 2014-08-29 11:49+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,78 +25,136 @@ msgstr ""
 msgid "Dutch"
 msgstr ""
 
-#: settings/base.py:194
+#: settings/base.py:198
 msgid "Dariah Contributions Admin"
 msgstr ""
 
-#: templates/base.html:11
+#: templates/404.html:6
+msgid "404 - Page not found"
+msgstr ""
+
+#: templates/404.html:7
+msgid "The page you were looking for does not exist."
+msgstr ""
+
+#: templates/500.html:6
+msgid "500 - Server error"
+msgstr ""
+
+#: templates/500.html:7
+msgid ""
+"Unfortunately something went wrong with your request. Please contact the "
+msgstr ""
+
+#: templates/500.html:8 templates/registration/login.html:17
+msgid "administrator"
+msgstr ""
+
+#: templates/500.html:9
+msgid "if this problem persists."
+msgstr ""
+
+#: templates/500.html:10
+msgid "admin@dariah.org"
+msgstr ""
+
+#: templates/500.html:11
+msgid "Contact the administrator"
+msgstr ""
+
+#: templates/503.html:6
+msgid "Dariah Contribute Temporarily Down for Maintenance"
+msgstr ""
+
+#: templates/503.html:7
+msgid ""
+"We are performing (scheduled) maintenance. We should be back on-line "
+"shortly. Our apologies for the inconvenience."
+msgstr ""
+
+#: templates/503.html:9
+msgid ""
+"P.S. You might be able to access some pages, but we cannot guarantee this."
+msgstr ""
+
+#: templates/503.html:10 templates/axes/lockout.html:22
+msgid "Go back to the homepage"
+msgstr ""
+
+#: templates/base.html:10
 msgid "Toggle navigation"
 msgstr ""
 
-#: templates/base.html:16
+#: templates/base.html:15
 msgid "Dariah Contributions"
 msgstr ""
 
-#: templates/base.html:20
+#: templates/base.html:19
 msgid "Browse Contributions"
 msgstr ""
 
-#: templates/base.html:23 templates/base.html.py:24
+#: templates/base.html:22 templates/base.html.py:23
 msgid "My Profile"
 msgstr ""
 
-#: templates/base.html:27
+#: templates/base.html:26
 msgid "My Contributions"
 msgstr ""
 
-#: templates/base.html:28
+#: templates/base.html:27
 msgid "Settings"
 msgstr ""
 
-#: templates/base.html:30
+#: templates/base.html:29
 msgid "Log out"
 msgstr ""
 
-#: templates/base.html:34 templates/registration/login.html:10
+#: templates/base.html:33 templates/registration/login.html:10
 msgid "Log in"
 msgstr ""
 
-#: templates/base.html:35
+#: templates/base.html:34
 msgid "Register"
 msgstr ""
 
-#: templates/base.html:37
-msgid "Help"
+#: templates/base.html:36
+msgid "About"
 msgstr ""
 
-#: templates/base.html:49
+#: templates/base.html:48
 msgid "(no content)"
 msgstr ""
 
-#: templates/axes/lockout.html:10
+#: templates/axes/lockout.html:11
 #, python-format
 msgid ""
 "Unfortunately you have entered the wrong password and/or username more than "
-"%(failure_limit)s time%(failure_limit_pluralize)s. Therefore your account "
-"has been blocked for %(cooloff_time)s hour%(cooloff_time_pluralize)s."
-msgstr ""
+"one time."
+msgid_plural ""
+"Unfortunately you have entered the wrong password and/or username more than "
+"%(counter)s times."
+msgstr[0] ""
+msgstr[1] ""
 
-#: templates/axes/lockout.html:13
+#: templates/axes/lockout.html:12
+#, python-format
+msgid "Therefore your account has been blocked for one hour."
+msgid_plural "Therefore your account has been blocked for %(counter)s hours."
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/axes/lockout.html:16
 #, python-format
 msgid ""
 "If you have forgotten your password you can <a href=\"%(password_reset_url)s"
 "\" title=\"Password reset\">request a password reset</a>."
 msgstr ""
 
-#: templates/axes/lockout.html:16
+#: templates/axes/lockout.html:19
 msgid ""
 "If you have forgotten both your password and the e-mail address you "
 "registered with you can contact the <a href=\"mailto:info@datasealofapproval."
 "org\" title=\"E-mail the administrator\">administrator</a>."
-msgstr ""
-
-#: templates/axes/lockout.html:19
-msgid "Go back to the homepage"
 msgstr ""
 
 #: templates/registration/logged_out.html:7
@@ -126,11 +184,8 @@ msgid "info@dariah.org"
 msgstr ""
 
 #: templates/registration/login.html:17
-msgid "administrator"
-msgstr ""
-
-#: templates/registration/login.html:17
-msgid "if you have forgotten your username, password and sign-up e-mail address"
+msgid ""
+"if you have forgotten your username, password and sign-up e-mail address"
 msgstr ""
 
 #: templates/registration/login.html:21

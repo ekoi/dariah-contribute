@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-13 16:42+0200\n"
+"POT-Creation-Date: 2014-08-29 11:49+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,83 +26,157 @@ msgstr "Engels"
 msgid "Dutch"
 msgstr "Nederlands"
 
-#: settings/base.py:194
+#: settings/base.py:198
 msgid "Dariah Contributions Admin"
 msgstr "Dariah contributies admin"
 
-#: templates/base.html:11
+#: templates/404.html:6
+msgid "404 - Page not found"
+msgstr "404 - Pagina niet gevonden"
+
+#: templates/404.html:7
+msgid "The page you were looking for does not exist."
+msgstr "De pagina die je zoekt kan niet worden gevonden."
+
+#: templates/500.html:6
+msgid "500 - Server error"
+msgstr "500 - Server fout"
+
+#: templates/500.html:7
+msgid ""
+"Unfortunately something went wrong with your request. Please contact the "
+msgstr ""
+"Helaas is er iets mis gegaan met het laden van je pagina. Neem contact op "
+"met de "
+
+#: templates/500.html:8 templates/registration/login.html:17
+msgid "administrator"
+msgstr ""
+
+#: templates/500.html:9
+msgid "if this problem persists."
+msgstr "als dit probleem blijft bestaan."
+
+#: templates/500.html:10
+msgid "admin@dariah.org"
+msgstr ""
+
+#: templates/500.html:11
+msgid "Contact the administrator"
+msgstr "Neem contact op met de"
+
+#: templates/503.html:6
+msgid "Dariah Contribute Temporarily Down for Maintenance"
+msgstr "Dariah Contribute tijdelijk uit de lucht voor onderhoud"
+
+#: templates/503.html:7
+msgid ""
+"We are performing (scheduled) maintenance. We should be back on-line "
+"shortly. Our apologies for the inconvenience."
+msgstr ""
+"Op dit moment wordt er onderhoud gepleegd aan de website. We zullen spoedig "
+"weer on-line zijn. Onze excuses voor het ongemak."
+
+#: templates/503.html:9
+msgid ""
+"P.S. You might be able to access some pages, but we cannot guarantee this."
+msgstr ""
+"P.S. Sommige pagina's zijn misschien wel bereikbaar, maar dit kunnen we niet "
+"garanderen."
+
+#: templates/503.html:10 templates/axes/lockout.html:22
+msgid "Go back to the homepage"
+msgstr "Ga terug naar de homepage"
+
+#: templates/base.html:10
 msgid "Toggle navigation"
 msgstr "Toggle navigatie"
 
-#: templates/base.html:16
+#: templates/base.html:15
 msgid "Dariah Contributions"
 msgstr "Dariah contributies"
 
-#: templates/base.html:20
+#: templates/base.html:19
 msgid "Browse Contributions"
 msgstr "Blader door contributies"
 
-#: templates/base.html:23 templates/base.html.py:24
+#: templates/base.html:22 templates/base.html.py:23
 msgid "My Profile"
 msgstr "Mijn profiel"
 
-#: templates/base.html:27
+#: templates/base.html:26
 msgid "My Contributions"
 msgstr "Mijn contributies"
 
-#: templates/base.html:28
+#: templates/base.html:27
 msgid "Settings"
 msgstr "Instellingen"
 
-#: templates/base.html:30
+#: templates/base.html:29
 msgid "Log out"
 msgstr "Log uit"
 
-#: templates/base.html:34 templates/registration/login.html:10
+#: templates/base.html:33 templates/registration/login.html:10
 msgid "Log in"
 msgstr ""
 
-#: templates/base.html:35
+#: templates/base.html:34
 msgid "Register"
 msgstr ""
 
-#: templates/base.html:37
-msgid "Help"
-msgstr ""
+#: templates/base.html:36
+msgid "About"
+msgstr "Over"
 
-#: templates/base.html:49
+#: templates/base.html:48
 msgid "(no content)"
 msgstr "(geen content)"
 
-#: templates/axes/lockout.html:10
+#: templates/axes/lockout.html:11
 #, python-format
 msgid ""
 "Unfortunately you have entered the wrong password and/or username more than "
-"%(failure_limit)s time%(failure_limit_pluralize)s. Therefore your account "
-"has been blocked for %(cooloff_time)s hour%(cooloff_time_pluralize)s."
-msgstr ""
+"one time."
+msgid_plural ""
+"Unfortunately you have entered the wrong password and/or username more than "
+"%(counter)s times."
+msgstr[0] ""
+"U heeft het wachtwoord en/of gebruikersnaam meer dan een keer incorrect "
+"ingevoerd."
+msgstr[1] ""
+"U heeft het wachtwoord en/of gebruikersnaam meer dan %(counter)s keer "
+"incorrect ingevoerd."
 
-#: templates/axes/lockout.html:13
+#: templates/axes/lockout.html:12
+#, python-format
+msgid "Therefore your account has been blocked for one hour."
+msgid_plural "Therefore your account has been blocked for %(counter)s hours."
+msgstr[0] "Daarom is uw account een uur geblokkeerd."
+msgstr[1] "Daarom is uw account %(counter)s uur geblokkeerd."
+
+#: templates/axes/lockout.html:16
 #, python-format
 msgid ""
 "If you have forgotten your password you can <a href=\"%(password_reset_url)s"
 "\" title=\"Password reset\">request a password reset</a>."
 msgstr ""
+"Als u uw wachtwoord bent vergeten dan kunt u uw wachtwoord <a href="
+"\"%(password_reset_url)s\" title=\"Password reset\">herstellen</a>."
 
-#: templates/axes/lockout.html:16
+#: templates/axes/lockout.html:19
 msgid ""
 "If you have forgotten both your password and the e-mail address you "
 "registered with you can contact the <a href=\"mailto:info@datasealofapproval."
 "org\" title=\"E-mail the administrator\">administrator</a>."
 msgstr ""
-
-#: templates/axes/lockout.html:19
-msgid "Go back to the homepage"
-msgstr "Ga terug naar de homepage"
+"Als u zowel uw wachtwoord als het e-mail adres waarmee u hebt geregistreerd "
+"bent vergeten, dan kunt u contact opnemen met de <a href=\"mailto:"
+"info@datasealofapproval.org\" title=\"E-mail de administrator"
+"\">administrator</a>."
 
 #: templates/registration/logged_out.html:7
 msgid "You have been successfully logged out."
-msgstr ""
+msgstr "U bent succesvol uitgelogd."
 
 #: templates/registration/logged_out.html:8
 msgid "Log back in"
@@ -116,7 +190,9 @@ msgstr "Herstel je wachtwoord"
 msgid ""
 "if your username and password do not match or if you have forgotten your "
 "password."
-msgstr "als je gebruikersnaam en wachtwoord niet overeenkomen of als je je wachtwoord vergeten bent."
+msgstr ""
+"als je gebruikersnaam en wachtwoord niet overeenkomen of als je je "
+"wachtwoord vergeten bent."
 
 #: templates/registration/login.html:17
 msgid "Contact the"
@@ -127,11 +203,8 @@ msgid "info@dariah.org"
 msgstr ""
 
 #: templates/registration/login.html:17
-msgid "administrator"
-msgstr ""
-
-#: templates/registration/login.html:17
-msgid "if you have forgotten your username, password and sign-up e-mail address"
+msgid ""
+"if you have forgotten your username, password and sign-up e-mail address"
 msgstr "als je je gebruikersnaam, wachtwoord en e-mail adres bent vergeten"
 
 #: templates/registration/login.html:21
@@ -154,11 +227,13 @@ msgstr ""
 #: templates/registration/password_reset_complete.html:9
 msgid ""
 "Your password has successfully been reset. You can use it right now on the"
-msgstr "Je wachtwoord is succesvol hersteld. Je kunt het wachtwoord nu gebruiken op de"
+msgstr ""
+"Je wachtwoord is succesvol hersteld. Je kunt het wachtwoord nu gebruiken op "
+"de"
 
 #: templates/registration/password_reset_complete.html:9
 msgid "page."
-msgstr "pagina"
+msgstr "pagina."
 
 #: templates/registration/password_reset_confirm.html:9
 #: templates/registration/password_reset_confirm.html:13
@@ -170,7 +245,9 @@ msgstr "Maak een nieuw wachtwoord aan"
 msgid ""
 "Please enter your new password twice so we can verify you typed it in "
 "correctly."
-msgstr "Voer alstublieft uw wachtwoord twee maal in, zodat we kunnen verifiëren dat het correct is ingetikt."
+msgstr ""
+"Voer alstublieft uw wachtwoord twee maal in, zodat we kunnen verifiëren dat "
+"het correct is ingetikt."
 
 #: templates/registration/password_reset_confirm.html:38
 msgid "Password reset unsuccessful"
@@ -181,6 +258,8 @@ msgid ""
 "The password reset link was invalid, possibly because it has already been "
 "used. Please request a new password reset."
 msgstr ""
+"De wachtwoord herstel link is incorrect, wellicht omdat hij al eens is "
+"gebruikt.Probeert u alstublieft het wachtwoord opnieuw te herstellen."
 
 #: templates/registration/password_reset_done.html:4
 #: templates/registration/password_reset_done.html:7
@@ -191,17 +270,21 @@ msgstr "Wachtwoord herstellen gelukt"
 msgid ""
 "We've emailed you instructions for setting your password. You should be "
 "receiving them shortly."
-msgstr "We hebben de instructies om je wachtwoord te herstellen naar je ge-emailed. De e-mail zou binnenkort moeten arriveren."
+msgstr ""
+"We hebben de instructies om je wachtwoord te herstellen naar je ge-emailed. "
+"De e-mail zou binnenkort moeten arriveren."
 
 #: templates/registration/password_reset_done.html:11
 msgid ""
 "If you don't receive an email, please make sure you've entered the address "
 "you registered with, and check your spam folder."
-msgstr "Als je geen e-mail ontvangt, zorg dat je het e-mail adres hebt ingevuld waarmee je hebt geregistreerd en check de spam map van je e-mail account."
+msgstr ""
+"Als je geen e-mail ontvangt, zorg dat je het e-mail adres hebt ingevuld "
+"waarmee je hebt geregistreerd en check de spam map van je e-mail account."
 
 #: templates/registration/password_reset_email.html:2
 msgid "Dear"
-msgstr ""
+msgstr "Beste"
 
 #: templates/registration/password_reset_email.html:4
 #, python-format
@@ -209,28 +292,42 @@ msgid ""
 "You are receiving this email because you requested a password reset for your "
 "user account at %(site_name)s."
 msgstr ""
+"U ontvangt deze e-mail omdat u het wachtwoord probeert te herstellen voor de "
+"gebruikersaccount op de website %(site_name)s."
 
 #: templates/registration/password_reset_email.html:6
 msgid "Please go to the following page and choose a new password:"
-msgstr ""
+msgstr "Ga alstublieft naar de volgende pagina en kies een nieuw wachtwoord:"
 
 #: templates/registration/password_reset_email.html:10
 msgid "Your username, in case you have forgotten:"
-msgstr ""
+msgstr "Uw gebruikersnaam, mocht u die zijn vergeten:"
 
 #: templates/registration/password_reset_email.html:12
 msgid ""
 "If you do not want to reset your password, simply ignore this email and it "
 "will stay unchanged"
 msgstr ""
+"Als u uw wachtwoord niet wilt herstellen, dan kunt u deze e-mail negeren en "
+"uw wachtwoord zal hetzelfde blijven"
 
 #: templates/registration/password_reset_email.html:14
 #, python-format
 msgid "The %(site_name)s team"
-msgstr ""
+msgstr "Het %(site_name)s team"
 
 #: templates/registration/password_reset_form.html:5
 #: templates/registration/password_reset_form.html:8
 #: templates/registration/password_reset_form.html:11
 msgid "Reset my password"
 msgstr "Wachtwoord herstellen"
+
+#~ msgid ""
+#~ "Unfortunately you have entered the wrong password and/or username more "
+#~ "than %(failure_limit)s time%(failure_limit_pluralize)s. Therefore your "
+#~ "account has been blocked for %(cooloff_time)s hour"
+#~ "%(cooloff_time_pluralize)s."
+#~ msgstr ""
+#~ "U heeft het verkeerde wachtwoord en/of gebruikersnaam meer dan "
+#~ "%(failure_limit)s keer%(failure_limit_pluralize) ingevuld. Daarom is uw "
+#~ "account %(cooloff_time)s uur%(cooloff_time_pluralize) geblokkeerd."
