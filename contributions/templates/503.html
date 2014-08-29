@@ -3,12 +3,9 @@
 
 {% block content %}
 
-<h1>{% trans '503 - Service unavailable' %}</h1>
-<p>{% trans 'Unfortunately something went wrong with your request. Please contact the '%}
-{% trans 'administrator' as admin %}
-{% trans 'if this problem persists.' as rest %}
-{% trans 'admin@dariah.org' as emailaddress %}
-{% trans 'Contact the administrator' as title %}
-<a href="{{ emailaddress }}" title="{{ title }}">{{ admin }}</a> {{ rest }}</p>
-
+<h1>{% trans 'Dariah Contribute Temporarily Down for Maintenance' %}</h1>
+<p>{% trans 'We are performing (scheduled) maintenance. We should be back on-line shortly. Our apologies for the inconvenience.'%}</p>
+<p>&nbsp;</p>
+<p>{% trans 'P.S. You might be able to access some pages, but we cannot guarantee this.' %}</p>
+<p><a href="/" title="{% trans 'Go back to the homepage' %}">{% trans 'Go back to the homepage' %}</a></p>
 {% endblock %}
