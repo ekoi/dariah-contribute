@@ -7,7 +7,7 @@
     {% for field, value in contribution.attrs %}
         <tr>
             <td>{{ field }}</td>
-            <td>{{ value }}</td>
+            <td>{{ value|urlize }}</td>
         </tr>
     {% endfor %}
     {% for field, value in many2many_fields.items %}
