@@ -4,16 +4,10 @@
 {% block content %}
     <h3>{{ contribution.dc_title }}</h3>
     <table class="table">
-    {% for field, value in contribution.attrs %}
+    {% for field, value in get_fields %}
         <tr>
             <td>{{ field }}</td>
             <td>{{ value|urlize }}</td>
-        </tr>
-    {% endfor %}
-    {% for field, value in many2many_fields.items %}
-        <tr>
-            <td>{{ field }}</td>
-            <td>{{ value }}</td>
         </tr>
     {% endfor %}
     </table>

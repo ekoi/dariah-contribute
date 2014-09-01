@@ -181,6 +181,34 @@ class Contribution(models.Model):
     objects = ContributionManager()
     published = PublishedContributionsManager()
 
+    # Other ###################################################################
+    field_order = [  # (name, in form?)
+        ('dc_identifier', 0),
+        ('dc_title', 1),
+        ('dc_date', 1),
+        ('dc_relation', 1),
+        ('vcard_logo', 1),
+        ('dc_publisher', 1),
+        ('dc_coverage', 1),
+        ('vcard_organization', 1),
+        ('dc_subject', 1),
+        ('dcterms_abstract_en', 1),
+        ('dcterms_abstract', 1),
+        ('dcterms_abstract_lang', 1),
+        ('dc_description', 1),
+        #('skos_preflabel_activity', 0),
+        #('skos_preflabel_object', 0),
+        ('skos_preflabel_technique', 1),
+        #('skos_preflabel_discipline', 0),
+        #('skos_preflabel_vcc', 0),
+        ('dc_creator', 1),
+        ('dc_contributor', 1),
+        ('author', 0),
+        ('is_published', 1),
+        ('published_on', 0),
+        ('last_modified_on', 0),
+        ('is_deleted', 0)]
+
     def __unicode__(self):
         return self.dc_title
 

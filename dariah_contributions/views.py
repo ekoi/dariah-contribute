@@ -9,6 +9,8 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.core.urlresolvers import reverse_lazy
 from django.contrib import messages
 from django.utils.translation import ugettext_lazy as _
+from taggit.managers import TaggableManager
+from django.db.models.fields.related import ManyToManyField
 
 from rdflib import Literal, Namespace, Graph
 from rdflib.namespace import FOAF
@@ -46,12 +48,24 @@ class ContributionDetail(DetailView):
     def get_context_data(self, **kwargs):
         context = super(ContributionDetail, self).get_context_data(**kwargs)
         c = context['object']
-        context['many2many_fields'] = {
-            'skos_preflabel_technique': ', '.join(map(lambda x: str(x),
-                                                      c.skos_preflabel_technique.all())),
-            'dc_subject': ', '.join(c.dc_subject.names()),
-        }
+        context['get_fields'] = self.get_fields(c)
         return context
+
+    @staticmethod
+    def get_fields(c):
+        """An iterable with the field names and values (in the correct order)
+        of a Contribution instance to be rendered in the template.
+        """
+        for x in c.field_order:
+            field = c.__class__._meta.get_field(x[0])
+            value = getattr(c, x[0])
+            # If the field is an iterable (TaggableManager or ManyToManyField)
+            # format the data as a string of comma separated items.
+            if isinstance(field, ManyToManyField):
+                value = ", ".join(map(lambda x: str(x), value.all()))
+            elif isinstance(field, TaggableManager):
+                value = ", ".join(value.names())
+            yield field.verbose_name, value
 
 
 class ContributionRDF(DetailView):
