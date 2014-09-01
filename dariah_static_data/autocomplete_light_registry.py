@@ -5,12 +5,13 @@ from .models import TADIRAHTechnique, TADIRAHActivity, TADIRAHObject, Discipline
 class TADIRAHTechniqueAutocomplete(autocomplete_light.AutocompleteModelBase):
     search_fields = ['^name', ]
     model = TADIRAHTechnique
+    limit_choices = 1000
     attrs = {
         # This will set the input placeholder attribute:
         'placeholder': 'Start typing...',
         # This will set the yourlabs.Autocomplete.minimumCharacters
         # options, the naming conversion is handled by jQuery
-        'data-autocomplete-minimum-characters': 1,
+        'data-autocomplete-minimum-characters': 0,
     }
     widget_attrs = {
         #'data-widget-maximum-values': 4,
@@ -22,12 +23,13 @@ class TADIRAHTechniqueAutocomplete(autocomplete_light.AutocompleteModelBase):
 class TADIRAHActivityAutocomplete(autocomplete_light.AutocompleteModelBase):
     search_fields = ['^activity_group_name', '^activity_name']
     model = TADIRAHActivity
+    limit_choices = 1000
     attrs = {
         # This will set the input placeholder attribute:
         'placeholder': 'Start typing...',
         # This will set the yourlabs.Autocomplete.minimumCharacters
         # options, the naming conversion is handled by jQuery
-        'data-autocomplete-minimum-characters': 1,
+        'data-autocomplete-minimum-characters': 0,
     }
     widget_attrs = {
         #'data-widget-maximum-values': 4,
@@ -39,12 +41,13 @@ class TADIRAHActivityAutocomplete(autocomplete_light.AutocompleteModelBase):
 class TADIRAHObjectAutocomplete(autocomplete_light.AutocompleteModelBase):
     search_fields = ['^name', ]
     model = TADIRAHObject
+    limit_choices = 1000
     attrs = {
         # This will set the input placeholder attribute:
         'placeholder': 'Start typing...',
         # This will set the yourlabs.Autocomplete.minimumCharacters
         # options, the naming conversion is handled by jQuery
-        'data-autocomplete-minimum-characters': 1,
+        'data-autocomplete-minimum-characters': 0,
     }
     widget_attrs = {
         #'data-widget-maximum-values': 4,
@@ -56,12 +59,13 @@ class TADIRAHObjectAutocomplete(autocomplete_light.AutocompleteModelBase):
 class DisciplineAutocomplete(autocomplete_light.AutocompleteModelBase):
     search_fields = ['^name', ]
     model = Discipline
+    limit_choices = 1000
     attrs = {
         # This will set the input placeholder attribute:
         'placeholder': 'Start typing...',
         # This will set the yourlabs.Autocomplete.minimumCharacters
         # options, the naming conversion is handled by jQuery
-        'data-autocomplete-minimum-characters': 1,
+        'data-autocomplete-minimum-characters': 0,
     }
     widget_attrs = {
         #'data-widget-maximum-values': 4,

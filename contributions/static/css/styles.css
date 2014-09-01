@@ -34,3 +34,8 @@ input.form-control.autocomplete {
 form .required label:after {
     content: '*';
 }
+
+.yourlabs-autocomplete.autocomplete-light-widget {
+    max-height: 200px;
+    overflow: auto;
+}
