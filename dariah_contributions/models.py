@@ -283,8 +283,21 @@ class Contribution(models.Model):
 
 class Person(models.Model):
     foaf_person = models.URLField(blank=True)
-    foaf_name = models.CharField(max_length=50, blank=True)
+    first_name = models.CharField(max_length=50, blank=True)
+    last_name_prefix = models.CharField(max_length=50, blank=True)
+    last_name = models.CharField(max_length=50, blank=True)
     foaf_publications = models.CharField(max_length=50, blank=True)
+
+    @property
+    def foaf_name(self):
+        if self.last_name_prefix:
+            name = "%s %s %s" % (self.first_name,
+                                 self.last_name_prefix,
+                                 self.last_name)
+        else:
+            name = "%s %s" % (self.first_name,
+                              self.last_name)
+        return name
 
     def __unicode__(self):
         return self.foaf_name
