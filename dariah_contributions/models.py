@@ -145,12 +145,12 @@ class Contribution(models.Model):
     #sioc_has_scope
     dc_creator = models.ManyToManyField(
         'DcCreator',
-        _("dc:creator"),
+        verbose_name=_("dc:creator"),
         blank=True,
         null=True)
     dc_contributor = models.ManyToManyField(
         'DcContributor',
-        _("dc:contributor"),
+        verbose_name=_("dc:contributor"),
         blank=True,
         null=True)
 
