@@ -122,6 +122,21 @@ class ContributionUpdate(SuccessMessageMixin, UpdateView):
             raise PermissionDenied
         return super(ContributionUpdate, self).get(self, *args, **kwargs)
 
+    def get_context_data(self, **kwargs):
+        context = super(ContributionUpdate, self).get_context_data(**kwargs)
+        c = context['object']
+        context['get_readonly_fields'] = self.get_readonly_fields(c)
+        return context
+
+    def get_readonly_fields(self, c):
+        """An iterable with the field names and values (in the correct order)
+        of the read_only fields to be rendered in the template.
+        """
+        for x in self.form_class.readonly_fields:
+            field = c.__class__._meta.get_field(x)
+            value = getattr(c, x)
+            yield field.verbose_name, value
+
 
 class ContributionPublish(DetailView):
     model = Contribution
