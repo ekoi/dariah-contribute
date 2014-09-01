@@ -167,7 +167,8 @@ class Contribution(models.Model):
     published_on = models.DateTimeField(
         _('published on'),
         blank=True,
-        null=True)
+        null=True,
+        editable=False)
     last_modified_on = models.DateTimeField(
         _('last modified on'),
         default=timezone.now,
@@ -231,9 +232,22 @@ class Contribution(models.Model):
         verbose_name_plural = _('contributions')
 
     def save(self, *args, **kwargs):
-        """Add publication date is now if published is True but no date was selected"""
+        """Add published_on date is now if published is True.
+        Or if the publication is republished, also set the published_on
+        date to now.
+        """
         if self.is_published and not self.published_on:
             self.published_on = timezone.now()
+        else:
+            try:
+                # Get the old object currently in the database
+                old_object = Contribution.objects.get(pk=self.pk)
+            except Contribution.DoesNotExist:
+                pass
+            else:
+                # If the object was republished, change the datetime
+                if not old_object.is_published and self.is_published:
+                    self.published_on = timezone.now()
         """ Always add last_modified_on date """
         self.last_modified_on = timezone.now()
         super(Contribution, self).save(*args, **kwargs)
