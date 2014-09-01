@@ -134,12 +134,40 @@ class Contribution(models.Model):
     dc_description = models.TextField(
         _("dc:description"),
         blank=True)
+    skos_preflabel_activity = models.ManyToManyField(
+        'dariah_static_data.TADIRAHActivity',
+        verbose_name=_('sioc:topic/skos:Concept/skos:prefLabel Activity'),
+        blank=True,
+        null=True,
+        help_text=_('Start typing to get the options for this field.')
+    )
+    skos_preflabel_object = models.ManyToManyField(
+        'dariah_static_data.TADIRAHObject',
+        verbose_name=_('sioc:topic/skos:Concept/skos:prefLabel Object'),
+        blank=True,
+        null=True,
+        help_text=_('Start typing to get the options for this field.')
+    )
     skos_preflabel_technique = models.ManyToManyField(
         'dariah_static_data.TADIRAHTechnique',
         verbose_name=_('sioc:topic/skos:Concept/skos:prefLabel Technique'),
         blank=True,
         null=True,
         help_text=_('Start typing to get the options for this field.')
+    )
+    skos_preflabel_discipline = models.ManyToManyField(
+        'dariah_static_data.Discipline',
+        verbose_name=_('sioc:topic/skos:Concept/skos:prefLabel Discipline'),
+        blank=True,
+        null=True,
+        help_text=_('Start typing to get the options for this field.')
+    )
+    skos_preflabel_vcc = models.ManyToManyField(
+        'dariah_static_data.TADIRAHVCC',
+        verbose_name=_('sioc:topic/skos:Concept/skos:prefLabel VCC'),
+        blank=True,
+        null=True,
+        help_text=_('Check 0, 1 or more boxes.')
     )
     #sioc_topic
     #sioc_has_scope
@@ -197,11 +225,11 @@ class Contribution(models.Model):
         ('dcterms_abstract', 1),
         ('dcterms_abstract_lang', 1),
         ('dc_description', 1),
-        #('skos_preflabel_activity', 0),
-        #('skos_preflabel_object', 0),
+        ('skos_preflabel_activity', 1),
+        ('skos_preflabel_object', 1),
         ('skos_preflabel_technique', 1),
-        #('skos_preflabel_discipline', 0),
-        #('skos_preflabel_vcc', 0),
+        ('skos_preflabel_discipline', 1),
+        ('skos_preflabel_vcc', 1),
         ('dc_creator', 1),
         ('dc_contributor', 1),
         ('author', 0),

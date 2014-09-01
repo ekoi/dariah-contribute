@@ -35,6 +35,10 @@ class TADIRAHActivity(models.Model):
         verbose_name_plural = _('TADIRAH Activities')
 
     def __unicode__(self):
+        return self.name
+
+    @property
+    def name(self):
         return "{group_name} {activity_name}".format(group_name=self.activity_group_name,
                                                      activity_name=self.activity_name)
 
@@ -88,8 +92,7 @@ class Discipline(models.Model):
         verbose_name_plural = _('Disciplines')
 
     def __unicode__(self):
-        return "{name}, {description}".format(name=self.name,
-                                              description=self.description)
+        return self.name
 
 
 class Country(models.Model):
