@@ -1,0 +1,25 @@
+{% extends 'bootstrap.html' %}
+
+{% load bootstrap3 %}
+{% load i18n %}
+{% load static %}
+
+{% block bootstrap3_content %}
+    <h1>
+    {% block title %}
+        {% trans 'Add a dc:creator' %}
+    {% endblock %}
+    </h1>
+
+    <form enctype="multipart/form-data" action="" method="post" role="form">{% csrf_token %}
+        {% bootstrap_form form layout='horizontal' %}
+        <input type="submit" value="{% trans 'Add' %}" class="btn btn-default"/>
+    </form>
+    <p>{% trans 'Fields marked with a star (*) are compulsory.' %}</p>
+{% endblock %}
+
+{% block extra_head %}
+    {% if form %}
+        <link rel="stylesheet" type="text/css" href="{% static 'autocomplete_light/style.css' %}" />
+    {% endif %}
+{% endblock %}

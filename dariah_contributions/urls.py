@@ -9,6 +9,8 @@ from .views import ContributionRDF
 from .views import MyContributions
 from .views import ContributionDetail
 from .views import ContributionList
+from .views import DcCreatorCreate
+from .views import DcContributorCreate
 
 
 urlpatterns = patterns('',
@@ -30,4 +32,6 @@ urlpatterns = patterns('',
     # example: /contribution/detail_rdf/5/
     url(r'^(?P<pk>\d+)/$', ContributionDetail.as_view(), name='detail'),
     # example: /contribution/5/
+    url(r'^dc_creator/add/$', DcCreatorCreate.as_view(), name='dccreator_create'),
+    url(r'^dc_contributor/add/$', DcContributorCreate.as_view(), name='dccontributor_create'),
 )

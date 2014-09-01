@@ -25,4 +25,6 @@ class ContributionForm(autocomplete_light.ModelForm):
         autocomplete_names = {'skos_preflabel_technique': 'TADIRAHTechniqueAutocomplete',
                               'skos_preflabel_activity': 'TADIRAHActivityAutocomplete',
                               'skos_preflabel_object': 'TADIRAHObjectAutocomplete',
-                              'skos_preflabel_discipline': 'DisciplineAutocomplete', }
+                              'skos_preflabel_discipline': 'DisciplineAutocomplete',
+                              'dc_contributor': 'DcContributorAutocomplete',
+                              'dc_creator': 'DcCreatorAutocomplete'}

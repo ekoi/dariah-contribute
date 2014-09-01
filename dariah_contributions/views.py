@@ -14,6 +14,7 @@ from django.db.models.fields.related import ManyToManyField
 
 from rdflib import Literal, Namespace, Graph
 from rdflib.namespace import FOAF
+import autocomplete_light
 
 from .models import Contribution, DcCreator, DcContributor
 from .forms import ContributionForm
@@ -204,7 +205,7 @@ class ContributionDelete(DeleteView):
         return HttpResponseRedirect(success_url)
 
 
-class DcCreatorCreate(SuccessMessageMixin, CreateView):
+class DcCreatorCreate(SuccessMessageMixin, autocomplete_light.CreateView):
     model = DcCreator
     success_message = _("dc:creator was created successfully.")
 
@@ -213,7 +214,7 @@ class DcCreatorCreate(SuccessMessageMixin, CreateView):
         return super(DcCreatorCreate, self).dispatch(*args, **kwargs)
 
 
-class DcContributorCreate(SuccessMessageMixin, CreateView):
+class DcContributorCreate(SuccessMessageMixin, autocomplete_light.CreateView):
     model = DcContributor
     success_message = _("dc:contributor was created successfully.")
 
