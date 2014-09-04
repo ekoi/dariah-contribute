@@ -1,25 +1,27 @@
-{% extends 'bootstrap.html' %}
+{% extends request.is_ajax|yesno:'dariah_contributions/fake_bootstrap.html,bootstrap.html' %}
 
 {% load bootstrap3 %}
 {% load i18n %}
 {% load static %}
 
 {% block bootstrap3_content %}
-    <h1>
-    {% block title %}
-        {% trans 'Add a dc:creator' %}
-    {% endblock %}
-    </h1>
-
-    <form enctype="multipart/form-data" action="" method="post" role="form">{% csrf_token %}
-        {% bootstrap_form form layout='horizontal' %}
-        <input type="submit" value="{% trans 'Add' %}" class="btn btn-default"/>
-    </form>
-    <p>{% trans 'Fields marked with a star (*) are compulsory.' %}</p>
-{% endblock %}
-
-{% block extra_head %}
-    {% if form %}
-        <link rel="stylesheet" type="text/css" href="{% static 'autocomplete_light/style.css' %}" />
-    {% endif %}
+<form id="{% block form_id %}id_dc_creator_form{% endblock %}" class="modal-form" enctype="multipart/form-data" action="{% block action %}{% url 'dariah_contributions:dccreator_create' %}{% endblock %}" method="post" role="form">{% csrf_token %}
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">{% trans 'Close' %}</span></button>
+        <h4 class="modal-title">
+            {% block title %}
+                {% trans 'Add a new dc:creator' %}
+            {% endblock %}
+        </h4>
+    </div>
+    <div class="modal-body">
+            {% bootstrap_form form %}
+            <p>{% trans 'Fields marked with a star (*) are compulsory.' %}</p>
+    </div>
+    <div class="modal-footer">
+        <button id="closeMyModal" type="button" class="btn btn-default" data-dismiss="modal">{% trans 'Close' %}</button>
+        <input type="submit" value="{% trans 'Add' %}" class="btn btn-primary"/>
+        {% comment %}<button type="button" class="btn btn-primary">Save changes</button>{% endcomment %}
+    </div>
+</form>
 {% endblock %}

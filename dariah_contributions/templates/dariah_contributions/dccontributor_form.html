@@ -1,6 +1,12 @@
-{% extends 'dccreator_form.html' %}
+{% extends 'dariah_contributions/dccreator_form.html' %}
 {% load i18n %}
 
+{% block form_id %}
+    id_dc_contributor_form
+{% endblock %}
+{% block action %}
+    {% url 'dariah_contributions:dccontributor_create' %}
+{% endblock %}
 {% block title %}
     {% trans 'Add a dc:contributor' %}
 {% endblock %}

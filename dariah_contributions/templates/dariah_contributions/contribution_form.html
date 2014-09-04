@@ -22,11 +22,20 @@
         {% endfor %}
     </table>
     {% endif %}
-    <form enctype="multipart/form-data" action="" method="post" role="form">{% csrf_token %}
+    <form id="contribution_form" enctype="multipart/form-data" action="" method="post" role="form">{% csrf_token %}
         {% bootstrap_form form %}
         <input type="submit" value="{{ title_type }}" class="btn btn-default"/>
     </form>
     <p>{% trans 'Fields marked with a star (*) are compulsory.' %}</p>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                (no content)
+            </div>
+        </div>
+    </div>
 {% endblock %}
 
 {% block extra_script %}
@@ -42,4 +51,5 @@
     <script type="text/javascript" src="{% static 'autocomplete_light/addanother.js' %}"></script>
     <script type="text/javascript" src="{% static 'autocomplete_light/text_widget.js' %}"></script>
     <script type="text/javascript" src="{% static 'autocomplete_light/remote.js' %}"></script>
+    <script type="text/javascript" src="{% static 'dariah_contributions/js/ajax-add-another.js' %}"></script>
 {% endblock %}

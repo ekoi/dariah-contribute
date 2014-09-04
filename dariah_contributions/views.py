@@ -1,19 +1,24 @@
-from django.http import HttpResponseRedirect
 from django.core.exceptions import PermissionDenied
-from django.contrib.auth.decorators import login_required
-from django.utils.decorators import method_decorator
-from django.views.generic.detail import DetailView
-from django.views.generic.list import ListView
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.contrib.messages.views import SuccessMessageMixin
 from django.core.urlresolvers import reverse_lazy
 from django.contrib import messages
-from django.utils.translation import ugettext_lazy as _
-from taggit.managers import TaggableManager
+from django.contrib.auth.decorators import login_required
+from django.contrib.messages.views import SuccessMessageMixin
 from django.db.models.fields.related import ManyToManyField
+from django.http import HttpResponse
+from django.http import HttpResponseRedirect
+from django.template import RequestContext
+from django.template.loader import render_to_string
+from django.utils.decorators import method_decorator
+from django.utils.translation import ugettext_lazy as _
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic.list import ListView
 
+import json
 from rdflib import Literal, Namespace, Graph
 from rdflib.namespace import FOAF
+
+from taggit.managers import TaggableManager
 import autocomplete_light
 
 from .models import Contribution, DcCreator, DcContributor
@@ -205,18 +210,63 @@ class ContributionDelete(DeleteView):
         return HttpResponseRedirect(success_url)
 
 
-class DcCreatorCreate(SuccessMessageMixin, autocomplete_light.CreateView):
+###############################################################################
+# dc:creator & dc:contributor views
+###############################################################################
+class AjaxableResponseMixin(object):
+    """
+    Mixin to add AJAX support to a form.
+    Must be used with an object-based FormView (e.g. CreateView)
+
+    NOTE: this class needs to be updated when Django 1.7 is used:
+    https://docs.djangoproject.com/en/1.7/topics/class-based-views/generic-editing/
+    """
+    def render_to_json_response(self, context, **response_kwargs):
+        data = json.dumps(context)
+        response_kwargs['content_type'] = 'application/json'
+        return HttpResponse(data, **response_kwargs)
+
+    def form_invalid(self, form):
+        response = super(AjaxableResponseMixin, self).form_invalid(form)
+        if self.request.is_ajax():
+            return self.render_to_json_response(form.errors, status=400)
+        else:
+            return response
+
+    def form_valid(self, form):
+        # We make sure to call the parent's form_valid() method because
+        # it might do some processing (in the case of CreateView, it will
+        # call form.save() for example).
+        response = super(AjaxableResponseMixin, self).form_valid(form)
+        if self.request.is_ajax():
+            data = {
+                'pk': self.object.pk,
+                'name': str(self.object),
+            }
+            if self.success_message:
+                messages.success(self.request, self.success_message)
+                data['django_messages'] = render_to_string('bootstrap3/messages.html', {}, RequestContext(self.request))
+            return self.render_to_json_response(data)
+        else:
+            if self.success_message:
+                messages.success(self.request, self.success_message)
+            return response
+
+
+class DcCreatorCreate(AjaxableResponseMixin, autocomplete_light.CreateView):
     model = DcCreator
     success_message = _("dc:creator was created successfully.")
+    success_url = reverse_lazy('dariah_contributions:list')
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
         return super(DcCreatorCreate, self).dispatch(*args, **kwargs)
 
 
-class DcContributorCreate(SuccessMessageMixin, autocomplete_light.CreateView):
+class DcContributorCreate(AjaxableResponseMixin, autocomplete_light.CreateView):
     model = DcContributor
     success_message = _("dc:contributor was created successfully.")
+    success_url = reverse_lazy('dariah_contributions:list')
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):

@@ -21,14 +21,7 @@
     <input type="text" name="{{ name }}-autocomplete" id="{{ widget.html_id }}-autocomplete" value="" {{ attrs }} />
 {% endblock %}
 
-{% block add_another %}
-    {# A link to add a new choice using a popup #}
-    {% if autocomplete.add_another_url_name %}
-    <a href="{% block add_another_href %}{{ autocomplete.get_add_another_url }}{% endblock %}" class="autocomplete-add-another" id="add_{{ widget.html_id }}" style="display:none;">
-        <img src="{% static 'admin/img/icon_addlink.gif' %}" width="10" height="10" alt="{% trans 'Add another' %}" />
-    </a>
-    {% endif %}
-{% endblock %}
+{% block add_another %}{% endblock %}
 
 {% block select %}
     {# a hidden select, that contains the actual selected values #}
