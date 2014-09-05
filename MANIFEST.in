@@ -21,6 +21,7 @@ recursive-include dariah_static_data/formats *
 recursive-include dariah_static_data/locale *
 recursive-include dariah_static_data/static *
 recursive-include dariah_static_data/templates *
+recursive-include dariah_static_data/skos_preflabels_data *
 
 recursive-exclude * *.pyc
 recursive-exclude * .DS_Store

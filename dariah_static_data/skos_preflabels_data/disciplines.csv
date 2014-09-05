@@ -1,0 +1,28 @@
+#Discipline Name;URI;dbpedia references
+Archaeology and Prehistory;http://aurehal.archives-ouvertes.fr/subject/shs.archeo;More information at http://dbpedia.org/resource/Archaeology
+Architecture, space management;http://aurehal.archives-ouvertes.fr/subject/shs.archi;More information at http://dbpedia.org/resource/Architecture
+Art and art history;http://aurehal.archives-ouvertes.fr/subject/shs.art;More information at http://dbpedia.org/resource/Art_history
+Biological anthropology;http://aurehal.archives-ouvertes.fr/subject/shs.anthro-bio;More information at http://dbpedia.org/resource/Biological_anthropology
+Classical studies;http://aurehal.archives-ouvertes.fr/subject/shs.class;More information at http://dbpedia.org/resource/Classics
+Communication sciences;http://aurehal.archives-ouvertes.fr/subject/shs.info;More information at http://dbpedia.org/resource/Communication_sciences
+Cultural heritage and museology;http://aurehal.archives-ouvertes.fr/subject/shs.museo;More information at http://dbpedia.org/resource/Museology
+Demography;http://aurehal.archives-ouvertes.fr/subject/shs.demo;More information at http://dbpedia.org/resource/Demography
+Economies and finances;http://aurehal.archives-ouvertes.fr/subject/shs.eco;More information at http://dbpedia.org/resource/Economy
+Education;http://aurehal.archives-ouvertes.fr/subject/shs.edu;More information at http://dbpedia.org/resource/Education
+Environmental studies;http://aurehal.archives-ouvertes.fr/subject/shs.envir;More information at http://dbpedia.org/resource/Environmental_studies
+Gender studies;http://aurehal.archives-ouvertes.fr/subject/shs.genre;More information at http://dbpedia.org/resource/Gender_studies
+Geography;http://aurehal.archives-ouvertes.fr/subject/shs.geo;More information at http://dbpedia.org/resource/Geography
+History;http://aurehal.archives-ouvertes.fr/subject/shs.hist;More information at http://dbpedia.org/resource/History
+History, Philosophy and Sociology of Sciences;http://aurehal.archives-ouvertes.fr/subject/shs.hisphilso;|More information at http://dbpedia.org/resource/History_of_science ; http://dbpedia.org/resource/Philosophy_of_science ; http://dbpedia.org/resource/Sociology_of_scientific_knowledge|
+Law;http://aurehal.archives-ouvertes.fr/subject/shs.droit;More information at http://dbpedia.org/resource/Law
+Linguistics;http://aurehal.archives-ouvertes.fr/subject/shs.langue;More information at http://dbpedia.org/resource/Linguistics
+Literature;http://aurehal.archives-ouvertes.fr/subject/shs.litt;More information at http://dbpedia.org/resource/Literature
+Management;http://aurehal.archives-ouvertes.fr/subject/shs.gestion;More information at http://dbpedia.org/resource/Management
+Methods and statistics;http://aurehal.archives-ouvertes.fr/subject/shs.stat;More information at http://dbpedia.org/resource/Statistics
+Musicology and performing arts;http://aurehal.archives-ouvertes.fr/subject/shs.musiq;|More information at http://dbpedia.org/resource/Musicology ; http://dbpedia.org/resource/Performing_arts|
+Philosophy;http://aurehal.archives-ouvertes.fr/subject/shs.phil;More information at http://dbpedia.org/resource/Philosophy
+Political science;http://aurehal.archives-ouvertes.fr/subject/shs.scipo;More information at http://dbpedia.org/resource/Political_science
+Psychology;http://aurehal.archives-ouvertes.fr/subject/shs.psy;More information at http://dbpedia.org/resource/Psychology
+Religions;http://aurehal.archives-ouvertes.fr/subject/shs.relig;More information at http://dbpedia.org/resource/Religion
+Social Anthropology and ethnology;http://aurehal.archives-ouvertes.fr/subject/shs.anthro-se;More information at http://dbpedia.org/resource/Social_anthropology
+Sociology;http://aurehal.archives-ouvertes.fr/subject/shs.socio;More information at http://dbpedia.org/resource/Sociology
