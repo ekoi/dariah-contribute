@@ -217,12 +217,15 @@ class Contribution(models.Model):
 
     # Other ###################################################################
     field_order = [  # (name, in form?)
+        ('dc_type', 1),
+        ('vcard_category', 1),
         ('dc_identifier', 0),
         ('dc_title', 1),
         ('dc_date', 1),
         ('dc_relation', 1),
         ('vcard_logo', 1),
         ('dc_publisher', 1),
+        ('dcterms_spatial', 1),
         ('dc_coverage', 1),
         ('vcard_organization', 1),
         ('dc_subject', 1),
