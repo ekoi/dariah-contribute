@@ -74,8 +74,12 @@ class Contribution(models.Model):
                                                l))
     DC_DATE_CHOICES = [(x, x) for x in reversed(xrange(1900, timezone.now().year + 1))]
     # Metadata fields #########################################################
-    #dc_type
-    #vcard_category
+    dc_type = models.URLField(
+        _("dc:type"),
+        blank=True)
+    vcard_category = models.URLField(
+        _("vcard:category"),
+        blank=True)
     dc_identifier = models.AutoField(
         _("dc:identifier"),
         primary_key=True)
@@ -103,7 +107,10 @@ class Contribution(models.Model):
         max_length=200,
         blank=True,
         help_text=_("The name of the publisher, example: Data Archiving and Networked Services."))
-    #dcterms_spatial
+    dcterms_spatial = models.CharField(
+        _("dcterms:spatial"),
+        blank=True,
+        max_length=255)
     dc_coverage = models.ForeignKey(
         'dariah_static_data.Country',
         verbose_name=_("dc:coverage"),
@@ -164,13 +171,11 @@ class Contribution(models.Model):
     )
     skos_preflabel_vcc = models.ManyToManyField(
         'dariah_static_data.TADIRAHVCC',
-        verbose_name=_('sioc:topic/skos:Concept/skos:prefLabel VCC'),
+        verbose_name=_('sioc:has_scope/skos:Concept/skos:prefLabel VCC'),
         blank=True,
         null=True,
         help_text=_('Check 0, 1 or more boxes.')
     )
-    #sioc_topic
-    #sioc_has_scope
     dc_creator = models.ManyToManyField(
         'DcCreator',
         verbose_name=_("dc:creator"),
