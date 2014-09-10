@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-29 11:39+0200\n"
+"POT-Creation-Date: 2014-09-10 14:22+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,164 +18,203 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: models.py:80
+#: models.py:78
+msgid "dc:type"
+msgstr ""
+
+#: models.py:81
+msgid "vcard:category"
+msgstr ""
+
+#: models.py:84
 msgid "dc:identifier"
 msgstr ""
 
-#: models.py:83
+#: models.py:87
 msgid "dc:title"
 msgstr ""
 
-#: models.py:86
+#: models.py:90
 msgid "dc:date"
 msgstr ""
 
-#: models.py:91
+#: models.py:95
 msgid "dc:relation"
 msgstr ""
 
-#: models.py:94
+#: models.py:98
 msgid "The URI of the relation, example: http://easy.dans.knaw.nl."
 msgstr "De URI van de relatie, bijvoorbeeld: http://easy.dans.knaw.nl."
 
-#: models.py:96
+#: models.py:100
 msgid "vcard:logo"
 msgstr ""
 
-#: models.py:102
+#: models.py:106
 msgid "dc:publisher"
 msgstr ""
 
-#: models.py:105
+#: models.py:109
 msgid ""
 "The name of the publisher, example: Data Archiving and Networked Services."
-msgstr "De naam van de uitgever, bijvoorbeeld: Data Archiving and Networked Services."
-
-#: models.py:109
-msgid "dc:coverage"
 msgstr ""
+"De naam van de uitgever, bijvoorbeeld: Data Archiving and Networked Services."
 
-#: models.py:113
-msgid "vcard:organization"
+#: models.py:111
+msgid "dcterms:spatial"
 msgstr ""
 
 #: models.py:116
+msgid "dc:coverage"
+msgstr ""
+
+#: models.py:120
+msgid "vcard:organization"
+msgstr ""
+
+#: models.py:123
 msgid "The name of the organization, example: DANS."
 msgstr "De naam van de organisatie, bijvoorbeeld: DANS."
 
-#: models.py:118
+#: models.py:125
 msgid "dc:subject"
 msgstr ""
 
-#: models.py:121
+#: models.py:128
 msgid "dcterms:abstract English"
 msgstr "dcterms:abstract Engels"
 
-#: models.py:122
+#: models.py:129
 msgid "The abstract in English"
 msgstr "De abstract in het engels"
 
-#: models.py:124
+#: models.py:131
 msgid "dcterms:abstract alternative language"
 msgstr "dcterms:abstract alternatieve taal"
 
-#: models.py:126
+#: models.py:133
 msgid "The abstract in an alternative language"
 msgstr "De abstract in een alternatieve taal"
 
-#: models.py:128
+#: models.py:135
 msgid "dcterms:abstract language"
 msgstr "dcterms:abstract taal"
 
-#: models.py:132
+#: models.py:139
 msgid "The language of dcterms:abstract alternative language"
 msgstr "De taal gebruikt in dcterms:abstract alternatieve taal"
 
-#: models.py:134
+#: models.py:142
 msgid "dc:description"
 msgstr ""
 
-#: models.py:138
-msgid "sioc:topic/skos:Concept/skos:prefLabel Technique"
+#: models.py:146
+msgid "sioc:topic/skos:Concept/skos:prefLabel Activity"
 msgstr ""
 
-#: models.py:141
+#: models.py:149 models.py:156 models.py:163 models.py:170
 msgid "Start typing to get the options for this field."
 msgstr "Start met typen om die opties voor dit veld te krijgen."
 
-#: models.py:147
+#: models.py:153
+msgid "sioc:topic/skos:Concept/skos:prefLabel Object"
+msgstr ""
+
+#: models.py:160
+msgid "sioc:topic/skos:Concept/skos:prefLabel Technique"
+msgstr ""
+
+#: models.py:167
+msgid "sioc:topic/skos:Concept/skos:prefLabel Discipline"
+msgstr ""
+
+#: models.py:174
+msgid "sioc:has_scope/skos:Concept/skos:prefLabel VCC"
+msgstr ""
+
+#: models.py:177
+msgid "Check 0, 1 or more boxes."
+msgstr "Vink geen, één of meer items aan."
+
+#: models.py:181
 msgid "dc:creator"
 msgstr ""
 
-#: models.py:152
+#: models.py:186
 msgid "dc:contributor"
 msgstr ""
 
-#: models.py:159
+#: models.py:193
 msgid "author"
 msgstr "auteur"
 
-#: models.py:164
+#: models.py:198
 msgid "is published?"
 msgstr "is gepubliceerd?"
 
-#: models.py:167
+#: models.py:201
 msgid "published on"
 msgstr "gepubliceerd op"
 
-#: models.py:171
+#: models.py:206
 msgid "last modified on"
 msgstr "laatst bewerkt op"
 
-#: models.py:175
+#: models.py:210
 msgid "is deleted?"
 msgstr "is verwijderd?"
 
-#: models.py:201 templates/dariah_contributions/contribution_form.html:14
+#: models.py:267 templates/dariah_contributions/contribution_form.html:14
 msgid "contribution"
 msgstr "contributie"
 
-#: models.py:202 templates/dariah_contributions/contribution_list.html:20
+#: models.py:268 templates/dariah_contributions/contribution_list.html:20
 msgid "contributions"
 msgstr "contributies"
 
-#: views.py:85
+#: views.py:105
 msgid "Contribution was created successfully."
 msgstr "Contributie is succesvol aangemaakt."
 
-#: views.py:99
+#: views.py:119
 msgid "Contribution was updated successfully."
 msgstr "Contributie is succesvol bijgewerkt."
 
-#: views.py:114
+#: views.py:149
 msgid "Contribution was published successfully."
 msgstr "Contributie is succesvol bijgewerkt."
 
-#: views.py:115
+#: views.py:150
 msgid "Something went wrong while publishing the contribution."
 msgstr "Er is iets verkeerd gegaan bij het publiceren van de contributie."
 
-#: views.py:145
+#: views.py:180
 msgid "Contribution was unpublished successfully."
 msgstr "Contributie is succesvol bijgewerkt."
 
-#: views.py:146
+#: views.py:181
 msgid "Something went wrong while unpublishing the contribution."
 msgstr ""
 "Er is iets verkeerd gegaan bij het intrekken van de gepubliceerde "
 "contributie."
 
-#: views.py:157
+#: views.py:192
 msgid "Contribution was deleted successfully."
 msgstr "Contributie is succesvol verwijderd."
 
-#: views.py:180
-msgid "dc:creator was created successfully."
-msgstr "dc:creator is succesvol aangemaakt."
+#: views.py:255
+#, python-format
+msgid "dc:creator %s was created successfully."
+msgstr "dc:creator %s is succesvol aangemaakt."
 
-#: views.py:189
-msgid "dc:contributor was created successfully."
-msgstr "dc:contributor is succesvol aangemaakt."
+#: views.py:265
+#, python-format
+msgid "dc:contributor %s was created successfully."
+msgstr "dc:contributor %s is succesvol aangemaakt."
+
+#: templates/dariah_contributions/_creator-contrib_autocomplete_empty_html_format.html:13
+msgid "Add new..."
+msgstr "Voeg nieuwe toe..."
 
 #: templates/dariah_contributions/contribution_confirm_delete.html:6
 msgid "Confirm deletion of contribution"
@@ -187,7 +226,7 @@ msgid "Are you sure you want to delete %(object)s?"
 msgstr "Weet je zeker dat je de contrubitie %(object)s wilt verwijderen?"
 
 #: templates/dariah_contributions/contribution_confirm_delete.html:9
-#: templates/dariah_contributions/contribution_detail.html:9
+#: templates/dariah_contributions/contribution_detail.html:22
 #: templates/dariah_contributions/contribution_list.html:45
 msgid "Delete"
 msgstr "Verwijder"
@@ -196,15 +235,16 @@ msgstr "Verwijder"
 msgid "Cancel"
 msgstr "Annuleer"
 
-#: templates/dariah_contributions/contribution_detail.html:6
+#: templates/dariah_contributions/contribution_detail.html:19
 msgid "Show as RDF"
 msgstr "Toon als RDF"
 
-#: templates/dariah_contributions/contribution_detail.html:8
+#: templates/dariah_contributions/contribution_detail.html:21
 msgid "Edit"
 msgstr "Bewerken"
 
 #: templates/dariah_contributions/contribution_form.html:9
+#: templates/dariah_contributions/dccreator_form.html:24
 msgid "Add"
 msgstr "Voeg toe"
 
@@ -213,7 +253,8 @@ msgstr "Voeg toe"
 msgid "Update"
 msgstr "Bewerken"
 
-#: templates/dariah_contributions/contribution_form.html:19
+#: templates/dariah_contributions/contribution_form.html:29
+#: templates/dariah_contributions/dccreator_form.html:19
 msgid "Fields marked with a star (*) are compulsory."
 msgstr "Velden gemarkeerd met een ster (*) zijn verplicht."
 
@@ -240,3 +281,20 @@ msgstr "Publiceer"
 #: templates/dariah_contributions/contribution_list.html:62
 msgid "No contributions are available."
 msgstr "Er zijn geen contributies beschikbaar."
+
+#: templates/dariah_contributions/dccontributor_form.html:14
+msgid "Add a dc:contributor"
+msgstr "Voeg een dc:contributor toe"
+
+#: templates/dariah_contributions/dccreator_form.html:10
+#: templates/dariah_contributions/dccreator_form.html:23
+msgid "Close"
+msgstr "Sluiten"
+
+#: templates/dariah_contributions/dccreator_form.html:13
+msgid "Add a new dc:creator"
+msgstr "Voeg een nieuwe dc:creator toe"
+
+#: templates/dariah_contributions/dccreator_form.html:22
+msgid "Reset"
+msgstr "Herstel"

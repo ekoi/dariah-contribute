@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-29 11:49+0200\n"
+"POT-Creation-Date: 2014-09-10 14:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,7 +25,7 @@ msgstr ""
 msgid "Dutch"
 msgstr ""
 
-#: settings/base.py:198
+#: settings/base.py:197
 msgid "Dariah Contributions Admin"
 msgstr ""
 
@@ -86,42 +86,30 @@ msgid "Toggle navigation"
 msgstr ""
 
 #: templates/base.html:15
-msgid "Dariah Contributions"
+msgid "Dariah Contribute"
 msgstr ""
 
 #: templates/base.html:19
 msgid "Browse Contributions"
 msgstr ""
 
-#: templates/base.html:22 templates/base.html.py:23
-msgid "My Profile"
-msgstr ""
-
-#: templates/base.html:26
+#: templates/base.html:21
 msgid "My Contributions"
 msgstr ""
 
-#: templates/base.html:27
-msgid "Settings"
-msgstr ""
-
-#: templates/base.html:29
+#: templates/base.html:22
 msgid "Log out"
 msgstr ""
 
-#: templates/base.html:33 templates/registration/login.html:10
+#: templates/base.html:24 templates/registration/login.html:10
 msgid "Log in"
 msgstr ""
 
-#: templates/base.html:34
-msgid "Register"
-msgstr ""
-
-#: templates/base.html:36
+#: templates/base.html:26
 msgid "About"
 msgstr ""
 
-#: templates/base.html:48
+#: templates/base.html:38
 msgid "(no content)"
 msgstr ""
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-29 11:49+0200\n"
+"POT-Creation-Date: 2014-09-10 14:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,7 +26,7 @@ msgstr "Engels"
 msgid "Dutch"
 msgstr "Nederlands"
 
-#: settings/base.py:198
+#: settings/base.py:197
 msgid "Dariah Contributions Admin"
 msgstr "Dariah contributies admin"
 
@@ -93,42 +93,30 @@ msgid "Toggle navigation"
 msgstr "Toggle navigatie"
 
 #: templates/base.html:15
-msgid "Dariah Contributions"
+msgid "Dariah Contribute"
 msgstr "Dariah contributies"
 
 #: templates/base.html:19
 msgid "Browse Contributions"
 msgstr "Blader door contributies"
 
-#: templates/base.html:22 templates/base.html.py:23
-msgid "My Profile"
-msgstr "Mijn profiel"
-
-#: templates/base.html:26
+#: templates/base.html:21
 msgid "My Contributions"
 msgstr "Mijn contributies"
 
-#: templates/base.html:27
-msgid "Settings"
-msgstr "Instellingen"
-
-#: templates/base.html:29
+#: templates/base.html:22
 msgid "Log out"
 msgstr "Log uit"
 
-#: templates/base.html:33 templates/registration/login.html:10
+#: templates/base.html:24 templates/registration/login.html:10
 msgid "Log in"
 msgstr ""
 
-#: templates/base.html:34
-msgid "Register"
-msgstr ""
-
-#: templates/base.html:36
+#: templates/base.html:26
 msgid "About"
 msgstr "Over"
 
-#: templates/base.html:48
+#: templates/base.html:38
 msgid "(no content)"
 msgstr "(geen content)"
 
@@ -321,6 +309,12 @@ msgstr "Het %(site_name)s team"
 #: templates/registration/password_reset_form.html:11
 msgid "Reset my password"
 msgstr "Wachtwoord herstellen"
+
+#~ msgid "My Profile"
+#~ msgstr "Mijn profiel"
+
+#~ msgid "Settings"
+#~ msgstr "Instellingen"
 
 #~ msgid ""
 #~ "Unfortunately you have entered the wrong password and/or username more "
