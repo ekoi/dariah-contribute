@@ -35,7 +35,7 @@
     			{% for contribution in object_list %}
         			<tr>
                         <td><a href="{% url 'dariah_contributions:detail' contribution.dc_identifier %}">{{ contribution.dc_title }}</a></td>
-         				<td>{{ contribution.author }}</td>
+         				<td>{{ contribution.author.get_full_name }}</td>
                         {% if request.resolver_match.url_name == 'mine' %}
                         <td>{{ contribution.is_published|yesno:_("Yes,No") }}</td>
                         {% endif %}
