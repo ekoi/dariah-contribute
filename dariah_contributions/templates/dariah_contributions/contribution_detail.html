@@ -1,5 +1,6 @@
 {% extends "content_left_sidebar.html" %}
 {% load i18n %}
+{% load is_url %}
 
 {% block content %}
     <h3>{{ contribution.dc_title }}</h3>
@@ -7,7 +8,11 @@
     {% for field, value in get_fields %}
         <tr>
             <td>{{ field }}</td>
+            {% if value|is_url %}
             <td>{{ value|urlize }}</td>
+            {% else %}
+            <td>{{ value }}</td>
+            {% endif %}
         </tr>
     {% endfor %}
     </table>
