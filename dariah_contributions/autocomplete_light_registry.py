@@ -24,7 +24,7 @@ class DcCreatorAutocomplete(autocomplete_light.AutocompleteModelBase):
     def empty_html_format(self):
         return '<span class="block"><em>%s</em></span> \
         <hr class="divider" /> \
-        <span class="block"><em><a data-toggle="modal" data-target="#myModal" id="add_id_dc_creator" class="autocomplete-add-another" href="' + reverse(self.add_another_url_name) + '?_popup=1">Add new...</a></em></span>'
+        <span class="block"><em><a data-toggle="modal" data-target="#dc_creator_modal" id="add_id_dc_creator" class="autocomplete-add-another" href="' + reverse(self.add_another_url_name) + '?_popup=1">Add new...</a></em></span>'
 
 
 class DcContributorAutocomplete(autocomplete_light.AutocompleteModelBase):
@@ -45,7 +45,7 @@ class DcContributorAutocomplete(autocomplete_light.AutocompleteModelBase):
     def empty_html_format(self):
         return '<span class="block"><em>%s</em></span> \
         <hr class="divider" /> \
-        <span class="block"><em><a data-toggle="modal" data-target="#myModal" id="add_id_dc_contributor" class="autocomplete-add-another" href="' + reverse(self.add_another_url_name) + '?_popup=1">Add new...</a></em></span>'
+        <span class="block"><em><a data-toggle="modal" data-target="#dc_contributor_modal" id="add_id_dc_contributor" class="autocomplete-add-another" href="' + reverse(self.add_another_url_name) + '?_popup=1">Add new...</a></em></span>'
 
 
 autocomplete_light.register(Tag)

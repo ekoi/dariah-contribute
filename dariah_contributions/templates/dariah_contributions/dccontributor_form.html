@@ -1,9 +1,12 @@
 {% extends 'dariah_contributions/dccreator_form.html' %}
 {% load i18n %}
 
-{% block form_id %}
-    id_dc_contributor_form
-{% endblock %}
+{% comment %}
+The form_id block definition MUST be on one line with no spaces!
+This id must be the same as the for attribute of the field label with '_form'
+appended.
+{% endcomment %}
+{% block form_id %}id_dc_contributor_form{% endblock %}
 {% block action %}
     {% url 'dariah_contributions:dccontributor_create' %}
 {% endblock %}

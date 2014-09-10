@@ -238,24 +238,21 @@ class AjaxableResponseMixin(object):
         # it might do some processing (in the case of CreateView, it will
         # call form.save() for example).
         response = super(AjaxableResponseMixin, self).form_valid(form)
+        data = {
+            'pk': self.object.pk,
+            'name': str(self.object),
+        }
+        if self.success_message:
+            messages.success(self.request, self.success_message % (data['name']))
         if self.request.is_ajax():
-            data = {
-                'pk': self.object.pk,
-                'name': str(self.object),
-            }
-            if self.success_message:
-                messages.success(self.request, self.success_message)
-                data['django_messages'] = render_to_string('bootstrap3/messages.html', {}, RequestContext(self.request))
+            data['django_messages'] = render_to_string('bootstrap3/messages.html', {}, RequestContext(self.request))
             return self.render_to_json_response(data)
-        else:
-            if self.success_message:
-                messages.success(self.request, self.success_message)
-            return response
+        return response
 
 
 class DcCreatorCreate(AjaxableResponseMixin, autocomplete_light.CreateView):
     model = DcCreator
-    success_message = _("dc:creator was created successfully.")
+    success_message = _("dc:creator %s was created successfully.")
     success_url = reverse_lazy('dariah_contributions:list')
 
     @method_decorator(login_required)
@@ -265,7 +262,7 @@ class DcCreatorCreate(AjaxableResponseMixin, autocomplete_light.CreateView):
 
 class DcContributorCreate(AjaxableResponseMixin, autocomplete_light.CreateView):
     model = DcContributor
-    success_message = _("dc:contributor was created successfully.")
+    success_message = _("dc:contributor %s was created successfully.")
     success_url = reverse_lazy('dariah_contributions:list')
 
     @method_decorator(login_required)
