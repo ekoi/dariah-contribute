@@ -74,12 +74,12 @@ class Contribution(models.Model):
                                                l))
     DC_DATE_CHOICES = [(x, x) for x in reversed(xrange(1900, timezone.now().year + 1))]
     # Metadata fields #########################################################
-    dc_type = models.URLField(
-        _("dc:type"),
-        blank=True)
-    vcard_category = models.URLField(
-        _("vcard:category"),
-        blank=True)
+    # dc_type = models.URLField(
+    #     _("dc:type"),
+    #     blank=True)
+    # vcard_category = models.URLField(
+    #     _("vcard:category"),
+    #     blank=True)
     dc_identifier = models.AutoField(
         _("dc:identifier"),
         primary_key=True)
@@ -217,8 +217,8 @@ class Contribution(models.Model):
 
     # Other ###################################################################
     field_order = [  # (name, in form?)
-        ('dc_type', 1),
-        ('vcard_category', 1),
+        #('dc_type', 1),
+        #('vcard_category', 1),
         ('dc_identifier', 0),
         ('dc_title', 1),
         ('dc_date', 1),
