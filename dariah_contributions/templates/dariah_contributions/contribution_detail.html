@@ -19,7 +19,7 @@
         <li><a href="{% url 'dariah_contributions:detail_rdf' contribution.dc_identifier %}">{% trans "Show as RDF" %}</a></li>
         {% if contribution.author == request.user %}
         <li><a href="{% url 'dariah_contributions:update' contribution.dc_identifier %}">{% trans 'Edit' %}</a></li>
-        <li><a href="{% url 'dariah_contributions:delete' contribution.dc_identifier %}">{% trans 'Delete' %}</a></li>
+        {% comment %}<li><a href="{% url 'dariah_contributions:delete' contribution.dc_identifier %}">{% trans 'Delete' %}</a></li>{% endcomment %}
         {% endif %}
     </ul>
 {% endblock %}

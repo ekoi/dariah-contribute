@@ -42,7 +42,7 @@
                         {% if request.resolver_match.url_name == 'mine' %}
                             <td>
                                 <a href="{% url 'dariah_contributions:update' contribution.dc_identifier %}">{% trans 'Update' %}</a> |
-                                <a href="{% url 'dariah_contributions:delete' contribution.dc_identifier %}">{% trans 'Delete' %}</a> |
+                                {% comment %}<a href="{% url 'dariah_contributions:delete' contribution.dc_identifier %}">{% trans 'Delete' %}</a> |{% endcomment %}
                                 {% if contribution.is_published %}
                                     <a href="{% url 'dariah_contributions:unpublish' contribution.dc_identifier %}">{% trans 'Unpublish' %}</a>
                                 {% else %}
