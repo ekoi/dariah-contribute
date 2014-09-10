@@ -16,6 +16,20 @@
         </tr>
     {% endfor %}
     </table>
+    <p>&nbsp;</p>
+    {% spaceless %}
+    <p>
+    {% trans 'Contribution last modified' %}
+    {{ contribution.last_modified_on }}
+    {% trans 'by' %}
+    {{ contribution.author.get_full_name }};
+    {% if contribution.is_published %}
+        {% trans 'published' %} {{ contribution.published_on }}.
+    {% else %}
+        {% trans 'unpublished' %}.
+    {% endif %}
+    </p>
+    {% endspaceless %}
 {% endblock %}
 
 {% block sidebar %}

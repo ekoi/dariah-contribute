@@ -55,14 +55,19 @@ class ContributionDetail(DetailView):
         context = super(ContributionDetail, self).get_context_data(**kwargs)
         c = context['object']
         context['get_fields'] = self.get_fields(c)
+        context['get_metadata_fields'] = self.get_fields(c, True)
         return context
 
     @staticmethod
-    def get_fields(c):
+    def get_fields(c, meta_metadata=False):
         """An iterable with the field names and values (in the correct order)
         of a Contribution instance to be rendered in the template.
         """
-        for x in c.field_order:
+        if meta_metadata:
+            fields = filter(lambda x: x[2], c.field_order)
+        else:
+            fields = filter(lambda x: not x[2], c.field_order)
+        for x in fields:
             field = c.__class__._meta.get_field(x[0])
             value = getattr(c, x[0])
             # If the field is an iterable (TaggableManager or ManyToManyField)
