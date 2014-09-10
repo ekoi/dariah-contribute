@@ -310,6 +310,11 @@ class Person(models.Model):
     def __unicode__(self):
         return self.foaf_name
 
+    @classmethod
+    def lowercase_underscore_name(cls):
+        """Transform class name from CamelCase to lowercase_with_underscores."""
+        return re.sub('(((?<=[a-z])[A-Z])|([A-Z](?![A-Z]|$)))', '_\\1', cls.__name__).lower().strip('_')
+
     class Meta:
         abstract = True
 

@@ -1,0 +1,16 @@
+{% load i18n %}
+<span class="block">
+    <em>%s</em>
+</span>
+<hr class="divider" />
+<span class="block">
+    <em>
+        <a id="add_id_{{ model }}"
+           class="autocomplete-add-another"
+           data-toggle="modal"
+           data-target="#{{ model }}_modal"
+           href="{% url url %}">
+           {% trans 'Add new...' %}
+        </a>
+    </em>
+</span>

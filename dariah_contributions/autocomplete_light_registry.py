@@ -1,4 +1,4 @@
-from django.core.urlresolvers import reverse
+from django.template.loader import render_to_string
 
 from taggit.models import Tag
 from .models import DcCreator, DcContributor
@@ -22,30 +22,14 @@ class DcCreatorAutocomplete(autocomplete_light.AutocompleteModelBase):
 
     @property
     def empty_html_format(self):
-        return '<span class="block"><em>%s</em></span> \
-        <hr class="divider" /> \
-        <span class="block"><em><a data-toggle="modal" data-target="#dc_creator_modal" id="add_id_dc_creator" class="autocomplete-add-another" href="' + reverse(self.add_another_url_name) + '?_popup=1">Add new...</a></em></span>'
+        data = {'model': self.model.lowercase_underscore_name(),
+                'url': self.add_another_url_name}
+        return render_to_string('dariah_contributions/_creator-contrib_autocomplete_empty_html_format.html', data)
 
 
-class DcContributorAutocomplete(autocomplete_light.AutocompleteModelBase):
-    search_fields = ['^first_name', 'last_name_prefix', 'last_name']
+class DcContributorAutocomplete(DcCreatorAutocomplete):
     model = DcContributor
     add_another_url_name = 'dariah_contributions:dccontributor_create'
-
-    attrs = {
-        # This will set the input placeholder attribute:
-        'placeholder': 'Start typing...',
-        # This will set the yourlabs.Autocomplete.minimumCharacters
-        # options, the naming conversion is handled by jQuery
-        'data-autocomplete-minimum-characters': 1,
-    }
-    widget_attrs = {}
-
-    @property
-    def empty_html_format(self):
-        return '<span class="block"><em>%s</em></span> \
-        <hr class="divider" /> \
-        <span class="block"><em><a data-toggle="modal" data-target="#dc_contributor_modal" id="add_id_dc_contributor" class="autocomplete-add-another" href="' + reverse(self.add_another_url_name) + '?_popup=1">Add new...</a></em></span>'
 
 
 autocomplete_light.register(Tag)
