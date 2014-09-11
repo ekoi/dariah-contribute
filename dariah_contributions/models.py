@@ -77,117 +77,129 @@ class Contribution(models.Model):
     # dc_type = models.URLField(
     #     _("dc:type"),
     #     blank=True,
-    #     null=True)
+    #     null=True,
+    #     help_text=_('help text for dc:type'))
     # vcard_category = models.URLField(
     #     _("vcard:category"),
     #     blank=True,
-    #     null=True)
+    #     null=True,
+    #     help_text=_('help text for vcard:category'))
     dc_identifier = models.AutoField(
         _("dc:identifier"),
-        primary_key=True)
+        primary_key=True,
+        help_text=_('help text for dc:identifier'))
     dc_title = models.CharField(
         _("dc:title"),
-        max_length=100)
+        max_length=100,
+        help_text=_('help text for dc:title'))
     dc_date = models.PositiveIntegerField(
         _("dc:date"),
         choices=DC_DATE_CHOICES,
         max_length=4,  # YYYY IS ISO-8601, see https://en.wikipedia.org/wiki/ISO_8601#Years
-        blank=True)
+        blank=True,
+        help_text=_('help text for dc:date'))
     dc_relation = models.URLField(
         _("dc:relation"),
         max_length=200,
         blank=True,
-        help_text=_("The URI of the relation, example: http://easy.dans.knaw.nl."))
+        help_text=_("help text for dc:relation"))
     vcard_logo = models.ImageField(
         _("vcard:logo"),
         upload_to=contribution_vcardlogo_uploadto,
         storage=OverwriteStorage(),
         blank=True,
-        null=True)
+        null=True,
+        help_text=_('help text for vcard:logo'))
     dc_publisher = models.CharField(
         _("dc:publisher"),
         max_length=200,
         blank=True,
-        help_text=_("The name of the publisher, example: Data Archiving and Networked Services."))
+        help_text=_("help text for dc:publisher"))
     dcterms_spatial = models.CharField(
         _("dcterms:spatial"),
         blank=True,
-        max_length=255)
+        max_length=255,
+        help_text=_('help text for dcterms:spatial'))
     dc_coverage = models.ForeignKey(
         'dariah_static_data.Country',
         verbose_name=_("dc:coverage"),
         blank=True,
-        null=True)
+        null=True,
+        help_text=_('help text for dc:coverage'))
     vcard_organization = models.CharField(
         _("vcard:organization"),
         max_length=50,
         blank=True,
-        help_text=_("The name of the organization, example: DANS."))
+        help_text=_("help text for vcard:organization"))
     dc_subject = TaggableManager(
         verbose_name=_("dc:subject"),
-        blank=True)
+        blank=True,
+        help_text=_('help text for dc:subject'))
     dcterms_abstract_en = models.TextField(
         _("dcterms:abstract English"),
-        help_text=_('The abstract in English'))
+        help_text=_('help text for dcterms:abstract English'))
     dcterms_abstract = models.TextField(
         _("dcterms:abstract alternative language"),
         blank=True,
-        help_text=_('The abstract in an alternative language'))
+        help_text=_('help text for dcterms:abstract alternative language'))
     dcterms_abstract_lang = models.CharField(
         _("dcterms:abstract language"),
         max_length=2,
         choices=DCTERMS_ABSTRACT_LANG_CHOICES,
         default='en',
-        help_text=_('The language of dcterms:abstract alternative language'),
-        blank=True)
+        blank=True,
+        help_text=_('help text for dcterms:abstract language'))
     dc_description = models.TextField(
         _("dc:description"),
-        blank=True)
+        blank=True,
+        help_text=_('help text for dc:description'))
     skos_preflabel_activity = models.ManyToManyField(
         'dariah_static_data.TADIRAHActivity',
         verbose_name=_('sioc:topic/skos:Concept/skos:prefLabel Activity'),
         blank=True,
         null=True,
-        help_text=_('Start typing to get the options for this field.')
+        help_text=_('help text for skos:preflabel Activity')
     )
     skos_preflabel_object = models.ManyToManyField(
         'dariah_static_data.TADIRAHObject',
         verbose_name=_('sioc:topic/skos:Concept/skos:prefLabel Object'),
         blank=True,
         null=True,
-        help_text=_('Start typing to get the options for this field.')
+        help_text=_('help text for skos:preflabel Object')
     )
     skos_preflabel_technique = models.ManyToManyField(
         'dariah_static_data.TADIRAHTechnique',
         verbose_name=_('sioc:topic/skos:Concept/skos:prefLabel Technique'),
         blank=True,
         null=True,
-        help_text=_('Start typing to get the options for this field.')
+        help_text=_('help text for skos:preflabel Technique')
     )
     skos_preflabel_discipline = models.ManyToManyField(
         'dariah_static_data.Discipline',
         verbose_name=_('sioc:topic/skos:Concept/skos:prefLabel Discipline'),
         blank=True,
         null=True,
-        help_text=_('Start typing to get the options for this field.')
+        help_text=_('help text for skos:preflabel Discipline')
     )
     skos_preflabel_vcc = models.ManyToManyField(
         'dariah_static_data.TADIRAHVCC',
         verbose_name=_('sioc:has_scope/skos:Concept/skos:prefLabel VCC'),
         blank=True,
         null=True,
-        help_text=_('Check 0, 1 or more boxes.')
+        help_text=_('help text for skos:preflabel VCC')
     )
     dc_creator = models.ManyToManyField(
         'DcCreator',
         verbose_name=_("dc:creator"),
         blank=True,
-        null=True)
+        null=True,
+        help_text=_('help text for dc:creator'))
     dc_contributor = models.ManyToManyField(
         'DcContributor',
         verbose_name=_("dc:contributor"),
         blank=True,
-        null=True)
+        null=True,
+        help_text=_('help text for dc:contributor'))
 
     # Meta-Metadata fields ####################################################
     author = models.ForeignKey(
@@ -195,23 +207,28 @@ class Contribution(models.Model):
         verbose_name=_('author'),
         editable=False,
         blank=True,
-        null=True)
+        null=True,
+        help_text=_('help text for author'))
     is_published = models.BooleanField(
         _('is published?'),
-        default=False)
+        default=False,
+        help_text=_('help text for is_published'))
     published_on = models.DateTimeField(
         _('published on'),
         blank=True,
         null=True,
-        editable=False)
+        editable=False,
+        help_text=_('help text for published_on'))
     last_modified_on = models.DateTimeField(
         _('last modified on'),
         default=timezone.now,
-        editable=False)
+        editable=False,
+        help_text=_('help text for last_modified'))
     is_deleted = models.BooleanField(
         _('is deleted?'),
         default=False,
-        editable=False)
+        editable=False,
+        help_text=_('help text for is_deleted'))
 
     # Managers ################################################################
     objects = ContributionManager()
@@ -293,11 +310,25 @@ class Contribution(models.Model):
 
 
 class Person(models.Model):
-    foaf_person = models.URLField(blank=True)
-    first_name = models.CharField(max_length=50, blank=True)
-    last_name_prefix = models.CharField(max_length=50, blank=True)
-    last_name = models.CharField(max_length=50, blank=True)
-    foaf_publications = models.CharField(max_length=50, blank=True)
+    foaf_person = models.URLField(
+        blank=True,
+        help_text=_('help text for foaf:person'))
+    first_name = models.CharField(
+        max_length=50,
+        blank=True,
+        help_text=_('help text for foaf:person'))
+    last_name_prefix = models.CharField(
+        max_length=50,
+        blank=True,
+        help_text=_('help text for foaf:person'))
+    last_name = models.CharField(
+        max_length=50,
+        blank=True,
+        help_text=_('help text for foaf:person'))
+    foaf_publications = models.CharField(
+        max_length=50,
+        blank=True,
+        help_text=_('help text for foaf:person'))
 
     @property
     def foaf_name(self):

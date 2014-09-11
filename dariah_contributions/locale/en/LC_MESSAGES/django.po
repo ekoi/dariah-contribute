@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-10 14:22+0200\n"
+"POT-Creation-Date: 2014-09-11 13:25+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,193 +17,261 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: models.py:78
-msgid "dc:type"
-msgstr ""
-
-#: models.py:81
-msgid "vcard:category"
-msgstr ""
-
-#: models.py:84
+#: models.py:88
 msgid "dc:identifier"
 msgstr ""
 
-#: models.py:87
+#: models.py:90
+msgid "help text for dc:identifier"
+msgstr ""
+
+#: models.py:92
 msgid "dc:title"
 msgstr ""
 
-#: models.py:90
+#: models.py:94
+msgid "help text for dc:title"
+msgstr ""
+
+#: models.py:96
 msgid "dc:date"
 msgstr ""
 
-#: models.py:95
+#: models.py:100
+msgid "help text for dc:date"
+msgstr ""
+
+#: models.py:102
 msgid "dc:relation"
 msgstr ""
 
-#: models.py:98
-msgid "The URI of the relation, example: http://easy.dans.knaw.nl."
-msgstr ""
+#: models.py:105
+msgid "help text for dc:relation"
+msgstr "The URI of the relation, example: http://easy.dans.knaw.nl."
 
-#: models.py:100
+#: models.py:107
 msgid "vcard:logo"
 msgstr ""
 
-#: models.py:106
+#: models.py:112
+msgid "help text for vcard:logo"
+msgstr ""
+
+#: models.py:114
 msgid "dc:publisher"
 msgstr ""
 
-#: models.py:109
-msgid ""
-"The name of the publisher, example: Data Archiving and Networked Services."
+#: models.py:117
+msgid "help text for dc:publisher"
 msgstr ""
+"The name of the publisher, example: Data Archiving and Networked Services."
 
-#: models.py:111
+#: models.py:119
 msgid "dcterms:spatial"
 msgstr ""
 
-#: models.py:116
-msgid "dc:coverage"
-msgstr ""
-
-#: models.py:120
-msgid "vcard:organization"
-msgstr ""
-
-#: models.py:123
-msgid "The name of the organization, example: DANS."
+#: models.py:122
+msgid "help text for dcterms:spatial"
 msgstr ""
 
 #: models.py:125
-msgid "dc:subject"
+msgid "dc:coverage"
 msgstr ""
 
 #: models.py:128
-msgid "dcterms:abstract English"
+msgid "help text for dc:coverage"
 msgstr ""
 
-#: models.py:129
-msgid "The abstract in English"
-msgstr ""
-
-#: models.py:131
-msgid "dcterms:abstract alternative language"
+#: models.py:130
+msgid "vcard:organization"
 msgstr ""
 
 #: models.py:133
-msgid "The abstract in an alternative language"
-msgstr ""
+msgid "help text for vcard:organization"
+msgstr "The name of the organization, example: DANS."
 
 #: models.py:135
-msgid "dcterms:abstract language"
+msgid "dc:subject"
+msgstr ""
+
+#: models.py:137
+msgid "help text for dc:subject"
 msgstr ""
 
 #: models.py:139
-msgid "The language of dcterms:abstract alternative language"
+msgid "dcterms:abstract English"
 msgstr ""
 
+#: models.py:140
+msgid "help text for dcterms:abstract English"
+msgstr "The abstract in English"
+
 #: models.py:142
+msgid "dcterms:abstract alternative language"
+msgstr ""
+
+#: models.py:144
+msgid "help text for dcterms:abstract alternative language"
+msgstr "The abstract in an alternative language"
+
+#: models.py:146
+msgid "dcterms:abstract language"
+msgstr ""
+
+#: models.py:151
+msgid "help text for dcterms:abstract language"
+msgstr "The language of dcterms:abstract alternative language"
+
+#: models.py:153
 msgid "dc:description"
 msgstr ""
 
-#: models.py:146
+#: models.py:155
+msgid "help text for dc:description"
+msgstr ""
+
+#: models.py:158
 msgid "sioc:topic/skos:Concept/skos:prefLabel Activity"
 msgstr ""
 
-#: models.py:149 models.py:156 models.py:163 models.py:170
-msgid "Start typing to get the options for this field."
-msgstr ""
+#: models.py:161
+msgid "help text for skos:preflabel Activity"
+msgstr "Start typing to get the options for this field."
 
-#: models.py:153
+#: models.py:165
 msgid "sioc:topic/skos:Concept/skos:prefLabel Object"
 msgstr ""
 
-#: models.py:160
+#: models.py:168
+msgid "help text for skos:preflabel Object"
+msgstr "Start typing to get the options for this field."
+
+#: models.py:172
 msgid "sioc:topic/skos:Concept/skos:prefLabel Technique"
 msgstr ""
 
-#: models.py:167
+#: models.py:175
+msgid "help text for skos:preflabel Technique"
+msgstr "Start typing to get the options for this field."
+
+#: models.py:179
 msgid "sioc:topic/skos:Concept/skos:prefLabel Discipline"
 msgstr ""
 
-#: models.py:174
+#: models.py:182
+msgid "help text for skos:preflabel Discipline"
+msgstr "Start typing to get the options for this field."
+
+#: models.py:186
 msgid "sioc:has_scope/skos:Concept/skos:prefLabel VCC"
 msgstr ""
 
-#: models.py:177
-msgid "Check 0, 1 or more boxes."
-msgstr ""
+#: models.py:189
+msgid "help text for skos:preflabel VCC"
+msgstr "Check 0, 1 or more boxes."
 
-#: models.py:181
+#: models.py:193
 msgid "dc:creator"
 msgstr ""
 
-#: models.py:186
+#: models.py:196
+msgid "help text for dc:creator"
+msgstr ""
+
+#: models.py:199
 msgid "dc:contributor"
 msgstr ""
 
-#: models.py:193
+#: models.py:202
+msgid "help text for dc:contributor"
+msgstr ""
+
+#: models.py:207
 msgid "author"
 msgstr ""
 
-#: models.py:198
+#: models.py:211
+msgid "help text for author"
+msgstr ""
+
+#: models.py:213
 msgid "is published?"
 msgstr ""
 
-#: models.py:201
+#: models.py:215
+msgid "help text for is_published"
+msgstr ""
+
+#: models.py:217
 msgid "published on"
 msgstr ""
 
-#: models.py:206
+#: models.py:221
+msgid "help text for published_on"
+msgstr ""
+
+#: models.py:223
 msgid "last modified on"
 msgstr ""
 
-#: models.py:210
+#: models.py:226
+msgid "help text for last_modified"
+msgstr ""
+
+#: models.py:228
 msgid "is deleted?"
 msgstr ""
 
-#: models.py:267 templates/dariah_contributions/contribution_form.html:14
+#: models.py:231
+msgid "help text for is_deleted"
+msgstr ""
+
+#: models.py:287 templates/dariah_contributions/contribution_form.html:14
 msgid "contribution"
 msgstr ""
 
-#: models.py:268 templates/dariah_contributions/contribution_list.html:20
+#: models.py:288 templates/dariah_contributions/contribution_list.html:20
 msgid "contributions"
 msgstr ""
 
-#: views.py:105
+#: models.py:315 models.py:319 models.py:323 models.py:327 models.py:331
+msgid "help text for foaf:person"
+msgstr ""
+
+#: views.py:110
 msgid "Contribution was created successfully."
 msgstr ""
 
-#: views.py:119
+#: views.py:124
 msgid "Contribution was updated successfully."
 msgstr ""
 
-#: views.py:149
+#: views.py:154
 msgid "Contribution was published successfully."
 msgstr ""
 
-#: views.py:150
+#: views.py:155
 msgid "Something went wrong while publishing the contribution."
 msgstr ""
 
-#: views.py:180
+#: views.py:185
 msgid "Contribution was unpublished successfully."
 msgstr ""
 
-#: views.py:181
+#: views.py:186
 msgid "Something went wrong while unpublishing the contribution."
 msgstr ""
 
-#: views.py:192
+#: views.py:197
 msgid "Contribution was deleted successfully."
 msgstr ""
 
-#: views.py:255
+#: views.py:260
 #, python-format
 msgid "dc:creator %s was created successfully."
 msgstr ""
 
-#: views.py:265
+#: views.py:270
 #, python-format
 msgid "dc:contributor %s was created successfully."
 msgstr ""
@@ -222,8 +290,6 @@ msgid "Are you sure you want to delete %(object)s?"
 msgstr ""
 
 #: templates/dariah_contributions/contribution_confirm_delete.html:9
-#: templates/dariah_contributions/contribution_detail.html:22
-#: templates/dariah_contributions/contribution_list.html:45
 msgid "Delete"
 msgstr ""
 
@@ -231,11 +297,27 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
-#: templates/dariah_contributions/contribution_detail.html:19
+#: templates/dariah_contributions/contribution_detail.html:22
+msgid "Contribution last modified"
+msgstr ""
+
+#: templates/dariah_contributions/contribution_detail.html:24
+msgid "by"
+msgstr ""
+
+#: templates/dariah_contributions/contribution_detail.html:27
+msgid "published"
+msgstr ""
+
+#: templates/dariah_contributions/contribution_detail.html:29
+msgid "unpublished"
+msgstr ""
+
+#: templates/dariah_contributions/contribution_detail.html:38
 msgid "Show as RDF"
 msgstr ""
 
-#: templates/dariah_contributions/contribution_detail.html:21
+#: templates/dariah_contributions/contribution_detail.html:40
 msgid "Edit"
 msgstr ""
 
@@ -266,15 +348,15 @@ msgstr ""
 msgid "Yes,No"
 msgstr ""
 
-#: templates/dariah_contributions/contribution_list.html:47
+#: templates/dariah_contributions/contribution_list.html:48
 msgid "Unpublish"
 msgstr ""
 
-#: templates/dariah_contributions/contribution_list.html:49
+#: templates/dariah_contributions/contribution_list.html:50
 msgid "Publish"
 msgstr ""
 
-#: templates/dariah_contributions/contribution_list.html:62
+#: templates/dariah_contributions/contribution_list.html:63
 msgid "No contributions are available."
 msgstr ""
 
