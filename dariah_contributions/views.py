@@ -124,58 +124,58 @@ class ContributionRDF(DetailView):
         g.bind("vcard", vcard)
 
         # Declare the item
-        dariah_temp = URIRef(c.get_absolute_url())
+        this_contribution = URIRef(c.get_absolute_url())
 
         # Add skos:preflabel BNodes to the graph and item / skos:preflabel
         if c.skos_preflabel_activity.count():
             tadirah_activity = BNode()
             g.add( (tadirah_activity, rdf.type, skos.Concept) )
-            g.add( (dariah_temp, sioc.topic, tadirah_activity) )
+            g.add( (this_contribution, sioc.topic, tadirah_activity) )
         if c.skos_preflabel_discipline.count():
             discipline = BNode()
             g.add( (discipline, rdf.type, skos.Concept) )
-            g.add( (dariah_temp, sioc.topic, discipline) )
+            g.add( (this_contribution, sioc.topic, discipline) )
         if c.skos_preflabel_object.count():
             tadirah_object = BNode()
             g.add( (tadirah_object, rdf.type, skos.Concept) )
-            g.add( (dariah_temp, sioc.topic, tadirah_object) )
+            g.add( (this_contribution, sioc.topic, tadirah_object) )
         if c.skos_preflabel_technique.count():
             tadirah_technique = BNode()
             g.add( (tadirah_technique, rdf.type, skos.Concept) )
-            g.add( (dariah_temp, sioc.topic, tadirah_technique) )
+            g.add( (this_contribution, sioc.topic, tadirah_technique) )
         # if c.skos_preflabel_???.count():
             # bnode_e = BNode()  # ?
             # g.add( (bnode_e, rdf.type, skos.Concept) )  # ?
-            # g.add( (dariah_temp, sioc.has_scope, bnode_e) )  # ?
+            # g.add( (this_contribution, sioc.has_scope, bnode_e) )  # ?
         if c.skos_preflabel_vcc.count():
             tadirah_vcc = BNode()
             g.add( (tadirah_vcc, rdf.type, skos.Concept) )
-            g.add( (dariah_temp, sioc.has_scope, tadirah_vcc) )
+            g.add( (this_contribution, sioc.has_scope, tadirah_vcc) )
 
         #######################################################################
         # Add tripples about the item to the graph
-        g.add( (dariah_temp, dc.type, URIRef(u'http://purl.org/ontology/bibo/Webpage')) )
-        g.add( (dariah_temp, vcard.category, URIRef(u'http://data.dariah.eu/vocabulary/item/contribution')) )
+        g.add( (this_contribution, dc.type, URIRef(u'http://purl.org/ontology/bibo/Webpage')) )
+        g.add( (this_contribution, vcard.category, URIRef(u'http://data.dariah.eu/vocabulary/item/contribution')) )
 
-        if c.dc_identifier: g.add( (dariah_temp, dc.identifier, URIRef(c.get_absolute_url())) )
-        if c.dc_title: g.add( (dariah_temp, dc.title, Literal(c.dc_title, lang=u'en')) )
-        if c.dc_date: g.add( (dariah_temp, dc.date, Literal(u'%s-01-01' % c.dc_date, lang=u'en')) )
-        if c.dc_relation: g.add( (dariah_temp, dc.relation, URIRef(c.dc_relation)) )
-        if c.vcard_logo: g.add( (dariah_temp, vcard.logo, URIRef(c.vcard_logo.url)) )
-        if c.dc_publisher: g.add( (dariah_temp, dc.publisher, Literal(c.dc_publisher, lang=u'en')) )
-        if c.dcterms_spatial: g.add( (dariah_temp, dcterms.spatial, URIRef(c.dcterms_spatial)) )
-        if c.dc_coverage: g.add( (dariah_temp, dc.coverage, URIRef(c.dc_coverage.uri)) )
-        # if c.organization: g.add( (dariah_temp, vcard.organization, Literal(u'EHESS', lang=u'en')) )
-        # if c.organization: g.add( (dariah_temp, vcard.organization, Literal(u'University of Aix-Marseille', lang=u'en')) )
-        # if c.organization: g.add( (dariah_temp, vcard.organization, Literal(u'University of Avignon', lang=u'en')) )
-        # if c.organization: g.add( (dariah_temp, vcard.organization, Literal(u'CNRS', lang=u'en')) )
+        if c.dc_identifier: g.add( (this_contribution, dc.identifier, URIRef(c.get_absolute_url())) )
+        if c.dc_title: g.add( (this_contribution, dc.title, Literal(c.dc_title, lang=u'en')) )
+        if c.dc_date: g.add( (this_contribution, dc.date, Literal(u'%s-01-01' % c.dc_date, lang=u'en')) )
+        if c.dc_relation: g.add( (this_contribution, dc.relation, URIRef(c.dc_relation)) )
+        if c.vcard_logo: g.add( (this_contribution, vcard.logo, URIRef(c.vcard_logo.url)) )
+        if c.dc_publisher: g.add( (this_contribution, dc.publisher, Literal(c.dc_publisher, lang=u'en')) )
+        if c.dcterms_spatial: g.add( (this_contribution, dcterms.spatial, URIRef(c.dcterms_spatial)) )
+        if c.dc_coverage: g.add( (this_contribution, dc.coverage, URIRef(c.dc_coverage.uri)) )
+        # if c.organization: g.add( (this_contribution, vcard.organization, Literal(u'EHESS', lang=u'en')) )
+        # if c.organization: g.add( (this_contribution, vcard.organization, Literal(u'University of Aix-Marseille', lang=u'en')) )
+        # if c.organization: g.add( (this_contribution, vcard.organization, Literal(u'University of Avignon', lang=u'en')) )
+        # if c.organization: g.add( (this_contribution, vcard.organization, Literal(u'CNRS', lang=u'en')) )
         # Many2Many dc:subject
         for s in c.dc_subject.all():
-            g.add( (dariah_temp, dc.subject, Literal(s, lang=u'en')) )
+            g.add( (this_contribution, dc.subject, Literal(s, lang=u'en')) )
         # EndMany2Many
-        if c.dcterms_abstract_en: g.add( (dariah_temp, dcterms.abstract, Literal(c.dcterms_abstract_en, lang=u'en')) )
-        if c.dcterms_abstract: g.add( (dariah_temp, dcterms.abstract, Literal(c.dcterms_abstract, lang=c.dcterms_abstract_lang)) )
-        if c.dc_description: g.add( (dariah_temp, dc.description, Literal(c.dc_description, lang=u'en')) )
+        if c.dcterms_abstract_en: g.add( (this_contribution, dcterms.abstract, Literal(c.dcterms_abstract_en, lang=u'en')) )
+        if c.dcterms_abstract: g.add( (this_contribution, dcterms.abstract, Literal(c.dcterms_abstract, lang=c.dcterms_abstract_lang)) )
+        if c.dc_description: g.add( (this_contribution, dc.description, Literal(c.dc_description, lang=u'en')) )
 
         # Many2Many skos:preflabels
         for x in c.skos_preflabel_activity.all():
@@ -193,7 +193,7 @@ class ContributionRDF(DetailView):
         # Many2Many dc:creator
         for x in c.dc_creator.all():
             if x.foaf_person:
-                g.add( (dariah_temp, dc.creator, URIRef(x.foaf_person)) )
+                g.add( (this_contribution, dc.creator, URIRef(x.foaf_person)) )
                 g.add( (URIRef(x.foaf_person), rdf.type, foaf.Person) )
                 if x.foaf_name: g.add( (URIRef(x.foaf_person), foaf.name, Literal(x.foaf_name, lang=u'en')) )
                 if x.foaf_publications: g.add( (URIRef(x.foaf_person), foaf.publications, URIRef(x.foaf_publications)) )
@@ -201,7 +201,7 @@ class ContributionRDF(DetailView):
         # Many2Many dc:contributor
         for x in c.dc_contributor.all():
             if x.foaf_person:
-                g.add( (dariah_temp, dc.contributor, URIRef(x.foaf_person)) )
+                g.add( (this_contribution, dc.contributor, URIRef(x.foaf_person)) )
                 g.add( (URIRef(x.foaf_person), rdf.type, foaf.Person) )
                 if x.foaf_name: g.add( (URIRef(x.foaf_person), foaf.name, Literal(x.foaf_name, lang=u'en')) )
                 if x.foaf_publications: g.add( (URIRef(x.foaf_person), foaf.publications, URIRef(x.foaf_publications)) )
