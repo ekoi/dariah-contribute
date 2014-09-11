@@ -15,8 +15,6 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.list import ListView
 
 import json
-from rdflib import Literal, Namespace, Graph
-from rdflib.namespace import FOAF
 
 from taggit.managers import TaggableManager
 import autocomplete_light
@@ -89,16 +87,40 @@ class ContributionRDF(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(ContributionRDF, self).get_context_data(**kwargs)
-        # Produce the RDF data ################################################
-        n = Namespace("http://dariah.eu/contributions/")
-        g = Graph()
-
-        for field, value in context['object'].attrs():
-            g.add((n.field, FOAF.about, Literal(value)))
-        rdf = g.serialize(format='pretty-xml')
-        #######################################################################
-        context['rdf'] = rdf
+        context['rdf'] = self.generate_rdf(context['object'])
         return context
+
+    @staticmethod
+    def generate_rdf(contribution):
+        from rdflib import URIRef, BNode, Literal, Namespace, Graph
+        from rdflib import RDF as rdf                                           # http://www.w3.org/1999/02/22-rdf-syntax-ns#
+        from rdflib import RDFS as rdfs                                         # http://www.w3.org/2000/01/rdf-schema#
+        from rdflib import XSD as xsd                                           # http://www.w3.org/2001/XMLSchema#
+        from rdflib.namespace import DC as dc                                   # http://purl.org/dc/elements/1.1               AKA :
+        from rdflib.namespace import DCTERMS as dcterms                         # http://purl.org/dc/terms/
+        from rdflib.namespace import FOAF as foaf                               # http://xmlns.com/foaf/0.1/                    AKA default4
+        from rdflib.namespace import SKOS as skos                               # http://www.w3.org/2004/02/skos/core           AKA default3
+        from rdflib.namespace import XMLNS as xmlns                             # http://www.w3.org/XML/1998/namespace          AKA xml
+
+
+        # Add additional namespaces
+        sioc = Namespace("http://rdfs.org/sioc/ns#")                            # AKA default2
+        vcard = Namespace("http://www.w3.org/2006/vcard/ns#")                   # AKA default1
+
+        # Start the graph and bind a few prefix, namespace pairs for more readable output
+        g = Graph()
+        g.bind("rdf", rdf)
+        g.bind("rdfs", rdfs)
+        g.bind("xsd", xsd)
+        g.bind("dc", dc)
+        g.bind("dcterms", dcterms)
+        g.bind("foaf", foaf)
+        g.bind("skos", skos)
+        g.bind("xmlns", xmlns)
+        g.bind("sioc", sioc)
+        g.bind("vcard", vcard)
+
+        return g.serialize(format='pretty-xml')
 
 
 ###############################################################################
