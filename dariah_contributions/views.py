@@ -132,9 +132,9 @@ class ContributionRDF(DetailView):
             g.add( (tadirah_activity, rdf.type, skos.Concept) )
             g.add( (dariah_temp, sioc.topic, tadirah_activity) )
         if c.skos_preflabel_discipline.count():
-            tadirah_discipline = BNode()
-            g.add( (tadirah_discipline, rdf.type, skos.Concept) )
-            g.add( (dariah_temp, sioc.topic, tadirah_discipline) )
+            discipline = BNode()
+            g.add( (discipline, rdf.type, skos.Concept) )
+            g.add( (dariah_temp, sioc.topic, discipline) )
         if c.skos_preflabel_object.count():
             tadirah_object = BNode()
             g.add( (tadirah_object, rdf.type, skos.Concept) )
@@ -181,7 +181,7 @@ class ContributionRDF(DetailView):
         for x in c.skos_preflabel_activity.all():
             g.add( (tadirah_activity, skos.prefLabel, URIRef(x.uri)) )
         for x in c.skos_preflabel_discipline.all():
-            g.add( (tadirah_discipline, skos.prefLabel, URIRef(x.uri)) )
+            g.add( (discipline, skos.prefLabel, URIRef(x.uri)) )
         for x in c.skos_preflabel_object.all():
             g.add( (tadirah_object, skos.prefLabel, URIRef(x.uri)) )
         for x in c.skos_preflabel_technique.all():
