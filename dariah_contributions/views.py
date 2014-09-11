@@ -3,6 +3,7 @@ from django.core.urlresolvers import reverse_lazy
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.messages.views import SuccessMessageMixin
+from django.contrib.sites.models import Site
 from django.db.models.fields.related import ManyToManyField
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
@@ -87,11 +88,12 @@ class ContributionRDF(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(ContributionRDF, self).get_context_data(**kwargs)
-        context['rdf'] = self.generate_rdf(context['object'], 'xml')
+        site = Site.objects.get_current()
+        context['rdf'] = self.generate_rdf(context['object'], site, 'xml')
         return context
 
     @staticmethod
-    def generate_rdf(contribution, serialize_format='pretty-xml'):
+    def generate_rdf(contribution, site, serialize_format='pretty-xml'):
         c = contribution
 
         from rdflib import URIRef, BNode, Literal, Namespace, Graph
@@ -157,7 +159,7 @@ class ContributionRDF(DetailView):
         if c.dc_title: g.add( (this_contribution, dc.title, Literal(c.dc_title, lang=u'en')) )
         if c.dc_date: g.add( (this_contribution, dc.date, Literal(u'%s-01-01' % c.dc_date, lang=u'en')) )
         if c.dc_relation: g.add( (this_contribution, dc.relation, URIRef(c.dc_relation)) )
-        if c.vcard_logo: g.add( (this_contribution, vcard.logo, URIRef(c.vcard_logo.url)) )
+        if c.vcard_logo: g.add( (this_contribution, vcard.logo, URIRef("%s%s" % (site.domain, c.vcard_logo.url))) )
         if c.dc_publisher: g.add( (this_contribution, dc.publisher, Literal(c.dc_publisher, lang=u'en')) )
         if c.dcterms_spatial: g.add( (this_contribution, dcterms.spatial, URIRef(c.dcterms_spatial)) )
         if c.dc_coverage: g.add( (this_contribution, dc.coverage, URIRef(c.dc_coverage.uri)) )
