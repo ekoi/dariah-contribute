@@ -92,6 +92,8 @@ class ContributionRDF(DetailView):
 
     @staticmethod
     def generate_rdf(contribution):
+        c = contribution
+
         from rdflib import URIRef, BNode, Literal, Namespace, Graph
         from rdflib import RDF as rdf                                           # http://www.w3.org/1999/02/22-rdf-syntax-ns#
         from rdflib import RDFS as rdfs                                         # http://www.w3.org/2000/01/rdf-schema#
@@ -106,6 +108,7 @@ class ContributionRDF(DetailView):
         sioc = Namespace("http://rdfs.org/sioc/ns#")                            # AKA default2
         vcard = Namespace("http://www.w3.org/2006/vcard/ns#")                   # AKA default1
 
+        ### PREPARE THE GRAPH #################################################
         # Start the graph and bind a few prefix, namespace pairs for more
         # readable output
         g = Graph()
@@ -120,79 +123,89 @@ class ContributionRDF(DetailView):
         g.bind("sioc", sioc)
         g.bind("vcard", vcard)
 
-        # Declare some sioc BNodes
-        bnode_a = BNode('N875a9b274a9a462ea348abac588d8686')
-        bnode_b = BNode('Nfd7a0729257c400a806705837b183d00')
-        bnode_c = BNode('N5ea893876c6c4ed2a588f8c2dbeda0fd')
-        bnode_d = BNode('N3eaaa3285f8d468fb753aaa72070dbd2')
-        bnode_e = BNode('N7bcf89dea8da4e93b76d45536df1865d')
-        bnode_f = BNode('N4578cb3384a14aef95637a764ff92e17')
-
         # Declare the item
-        dariah_temp = URIRef(u'http://data.dariah.eu/tmp/')
+        dariah_temp = URIRef(c.get_absolute_url())
 
-        # Build the graph with tripples about the item
+        # Add skos:preflabel BNodes to the graph and item / skos:preflabel
+        if c.skos_preflabel_activity.count():
+            tadirah_activity = BNode()
+            g.add( (tadirah_activity, rdf.type, skos.Concept) )
+            g.add( (dariah_temp, sioc.topic, tadirah_activity) )
+        if c.skos_preflabel_discipline.count():
+            tadirah_discipline = BNode()
+            g.add( (tadirah_discipline, rdf.type, skos.Concept) )
+            g.add( (dariah_temp, sioc.topic, tadirah_discipline) )
+        if c.skos_preflabel_object.count():
+            tadirah_object = BNode()
+            g.add( (tadirah_object, rdf.type, skos.Concept) )
+            g.add( (dariah_temp, sioc.topic, tadirah_object) )
+        if c.skos_preflabel_technique.count():
+            tadirah_technique = BNode()
+            g.add( (tadirah_technique, rdf.type, skos.Concept) )
+            g.add( (dariah_temp, sioc.topic, tadirah_technique) )
+        # if c.skos_preflabel_???.count():
+            # bnode_e = BNode()  # ?
+            # g.add( (bnode_e, rdf.type, skos.Concept) )  # ?
+            # g.add( (dariah_temp, sioc.has_scope, bnode_e) )  # ?
+        if c.skos_preflabel_vcc.count():
+            tadirah_vcc = BNode()
+            g.add( (tadirah_vcc, rdf.type, skos.Concept) )
+            g.add( (dariah_temp, sioc.has_scope, tadirah_vcc) )
+
+        #######################################################################
+        # Add tripples about the item to the graph
         g.add( (dariah_temp, dc.type, URIRef(u'http://purl.org/ontology/bibo/Webpage')) )
         g.add( (dariah_temp, vcard.category, URIRef(u'http://data.dariah.eu/vocabulary/item/contribution')) )
-        g.add( (dariah_temp, dc.identifier, URIRef(u'http://data.dariah.eu/contribution/2014/open_edition_sample_dariah.html')) )
-        g.add( (dariah_temp, dc.title, Literal(u'Electronic publishing with OpenEdition', lang=u'en')) )
-        g.add( (dariah_temp, dc.date, Literal(u'2014-01-01', lang=u'en')) )
-        g.add( (dariah_temp, dc.relation, URIRef(u'http://cleo.openedition.org')) )
-        g.add( (dariah_temp, vcard.logo, URIRef(u'http://cleo.openedition.org/wp-content/uploads/2012/09/logoOE_300dpi.png')) )
-        g.add( (dariah_temp, dc.publisher, Literal(u'OpenEdition', lang=u'en')) )
-        g.add( (dariah_temp, dcterms.spatial, URIRef(u'http://sws.geonames.org/2995469/about.rdf')) )
-        g.add( (dariah_temp, dc.coverage, URIRef(u'http://sws.geonames.org/3017382/about.rdf')) )
-        g.add( (dariah_temp, vcard.organization, Literal(u'EHESS', lang=u'en')) )
-        g.add( (dariah_temp, vcard.organization, Literal(u'University of Aix-Marseille', lang=u'en')) )
-        g.add( (dariah_temp, vcard.organization, Literal(u'University of Avignon', lang=u'en')) )
-        g.add( (dariah_temp, vcard.organization, Literal(u'CNRS', lang=u'en')) )
-        g.add( (dariah_temp, dc.subject, Literal(u'Open Source', lang=u'en')) )
-        g.add( (dariah_temp, dc.subject, Literal(u'TEI P5', lang=u'en')) )
-        g.add( (dariah_temp, dcterms.abstract, Literal(u'OpenEdition is a comprehensive publishing platform (Books, Journals, Blogs, Events)', lang=u'en')) )
-        g.add( (dariah_temp, dcterms.abstract, Literal(u"OpenEdition est une plateforme compl\xe8te d'\xe9dition \xe9lectronique (livres, revues, blogs, \xe9v\xe9nements)", lang=u'fr')) )
-        g.add( (dariah_temp, dc.description, Literal(u"100 conference announcements in the field of Digital Humanities ", lang=u'en')) )
 
-        g.add( (dariah_temp, sioc.topic, bnode_a) )
-        g.add( (dariah_temp, sioc.topic, bnode_b) )
-        g.add( (dariah_temp, sioc.topic, bnode_d) )
-        g.add( (dariah_temp, sioc.topic, bnode_f) )
+        if c.dc_identifier: g.add( (dariah_temp, dc.identifier, URIRef(c.get_absolute_url())) )
+        if c.dc_title: g.add( (dariah_temp, dc.title, Literal(c.dc_title, lang=u'en')) )
+        if c.dc_date: g.add( (dariah_temp, dc.date, Literal(u'%s-01-01' % c.dc_date, lang=u'en')) )
+        if c.dc_relation: g.add( (dariah_temp, dc.relation, URIRef(c.dc_relation)) )
+        if c.vcard_logo: g.add( (dariah_temp, vcard.logo, URIRef(c.vcard_logo.url)) )
+        if c.dc_publisher: g.add( (dariah_temp, dc.publisher, Literal(c.dc_publisher, lang=u'en')) )
+        if c.dcterms_spatial: g.add( (dariah_temp, dcterms.spatial, URIRef(c.dcterms_spatial)) )
+        if c.dc_coverage: g.add( (dariah_temp, dc.coverage, URIRef(c.dc_coverage.uri)) )
+        # if c.organization: g.add( (dariah_temp, vcard.organization, Literal(u'EHESS', lang=u'en')) )
+        # if c.organization: g.add( (dariah_temp, vcard.organization, Literal(u'University of Aix-Marseille', lang=u'en')) )
+        # if c.organization: g.add( (dariah_temp, vcard.organization, Literal(u'University of Avignon', lang=u'en')) )
+        # if c.organization: g.add( (dariah_temp, vcard.organization, Literal(u'CNRS', lang=u'en')) )
+        # Many2Many dc:subject
+        for s in c.dc_subject.all():
+            g.add( (dariah_temp, dc.subject, Literal(s, lang=u'en')) )
+        # EndMany2Many
+        if c.dcterms_abstract_en: g.add( (dariah_temp, dcterms.abstract, Literal(c.dcterms_abstract_en, lang=u'en')) )
+        if c.dcterms_abstract: g.add( (dariah_temp, dcterms.abstract, Literal(c.dcterms_abstract, lang=c.dcterms_abstract_lang)) )
+        if c.dc_description: g.add( (dariah_temp, dc.description, Literal(c.dc_description, lang=u'en')) )
 
-        g.add( (dariah_temp, sioc.has_scope, bnode_c) )
-        g.add( (dariah_temp, sioc.has_scope, bnode_e) )
+        # Many2Many skos:preflabels
+        for x in c.skos_preflabel_activity.all():
+            g.add( (tadirah_activity, skos.prefLabel, URIRef(x.uri)) )
+        for x in c.skos_preflabel_discipline.all():
+            g.add( (tadirah_discipline, skos.prefLabel, URIRef(x.uri)) )
+        for x in c.skos_preflabel_object.all():
+            g.add( (tadirah_object, skos.prefLabel, URIRef(x.uri)) )
+        for x in c.skos_preflabel_technique.all():
+            g.add( (tadirah_technique, skos.prefLabel, URIRef(x.uri)) )
+        for x in c.skos_preflabel_vcc.all():
+            g.add( (tadirah_vcc, skos.prefLabel, URIRef(x.uri)) )
+        # EndMany2Many
 
-        g.add( (bnode_a, rdf.type, skos.Concept) )  # Activity
-        g.add( (bnode_b, rdf.type, skos.Concept) )  # Discipline
-        g.add( (bnode_c, rdf.type, skos.Concept) )  # VCC
-        g.add( (bnode_d, rdf.type, skos.Concept) )  # Object
-        g.add( (bnode_e, rdf.type, skos.Concept) )  # ?
-        g.add( (bnode_f, rdf.type, skos.Concept) )  # Technique
-
-        g.add( (bnode_a, skos.prefLabel, URIRef(u'http://data.dariah.eu/vocabulary/tadirah/activity/dissemination/publishing')) )
-        g.add( (bnode_a, skos.prefLabel, URIRef(u'http://data.dariah.eu/vocabulary/tadirah/activity/dissemination/collaboration')) )
-        g.add( (bnode_b, skos.prefLabel, URIRef(u'http://archive-ouverte.org/discipline/history')) )
-        g.add( (bnode_b, skos.prefLabel, URIRef(u'http://archive-ouverte.org/discipline/geography')) )
-        g.add( (bnode_b, skos.prefLabel, URIRef(u'http://archive-ouverte.org/discipline/demography')) )
-        g.add( (bnode_c, skos.prefLabel, URIRef(u'http://data.dariah.eu/vocabulary/VCC/VCC3')) )
-        g.add( (bnode_d, skos.prefLabel, URIRef(u'http://data.dariah.eu/vocabulary/tadirah/object/text')) )
-        g.add( (bnode_d, skos.prefLabel, URIRef(u'http://data.dariah.eu/vocabulary/tadirah/object/images')) )
-        g.add( (bnode_e, skos.prefLabel, URIRef(u'http://data.dariah.eu/vocabulary/type_of_in_kind_contribution/expertise')) )
-        g.add( (bnode_e, skos.prefLabel, URIRef(u'http://data.dariah.eu/vocabulary/type_of_in_kind_contribution/access')) )
-        g.add( (bnode_f, skos.prefLabel, URIRef(u'http://data.dariah.eu/vocabulary/tadirah/technique/information_retrieval')) )
-
-        g.add( (dariah_temp, dc.creator, URIRef(u'http://orcid.org/0000-0002-9361-5295')) )
-        g.add( (URIRef(u'http://orcid.org/0000-0002-9361-5295'), rdf.type, foaf.Person) )
-        g.add( (URIRef(u'http://orcid.org/0000-0002-9361-5295'), foaf.name, Literal(u'Marin Dacos', lang=u'en')) )
-        g.add( (URIRef(u'http://orcid.org/0000-0002-9361-5295'), foaf.publications, URIRef(u'http://www.idref.fr/139753753')) )
-        g.add( (dariah_temp, dc.contributor, URIRef(u'http://orcid.org/0000-0003-0691-6063')) )
-        g.add( (URIRef(u'http://orcid.org/0000-0003-0691-6063'), rdf.type, foaf.Person) )
-        g.add( (URIRef(u'http://orcid.org/0000-0003-0691-6063'), foaf.name, Literal(u'Pierre Mounier', lang=u'en')) )
-        g.add( (URIRef(u'http://orcid.org/0000-0003-0691-6063'), foaf.publications, URIRef(u'http://viaf.org/viaf/280303860')) )
-
-        g.add( (dariah_temp, dc.contributor, dariah_temp) )
-        g.add( (dariah_temp, rdf.type, foaf.Person) )
-        g.add( (dariah_temp, foaf.name, Literal(u'Delphine Cavallo', lang=u'en')) )
-
-        g.add( (dariah_temp, dcterms.title, Literal(u'DARIAH contribution template', lang=u'en')) )
+        # Many2Many dc:creator
+        for x in c.dc_creator.all():
+            if x.foaf_person:
+                g.add( (dariah_temp, dc.creator, URIRef(x.foaf_person)) )
+                g.add( (URIRef(x.foaf_person), rdf.type, foaf.Person) )
+                if x.foaf_name: g.add( (URIRef(x.foaf_person), foaf.name, Literal(x.foaf_name, lang=u'en')) )
+                if x.foaf_publications: g.add( (URIRef(x.foaf_person), foaf.publications, URIRef(x.foaf_publications)) )
+        # EndMany2Many
+        # Many2Many dc:contributor
+        for x in c.dc_contributor.all():
+            if x.foaf_person:
+                g.add( (dariah_temp, dc.contributor, URIRef(x.foaf_person)) )
+                g.add( (URIRef(x.foaf_person), rdf.type, foaf.Person) )
+                if x.foaf_name: g.add( (URIRef(x.foaf_person), foaf.name, Literal(x.foaf_name, lang=u'en')) )
+                if x.foaf_publications: g.add( (URIRef(x.foaf_person), foaf.publications, URIRef(x.foaf_publications)) )
+        # EndMany2Many
 
         # Return the graph as pretty XML
         return g.serialize(format='pretty-xml')
