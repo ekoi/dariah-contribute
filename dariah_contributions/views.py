@@ -87,11 +87,11 @@ class ContributionRDF(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(ContributionRDF, self).get_context_data(**kwargs)
-        context['rdf'] = self.generate_rdf(context['object'])
+        context['rdf'] = self.generate_rdf(context['object'], 'xml')
         return context
 
     @staticmethod
-    def generate_rdf(contribution):
+    def generate_rdf(contribution, serialize_format='pretty-xml'):
         c = contribution
 
         from rdflib import URIRef, BNode, Literal, Namespace, Graph
@@ -143,10 +143,6 @@ class ContributionRDF(DetailView):
             tadirah_technique = BNode()
             g.add( (tadirah_technique, rdf.type, skos.Concept) )
             g.add( (this_contribution, sioc.topic, tadirah_technique) )
-        # if c.skos_preflabel_???.count():
-            # bnode_e = BNode()  # ?
-            # g.add( (bnode_e, rdf.type, skos.Concept) )  # ?
-            # g.add( (this_contribution, sioc.has_scope, bnode_e) )  # ?
         if c.skos_preflabel_vcc.count():
             tadirah_vcc = BNode()
             g.add( (tadirah_vcc, rdf.type, skos.Concept) )
@@ -165,10 +161,7 @@ class ContributionRDF(DetailView):
         if c.dc_publisher: g.add( (this_contribution, dc.publisher, Literal(c.dc_publisher, lang=u'en')) )
         if c.dcterms_spatial: g.add( (this_contribution, dcterms.spatial, URIRef(c.dcterms_spatial)) )
         if c.dc_coverage: g.add( (this_contribution, dc.coverage, URIRef(c.dc_coverage.uri)) )
-        # if c.organization: g.add( (this_contribution, vcard.organization, Literal(u'EHESS', lang=u'en')) )
-        # if c.organization: g.add( (this_contribution, vcard.organization, Literal(u'University of Aix-Marseille', lang=u'en')) )
-        # if c.organization: g.add( (this_contribution, vcard.organization, Literal(u'University of Avignon', lang=u'en')) )
-        # if c.organization: g.add( (this_contribution, vcard.organization, Literal(u'CNRS', lang=u'en')) )
+        if c.vcard_organization: g.add( (this_contribution, vcard.organization, Literal(c.vcard_organization, lang=u'en')) )
         # Many2Many dc:subject
         for s in c.dc_subject.all():
             g.add( (this_contribution, dc.subject, Literal(s, lang=u'en')) )
@@ -181,7 +174,7 @@ class ContributionRDF(DetailView):
         for x in c.skos_preflabel_activity.all():
             g.add( (tadirah_activity, skos.prefLabel, URIRef(x.uri)) )
         for x in c.skos_preflabel_discipline.all():
-            g.add( (discipline, skos.prefLabel, URIRef(x.uri)) )
+            g.add( (discipline, skos.prefLabel, URIRef(x.uri)) )  # Note: URI contains 'subject' instead of 'discipline'
         for x in c.skos_preflabel_object.all():
             g.add( (tadirah_object, skos.prefLabel, URIRef(x.uri)) )
         for x in c.skos_preflabel_technique.all():
@@ -192,23 +185,23 @@ class ContributionRDF(DetailView):
 
         # Many2Many dc:creator
         for x in c.dc_creator.all():
-            if x.foaf_person:
-                g.add( (this_contribution, dc.creator, URIRef(x.foaf_person)) )
-                g.add( (URIRef(x.foaf_person), rdf.type, foaf.Person) )
-                if x.foaf_name: g.add( (URIRef(x.foaf_person), foaf.name, Literal(x.foaf_name, lang=u'en')) )
-                if x.foaf_publications: g.add( (URIRef(x.foaf_person), foaf.publications, URIRef(x.foaf_publications)) )
+            creator = URIRef(x.foaf_person) if x.foaf_person else BNode()
+            g.add( (this_contribution, dc.creator, creator) )
+            g.add( (creator, rdf.type, foaf.Person) )
+            if x.foaf_name: g.add( (creator, foaf.name, Literal(x.foaf_name, lang=u'en')) )
+            if x.foaf_publications: g.add( (creator, foaf.publications, URIRef(x.foaf_publications)) )
         # EndMany2Many
         # Many2Many dc:contributor
         for x in c.dc_contributor.all():
-            if x.foaf_person:
-                g.add( (this_contribution, dc.contributor, URIRef(x.foaf_person)) )
-                g.add( (URIRef(x.foaf_person), rdf.type, foaf.Person) )
-                if x.foaf_name: g.add( (URIRef(x.foaf_person), foaf.name, Literal(x.foaf_name, lang=u'en')) )
-                if x.foaf_publications: g.add( (URIRef(x.foaf_person), foaf.publications, URIRef(x.foaf_publications)) )
+            contributor = URIRef(x.foaf_person) if x.foaf_person else BNode()
+            g.add( (this_contribution, dc.contributor, contributor) )
+            g.add( (contributor, rdf.type, foaf.Person) )
+            if x.foaf_name: g.add( (contributor, foaf.name, Literal(x.foaf_name, lang=u'en')) )
+            if x.foaf_publications: g.add( (contributor, foaf.publications, URIRef(x.foaf_publications)) )
         # EndMany2Many
 
         # Return the graph as pretty XML
-        return g.serialize(format='pretty-xml')
+        return g.serialize(format=serialize_format)
 
 
 ###############################################################################
