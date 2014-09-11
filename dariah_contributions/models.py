@@ -76,10 +76,12 @@ class Contribution(models.Model):
     # Metadata fields #########################################################
     # dc_type = models.URLField(
     #     _("dc:type"),
-    #     blank=True)
+    #     blank=True,
+    #     null=True)
     # vcard_category = models.URLField(
     #     _("vcard:category"),
-    #     blank=True)
+    #     blank=True,
+    #     null=True)
     dc_identifier = models.AutoField(
         _("dc:identifier"),
         primary_key=True)
