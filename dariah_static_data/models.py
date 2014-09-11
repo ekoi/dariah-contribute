@@ -115,4 +115,4 @@ class Country(models.Model):
 
     @property
     def uri(self):
-        return "http://sws.geonames.org/{geonamesid}/about.rdf".format(geonamesid=self.geonamesid)
+        return "http://sws.geonames.org/{geonameid}/about.rdf".format(geonameid=self.geonameid)
