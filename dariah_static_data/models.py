@@ -73,8 +73,8 @@ class TADIRAHVCC(models.Model):
         verbose_name_plural = _('TADIRAH VCC')
 
     def __unicode__(self):
-        return "{name}, {description}".format(name=self.name,
-                                              description=self.description)
+        return "{name} - {description}".format(name=self.name,
+                                               description=self.description)
 
 
 class Discipline(models.Model):
