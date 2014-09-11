@@ -4,10 +4,11 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.sites.models import Site
-from django.db.models.fields.related import ManyToManyField
+from django.db.models.fields.related import ManyToManyField, ForeignKey
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.template import RequestContext
+from django.template import Context, Template
 from django.template.loader import render_to_string
 from django.utils.decorators import method_decorator
 from django.utils.translation import ugettext_lazy as _
@@ -57,8 +58,7 @@ class ContributionDetail(DetailView):
         context['get_metadata_fields'] = self.get_fields(c, True)
         return context
 
-    @staticmethod
-    def get_fields(c, meta_metadata=False):
+    def get_fields(self, c, meta_metadata=False):
         """An iterable with the field names and values (in the correct order)
         of a Contribution instance to be rendered in the template.
         """
@@ -72,10 +72,20 @@ class ContributionDetail(DetailView):
             # If the field is an iterable (TaggableManager or ManyToManyField)
             # format the data as a string of comma separated items.
             if isinstance(field, ManyToManyField):
-                value = ", ".join(map(lambda x: str(x), value.all()))
+                value = ", ".join(map(lambda x: self.link(x), value.all()))
             elif isinstance(field, TaggableManager):
                 value = ", ".join(value.names())
+            elif isinstance(field, ForeignKey):
+                value = self.link(value)
             yield field.verbose_name, value
+
+    @staticmethod
+    def link(value):
+        if hasattr(value, 'uri') and getattr(value, 'uri'):
+            template = Template('<a href="{{ uri }}" title="{{ value }}">{{ value }}</a>')
+            context = Context({'value': str(value), 'uri': value.uri})
+            return template.render(context)
+        return str(value)
 
 
 class ContributionRDF(DetailView):

@@ -11,7 +11,7 @@
             {% if value|is_url %}
             <td>{{ value|urlize }}</td>
             {% else %}
-            <td>{{ value }}</td>
+            <td>{{ value|safe }}</td>
             {% endif %}
         </tr>
     {% endfor %}
