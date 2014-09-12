@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-11 13:25+0200\n"
+"POT-Creation-Date: 2014-09-12 16:23+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -238,44 +238,6 @@ msgstr ""
 msgid "help text for foaf:person"
 msgstr ""
 
-#: views.py:110
-msgid "Contribution was created successfully."
-msgstr ""
-
-#: views.py:124
-msgid "Contribution was updated successfully."
-msgstr ""
-
-#: views.py:154
-msgid "Contribution was published successfully."
-msgstr ""
-
-#: views.py:155
-msgid "Something went wrong while publishing the contribution."
-msgstr ""
-
-#: views.py:185
-msgid "Contribution was unpublished successfully."
-msgstr ""
-
-#: views.py:186
-msgid "Something went wrong while unpublishing the contribution."
-msgstr ""
-
-#: views.py:197
-msgid "Contribution was deleted successfully."
-msgstr ""
-
-#: views.py:260
-#, python-format
-msgid "dc:creator %s was created successfully."
-msgstr ""
-
-#: views.py:270
-#, python-format
-msgid "dc:contributor %s was created successfully."
-msgstr ""
-
 #: templates/dariah_contributions/_creator-contrib_autocomplete_empty_html_format.html:13
 msgid "Add new..."
 msgstr ""
@@ -360,6 +322,14 @@ msgstr ""
 msgid "No contributions are available."
 msgstr ""
 
+#: templates/dariah_contributions/contribution_list.html:71
+msgid "View as Atom feed"
+msgstr ""
+
+#: templates/dariah_contributions/contribution_list.html:72
+msgid "View as RSS feed"
+msgstr ""
+
 #: templates/dariah_contributions/dccontributor_form.html:14
 msgid "Add a dc:contributor"
 msgstr ""
@@ -375,4 +345,58 @@ msgstr ""
 
 #: templates/dariah_contributions/dccreator_form.html:22
 msgid "Reset"
+msgstr ""
+
+#: views/edit.py:26
+msgid "Contribution was created successfully."
+msgstr ""
+
+#: views/edit.py:40
+msgid "Contribution was updated successfully."
+msgstr ""
+
+#: views/edit.py:70
+msgid "Contribution was published successfully."
+msgstr ""
+
+#: views/edit.py:71
+msgid "Something went wrong while publishing the contribution."
+msgstr ""
+
+#: views/edit.py:101
+msgid "Contribution was unpublished successfully."
+msgstr ""
+
+#: views/edit.py:102
+msgid "Something went wrong while unpublishing the contribution."
+msgstr ""
+
+#: views/edit.py:113
+msgid "Contribution was deleted successfully."
+msgstr ""
+
+#: views/edit.py:176
+#, python-format
+msgid "dc:creator %s was created successfully."
+msgstr ""
+
+#: views/edit.py:186
+#, python-format
+msgid "dc:contributor %s was created successfully."
+msgstr ""
+
+#: views/feeds.py:10
+msgid "Contributions Feed"
+msgstr ""
+
+#: views/feeds.py:12
+msgid "Updates on changes and additions to DARIAH contributions."
+msgstr ""
+
+#: views/feeds.py:13
+msgid "DARIAH"
+msgstr ""
+
+#: views/feeds.py:14
+msgid "http://dariah.eu"
 msgstr ""

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-10 14:26+0200\n"
+"POT-Creation-Date: 2014-09-12 16:23+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,7 +25,7 @@ msgstr ""
 msgid "Dutch"
 msgstr ""
 
-#: settings/base.py:197
+#: settings/base.py:198
 msgid "Dariah Contributions Admin"
 msgstr ""
 
@@ -46,7 +46,7 @@ msgid ""
 "Unfortunately something went wrong with your request. Please contact the "
 msgstr ""
 
-#: templates/500.html:8 templates/registration/login.html:17
+#: templates/500.html:8
 msgid "administrator"
 msgstr ""
 
@@ -77,202 +77,42 @@ msgid ""
 "P.S. You might be able to access some pages, but we cannot guarantee this."
 msgstr ""
 
-#: templates/503.html:10 templates/axes/lockout.html:22
+#: templates/503.html:10
 msgid "Go back to the homepage"
 msgstr ""
 
-#: templates/base.html:10
+#: templates/base.html:11
 msgid "Toggle navigation"
 msgstr ""
 
-#: templates/base.html:15
-msgid "Dariah Contribute"
-msgstr ""
-
-#: templates/base.html:19
+#: templates/base.html:20
 msgid "Browse Contributions"
 msgstr ""
 
-#: templates/base.html:21
+#: templates/base.html:22
 msgid "My Contributions"
 msgstr ""
 
-#: templates/base.html:22
+#: templates/base.html:25
+msgid "My account"
+msgstr ""
+
+#: templates/base.html:28
+msgid "Change my password"
+msgstr ""
+
+#: templates/base.html:30
 msgid "Log out"
 msgstr ""
 
-#: templates/base.html:24 templates/registration/login.html:10
+#: templates/base.html:34
 msgid "Log in"
 msgstr ""
 
-#: templates/base.html:26
+#: templates/base.html:36
 msgid "About"
 msgstr ""
 
-#: templates/base.html:38
+#: templates/base.html:48
 msgid "(no content)"
-msgstr ""
-
-#: templates/axes/lockout.html:11
-#, python-format
-msgid ""
-"Unfortunately you have entered the wrong password and/or username more than "
-"one time."
-msgid_plural ""
-"Unfortunately you have entered the wrong password and/or username more than "
-"%(counter)s times."
-msgstr[0] ""
-msgstr[1] ""
-
-#: templates/axes/lockout.html:12
-#, python-format
-msgid "Therefore your account has been blocked for one hour."
-msgid_plural "Therefore your account has been blocked for %(counter)s hours."
-msgstr[0] ""
-msgstr[1] ""
-
-#: templates/axes/lockout.html:16
-#, python-format
-msgid ""
-"If you have forgotten your password you can <a href=\"%(password_reset_url)s"
-"\" title=\"Password reset\">request a password reset</a>."
-msgstr ""
-
-#: templates/axes/lockout.html:19
-msgid ""
-"If you have forgotten both your password and the e-mail address you "
-"registered with you can contact the <a href=\"mailto:info@datasealofapproval."
-"org\" title=\"E-mail the administrator\">administrator</a>."
-msgstr ""
-
-#: templates/registration/logged_out.html:7
-msgid "You have been successfully logged out."
-msgstr ""
-
-#: templates/registration/logged_out.html:8
-msgid "Log back in"
-msgstr ""
-
-#: templates/registration/login.html:16
-msgid "Reset your password"
-msgstr ""
-
-#: templates/registration/login.html:16
-msgid ""
-"if your username and password do not match or if you have forgotten your "
-"password."
-msgstr ""
-
-#: templates/registration/login.html:17
-msgid "Contact the"
-msgstr ""
-
-#: templates/registration/login.html:17
-msgid "info@dariah.org"
-msgstr ""
-
-#: templates/registration/login.html:17
-msgid ""
-"if you have forgotten your username, password and sign-up e-mail address"
-msgstr ""
-
-#: templates/registration/login.html:21
-msgid "Register to create an account"
-msgstr ""
-
-#: templates/registration/login.html:22
-msgid "Don't have an account yet?"
-msgstr ""
-
-#: templates/registration/password_reset_complete.html:4
-#: templates/registration/password_reset_complete.html:7
-msgid "New password set"
-msgstr ""
-
-#: templates/registration/password_reset_complete.html:8
-msgid "log in"
-msgstr ""
-
-#: templates/registration/password_reset_complete.html:9
-msgid ""
-"Your password has successfully been reset. You can use it right now on the"
-msgstr ""
-
-#: templates/registration/password_reset_complete.html:9
-msgid "page."
-msgstr ""
-
-#: templates/registration/password_reset_confirm.html:9
-#: templates/registration/password_reset_confirm.html:13
-#: templates/registration/password_reset_confirm.html:30
-msgid "Set new password"
-msgstr ""
-
-#: templates/registration/password_reset_confirm.html:14
-msgid ""
-"Please enter your new password twice so we can verify you typed it in "
-"correctly."
-msgstr ""
-
-#: templates/registration/password_reset_confirm.html:38
-msgid "Password reset unsuccessful"
-msgstr ""
-
-#: templates/registration/password_reset_confirm.html:40
-msgid ""
-"The password reset link was invalid, possibly because it has already been "
-"used. Please request a new password reset."
-msgstr ""
-
-#: templates/registration/password_reset_done.html:4
-#: templates/registration/password_reset_done.html:7
-msgid "Password reset successful"
-msgstr ""
-
-#: templates/registration/password_reset_done.html:9
-msgid ""
-"We've emailed you instructions for setting your password. You should be "
-"receiving them shortly."
-msgstr ""
-
-#: templates/registration/password_reset_done.html:11
-msgid ""
-"If you don't receive an email, please make sure you've entered the address "
-"you registered with, and check your spam folder."
-msgstr ""
-
-#: templates/registration/password_reset_email.html:2
-msgid "Dear"
-msgstr ""
-
-#: templates/registration/password_reset_email.html:4
-#, python-format
-msgid ""
-"You are receiving this email because you requested a password reset for your "
-"user account at %(site_name)s."
-msgstr ""
-
-#: templates/registration/password_reset_email.html:6
-msgid "Please go to the following page and choose a new password:"
-msgstr ""
-
-#: templates/registration/password_reset_email.html:10
-msgid "Your username, in case you have forgotten:"
-msgstr ""
-
-#: templates/registration/password_reset_email.html:12
-msgid ""
-"If you do not want to reset your password, simply ignore this email and it "
-"will stay unchanged"
-msgstr ""
-
-#: templates/registration/password_reset_email.html:14
-#, python-format
-msgid "The %(site_name)s team"
-msgstr ""
-
-#: templates/registration/password_reset_form.html:5
-#: templates/registration/password_reset_form.html:8
-#: templates/registration/password_reset_form.html:11
-msgid "Reset my password"
 msgstr ""

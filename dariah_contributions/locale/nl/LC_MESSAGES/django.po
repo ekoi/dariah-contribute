@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-11 13:25+0200\n"
+"POT-Creation-Date: 2014-09-12 16:23+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
 
 #: models.py:88
 msgid "dc:identifier"
@@ -66,8 +65,7 @@ msgstr ""
 #: models.py:117
 msgid "help text for dc:publisher"
 msgstr ""
-"De naam van de uitgever, bijvoorbeeld: Data Archiving and Networked "
-"Services."
+"De naam van de uitgever, bijvoorbeeld: Data Archiving and Networked Services."
 
 #: models.py:119
 msgid "dcterms:spatial"
@@ -241,46 +239,6 @@ msgstr "contributies"
 msgid "help text for foaf:person"
 msgstr ""
 
-#: views.py:110
-msgid "Contribution was created successfully."
-msgstr "Contributie is succesvol aangemaakt."
-
-#: views.py:124
-msgid "Contribution was updated successfully."
-msgstr "Contributie is succesvol bijgewerkt."
-
-#: views.py:154
-msgid "Contribution was published successfully."
-msgstr "Contributie is succesvol bijgewerkt."
-
-#: views.py:155
-msgid "Something went wrong while publishing the contribution."
-msgstr "Er is iets verkeerd gegaan bij het publiceren van de contributie."
-
-#: views.py:185
-msgid "Contribution was unpublished successfully."
-msgstr "Contributie is succesvol bijgewerkt."
-
-#: views.py:186
-msgid "Something went wrong while unpublishing the contribution."
-msgstr ""
-"Er is iets verkeerd gegaan bij het intrekken van de gepubliceerde "
-"contributie."
-
-#: views.py:197
-msgid "Contribution was deleted successfully."
-msgstr "Contributie is succesvol verwijderd."
-
-#: views.py:260
-#, python-format
-msgid "dc:creator %s was created successfully."
-msgstr "dc:creator %s is succesvol aangemaakt."
-
-#: views.py:270
-#, python-format
-msgid "dc:contributor %s was created successfully."
-msgstr "dc:contributor %s is succesvol aangemaakt."
-
 #: templates/dariah_contributions/_creator-contrib_autocomplete_empty_html_format.html:13
 msgid "Add new..."
 msgstr "Voeg nieuwe toe..."
@@ -365,6 +323,14 @@ msgstr "Publiceer"
 msgid "No contributions are available."
 msgstr "Er zijn geen contributies beschikbaar."
 
+#: templates/dariah_contributions/contribution_list.html:71
+msgid "View as Atom feed"
+msgstr "Toon als Atom feed"
+
+#: templates/dariah_contributions/contribution_list.html:72
+msgid "View as RSS feed"
+msgstr "Toon als RSS feed"
+
 #: templates/dariah_contributions/dccontributor_form.html:14
 msgid "Add a dc:contributor"
 msgstr "Voeg een dc:contributor toe"
@@ -381,3 +347,59 @@ msgstr "Voeg een nieuwe dc:creator toe"
 #: templates/dariah_contributions/dccreator_form.html:22
 msgid "Reset"
 msgstr "Herstel"
+
+#: views/edit.py:26
+msgid "Contribution was created successfully."
+msgstr "Contributie is succesvol aangemaakt."
+
+#: views/edit.py:40
+msgid "Contribution was updated successfully."
+msgstr "Contributie is succesvol bijgewerkt."
+
+#: views/edit.py:70
+msgid "Contribution was published successfully."
+msgstr "Contributie is succesvol bijgewerkt."
+
+#: views/edit.py:71
+msgid "Something went wrong while publishing the contribution."
+msgstr "Er is iets verkeerd gegaan bij het publiceren van de contributie."
+
+#: views/edit.py:101
+msgid "Contribution was unpublished successfully."
+msgstr "Contributie is succesvol bijgewerkt."
+
+#: views/edit.py:102
+msgid "Something went wrong while unpublishing the contribution."
+msgstr ""
+"Er is iets verkeerd gegaan bij het intrekken van de gepubliceerde "
+"contributie."
+
+#: views/edit.py:113
+msgid "Contribution was deleted successfully."
+msgstr "Contributie is succesvol verwijderd."
+
+#: views/edit.py:176
+#, python-format
+msgid "dc:creator %s was created successfully."
+msgstr "dc:creator %s is succesvol aangemaakt."
+
+#: views/edit.py:186
+#, python-format
+msgid "dc:contributor %s was created successfully."
+msgstr "dc:contributor %s is succesvol aangemaakt."
+
+#: views/feeds.py:10
+msgid "Contributions Feed"
+msgstr "contributies feed"
+
+#: views/feeds.py:12
+msgid "Updates on changes and additions to DARIAH contributions."
+msgstr "Updates over veranderingen en toevoegingen aan DARIAH contributies."
+
+#: views/feeds.py:13
+msgid "DARIAH"
+msgstr ""
+
+#: views/feeds.py:14
+msgid "http://dariah.eu"
+msgstr ""
