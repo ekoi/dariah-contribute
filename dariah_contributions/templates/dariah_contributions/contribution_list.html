@@ -3,13 +3,13 @@
 {% load bootstrap3 %}
 
 {% block content %}
-	{% if user.is_authenticated %}
+    {% if user.is_authenticated %}
     <div class="pull-right">
         <p>
             <a href="{% url 'dariah_contributions:add' %}" class="btn btn-default">Add new contribution</a>
         </p>
     </div>
-	{% endif %}
+    {% endif %}
 
     {% if request.resolver_match.url_name == 'mine' %}
         {% trans 'My' as title_type %}
@@ -18,24 +18,24 @@
     {% endif %}
 
     <h1>{{ title_type }} {% trans 'contributions' %}</h1>
-	{% if object_list %}
+    {% if object_list %}
     <div class="table-responsive clearfix">
-    	<table class="table table-striped table-bordered">
-    		<tbody>
-				<tr>
-					<th>Contribution (dc:title)</th>
-					<th>Author</th>
+        <table class="table table-striped table-bordered">
+            <tbody>
+                <tr>
+                    <th>Contribution (dc:title)</th>
+                    <th>Author</th>
                     {% if request.resolver_match.url_name == 'mine' %}
-					<th>Published?</th>
+                    <th>Published?</th>
                     {% endif %}
                     {% if request.resolver_match.url_name == 'mine' %}
                     <th>Available Actions</th>
                     {% endif %}
-				</tr>
-    			{% for contribution in object_list %}
-        			<tr>
+                </tr>
+                {% for contribution in object_list %}
+                    <tr>
                         <td><a href="{% url 'dariah_contributions:detail' contribution.dc_identifier %}">{{ contribution.dc_title }}</a></td>
-         				<td>{{ contribution.author.get_full_name }}</td>
+                        <td>{{ contribution.author.get_full_name }}</td>
                         {% if request.resolver_match.url_name == 'mine' %}
                         <td>{{ contribution.is_published|yesno:_("Yes,No") }}</td>
                         {% endif %}
@@ -50,20 +50,25 @@
                                 {% endif %}
                             </td>
                         {% endif %}
-        			</tr>
-    			{% endfor %}
-    		</tbody>
-    	</table>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
     <div class="center-pagination">
         {% bootstrap_pagination page_obj %}
     </div>
-	{% else %}
+    {% else %}
         <p>{% trans 'No contributions are available.' %}</p>
-	{% endif %}
+    {% endif %}
 {% endblock %}
 
 {% block sidebar %}
-    <h1>Filter by...</h1>
-    <p>Faceted browsing not implemented</p>
+    {% if request.resolver_match.url_name != 'mine' %}
+    <h1>Actions</h1>
+    <ul>
+        <li><a href="{% url 'dariah_contributions:feed_atom' %}" title="{% trans 'View as Atom feed' %}">{% trans 'View as Atom feed' %}</a></li>
+        <li><a href="{% url 'dariah_contributions:feed' %}" title="{% trans 'View as RSS feed' %}">{% trans 'View as RSS feed' %}</a></li>
+    </ul>
+    {% endif %}
 {% endblock %}
