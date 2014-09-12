@@ -12,6 +12,8 @@ from .views import ContributionRDF
 from .views import ContributionList
 from .views import DcCreatorCreate
 from .views import DcContributorCreate
+from .views import ContributionsFeed
+from .views import ContributionsAtomFeed
 
 
 urlpatterns = patterns('',
@@ -41,4 +43,8 @@ urlpatterns = patterns('',
     # example: /contribution/5/?format=xml
     url(r'^dc_creator/add/$', DcCreatorCreate.as_view(), name='dccreator_create'),
     url(r'^dc_contributor/add/$', DcContributorCreate.as_view(), name='dccontributor_create'),
+
+    url(r'^feed/$', ContributionsFeed(), name='feed'),
+    url(r'^feed/rss/$', ContributionsFeed(), name='feed_rss'),
+    url(r'^feed/atom/$', ContributionsAtomFeed(), name='feed_atom'),
 )

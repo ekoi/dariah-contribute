@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.sites.models import Site
+from django.contrib.syndication.views import Feed
 from django.db.models.fields.related import ManyToManyField, ForeignKey
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
@@ -11,6 +12,7 @@ from django.template import RequestContext
 from django.template import Context, Template
 from django.template.loader import render_to_string
 from django.utils.decorators import method_decorator
+from django.utils.feedgenerator import Atom1Feed
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic.detail import DetailView, BaseDetailView, SingleObjectTemplateResponseMixin
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -23,6 +25,35 @@ import autocomplete_light
 
 from .models import Contribution, DcCreator, DcContributor
 from .forms import ContributionForm
+
+
+class ContributionsFeed(Feed):
+    title = _("Contributions Feed")
+    link = reverse_lazy('dariah_contributions:feed')
+    description = _("Updates on changes and additions to DARIAH contributions.")
+    author_name = _("DARIAH")
+    author_link = _("http://dariah.eu")
+
+    def items(self):
+        return Contribution.objects.published()
+
+    def item_title(self, item):
+        return item.dc_title
+
+    def item_description(self, item):
+        return item.dc_description
+
+    def item_pubdate(self, item):
+        return item.last_modified_on
+
+    def item_author_name(self, item):
+        return item.dc_publisher
+
+
+class ContributionsAtomFeed(ContributionsFeed):
+    feed_type = Atom1Feed
+    subtitle = ContributionsFeed.description
+    link = reverse_lazy('dariah_contributions:feed_atom')
 
 
 class ContributionList(ListView):
