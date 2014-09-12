@@ -23,5 +23,10 @@ recursive-include dariah_static_data/static *
 recursive-include dariah_static_data/templates *
 recursive-include dariah_static_data/skos_preflabels_data *
 
+recursive-include dariah_accounts/formats *
+recursive-include dariah_accounts/locale *
+recursive-include dariah_accounts/static *
+recursive-include dariah_accounts/templates *
+
 recursive-exclude * *.pyc
 recursive-exclude * .DS_Store
