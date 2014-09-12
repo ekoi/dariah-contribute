@@ -42,3 +42,7 @@
         {% endif %}
     </ul>
 {% endblock %}
+
+{% block extra_extra_head %}
+<link rel="alternate" type="application/rdf+xml" href="{% url 'dariah_contributions:detail_rdf' contribution.pk %}" title="{% trans 'This page in RDF (XML)' %}" />
+{% endblock %}
