@@ -5,9 +5,10 @@ from .views import ContributionDelete
 from .views import ContributionUpdate
 from .views import ContributionPublish
 from .views import ContributionUnpublish
-from .views import ContributionRDF
 from .views import MyContributions
 from .views import ContributionDetail
+from .views import ContributionHybridDetail
+from .views import ContributionRDF
 from .views import ContributionList
 from .views import DcCreatorCreate
 from .views import DcContributorCreate
@@ -29,9 +30,15 @@ urlpatterns = patterns('',
     url(r'^(?P<pk>\d+)/unpublish/$', ContributionUnpublish.as_view(), name='unpublish'),
     # example: /contribution/5/unpublish/
     url(r'^(?P<pk>\d+)\.xml$', ContributionRDF.as_view(), name='detail_rdf'),
-    # example: /contribution/detail_rdf/5/
-    url(r'^(?P<pk>\d+)/$', ContributionDetail.as_view(), name='detail'),
+    # example: /contribution/5.xml
+    url(r'^(?P<pk>\d+)\.html$', ContributionDetail.as_view(), name='detail_html'),
+    # example: /contribution/5.html
+    url(r'^(?P<pk>\d+)/$', ContributionHybridDetail.as_view(), name='detail'),
     # example: /contribution/5/
+    # example: /contribution/5?format=html
+    # example: /contribution/5/?format=html
+    # example: /contribution/5?format=xml
+    # example: /contribution/5/?format=xml
     url(r'^dc_creator/add/$', DcCreatorCreate.as_view(), name='dccreator_create'),
     url(r'^dc_contributor/add/$', DcContributorCreate.as_view(), name='dccontributor_create'),
 )
