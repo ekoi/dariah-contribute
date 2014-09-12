@@ -43,3 +43,25 @@ form .required label:after {
 .yourlabs-autocomplete.autocomplete-light-widget hr.divider {
     margin: 3px 0;
 }
+
+h1 img.dariah-logo {
+    vertical-align: bottom;
+    margin-left: -15px;
+}
+@media (min-width: 768px) {
+    h1 img.dariah-logo {
+        margin-left: -45px;
+    }
+}
+
+.navbar-brand {
+    vertical-align: bottom;
+    background: url('/static/imgs/DARIAH-EU_Logo_header.png') no-repeat;
+    background-position: 0 0;
+    text-indent: 150px;
+    padding: 32px 0 0 0;
+    line-height: 1em;
+}
+.navbar-brand:hover {
+    background-position: 0 -50px;
+}
