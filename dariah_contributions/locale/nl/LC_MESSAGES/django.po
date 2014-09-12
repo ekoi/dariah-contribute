@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-12 16:23+0200\n"
+"POT-Creation-Date: 2014-09-12 16:53+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -283,6 +283,10 @@ msgstr "Toon als RDF"
 #: templates/dariah_contributions/contribution_detail.html:40
 msgid "Edit"
 msgstr "Bewerken"
+
+#: templates/dariah_contributions/contribution_detail.html:48
+msgid "This page in RDF (XML)"
+msgstr ""
 
 #: templates/dariah_contributions/contribution_form.html:9
 #: templates/dariah_contributions/dccreator_form.html:24

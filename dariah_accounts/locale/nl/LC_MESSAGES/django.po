@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-12 16:29+0200\n"
+"POT-Creation-Date: 2014-09-12 16:53+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -135,10 +135,10 @@ msgstr "Ga terug naar de"
 msgid "homepage"
 msgstr ""
 
-#: templates/registration/password_change_form.html:30
-#: templates/registration/password_reset_confirm.html:13
-#: templates/registration/password_reset_confirm.html:17
-#: templates/registration/password_reset_confirm.html:34
+#: templates/registration/password_change_form.html:29
+#: templates/registration/password_reset_confirm.html:12
+#: templates/registration/password_reset_confirm.html:16
+#: templates/registration/password_reset_confirm.html:33
 msgid "Set new password"
 msgstr "Maak een nieuw wachtwoord aan"
 
@@ -158,7 +158,7 @@ msgstr ""
 msgid "page."
 msgstr "pagina."
 
-#: templates/registration/password_reset_confirm.html:18
+#: templates/registration/password_reset_confirm.html:17
 msgid ""
 "Please enter your new password twice so we can verify you typed it in "
 "correctly."
@@ -166,11 +166,11 @@ msgstr ""
 "Voer alstublieft uw wachtwoord twee maal in, zodat we kunnen verifiëren dat "
 "het correct is ingetikt."
 
-#: templates/registration/password_reset_confirm.html:42
+#: templates/registration/password_reset_confirm.html:41
 msgid "Password reset unsuccessful"
 msgstr "Wachtwoord herstellen mislukt"
 
-#: templates/registration/password_reset_confirm.html:44
+#: templates/registration/password_reset_confirm.html:43
 msgid ""
 "The password reset link was invalid, possibly because it has already been "
 "used. Please request a new password reset."
@@ -241,4 +241,4 @@ msgstr "Herstel mijn wachtwoord"
 
 #: templates/registration/password_reset_form.html:12
 msgid "Enter the e-mail address you've registered with."
-msgstr ""
+msgstr "Vul het e-mail adres in waarmee u zich heeft geregistreerd."
