@@ -3,11 +3,11 @@
 {% load i18n %}
 
 {% block content %}
-    <h3>Login</h3>
+    <h1>Login</h1>
 
     <form method="post" action="{% url 'login' %}" name="loginform">{% csrf_token %}
         {% bootstrap_form form layout='inline' %}
-        <input type="submit" value="{% trans 'Log in' %}" class="btn btn-default"/>
+        <input type="submit" value="{% trans 'Log in' %}" class="btn btn-primary"/>
         <input type="hidden" name="next" value="{{ next }}" />
     </form>
 

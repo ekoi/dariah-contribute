@@ -20,7 +20,16 @@
                     <li><a href="{% url 'dariah_contributions:list' %}">{% trans 'Browse Contributions' %}</a></li>
                     {% if user.is_authenticated %}
                         <li><a href="{% url 'dariah_contributions:mine' %}" title="{% trans 'My Contributions' %}">{% trans 'My Contributions' %}</a></li>
-                        <li><a href="{% url 'logout' %}" title="{% trans 'Log out' %}">{% trans 'Log out' %}</a></li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                {% trans 'My account' %} <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="{% url 'password_change' %}" title="{% trans 'Change my password' %}">{% trans 'Change my password' %}</a></li>
+                                <li class="divider"></li>
+                                <li><a href="{% url 'logout' %}" title="{% trans 'Log out' %}">{% trans 'Log out' %}</a></li>
+                            </ul>
+                        </li>
                     {% else %}
                         <li><a href="{% url 'login' %}" title="{% trans 'Log in' %}">{% trans 'Log in' %}</a></li>
                     {% endif %}

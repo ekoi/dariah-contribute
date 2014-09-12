@@ -79,6 +79,7 @@ DATABASES = {
 INSTALLED_APPS = (
     'dariah_contributions',
     'dariah_static_data',
+    'dariah_accounts',
     'south',
     'axes',  # Limit login attempts
     'bootstrap3',
