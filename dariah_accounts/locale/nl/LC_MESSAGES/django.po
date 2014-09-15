@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-12 16:53+0200\n"
+"POT-Creation-Date: 2014-09-15 10:32+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -62,7 +62,11 @@ msgstr ""
 
 #: templates/axes/lockout.html:22
 msgid "Go back to the homepage"
-msgstr ""
+msgstr "Ga terug naar de homepage"
+
+#: templates/registration/logged_out.html:6
+msgid "Logged out"
+msgstr "Uitgelogd"
 
 #: templates/registration/logged_out.html:8
 msgid "You have been successfully logged out."
@@ -105,14 +109,6 @@ msgid ""
 "if you have forgotten your username, password and sign-up e-mail address"
 msgstr "als je je gebruikersnaam, wachtwoord en e-mail adres bent vergeten"
 
-#: templates/registration/login.html:21
-msgid "Register to create an account"
-msgstr "Registreer om een account aan te maken"
-
-#: templates/registration/login.html:22
-msgid "Don't have an account yet?"
-msgstr "Nog geen account?"
-
 #: templates/registration/password_change_done.html:4
 #: templates/registration/password_change_done.html:7
 msgid "Password change successful"
@@ -134,6 +130,15 @@ msgstr "Ga terug naar de"
 #: templates/registration/password_change_done.html:10
 msgid "homepage"
 msgstr ""
+
+#: templates/registration/password_change_form.html:13
+msgid "Change your Password"
+msgstr "Wijzig je wachtwoord"
+
+#: templates/registration/password_change_form.html:20
+#: templates/registration/password_reset_confirm.html:24
+msgid "Password strength"
+msgstr "Wachtwoord sterkte"
 
 #: templates/registration/password_change_form.html:29
 #: templates/registration/password_reset_confirm.html:12
@@ -242,3 +247,9 @@ msgstr "Herstel mijn wachtwoord"
 #: templates/registration/password_reset_form.html:12
 msgid "Enter the e-mail address you've registered with."
 msgstr "Vul het e-mail adres in waarmee u zich heeft geregistreerd."
+
+#~ msgid "Register to create an account"
+#~ msgstr "Registreer om een account aan te maken"
+
+#~ msgid "Don't have an account yet?"
+#~ msgstr "Nog geen account?"

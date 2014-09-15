@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-12 16:53+0200\n"
+"POT-Creation-Date: 2014-09-15 10:43+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -302,12 +302,37 @@ msgstr ""
 msgid "Fields marked with a star (*) are compulsory."
 msgstr ""
 
+#: templates/dariah_contributions/contribution_form.html:35
+#: templates/dariah_contributions/contribution_form.html:43
+msgid "(no content)"
+msgstr ""
+
+#: templates/dariah_contributions/contribution_list.html:9
+msgid "Add new contribution"
+msgstr ""
+
 #: templates/dariah_contributions/contribution_list.html:15
 msgid "My"
 msgstr ""
 
 #: templates/dariah_contributions/contribution_list.html:17
 msgid "All"
+msgstr ""
+
+#: templates/dariah_contributions/contribution_list.html:26
+msgid "Contribution (dc:title)"
+msgstr ""
+
+#: templates/dariah_contributions/contribution_list.html:27
+msgid "Author"
+msgstr ""
+
+#: templates/dariah_contributions/contribution_list.html:29
+msgid "Published?"
+msgstr ""
+
+#: templates/dariah_contributions/contribution_list.html:32
+msgid "Available Actions"
 msgstr ""
 
 #: templates/dariah_contributions/contribution_list.html:40
@@ -324,6 +349,10 @@ msgstr ""
 
 #: templates/dariah_contributions/contribution_list.html:63
 msgid "No contributions are available."
+msgstr ""
+
+#: templates/dariah_contributions/contribution_list.html:69
+msgid "Actions"
 msgstr ""
 
 #: templates/dariah_contributions/contribution_list.html:71

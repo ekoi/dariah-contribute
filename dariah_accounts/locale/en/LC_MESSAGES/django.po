@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-12 16:53+0200\n"
+"POT-Creation-Date: 2014-09-15 10:32+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -54,6 +54,10 @@ msgstr ""
 msgid "Go back to the homepage"
 msgstr ""
 
+#: templates/registration/logged_out.html:6
+msgid "Logged out"
+msgstr ""
+
 #: templates/registration/logged_out.html:8
 msgid "You have been successfully logged out."
 msgstr ""
@@ -93,14 +97,6 @@ msgid ""
 "if you have forgotten your username, password and sign-up e-mail address"
 msgstr ""
 
-#: templates/registration/login.html:21
-msgid "Register to create an account"
-msgstr ""
-
-#: templates/registration/login.html:22
-msgid "Don't have an account yet?"
-msgstr ""
-
 #: templates/registration/password_change_done.html:4
 #: templates/registration/password_change_done.html:7
 msgid "Password change successful"
@@ -121,6 +117,15 @@ msgstr ""
 
 #: templates/registration/password_change_done.html:10
 msgid "homepage"
+msgstr ""
+
+#: templates/registration/password_change_form.html:13
+msgid "Change your Password"
+msgstr ""
+
+#: templates/registration/password_change_form.html:20
+#: templates/registration/password_reset_confirm.html:24
+msgid "Password strength"
 msgstr ""
 
 #: templates/registration/password_change_form.html:29

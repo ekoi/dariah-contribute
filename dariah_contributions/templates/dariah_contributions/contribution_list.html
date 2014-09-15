@@ -6,7 +6,7 @@
     {% if user.is_authenticated %}
     <div class="pull-right">
         <p>
-            <a href="{% url 'dariah_contributions:add' %}" class="btn btn-default">Add new contribution</a>
+        <a href="{% url 'dariah_contributions:add' %}" class="btn btn-default" title="{% trans 'Add new contribution' %}">{% trans 'Add new contribution' %}</a>
         </p>
     </div>
     {% endif %}
@@ -23,13 +23,13 @@
         <table class="table table-striped table-bordered">
             <tbody>
                 <tr>
-                    <th>Contribution (dc:title)</th>
-                    <th>Author</th>
+                    <th>{% trans 'Contribution (dc:title)' %}</th>
+                    <th>{% trans 'Author' %}</th>
                     {% if request.resolver_match.url_name == 'mine' %}
-                    <th>Published?</th>
+                    <th>{% trans 'Published?' %}</th>
                     {% endif %}
                     {% if request.resolver_match.url_name == 'mine' %}
-                    <th>Available Actions</th>
+                    <th>{% trans 'Available Actions' %}</th>
                     {% endif %}
                 </tr>
                 {% for contribution in object_list %}
@@ -65,7 +65,7 @@
 
 {% block sidebar %}
     {% if request.resolver_match.url_name != 'mine' %}
-    <h1>Actions</h1>
+    <h1>{% trans 'Actions' %}</h1>
     <ul>
         <li><a href="{% url 'dariah_contributions:feed_atom' %}" title="{% trans 'View as Atom feed' %}">{% trans 'View as Atom feed' %}</a></li>
         <li><a href="{% url 'dariah_contributions:feed' %}" title="{% trans 'View as RSS feed' %}">{% trans 'View as RSS feed' %}</a></li>

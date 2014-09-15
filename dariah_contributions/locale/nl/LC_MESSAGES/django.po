@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-12 16:53+0200\n"
+"POT-Creation-Date: 2014-09-15 10:43+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -266,7 +266,7 @@ msgstr "Contributie laatst bewerkt op"
 
 #: templates/dariah_contributions/contribution_detail.html:24
 msgid "by"
-msgstr ""
+msgstr "door"
 
 #: templates/dariah_contributions/contribution_detail.html:27
 msgid "published"
@@ -286,7 +286,7 @@ msgstr "Bewerken"
 
 #: templates/dariah_contributions/contribution_detail.html:48
 msgid "This page in RDF (XML)"
-msgstr ""
+msgstr "Deze pagina in RDF (XML)"
 
 #: templates/dariah_contributions/contribution_form.html:9
 #: templates/dariah_contributions/dccreator_form.html:24
@@ -303,6 +303,15 @@ msgstr "Bewerken"
 msgid "Fields marked with a star (*) are compulsory."
 msgstr "Velden gemarkeerd met een ster (*) zijn verplicht."
 
+#: templates/dariah_contributions/contribution_form.html:35
+#: templates/dariah_contributions/contribution_form.html:43
+msgid "(no content)"
+msgstr "(geen inhoud)"
+
+#: templates/dariah_contributions/contribution_list.html:9
+msgid "Add new contribution"
+msgstr "Voeg een nieuwe contributie toe"
+
 #: templates/dariah_contributions/contribution_list.html:15
 msgid "My"
 msgstr "Mijn"
@@ -310,6 +319,22 @@ msgstr "Mijn"
 #: templates/dariah_contributions/contribution_list.html:17
 msgid "All"
 msgstr "Alle"
+
+#: templates/dariah_contributions/contribution_list.html:26
+msgid "Contribution (dc:title)"
+msgstr "Contributie (dc:title)"
+
+#: templates/dariah_contributions/contribution_list.html:27
+msgid "Author"
+msgstr "Auteur"
+
+#: templates/dariah_contributions/contribution_list.html:29
+msgid "Published?"
+msgstr "Gepubliceerd?"
+
+#: templates/dariah_contributions/contribution_list.html:32
+msgid "Available Actions"
+msgstr "Beschikbare acties"
 
 #: templates/dariah_contributions/contribution_list.html:40
 msgid "Yes,No"
@@ -326,6 +351,10 @@ msgstr "Publiceer"
 #: templates/dariah_contributions/contribution_list.html:63
 msgid "No contributions are available."
 msgstr "Er zijn geen contributies beschikbaar."
+
+#: templates/dariah_contributions/contribution_list.html:69
+msgid "Actions"
+msgstr "Acties"
 
 #: templates/dariah_contributions/contribution_list.html:71
 msgid "View as Atom feed"

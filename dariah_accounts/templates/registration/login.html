@@ -17,12 +17,13 @@
         {% trans 'Contact the' %} <a href="mailto: {% trans 'info@dariah.org' %}" title="{% trans 'administrator' %}">{% trans 'administrator' %}</a> {% trans 'if you have forgotten your username, password and sign-up e-mail address' %}.
     </p>
     <p>&nbsp;</p>
+    {% comment %}
     <p>
         <a href="" title="{% trans 'Register to create an account' %}">
             {% trans "Don't have an account yet?" %}
         </a>
     </p>
-
+    {% endcomment %}
     <script type="text/javascript">
         window.onload=function() {
             document.loginform.username.focus();

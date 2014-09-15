@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-12 16:53+0200\n"
+"POT-Creation-Date: 2014-09-15 10:22+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -81,8 +81,16 @@ msgstr ""
 msgid "Go back to the homepage"
 msgstr ""
 
+#: templates/base.html:5
+msgid "DARIAH Contribute"
+msgstr ""
+
 #: templates/base.html:11
 msgid "Toggle navigation"
+msgstr ""
+
+#: templates/base.html:16
+msgid "Contribute"
 msgstr ""
 
 #: templates/base.html:20
@@ -113,6 +121,7 @@ msgstr ""
 msgid "About"
 msgstr ""
 
-#: templates/base.html:48
+#: templates/base.html:48 templates/content.html:11
+#: templates/content_left_sidebar.html:20
 msgid "(no content)"
 msgstr ""
