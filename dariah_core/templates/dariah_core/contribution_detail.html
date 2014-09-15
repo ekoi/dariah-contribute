@@ -5,13 +5,15 @@
 {% block content %}
     <h3>{{ contribution.dc_title }}</h3>
     <table class="table">
-    {% for field, value in get_fields %}
+    {% for field, value, is_safe in get_fields %}
         <tr>
             <td>{{ field }}</td>
             {% if value|is_url %}
             <td>{{ value|urlize }}</td>
-            {% else %}
+            {% elif is_safe %}
             <td>{{ value|safe }}</td>
+            {% else %}
+            <td>{{ value }}</td>
             {% endif %}
         </tr>
     {% endfor %}

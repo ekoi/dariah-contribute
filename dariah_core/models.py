@@ -6,8 +6,9 @@ from django.utils import timezone
 from django.core.urlresolvers import reverse
 from pycountry import languages as l
 from taggit.managers import TaggableManager
-import re
 import os.path
+import re
+import uuid
 
 from django.contrib.auth import get_user_model
 User = get_user_model()
@@ -56,9 +57,13 @@ class PublishedContributionsManager(models.Manager):
 
 
 def contribution_vcardlogo_uploadto(instance, filename):
+    """Redefine the image path/name.
+    Based on:
+    http://www.malloc.co/django/django-rename-a-file-uploaded-by-a-user-before-saving/
+    """
     # get extension from raw filename
     fn, ext = os.path.splitext(filename)
-    new_filename = instance.dc_identifier
+    new_filename = uuid.uuid4().hex
     path = 'contribution_vcardlogo'
     # return new filename, including its parent directories (based on MEDIA_ROOT)
     return "{path}/{new_filename}{ext}".format(path=path,

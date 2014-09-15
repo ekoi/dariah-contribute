@@ -65,3 +65,8 @@ h1 img.dariah-logo {
 .navbar-brand:hover {
     background-position: 0 -50px;
 }
+
+img.detail-vcard-logo {
+    max-height: 100px;
+    max-width: 100%;
+}

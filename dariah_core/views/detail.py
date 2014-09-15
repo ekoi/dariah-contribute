@@ -1,4 +1,5 @@
 from django.contrib.sites.models import Site
+from django.db.models.fields.files import ImageField
 from django.db.models.fields.related import ManyToManyField, ForeignKey
 from django.http import HttpResponse
 from django.template import Context, Template
@@ -175,21 +176,36 @@ class ContributionDetailMixin(BaseDetailView):
         for x in fields:
             field = c.__class__._meta.get_field(x[0])
             value = getattr(c, x[0])
+            is_safe = False
             # If the field is an iterable (TaggableManager or ManyToManyField)
             # format the data as a string of comma separated items.
             if isinstance(field, ManyToManyField):
                 value = ", ".join(map(lambda x: self.link(x), value.all()))
+                is_safe = True
             elif isinstance(field, TaggableManager):
                 value = ", ".join(value.names())
+                is_safe = True
             elif isinstance(field, ForeignKey):
                 value = self.link(value)
-            yield field.verbose_name, value
+                is_safe = True
+            elif isinstance(field, ImageField):
+                value = self.image(value)
+                is_safe = True
+            yield field.verbose_name, value, is_safe
 
     @staticmethod
     def link(value):
         if hasattr(value, 'uri') and getattr(value, 'uri'):
             template = Template('<a href="{{ uri }}" title="{{ value }}">{{ value }}</a>')
             context = Context({'value': str(value), 'uri': value.uri})
+            return template.render(context)
+        return str(value)
+
+    @staticmethod
+    def image(value):
+        if hasattr(value, 'url') and getattr(value, 'url'):
+            template = Template('<a href="{{ uri }}" title="vcard:logo"><img class="detail-vcard-logo" src="{{ uri }}" /></a><br/>Location: <a href="{{ uri }}" title="vcard:logo">{{ uri }}</a>')
+            context = Context({'value': str(value), 'uri': value.url})
             return template.render(context)
         return str(value)
 
