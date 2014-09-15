@@ -11,6 +11,6 @@ urlpatterns = patterns('',
     url(r'^autocomplete/', include('autocomplete_light.urls')),
 
     url(r'^$', RedirectView.as_view(url='/about/', permanent=False)),
-    url(r'^contribution/', include('dariah_contributions.urls', namespace="dariah_contributions")),
+    url(r'^contribution/', include('dariah_core.urls', namespace="dariah_core")),
     url(r'^accounts/', include('dariah_accounts.urls')),  # NOTE: this one should NOT have a namespace
 )

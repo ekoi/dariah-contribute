@@ -1,4 +1,4 @@
-{% extends 'dariah_contributions/dccreator_form.html' %}
+{% extends 'dariah_core/dccreator_form.html' %}
 {% load i18n %}
 
 {% comment %}
@@ -8,7 +8,7 @@ appended.
 {% endcomment %}
 {% block form_id %}id_dc_contributor_form{% endblock %}
 {% block action %}
-    {% url 'dariah_contributions:dccontributor_create' %}
+    {% url 'dariah_core:dccontributor_create' %}
 {% endblock %}
 {% block title %}
     {% trans 'Add a dc:contributor' %}

@@ -35,14 +35,14 @@
 {% block sidebar %}
     <h1>Actions</h1>
     <ul>
-        <li><a href="{% url 'dariah_contributions:detail_rdf' contribution.dc_identifier %}">{% trans "Show as RDF" %}</a></li>
+        <li><a href="{% url 'dariah_core:detail_rdf' contribution.dc_identifier %}">{% trans "Show as RDF" %}</a></li>
         {% if contribution.author == request.user %}
-        <li><a href="{% url 'dariah_contributions:update' contribution.dc_identifier %}">{% trans 'Edit' %}</a></li>
-        {% comment %}<li><a href="{% url 'dariah_contributions:delete' contribution.dc_identifier %}">{% trans 'Delete' %}</a></li>{% endcomment %}
+        <li><a href="{% url 'dariah_core:update' contribution.dc_identifier %}">{% trans 'Edit' %}</a></li>
+        {% comment %}<li><a href="{% url 'dariah_core:delete' contribution.dc_identifier %}">{% trans 'Delete' %}</a></li>{% endcomment %}
         {% endif %}
     </ul>
 {% endblock %}
 
 {% block extra_extra_head %}
-<link rel="alternate" type="application/rdf+xml" href="{% url 'dariah_contributions:detail_rdf' contribution.pk %}" title="{% trans 'This page in RDF (XML)' %}" />
+<link rel="alternate" type="application/rdf+xml" href="{% url 'dariah_core:detail_rdf' contribution.pk %}" title="{% trans 'This page in RDF (XML)' %}" />
 {% endblock %}

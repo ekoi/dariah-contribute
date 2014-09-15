@@ -1,21 +1,21 @@
 include LICENSE
 include README.rst
 include requirements.pip
-include contributions/settings/local.py.default
-exclude contributions/settings/local.py
+include dariah_contribute/settings/local.py.default
+exclude dariah_contribute/settings/local.py
 
 recursive-include docs *
 recursive-exclude docs/_build *
 
-recursive-include contributions/formats *
-recursive-include contributions/locale *
-recursive-include contributions/static *
-recursive-include contributions/templates *
+recursive-include dariah_contribute/formats *
+recursive-include dariah_contribute/locale *
+recursive-include dariah_contribute/static *
+recursive-include dariah_contribute/templates *
 
-recursive-include dariah_contributions/formats *
-recursive-include dariah_contributions/locale *
-recursive-include dariah_contributions/static *
-recursive-include dariah_contributions/templates *
+recursive-include dariah_core/formats *
+recursive-include dariah_core/locale *
+recursive-include dariah_core/static *
+recursive-include dariah_core/templates *
 
 recursive-include dariah_static_data/formats *
 recursive-include dariah_static_data/locale *

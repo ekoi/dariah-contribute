@@ -6,7 +6,7 @@
     {% if user.is_authenticated %}
     <div class="pull-right">
         <p>
-        <a href="{% url 'dariah_contributions:add' %}" class="btn btn-default" title="{% trans 'Add new contribution' %}">{% trans 'Add new contribution' %}</a>
+        <a href="{% url 'dariah_core:add' %}" class="btn btn-default" title="{% trans 'Add new contribution' %}">{% trans 'Add new contribution' %}</a>
         </p>
     </div>
     {% endif %}
@@ -34,19 +34,19 @@
                 </tr>
                 {% for contribution in object_list %}
                     <tr>
-                        <td><a href="{% url 'dariah_contributions:detail' contribution.dc_identifier %}">{{ contribution.dc_title }}</a></td>
+                        <td><a href="{% url 'dariah_core:detail' contribution.dc_identifier %}">{{ contribution.dc_title }}</a></td>
                         <td>{{ contribution.author.get_full_name }}</td>
                         {% if request.resolver_match.url_name == 'mine' %}
                         <td>{{ contribution.is_published|yesno:_("Yes,No") }}</td>
                         {% endif %}
                         {% if request.resolver_match.url_name == 'mine' %}
                             <td>
-                                <a href="{% url 'dariah_contributions:update' contribution.dc_identifier %}">{% trans 'Update' %}</a> |
-                                {% comment %}<a href="{% url 'dariah_contributions:delete' contribution.dc_identifier %}">{% trans 'Delete' %}</a> |{% endcomment %}
+                                <a href="{% url 'dariah_core:update' contribution.dc_identifier %}">{% trans 'Update' %}</a> |
+                                {% comment %}<a href="{% url 'dariah_core:delete' contribution.dc_identifier %}">{% trans 'Delete' %}</a> |{% endcomment %}
                                 {% if contribution.is_published %}
-                                    <a href="{% url 'dariah_contributions:unpublish' contribution.dc_identifier %}">{% trans 'Unpublish' %}</a>
+                                    <a href="{% url 'dariah_core:unpublish' contribution.dc_identifier %}">{% trans 'Unpublish' %}</a>
                                 {% else %}
-                                    <a href="{% url 'dariah_contributions:publish' contribution.dc_identifier %}">{% trans 'Publish' %}</a>
+                                    <a href="{% url 'dariah_core:publish' contribution.dc_identifier %}">{% trans 'Publish' %}</a>
                                 {% endif %}
                             </td>
                         {% endif %}
@@ -67,8 +67,8 @@
     {% if request.resolver_match.url_name != 'mine' %}
     <h1>{% trans 'Actions' %}</h1>
     <ul>
-        <li><a href="{% url 'dariah_contributions:feed_atom' %}" title="{% trans 'View as Atom feed' %}">{% trans 'View as Atom feed' %}</a></li>
-        <li><a href="{% url 'dariah_contributions:feed' %}" title="{% trans 'View as RSS feed' %}">{% trans 'View as RSS feed' %}</a></li>
+        <li><a href="{% url 'dariah_core:feed_atom' %}" title="{% trans 'View as Atom feed' %}">{% trans 'View as Atom feed' %}</a></li>
+        <li><a href="{% url 'dariah_core:feed' %}" title="{% trans 'View as RSS feed' %}">{% trans 'View as RSS feed' %}</a></li>
     </ul>
     {% endif %}
 {% endblock %}

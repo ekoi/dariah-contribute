@@ -1,11 +1,11 @@
-{% extends request.is_ajax|yesno:'dariah_contributions/fake_bootstrap.html,bootstrap.html' %}
+{% extends request.is_ajax|yesno:'dariah_core/fake_bootstrap.html,bootstrap.html' %}
 
 {% load bootstrap3 %}
 {% load i18n %}
 {% load static %}
 
 {% block bootstrap3_content %}
-<form id="{% block form_id %}id_dc_creator_form{% endblock %}" class="modal-form" enctype="multipart/form-data" action="{% block action %}{% url 'dariah_contributions:dccreator_create' %}{% endblock %}" method="post" role="form">{% csrf_token %}
+<form id="{% block form_id %}id_dc_creator_form{% endblock %}" class="modal-form" enctype="multipart/form-data" action="{% block action %}{% url 'dariah_core:dccreator_create' %}{% endblock %}" method="post" role="form">{% csrf_token %}
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">{% trans 'Close' %}</span></button>
         <h4 class="modal-title">

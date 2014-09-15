@@ -3,61 +3,43 @@ from south.utils import datetime_utils as datetime
 from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
+from django.contrib.contenttypes.models import ContentType
 
 
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        # Adding field 'DcContributor.first_name'
-        db.add_column(u'dariah_contributions_dccontributor', 'first_name',
-                      self.gf('django.db.models.fields.CharField')(default='', max_length=50, blank=True),
-                      keep_default=False)
+        db.rename_table('dariah_contributions_contribution', 'dariah_core_contribution')
+        db.rename_table('dariah_contributions_dccreator', 'dariah_core_dccreator')
+        db.rename_table('dariah_contributions_dccontributor', 'dariah_core_dccontributor')
 
-        # Adding field 'DcContributor.last_name_prefix'
-        db.add_column(u'dariah_contributions_dccontributor', 'last_name_prefix',
-                      self.gf('django.db.models.fields.CharField')(default='', max_length=50, blank=True),
-                      keep_default=False)
+        db.rename_table('dariah_contributions_contribution_dc_creator', 'dariah_core_contribution_dc_creator')
+        db.rename_table('dariah_contributions_contribution_dc_contributor', 'dariah_core_contribution_dc_contributor')
+        db.rename_table('dariah_contributions_contribution_skos_preflabel_activity', 'dariah_core_contribution_skos_preflabel_activity')
+        db.rename_table('dariah_contributions_contribution_skos_preflabel_discipline', 'dariah_core_contribution_skos_preflabel_discipline')
+        db.rename_table('dariah_contributions_contribution_skos_preflabel_object', 'dariah_core_contribution_skos_preflabel_object')
+        db.rename_table('dariah_contributions_contribution_skos_preflabel_technique', 'dariah_core_contribution_skos_preflabel_technique')
+        db.rename_table('dariah_contributions_contribution_skos_preflabel_vcc', 'dariah_core_contribution_skos_preflabel_vcc')
 
-        # Adding field 'DcContributor.last_name'
-        db.add_column(u'dariah_contributions_dccontributor', 'last_name',
-                      self.gf('django.db.models.fields.CharField')(default='', max_length=50, blank=True),
-                      keep_default=False)
-
-        # Adding field 'DcCreator.first_name'
-        db.add_column(u'dariah_contributions_dccreator', 'first_name',
-                      self.gf('django.db.models.fields.CharField')(default='', max_length=50, blank=True),
-                      keep_default=False)
-
-        # Adding field 'DcCreator.last_name_prefix'
-        db.add_column(u'dariah_contributions_dccreator', 'last_name_prefix',
-                      self.gf('django.db.models.fields.CharField')(default='', max_length=50, blank=True),
-                      keep_default=False)
-
-        # Adding field 'DcCreator.last_name'
-        db.add_column(u'dariah_contributions_dccreator', 'last_name',
-                      self.gf('django.db.models.fields.CharField')(default='', max_length=50, blank=True),
-                      keep_default=False)
+        content_types = ContentType.objects.filter(app_label='dariah_contributions')
+        content_types.update(app_label='dariah_core')
 
 
     def backwards(self, orm):
-        # Deleting field 'DcContributor.first_name'
-        db.delete_column(u'dariah_contributions_dccontributor', 'first_name')
+        db.rename_table('dariah_core_contribution', 'dariah_contributions_contribution')
+        db.rename_table('dariah_core_dccreator', 'dariah_contributions_dccreator')
+        db.rename_table('dariah_core_dccontributor', 'dariah_contributions_dccontributor')
 
-        # Deleting field 'DcContributor.last_name_prefix'
-        db.delete_column(u'dariah_contributions_dccontributor', 'last_name_prefix')
+        db.rename_table('dariah_core_contribution_dc_creator', 'dariah_contributions_contribution_dc_creator')
+        db.rename_table('dariah_core_contribution_dc_contributor', 'dariah_contributions_contribution_dc_contributor')
+        db.rename_table('dariah_core_contribution_skos_preflabel_activity', 'dariah_contributions_contribution_skos_preflabel_activity')
+        db.rename_table('dariah_core_contribution_skos_preflabel_discipline', 'dariah_contributions_contribution_skos_preflabel_discipline')
+        db.rename_table('dariah_core_contribution_skos_preflabel_object', 'dariah_contributions_contribution_skos_preflabel_object')
+        db.rename_table('dariah_core_contribution_skos_preflabel_technique', 'dariah_contributions_contribution_skos_preflabel_technique')
+        db.rename_table('dariah_core_contribution_skos_preflabel_vcc', 'dariah_contributions_contribution_skos_preflabel_vcc')
 
-        # Deleting field 'DcContributor.last_name'
-        db.delete_column(u'dariah_contributions_dccontributor', 'last_name')
-
-        # Deleting field 'DcCreator.first_name'
-        db.delete_column(u'dariah_contributions_dccreator', 'first_name')
-
-        # Deleting field 'DcCreator.last_name_prefix'
-        db.delete_column(u'dariah_contributions_dccreator', 'last_name_prefix')
-
-        # Deleting field 'DcCreator.last_name'
-        db.delete_column(u'dariah_contributions_dccreator', 'last_name')
-
+        content_types = orm.ContentType.objects.filter(app_label='dariah_core')
+        content_types.update(app_label='dariah_contributions')
 
     models = {
         u'auth.group': {
@@ -96,12 +78,12 @@ class Migration(SchemaMigration):
             'model': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '100'})
         },
-        u'dariah_contributions.contribution': {
+        u'dariah_core.contribution': {
             'Meta': {'ordering': "['-published_on']", 'object_name': 'Contribution'},
             'author': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['auth.User']", 'null': 'True', 'blank': 'True'}),
-            'dc_contributor': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'to': u"orm['dariah_contributions.DcContributor']", 'null': 'True', 'blank': 'True'}),
+            'dc_contributor': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'to': u"orm['dariah_core.DcContributor']", 'null': 'True', 'blank': 'True'}),
             'dc_coverage': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['dariah_static_data.Country']", 'null': 'True', 'blank': 'True'}),
-            'dc_creator': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'to': u"orm['dariah_contributions.DcCreator']", 'null': 'True', 'blank': 'True'}),
+            'dc_creator': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'to': u"orm['dariah_core.DcCreator']", 'null': 'True', 'blank': 'True'}),
             'dc_date': ('django.db.models.fields.PositiveIntegerField', [], {'max_length': '4', 'blank': 'True'}),
             'dc_description': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
             'dc_identifier': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
@@ -111,6 +93,7 @@ class Migration(SchemaMigration):
             'dcterms_abstract': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
             'dcterms_abstract_en': ('django.db.models.fields.TextField', [], {}),
             'dcterms_abstract_lang': ('django.db.models.fields.CharField', [], {'default': "'en'", 'max_length': '2', 'blank': 'True'}),
+            'dcterms_spatial': ('django.db.models.fields.CharField', [], {'max_length': '255', 'blank': 'True'}),
             'is_deleted': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             'is_published': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             'last_modified_on': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now'}),
@@ -123,20 +106,18 @@ class Migration(SchemaMigration):
             'vcard_logo': ('django.db.models.fields.files.ImageField', [], {'max_length': '100', 'null': 'True', 'blank': 'True'}),
             'vcard_organization': ('django.db.models.fields.CharField', [], {'max_length': '50', 'blank': 'True'})
         },
-        u'dariah_contributions.dccontributor': {
+        u'dariah_core.dccontributor': {
             'Meta': {'object_name': 'DcContributor'},
             'first_name': ('django.db.models.fields.CharField', [], {'max_length': '50', 'blank': 'True'}),
-            'foaf_name': ('django.db.models.fields.CharField', [], {'max_length': '50', 'blank': 'True'}),
             'foaf_person': ('django.db.models.fields.URLField', [], {'max_length': '200', 'blank': 'True'}),
             'foaf_publications': ('django.db.models.fields.CharField', [], {'max_length': '50', 'blank': 'True'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'last_name': ('django.db.models.fields.CharField', [], {'max_length': '50', 'blank': 'True'}),
             'last_name_prefix': ('django.db.models.fields.CharField', [], {'max_length': '50', 'blank': 'True'})
         },
-        u'dariah_contributions.dccreator': {
+        u'dariah_core.dccreator': {
             'Meta': {'object_name': 'DcCreator'},
             'first_name': ('django.db.models.fields.CharField', [], {'max_length': '50', 'blank': 'True'}),
-            'foaf_name': ('django.db.models.fields.CharField', [], {'max_length': '50', 'blank': 'True'}),
             'foaf_person': ('django.db.models.fields.URLField', [], {'max_length': '200', 'blank': 'True'}),
             'foaf_publications': ('django.db.models.fields.CharField', [], {'max_length': '50', 'blank': 'True'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
@@ -186,4 +167,4 @@ class Migration(SchemaMigration):
         }
     }
 
-    complete_apps = ['dariah_contributions']
+    complete_apps = ['dariah_core', 'dariah_core']

@@ -17,9 +17,9 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="{% url 'dariah_contributions:list' %}">{% trans 'Browse Contributions' %}</a></li>
+                    <li><a href="{% url 'dariah_core:list' %}">{% trans 'Browse Contributions' %}</a></li>
                     {% if user.is_authenticated %}
-                        <li><a href="{% url 'dariah_contributions:mine' %}" title="{% trans 'My Contributions' %}">{% trans 'My Contributions' %}</a></li>
+                        <li><a href="{% url 'dariah_core:mine' %}" title="{% trans 'My Contributions' %}">{% trans 'My Contributions' %}</a></li>
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                                 {% trans 'My account' %} <span class="caret"></span>

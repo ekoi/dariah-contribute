@@ -1,5 +1,5 @@
 from django.contrib import admin
-from dariah_contributions.models import Contribution, DcCreator, DcContributor
+from .models import Contribution, DcCreator, DcContributor
 
 
 class ContributionAdmin(admin.ModelAdmin):

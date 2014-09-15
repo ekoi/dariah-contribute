@@ -1,5 +1,5 @@
 import os
-import contributions
+import dariah_contribute
 from setuptools import setup, find_packages
 
 README = open(os.path.join(os.path.dirname(__file__), 'README.rst')).read()
@@ -27,8 +27,8 @@ def get_dependency_links(pip_requirements):
 
 
 setup(
-    name='contributions',
-    version=contributions.__version__,
+    name='dariah-contribute',
+    version=dariah_contribute.__version__,
     author='DANS',
     author_email='info@dans.knaw.nl',
     description='Contribute portal for the Dariah project.',
@@ -46,7 +46,7 @@ setup(
         'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
     ],
     packages=find_packages(),
-    scripts=['manage.py', 'contributions/wsgi.py', ],
+    scripts=['manage.py', 'dariah_contribute/wsgi.py', ],
     include_package_data=True,
     install_requires=get_install_requires(REQUIREMENTS),
     dependency_links=get_dependency_links(REQUIREMENTS),

@@ -1,5 +1,5 @@
 """
-Django settings for contributions project.
+Django settings for contribute project.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.6/topics/settings/
@@ -21,7 +21,7 @@ ROOT_URLCONF = PROJECT_NAME + '.urls.prod'
 MAINTENANCE_MODE = True
 
 DOMAIN_NAME = ''
-SITE_NAME = 'Dariah Contributions'
+SITE_NAME = 'Dariah Contribute'
 
 ALLOWED_HOSTS = '*'
 
@@ -77,7 +77,8 @@ DATABASES = {
 
 # Application definition
 INSTALLED_APPS = (
-    'dariah_contributions',
+    'dariah_contribute',
+    'dariah_core',
     'dariah_static_data',
     'dariah_accounts',
     'south',
@@ -114,9 +115,9 @@ MIDDLEWARE_CLASSES = (
     'axes.middleware.FailedLoginMiddleware',  # Limit login attempts
 )
 
-ROOT_URLCONF = 'contributions.urls'
+ROOT_URLCONF = 'dariah_contribute.urls'
 
-WSGI_APPLICATION = 'contributions.wsgi.application'
+WSGI_APPLICATION = 'dariah_contribute.wsgi.application'
 # Python dotted path to the WSGI application used by Django's runserver.
 #WSGI_APPLICATION = 'wsgi.application'
 
@@ -195,7 +196,7 @@ AXES_LOCKOUT_URL = '/lockout'
 AXES_LOCKOUT_TEMPLATE = 'axes/lockout.html'
 AXES_USE_USER_AGENT = True
 
-GRAPPELLI_ADMIN_TITLE = ugettext("Dariah Contributions Admin")
+GRAPPELLI_ADMIN_TITLE = ugettext("Dariah Contribute Admin")
 
 BOOTSTRAP3 = {
     'javascript_in_head': True,

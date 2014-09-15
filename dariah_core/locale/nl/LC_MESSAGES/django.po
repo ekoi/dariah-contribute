@@ -227,11 +227,11 @@ msgstr "is verwijderd?"
 msgid "help text for is_deleted"
 msgstr ""
 
-#: models.py:287 templates/dariah_contributions/contribution_form.html:14
+#: models.py:287 templates/dariah_core/contribution_form.html:14
 msgid "contribution"
 msgstr "contributie"
 
-#: models.py:288 templates/dariah_contributions/contribution_list.html:20
+#: models.py:288 templates/dariah_core/contribution_list.html:20
 msgid "contributions"
 msgstr "contributies"
 
@@ -239,145 +239,145 @@ msgstr "contributies"
 msgid "help text for foaf:person"
 msgstr ""
 
-#: templates/dariah_contributions/_creator-contrib_autocomplete_empty_html_format.html:13
+#: templates/dariah_core/_creator-contrib_autocomplete_empty_html_format.html:13
 msgid "Add new..."
 msgstr "Voeg nieuwe toe..."
 
-#: templates/dariah_contributions/contribution_confirm_delete.html:6
+#: templates/dariah_core/contribution_confirm_delete.html:6
 msgid "Confirm deletion of contribution"
 msgstr "Bevestig verwijderen van contributie"
 
-#: templates/dariah_contributions/contribution_confirm_delete.html:8
+#: templates/dariah_core/contribution_confirm_delete.html:8
 #, python-format
 msgid "Are you sure you want to delete %(object)s?"
 msgstr "Weet je zeker dat je de contrubitie %(object)s wilt verwijderen?"
 
-#: templates/dariah_contributions/contribution_confirm_delete.html:9
+#: templates/dariah_core/contribution_confirm_delete.html:9
 msgid "Delete"
 msgstr "Verwijder"
 
-#: templates/dariah_contributions/contribution_confirm_delete.html:10
+#: templates/dariah_core/contribution_confirm_delete.html:10
 msgid "Cancel"
 msgstr "Annuleer"
 
-#: templates/dariah_contributions/contribution_detail.html:22
+#: templates/dariah_core/contribution_detail.html:22
 msgid "Contribution last modified"
 msgstr "Contributie laatst bewerkt op"
 
-#: templates/dariah_contributions/contribution_detail.html:24
+#: templates/dariah_core/contribution_detail.html:24
 msgid "by"
 msgstr "door"
 
-#: templates/dariah_contributions/contribution_detail.html:27
+#: templates/dariah_core/contribution_detail.html:27
 msgid "published"
 msgstr "gepubliceerd op"
 
-#: templates/dariah_contributions/contribution_detail.html:29
+#: templates/dariah_core/contribution_detail.html:29
 msgid "unpublished"
 msgstr "ongepubliceerd"
 
-#: templates/dariah_contributions/contribution_detail.html:38
+#: templates/dariah_core/contribution_detail.html:38
 msgid "Show as RDF"
 msgstr "Toon als RDF"
 
-#: templates/dariah_contributions/contribution_detail.html:40
+#: templates/dariah_core/contribution_detail.html:40
 msgid "Edit"
 msgstr "Bewerken"
 
-#: templates/dariah_contributions/contribution_detail.html:48
+#: templates/dariah_core/contribution_detail.html:48
 msgid "This page in RDF (XML)"
 msgstr "Deze pagina in RDF (XML)"
 
-#: templates/dariah_contributions/contribution_form.html:9
-#: templates/dariah_contributions/dccreator_form.html:24
+#: templates/dariah_core/contribution_form.html:9
+#: templates/dariah_core/dccreator_form.html:24
 msgid "Add"
 msgstr "Voeg toe"
 
-#: templates/dariah_contributions/contribution_form.html:11
-#: templates/dariah_contributions/contribution_list.html:44
+#: templates/dariah_core/contribution_form.html:11
+#: templates/dariah_core/contribution_list.html:44
 msgid "Update"
 msgstr "Bewerken"
 
-#: templates/dariah_contributions/contribution_form.html:29
-#: templates/dariah_contributions/dccreator_form.html:19
+#: templates/dariah_core/contribution_form.html:29
+#: templates/dariah_core/dccreator_form.html:19
 msgid "Fields marked with a star (*) are compulsory."
 msgstr "Velden gemarkeerd met een ster (*) zijn verplicht."
 
-#: templates/dariah_contributions/contribution_form.html:35
-#: templates/dariah_contributions/contribution_form.html:43
+#: templates/dariah_core/contribution_form.html:35
+#: templates/dariah_core/contribution_form.html:43
 msgid "(no content)"
 msgstr "(geen inhoud)"
 
-#: templates/dariah_contributions/contribution_list.html:9
+#: templates/dariah_core/contribution_list.html:9
 msgid "Add new contribution"
 msgstr "Voeg een nieuwe contributie toe"
 
-#: templates/dariah_contributions/contribution_list.html:15
+#: templates/dariah_core/contribution_list.html:15
 msgid "My"
 msgstr "Mijn"
 
-#: templates/dariah_contributions/contribution_list.html:17
+#: templates/dariah_core/contribution_list.html:17
 msgid "All"
 msgstr "Alle"
 
-#: templates/dariah_contributions/contribution_list.html:26
+#: templates/dariah_core/contribution_list.html:26
 msgid "Contribution (dc:title)"
 msgstr "Contributie (dc:title)"
 
-#: templates/dariah_contributions/contribution_list.html:27
+#: templates/dariah_core/contribution_list.html:27
 msgid "Author"
 msgstr "Auteur"
 
-#: templates/dariah_contributions/contribution_list.html:29
+#: templates/dariah_core/contribution_list.html:29
 msgid "Published?"
 msgstr "Gepubliceerd?"
 
-#: templates/dariah_contributions/contribution_list.html:32
+#: templates/dariah_core/contribution_list.html:32
 msgid "Available Actions"
 msgstr "Beschikbare acties"
 
-#: templates/dariah_contributions/contribution_list.html:40
+#: templates/dariah_core/contribution_list.html:40
 msgid "Yes,No"
 msgstr "Ja,Nee"
 
-#: templates/dariah_contributions/contribution_list.html:48
+#: templates/dariah_core/contribution_list.html:48
 msgid "Unpublish"
 msgstr "Publicatie ongedaan maken"
 
-#: templates/dariah_contributions/contribution_list.html:50
+#: templates/dariah_core/contribution_list.html:50
 msgid "Publish"
 msgstr "Publiceer"
 
-#: templates/dariah_contributions/contribution_list.html:63
+#: templates/dariah_core/contribution_list.html:63
 msgid "No contributions are available."
 msgstr "Er zijn geen contributies beschikbaar."
 
-#: templates/dariah_contributions/contribution_list.html:69
+#: templates/dariah_core/contribution_list.html:69
 msgid "Actions"
 msgstr "Acties"
 
-#: templates/dariah_contributions/contribution_list.html:71
+#: templates/dariah_core/contribution_list.html:71
 msgid "View as Atom feed"
 msgstr "Toon als Atom feed"
 
-#: templates/dariah_contributions/contribution_list.html:72
+#: templates/dariah_core/contribution_list.html:72
 msgid "View as RSS feed"
 msgstr "Toon als RSS feed"
 
-#: templates/dariah_contributions/dccontributor_form.html:14
+#: templates/dariah_core/dccontributor_form.html:14
 msgid "Add a dc:contributor"
 msgstr "Voeg een dc:contributor toe"
 
-#: templates/dariah_contributions/dccreator_form.html:10
-#: templates/dariah_contributions/dccreator_form.html:23
+#: templates/dariah_core/dccreator_form.html:10
+#: templates/dariah_core/dccreator_form.html:23
 msgid "Close"
 msgstr "Sluiten"
 
-#: templates/dariah_contributions/dccreator_form.html:13
+#: templates/dariah_core/dccreator_form.html:13
 msgid "Add a new dc:creator"
 msgstr "Voeg een nieuwe dc:creator toe"
 
-#: templates/dariah_contributions/dccreator_form.html:22
+#: templates/dariah_core/dccreator_form.html:22
 msgid "Reset"
 msgstr "Herstel"
 
