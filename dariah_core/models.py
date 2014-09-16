@@ -339,19 +339,19 @@ class Person(models.Model):
     first_name = models.CharField(
         max_length=50,
         blank=True,
-        help_text=_('help text for foaf:person'))
+        help_text=_('help text for first name'))
     last_name_prefix = models.CharField(
         max_length=50,
         blank=True,
-        help_text=_('help text for foaf:person'))
+        help_text=_('help text for last name prefix'))
     last_name = models.CharField(
         max_length=50,
         blank=True,
-        help_text=_('help text for foaf:person'))
+        help_text=_('help text for last name'))
     foaf_publications = models.CharField(
         max_length=50,
         blank=True,
-        help_text=_('help text for foaf:person'))
+        help_text=_('help text for foaf:publications'))
 
     @property
     def uri(self):

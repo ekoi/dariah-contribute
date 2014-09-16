@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dariah-contribute\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-16 14:09+0200\n"
+"POT-Creation-Date: 2014-09-16 15:22+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Heleen van de Schraaf <heleen.van.de.schraaf@dans.knaw.nl>\n"
 "Language-Team: English <>\n"
@@ -239,145 +239,161 @@ msgstr ""
 msgid "help text for is_deleted"
 msgstr "Unsupported feature. Deletion not yet implemented."
 
-#: models.py:310 templates/dariah_core/contribution_form.html:32
+#: models.py:310 templates/dariah_core/contribution_form.html:33
 msgid "contribution"
 msgstr "Contribution"
 
-#: models.py:311 templates/dariah_core/contribution_list.html:38
+#: models.py:311 templates/dariah_core/contribution_list.html:39
 msgid "contributions"
 msgstr ""
 
-#: models.py:338 models.py:342 models.py:346 models.py:350 models.py:354
+#: models.py:338
 msgid "help text for foaf:person"
 msgstr ""
 "A DAI URI identifier of this person, e.g. info:eu-repo/dai/nl/30407618X."
+
+#: models.py:342
+msgid "help text for first name"
+msgstr ""
+
+#: models.py:346
+msgid "help text for last name prefix"
+msgstr ""
+
+#: models.py:350
+msgid "help text for last name"
+msgstr ""
+
+#: models.py:354
+msgid "help text for foaf:publications"
+msgstr ""
 
 #: templates/dariah_core/_creator-contrib_autocomplete_empty_html_format.html:31
 msgid "Add new..."
 msgstr ""
 
-#: templates/dariah_core/contribution_confirm_delete.html:24
+#: templates/dariah_core/contribution_confirm_delete.html:25
 msgid "Confirm deletion of contribution"
 msgstr ""
 
-#: templates/dariah_core/contribution_confirm_delete.html:26
+#: templates/dariah_core/contribution_confirm_delete.html:27
 #, python-format
 msgid "Are you sure you want to delete %(object)s?"
 msgstr ""
 
-#: templates/dariah_core/contribution_confirm_delete.html:27
+#: templates/dariah_core/contribution_confirm_delete.html:28
 msgid "Delete"
 msgstr ""
 
-#: templates/dariah_core/contribution_confirm_delete.html:28
+#: templates/dariah_core/contribution_confirm_delete.html:29
 msgid "Cancel"
 msgstr ""
 
-#: templates/dariah_core/contribution_detail.html:46
+#: templates/dariah_core/contribution_detail.html:47
 msgid "Contribution last modified"
 msgstr ""
 
-#: templates/dariah_core/contribution_detail.html:48
+#: templates/dariah_core/contribution_detail.html:49
 msgid "by"
 msgstr ""
 
-#: templates/dariah_core/contribution_detail.html:51
+#: templates/dariah_core/contribution_detail.html:52
 msgid "published"
 msgstr ""
 
-#: templates/dariah_core/contribution_detail.html:53
+#: templates/dariah_core/contribution_detail.html:54
 msgid "unpublished"
 msgstr ""
 
-#: templates/dariah_core/contribution_detail.html:62
+#: templates/dariah_core/contribution_detail.html:63
 msgid "Show as RDF"
 msgstr ""
 
-#: templates/dariah_core/contribution_detail.html:64
+#: templates/dariah_core/contribution_detail.html:65
 msgid "Edit"
 msgstr ""
 
-#: templates/dariah_core/contribution_detail.html:72
+#: templates/dariah_core/contribution_detail.html:73
 msgid "This page in RDF (XML)"
 msgstr ""
 
-#: templates/dariah_core/contribution_form.html:27
+#: templates/dariah_core/contribution_form.html:28
 #: templates/dariah_core/dccreator_form.html:42
 msgid "Add"
 msgstr ""
 
-#: templates/dariah_core/contribution_form.html:29
-#: templates/dariah_core/contribution_list.html:62
+#: templates/dariah_core/contribution_form.html:30
+#: templates/dariah_core/contribution_list.html:63
 msgid "Update"
 msgstr ""
 
-#: templates/dariah_core/contribution_form.html:47
+#: templates/dariah_core/contribution_form.html:48
 #: templates/dariah_core/dccreator_form.html:37
 msgid "Fields marked with a star (*) are compulsory."
 msgstr ""
 
-#: templates/dariah_core/contribution_form.html:53
-#: templates/dariah_core/contribution_form.html:61
+#: templates/dariah_core/contribution_form.html:54
+#: templates/dariah_core/contribution_form.html:62
 msgid "(no content)"
 msgstr ""
 
-#: templates/dariah_core/contribution_list.html:27
+#: templates/dariah_core/contribution_list.html:28
 msgid "Add new contribution"
 msgstr ""
 
-#: templates/dariah_core/contribution_list.html:33
+#: templates/dariah_core/contribution_list.html:34
 msgid "My"
 msgstr ""
 
-#: templates/dariah_core/contribution_list.html:35
+#: templates/dariah_core/contribution_list.html:36
 msgid "All"
 msgstr ""
 
-#: templates/dariah_core/contribution_list.html:44
+#: templates/dariah_core/contribution_list.html:45
 msgid "Contribution (dc:title)"
 msgstr ""
 
-#: templates/dariah_core/contribution_list.html:45
+#: templates/dariah_core/contribution_list.html:46
 msgid "Author"
 msgstr ""
 
-#: templates/dariah_core/contribution_list.html:47
+#: templates/dariah_core/contribution_list.html:48
 msgid "Published?"
 msgstr ""
 
-#: templates/dariah_core/contribution_list.html:50
+#: templates/dariah_core/contribution_list.html:51
 msgid "Available Actions"
 msgstr ""
 
-#: templates/dariah_core/contribution_list.html:58
+#: templates/dariah_core/contribution_list.html:59
 msgid "Yes,No"
 msgstr ""
 
-#: templates/dariah_core/contribution_list.html:66
+#: templates/dariah_core/contribution_list.html:67
 msgid "Unpublish"
 msgstr ""
 
-#: templates/dariah_core/contribution_list.html:68
+#: templates/dariah_core/contribution_list.html:69
 msgid "Publish"
 msgstr ""
 
-#: templates/dariah_core/contribution_list.html:81
+#: templates/dariah_core/contribution_list.html:82
 msgid "No contributions are available."
 msgstr ""
 
-#: templates/dariah_core/contribution_list.html:87
+#: templates/dariah_core/contribution_list.html:88
 msgid "Actions"
 msgstr ""
 
-#: templates/dariah_core/contribution_list.html:89
+#: templates/dariah_core/contribution_list.html:90
 msgid "View as Atom feed"
 msgstr ""
 
-#: templates/dariah_core/contribution_list.html:90
+#: templates/dariah_core/contribution_list.html:91
 msgid "View as RSS feed"
 msgstr ""
 
-#: templates/dariah_core/dccontributor_form.html:32
+#: templates/dariah_core/dccontributor_form.html:33
 msgid "Add a dc:contributor"
 msgstr ""
 
