@@ -1,13 +1,17 @@
 {% extends "content_left_sidebar.html" %}
 {% load i18n %}
 {% load is_url %}
+{% load static %}
 
 {% block content %}
     <h3>{{ contribution.dc_title }}</h3>
     <table class="table">
-    {% for field, value, is_safe in get_fields %}
+    {% for field, value, is_safe, help_text in get_fields %}
         <tr>
-            <td>{{ field }}</td>
+            <td>
+                {{ field }}
+                <a href="#" rel="popover" data-toggle="popover" data-trigger="hover" title="" data-content="{{ help_text }}" data-placement="right"><span class="glyphicon glyphicon-question-sign"></span></a>
+            </td>
             {% if value|is_url %}
             <td>{{ value|urlize }}</td>
             {% elif is_safe %}
@@ -47,4 +51,9 @@
 
 {% block extra_extra_head %}
 <link rel="alternate" type="application/rdf+xml" href="{% url 'dariah_core:detail_rdf' contribution.pk %}" title="{% trans 'This page in RDF (XML)' %}" />
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('[rel=popover]').popover();
+    });
+</script>
 {% endblock %}

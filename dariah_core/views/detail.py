@@ -177,6 +177,7 @@ class ContributionDetailMixin(BaseDetailView):
             field = c.__class__._meta.get_field(x[0])
             value = getattr(c, x[0])
             is_safe = False
+            help_text = unicode(field.help_text)
             # If the field is an iterable (TaggableManager or ManyToManyField)
             # format the data as a string of comma separated items.
             if isinstance(field, ManyToManyField):
@@ -191,7 +192,7 @@ class ContributionDetailMixin(BaseDetailView):
             elif isinstance(field, ImageField):
                 value = self.image(value)
                 is_safe = True
-            yield field.verbose_name, value, is_safe
+            yield field.verbose_name, value, is_safe, help_text
 
     @staticmethod
     def link(value):
