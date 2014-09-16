@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-15 10:22+0200\n"
+"POT-Creation-Date: 2014-09-16 10:15+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,9 +26,9 @@ msgstr "Engels"
 msgid "Dutch"
 msgstr "Nederlands"
 
-#: settings/base.py:198
-msgid "Dariah Contributions Admin"
-msgstr "Dariah contributies admin"
+#: settings/base.py:199
+msgid "Dariah Contribute Admin"
+msgstr "Dariah Contributies Admin"
 
 #: templates/404.html:6
 msgid "404 - Page not found"

@@ -3,6 +3,7 @@ from django.db.models.fields.files import ImageField
 from django.db.models.fields.related import ManyToManyField, ForeignKey
 from django.http import HttpResponse
 from django.template import Context, Template
+from django.utils.translation import ugettext as _
 from django.views.generic.detail import BaseDetailView, SingleObjectTemplateResponseMixin
 
 from taggit.managers import TaggableManager
@@ -205,8 +206,8 @@ class ContributionDetailMixin(BaseDetailView):
     @staticmethod
     def image(value):
         if hasattr(value, 'url') and getattr(value, 'url'):
-            template = Template('<a href="{{ uri }}" title="vcard:logo"><img class="detail-vcard-logo" src="{{ uri }}" /></a><br/>Location: <a href="{{ uri }}" title="vcard:logo">{{ uri }}</a>')
-            context = Context({'value': str(value), 'uri': value.url})
+            template = Template('<a href="{{ uri }}" title="vcard:logo"><img class="detail-vcard-logo" src="{{ uri }}" /></a><br/>{{ location }}: <a href="{{ uri }}" title="vcard:logo">{{ uri }}</a>')
+            context = Context({'value': str(value), 'uri': value.url, 'location': _('Location')})
             return template.render(context)
         return str(value)
 
