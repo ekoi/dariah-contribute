@@ -1,24 +1,25 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# DARIAH Contribute - dariah_accounts translations
+# Copyright (C) 2014 Data Archiving and Networked Services
+# This file is distributed under the same license as the dariah-contribute
+# package.
+# Data Archiving and Networked Services <info@dans.knaw.nl>, 2014.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: dariah-contribute\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-16 10:16+0200\n"
+"POT-Creation-Date: 2014-09-16 13:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Last-Translator: Heleen van de Schraaf <heleen.van.de.schraaf@dans.knaw.nl>\n"
+"Language-Team: Dutch <>\n"
+"Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: templates/axes/lockout.html:11
+#: templates/axes/lockout.html:29
 #, python-format
 msgid ""
 "Unfortunately you have entered the wrong password and/or username more than "
@@ -33,14 +34,14 @@ msgstr[1] ""
 "U heeft het wachtwoord en/of gebruikersnaam meer dan %(counter)s keer "
 "incorrect ingevoerd."
 
-#: templates/axes/lockout.html:12
+#: templates/axes/lockout.html:30
 #, python-format
 msgid "Therefore your account has been blocked for one hour."
 msgid_plural "Therefore your account has been blocked for %(counter)s hours."
 msgstr[0] "Daarom is uw account een uur geblokkeerd."
 msgstr[1] "Daarom is uw account %(counter)s uur geblokkeerd."
 
-#: templates/axes/lockout.html:16
+#: templates/axes/lockout.html:34
 #, python-format
 msgid ""
 "If you have forgotten your password you can <a href=\"%(password_reset_url)s"
@@ -49,7 +50,7 @@ msgstr ""
 "Als u uw wachtwoord bent vergeten dan kunt u uw wachtwoord <a href="
 "\"%(password_reset_url)s\" title=\"Password reset\">herstellen</a>."
 
-#: templates/axes/lockout.html:19
+#: templates/axes/lockout.html:37
 msgid ""
 "If you have forgotten both your password and the e-mail address you "
 "registered with you can contact the <a href=\"mailto:info@datasealofapproval."
@@ -57,34 +58,34 @@ msgid ""
 msgstr ""
 "Als u zowel uw wachtwoord als het e-mail adres waarmee u hebt geregistreerd "
 "bent vergeten, dan kunt u contact opnemen met de <a href=\"mailto:"
-"info@datasealofapproval.org\" title=\"E-mail de administrator"
+"info@dans.knaw.nl\" title=\"E-mail de administrator"
 "\">administrator</a>."
 
-#: templates/axes/lockout.html:22
+#: templates/axes/lockout.html:40
 msgid "Go back to the homepage"
 msgstr "Ga terug naar de homepage"
 
-#: templates/registration/logged_out.html:6
+#: templates/registration/logged_out.html:24
 msgid "Logged out"
 msgstr "Uitgelogd"
 
-#: templates/registration/logged_out.html:8
+#: templates/registration/logged_out.html:26
 msgid "You have been successfully logged out."
 msgstr "U bent succesvol uitgelogd."
 
-#: templates/registration/logged_out.html:9
+#: templates/registration/logged_out.html:27
 msgid "Log back in"
 msgstr "Log opnieuw in"
 
-#: templates/registration/login.html:10
+#: templates/registration/login.html:28
 msgid "Log in"
 msgstr "Log in"
 
-#: templates/registration/login.html:16
+#: templates/registration/login.html:34
 msgid "Reset your password"
 msgstr "Herstel je wachtwoord"
 
-#: templates/registration/login.html:16
+#: templates/registration/login.html:34
 msgid ""
 "if your username and password do not match or if you have forgotten your "
 "password."
@@ -92,78 +93,78 @@ msgstr ""
 "als je gebruikersnaam en wachtwoord niet overeenkomen of als je je "
 "wachtwoord vergeten bent."
 
-#: templates/registration/login.html:17
+#: templates/registration/login.html:35
 msgid "Contact the"
 msgstr "Neem contact op met de"
 
-#: templates/registration/login.html:17
+#: templates/registration/login.html:35
 msgid "info@dariah.org"
 msgstr ""
 
-#: templates/registration/login.html:17
+#: templates/registration/login.html:35
 msgid "administrator"
 msgstr ""
 
-#: templates/registration/login.html:17
+#: templates/registration/login.html:35
 msgid ""
 "if you have forgotten your username, password and sign-up e-mail address"
 msgstr "als je je gebruikersnaam, wachtwoord en e-mail adres bent vergeten"
 
-#: templates/registration/password_change_done.html:4
-#: templates/registration/password_change_done.html:7
+#: templates/registration/password_change_done.html:22
+#: templates/registration/password_change_done.html:25
 msgid "Password change successful"
 msgstr "Wachtwoord herstellen gelukt"
 
-#: templates/registration/password_change_done.html:8
-#: templates/registration/password_reset_complete.html:8
+#: templates/registration/password_change_done.html:26
+#: templates/registration/password_reset_complete.html:26
 msgid "log in"
 msgstr ""
 
-#: templates/registration/password_change_done.html:9
+#: templates/registration/password_change_done.html:27
 msgid "Your password was changed."
 msgstr "Uw wachtwoord is gewijzigd."
 
-#: templates/registration/password_change_done.html:10
+#: templates/registration/password_change_done.html:28
 msgid "Go back to the"
 msgstr "Ga terug naar de"
 
-#: templates/registration/password_change_done.html:10
+#: templates/registration/password_change_done.html:28
 msgid "homepage"
 msgstr ""
 
-#: templates/registration/password_change_form.html:13
+#: templates/registration/password_change_form.html:31
 msgid "Change your Password"
 msgstr "Wijzig je wachtwoord"
 
-#: templates/registration/password_change_form.html:20
-#: templates/registration/password_reset_confirm.html:24
+#: templates/registration/password_change_form.html:38
+#: templates/registration/password_reset_confirm.html:42
 msgid "Password strength"
 msgstr "Wachtwoord sterkte"
 
-#: templates/registration/password_change_form.html:29
-#: templates/registration/password_reset_confirm.html:12
-#: templates/registration/password_reset_confirm.html:16
-#: templates/registration/password_reset_confirm.html:33
+#: templates/registration/password_change_form.html:47
+#: templates/registration/password_reset_confirm.html:30
+#: templates/registration/password_reset_confirm.html:34
+#: templates/registration/password_reset_confirm.html:51
 msgid "Set new password"
 msgstr "Maak een nieuw wachtwoord aan"
 
-#: templates/registration/password_reset_complete.html:4
-#: templates/registration/password_reset_complete.html:7
+#: templates/registration/password_reset_complete.html:22
+#: templates/registration/password_reset_complete.html:25
 msgid "New password set"
 msgstr "Nieuw wachtwoord aangemaakt"
 
-#: templates/registration/password_reset_complete.html:9
+#: templates/registration/password_reset_complete.html:27
 msgid ""
 "Your password has successfully been reset. You can use it right now on the"
 msgstr ""
 "Je wachtwoord is succesvol hersteld. Je kunt het wachtwoord nu gebruiken op "
 "de"
 
-#: templates/registration/password_reset_complete.html:9
+#: templates/registration/password_reset_complete.html:27
 msgid "page."
 msgstr "pagina."
 
-#: templates/registration/password_reset_confirm.html:17
+#: templates/registration/password_reset_confirm.html:35
 msgid ""
 "Please enter your new password twice so we can verify you typed it in "
 "correctly."
@@ -171,11 +172,11 @@ msgstr ""
 "Voer alstublieft uw wachtwoord twee maal in, zodat we kunnen verifiëren dat "
 "het correct is ingetikt."
 
-#: templates/registration/password_reset_confirm.html:41
+#: templates/registration/password_reset_confirm.html:59
 msgid "Password reset unsuccessful"
 msgstr "Wachtwoord herstellen mislukt"
 
-#: templates/registration/password_reset_confirm.html:43
+#: templates/registration/password_reset_confirm.html:61
 msgid ""
 "The password reset link was invalid, possibly because it has already been "
 "used. Please request a new password reset."
@@ -183,12 +184,12 @@ msgstr ""
 "De wachtwoord herstel link is incorrect, wellicht omdat hij al eens is "
 "gebruikt.Probeert u alstublieft het wachtwoord opnieuw te herstellen."
 
-#: templates/registration/password_reset_done.html:4
-#: templates/registration/password_reset_done.html:7
+#: templates/registration/password_reset_done.html:22
+#: templates/registration/password_reset_done.html:25
 msgid "Password reset successful"
 msgstr "Wachtwoord herstellen gelukt"
 
-#: templates/registration/password_reset_done.html:9
+#: templates/registration/password_reset_done.html:27
 msgid ""
 "We've emailed you instructions for setting your password. You should be "
 "receiving them shortly."
@@ -196,7 +197,7 @@ msgstr ""
 "We hebben de instructies om je wachtwoord te herstellen naar je ge-emailed. "
 "De e-mail zou binnenkort moeten arriveren."
 
-#: templates/registration/password_reset_done.html:11
+#: templates/registration/password_reset_done.html:29
 msgid ""
 "If you don't receive an email, please make sure you've entered the address "
 "you registered with, and check your spam folder."
@@ -204,11 +205,11 @@ msgstr ""
 "Als je geen e-mail ontvangt, zorg dat je het e-mail adres hebt ingevuld "
 "waarmee je hebt geregistreerd en check de spam map van je e-mail account."
 
-#: templates/registration/password_reset_email.html:2
+#: templates/registration/password_reset_email.html:20
 msgid "Dear"
 msgstr "Beste"
 
-#: templates/registration/password_reset_email.html:4
+#: templates/registration/password_reset_email.html:22
 #, python-format
 msgid ""
 "You are receiving this email because you requested a password reset for your "
@@ -217,15 +218,15 @@ msgstr ""
 "U ontvangt deze e-mail omdat u het wachtwoord probeert te herstellen voor de "
 "gebruikersaccount op de website %(site_name)s."
 
-#: templates/registration/password_reset_email.html:6
+#: templates/registration/password_reset_email.html:24
 msgid "Please go to the following page and choose a new password:"
 msgstr "Ga alstublieft naar de volgende pagina en kies een nieuw wachtwoord:"
 
-#: templates/registration/password_reset_email.html:10
+#: templates/registration/password_reset_email.html:28
 msgid "Your username, in case you have forgotten:"
 msgstr "Uw gebruikersnaam, mocht u die zijn vergeten:"
 
-#: templates/registration/password_reset_email.html:12
+#: templates/registration/password_reset_email.html:30
 msgid ""
 "If you do not want to reset your password, simply ignore this email and it "
 "will stay unchanged"
@@ -233,18 +234,18 @@ msgstr ""
 "Als u uw wachtwoord niet wilt herstellen, dan kunt u deze e-mail negeren en "
 "uw wachtwoord zal hetzelfde blijven"
 
-#: templates/registration/password_reset_email.html:14
+#: templates/registration/password_reset_email.html:32
 #, python-format
 msgid "The %(site_name)s team"
 msgstr "Het %(site_name)s team"
 
-#: templates/registration/password_reset_form.html:5
-#: templates/registration/password_reset_form.html:8
-#: templates/registration/password_reset_form.html:13
+#: templates/registration/password_reset_form.html:23
+#: templates/registration/password_reset_form.html:26
+#: templates/registration/password_reset_form.html:31
 msgid "Reset my password"
 msgstr "Herstel mijn wachtwoord"
 
-#: templates/registration/password_reset_form.html:12
+#: templates/registration/password_reset_form.html:30
 msgid "Enter the e-mail address you've registered with."
 msgstr "Vul het e-mail adres in waarmee u zich heeft geregistreerd."
 
