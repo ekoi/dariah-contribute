@@ -51,7 +51,7 @@ setup(
     author_email='info@dans.knaw.nl',
     description='Contribute portal for the Dariah project.',
     long_description=README,
-    url='http://',
+    url='http://dariah-contribute.dans.knaw.nl',
     license='',
     classifiers=[
         'Environment :: Web Environment',
