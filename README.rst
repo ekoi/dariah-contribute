@@ -2,6 +2,10 @@
 README
 ======
 
+DARIAH Contribute: contribute portal for the Dariah project.
+This project has been built in `Python <https://www.python.org/>`_ using the
+`Django framework <https://www.djangoproject.com/>`_.
+
 -------------------
 Quick install guide
 -------------------
@@ -11,7 +15,17 @@ Quick install guide
 #. In ``{virtualenv folder}/dariah-contribute/lib/python{versionno.}/site-packages/dariah_contribute/settings/`` copy ``local.py.default`` to ``local.py`` and adjust the settings to the server configuration. Note: pay attention to the commented out ``# MAINTENANCE_MODE = False``. The default is set to true and means you WILL get 503 errors. This setting is used for when users are not allowed to log in due to maintenance;
 #. ``manage.py collectstatic`` (always);
 #. ``manage.py syncdb`` (on new install);
-#. ``manage.py migrate`` (always).
+#. ``manage.py migrate`` (always);
+#. Change directory to ``{virtualenv path}/lib/python{versionno.}/site-packages/dariah_static_data/skos_preflabels_data`` and execute the following commands (only on new install):
+
+   .. code-block:: sh
+
+      manage.py import_disciplines
+      manage.py import_geonames_countries
+      manage.py import_tadirah_activity
+      manage.py import_tadirah_object
+      manage.py import_tadirah_technique
+      manage.py import_tadirah_vcc
 
 .. Note:: the Dariah Contribute application currently uses SQLite.
 
@@ -27,8 +41,8 @@ Production installation
 
    .. code-block:: sh
 
-      foo@bar:~$ sudo yum install python-devel zlib-devel* libjpeg-devel* freetype-devel* python-pip gcc
-      foo@bar:~$ sudo pip install virtualenv 
+      sudo yum install python-devel zlib-devel* libjpeg-devel* freetype-devel* python-pip gcc
+      sudo pip install virtualenv
 
 #. Run ``virtualenv dariah-contribute``;
 #. You should be working on your virtualenv, if not run ``source dariah-contribute/bin/activate``;
@@ -38,6 +52,17 @@ Production installation
 #. Then ``manage.py migrate``;
 #. Run ``manage.py collectstatic``;
 #. Let your IT departement set up Apache;
+#. Change directory to ``{virtualenv path}/lib/python{versionno.}/site-packages/dariah_static_data/skos_preflabels_data`` and execute the following commands (only on new install):
+
+   .. code-block:: sh
+
+      manage.py import_disciplines
+      manage.py import_geonames_countries
+      manage.py import_tadirah_activity
+      manage.py import_tadirah_object
+      manage.py import_tadirah_technique
+      manage.py import_tadirah_vcc
+
 #. When you're done take the project out of maintenance mode by adding ``MAINTENANCE_MODE = False`` to the ``local.py`` settings file and restarting django by 'touching' ``{virtualenv folder}/dariah-contribute/bin/wsgi``.
 
 ----------------------------------
