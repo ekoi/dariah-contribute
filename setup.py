@@ -52,7 +52,7 @@ setup(
     description='Contribute portal for the Dariah project.',
     long_description=README,
     url='http://dariah-contribute.dans.knaw.nl',
-    license='',
+    license='Apache License, Version 2.0',
     classifiers=[
         'Environment :: Web Environment',
         'Framework :: Django',
