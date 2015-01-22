@@ -27,7 +27,7 @@ class Migration(SchemaMigration):
 
     def forwards(self, orm):
         # Adding model 'Contribution'
-        db.create_table(u'dariah_core_contribution', (
+        db.create_table(u'dariah_inkind_contribution', (
             ('dc_identifier', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('dc_title', self.gf('django.db.models.fields.CharField')(max_length=100)),
             ('dc_date', self.gf('django.db.models.fields.PositiveIntegerField')(max_length=4, blank=True)),
@@ -47,73 +47,73 @@ class Migration(SchemaMigration):
             ('last_modified_on', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime.now)),
             ('is_deleted', self.gf('django.db.models.fields.BooleanField')(default=False)),
         ))
-        db.send_create_signal(u'dariah_core', ['Contribution'])
+        db.send_create_signal(u'dariah_inkind', ['Contribution'])
 
         # Adding M2M table for field skos_preflabel_activity on 'Contribution'
-        m2m_table_name = db.shorten_name(u'dariah_core_contribution_skos_preflabel_activity')
+        m2m_table_name = db.shorten_name(u'dariah_inkind_contribution_skos_preflabel_activity')
         db.create_table(m2m_table_name, (
             ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True)),
-            ('contribution', models.ForeignKey(orm[u'dariah_core.contribution'], null=False)),
+            ('contribution', models.ForeignKey(orm[u'dariah_inkind.contribution'], null=False)),
             ('tadirahactivity', models.ForeignKey(orm[u'dariah_static_data.tadirahactivity'], null=False))
         ))
         db.create_unique(m2m_table_name, ['contribution_id', 'tadirahactivity_id'])
 
         # Adding M2M table for field skos_preflabel_object on 'Contribution'
-        m2m_table_name = db.shorten_name(u'dariah_core_contribution_skos_preflabel_object')
+        m2m_table_name = db.shorten_name(u'dariah_inkind_contribution_skos_preflabel_object')
         db.create_table(m2m_table_name, (
             ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True)),
-            ('contribution', models.ForeignKey(orm[u'dariah_core.contribution'], null=False)),
+            ('contribution', models.ForeignKey(orm[u'dariah_inkind.contribution'], null=False)),
             ('tadirahobject', models.ForeignKey(orm[u'dariah_static_data.tadirahobject'], null=False))
         ))
         db.create_unique(m2m_table_name, ['contribution_id', 'tadirahobject_id'])
 
         # Adding M2M table for field skos_preflabel_technique on 'Contribution'
-        m2m_table_name = db.shorten_name(u'dariah_core_contribution_skos_preflabel_technique')
+        m2m_table_name = db.shorten_name(u'dariah_inkind_contribution_skos_preflabel_technique')
         db.create_table(m2m_table_name, (
             ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True)),
-            ('contribution', models.ForeignKey(orm[u'dariah_core.contribution'], null=False)),
+            ('contribution', models.ForeignKey(orm[u'dariah_inkind.contribution'], null=False)),
             ('tadirahtechnique', models.ForeignKey(orm[u'dariah_static_data.tadirahtechnique'], null=False))
         ))
         db.create_unique(m2m_table_name, ['contribution_id', 'tadirahtechnique_id'])
 
         # Adding M2M table for field skos_preflabel_discipline on 'Contribution'
-        m2m_table_name = db.shorten_name(u'dariah_core_contribution_skos_preflabel_discipline')
+        m2m_table_name = db.shorten_name(u'dariah_inkind_contribution_skos_preflabel_discipline')
         db.create_table(m2m_table_name, (
             ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True)),
-            ('contribution', models.ForeignKey(orm[u'dariah_core.contribution'], null=False)),
+            ('contribution', models.ForeignKey(orm[u'dariah_inkind.contribution'], null=False)),
             ('discipline', models.ForeignKey(orm[u'dariah_static_data.discipline'], null=False))
         ))
         db.create_unique(m2m_table_name, ['contribution_id', 'discipline_id'])
 
         # Adding M2M table for field skos_preflabel_vcc on 'Contribution'
-        m2m_table_name = db.shorten_name(u'dariah_core_contribution_skos_preflabel_vcc')
+        m2m_table_name = db.shorten_name(u'dariah_inkind_contribution_skos_preflabel_vcc')
         db.create_table(m2m_table_name, (
             ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True)),
-            ('contribution', models.ForeignKey(orm[u'dariah_core.contribution'], null=False)),
+            ('contribution', models.ForeignKey(orm[u'dariah_inkind.contribution'], null=False)),
             ('tadirahvcc', models.ForeignKey(orm[u'dariah_static_data.tadirahvcc'], null=False))
         ))
         db.create_unique(m2m_table_name, ['contribution_id', 'tadirahvcc_id'])
 
         # Adding M2M table for field dc_creator on 'Contribution'
-        m2m_table_name = db.shorten_name(u'dariah_core_contribution_dc_creator')
+        m2m_table_name = db.shorten_name(u'dariah_inkind_contribution_dc_creator')
         db.create_table(m2m_table_name, (
             ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True)),
-            ('contribution', models.ForeignKey(orm[u'dariah_core.contribution'], null=False)),
-            ('dccreator', models.ForeignKey(orm[u'dariah_core.dccreator'], null=False))
+            ('contribution', models.ForeignKey(orm[u'dariah_inkind.contribution'], null=False)),
+            ('dccreator', models.ForeignKey(orm[u'dariah_inkind.dccreator'], null=False))
         ))
         db.create_unique(m2m_table_name, ['contribution_id', 'dccreator_id'])
 
         # Adding M2M table for field dc_contributor on 'Contribution'
-        m2m_table_name = db.shorten_name(u'dariah_core_contribution_dc_contributor')
+        m2m_table_name = db.shorten_name(u'dariah_inkind_contribution_dc_contributor')
         db.create_table(m2m_table_name, (
             ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True)),
-            ('contribution', models.ForeignKey(orm[u'dariah_core.contribution'], null=False)),
-            ('dccontributor', models.ForeignKey(orm[u'dariah_core.dccontributor'], null=False))
+            ('contribution', models.ForeignKey(orm[u'dariah_inkind.contribution'], null=False)),
+            ('dccontributor', models.ForeignKey(orm[u'dariah_inkind.dccontributor'], null=False))
         ))
         db.create_unique(m2m_table_name, ['contribution_id', 'dccontributor_id'])
 
         # Adding model 'DcCreator'
-        db.create_table(u'dariah_core_dccreator', (
+        db.create_table(u'dariah_inkind_dccreator', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('foaf_person', self.gf('django.db.models.fields.URLField')(max_length=200, blank=True)),
             ('first_name', self.gf('django.db.models.fields.CharField')(max_length=50, blank=True)),
@@ -121,10 +121,10 @@ class Migration(SchemaMigration):
             ('last_name', self.gf('django.db.models.fields.CharField')(max_length=50, blank=True)),
             ('foaf_publications', self.gf('django.db.models.fields.CharField')(max_length=50, blank=True)),
         ))
-        db.send_create_signal(u'dariah_core', ['DcCreator'])
+        db.send_create_signal(u'dariah_inkind', ['DcCreator'])
 
         # Adding model 'DcContributor'
-        db.create_table(u'dariah_core_dccontributor', (
+        db.create_table(u'dariah_inkind_dccontributor', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('foaf_person', self.gf('django.db.models.fields.URLField')(max_length=200, blank=True)),
             ('first_name', self.gf('django.db.models.fields.CharField')(max_length=50, blank=True)),
@@ -132,38 +132,38 @@ class Migration(SchemaMigration):
             ('last_name', self.gf('django.db.models.fields.CharField')(max_length=50, blank=True)),
             ('foaf_publications', self.gf('django.db.models.fields.CharField')(max_length=50, blank=True)),
         ))
-        db.send_create_signal(u'dariah_core', ['DcContributor'])
+        db.send_create_signal(u'dariah_inkind', ['DcContributor'])
 
     def backwards(self, orm):
         # Deleting model 'Contribution'
-        db.delete_table(u'dariah_core_contribution')
+        db.delete_table(u'dariah_inkind_contribution')
 
         # Removing M2M table for field skos_preflabel_activity on 'Contribution'
-        db.delete_table(db.shorten_name(u'dariah_core_contribution_skos_preflabel_activity'))
+        db.delete_table(db.shorten_name(u'dariah_inkind_contribution_skos_preflabel_activity'))
 
         # Removing M2M table for field skos_preflabel_object on 'Contribution'
-        db.delete_table(db.shorten_name(u'dariah_core_contribution_skos_preflabel_object'))
+        db.delete_table(db.shorten_name(u'dariah_inkind_contribution_skos_preflabel_object'))
 
         # Removing M2M table for field skos_preflabel_technique on 'Contribution'
-        db.delete_table(db.shorten_name(u'dariah_core_contribution_skos_preflabel_technique'))
+        db.delete_table(db.shorten_name(u'dariah_inkind_contribution_skos_preflabel_technique'))
 
         # Removing M2M table for field skos_preflabel_discipline on 'Contribution'
-        db.delete_table(db.shorten_name(u'dariah_core_contribution_skos_preflabel_discipline'))
+        db.delete_table(db.shorten_name(u'dariah_inkind_contribution_skos_preflabel_discipline'))
 
         # Removing M2M table for field skos_preflabel_vcc on 'Contribution'
-        db.delete_table(db.shorten_name(u'dariah_core_contribution_skos_preflabel_vcc'))
+        db.delete_table(db.shorten_name(u'dariah_inkind_contribution_skos_preflabel_vcc'))
 
         # Removing M2M table for field dc_creator on 'Contribution'
-        db.delete_table(db.shorten_name(u'dariah_core_contribution_dc_creator'))
+        db.delete_table(db.shorten_name(u'dariah_inkind_contribution_dc_creator'))
 
         # Removing M2M table for field dc_contributor on 'Contribution'
-        db.delete_table(db.shorten_name(u'dariah_core_contribution_dc_contributor'))
+        db.delete_table(db.shorten_name(u'dariah_inkind_contribution_dc_contributor'))
 
         # Deleting model 'DcCreator'
-        db.delete_table(u'dariah_core_dccreator')
+        db.delete_table(u'dariah_inkind_dccreator')
 
         # Deleting model 'DcContributor'
-        db.delete_table(u'dariah_core_dccontributor')
+        db.delete_table(u'dariah_inkind_dccontributor')
 
     models = {
         u'auth.group': {
@@ -202,12 +202,12 @@ class Migration(SchemaMigration):
             'model': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '100'})
         },
-        u'dariah_core.contribution': {
+        u'dariah_inkind.contribution': {
             'Meta': {'ordering': "['-published_on']", 'object_name': 'Contribution'},
             'author': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['auth.User']", 'null': 'True', 'blank': 'True'}),
-            'dc_contributor': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'to': u"orm['dariah_core.DcContributor']", 'null': 'True', 'blank': 'True'}),
+            'dc_contributor': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'to': u"orm['dariah_inkind.DcContributor']", 'null': 'True', 'blank': 'True'}),
             'dc_coverage': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['dariah_static_data.Country']", 'null': 'True', 'blank': 'True'}),
-            'dc_creator': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'to': u"orm['dariah_core.DcCreator']", 'null': 'True', 'blank': 'True'}),
+            'dc_creator': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'to': u"orm['dariah_inkind.DcCreator']", 'null': 'True', 'blank': 'True'}),
             'dc_date': ('django.db.models.fields.PositiveIntegerField', [], {'max_length': '4', 'blank': 'True'}),
             'dc_description': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
             'dc_identifier': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
@@ -230,7 +230,7 @@ class Migration(SchemaMigration):
             'vcard_logo': ('django.db.models.fields.files.ImageField', [], {'max_length': '100', 'null': 'True', 'blank': 'True'}),
             'vcard_organization': ('django.db.models.fields.CharField', [], {'max_length': '50', 'blank': 'True'})
         },
-        u'dariah_core.dccontributor': {
+        u'dariah_inkind.dccontributor': {
             'Meta': {'object_name': 'DcContributor'},
             'first_name': ('django.db.models.fields.CharField', [], {'max_length': '50', 'blank': 'True'}),
             'foaf_person': ('django.db.models.fields.URLField', [], {'max_length': '200', 'blank': 'True'}),
@@ -239,7 +239,7 @@ class Migration(SchemaMigration):
             'last_name': ('django.db.models.fields.CharField', [], {'max_length': '50', 'blank': 'True'}),
             'last_name_prefix': ('django.db.models.fields.CharField', [], {'max_length': '50', 'blank': 'True'})
         },
-        u'dariah_core.dccreator': {
+        u'dariah_inkind.dccreator': {
             'Meta': {'object_name': 'DcCreator'},
             'first_name': ('django.db.models.fields.CharField', [], {'max_length': '50', 'blank': 'True'}),
             'foaf_person': ('django.db.models.fields.URLField', [], {'max_length': '200', 'blank': 'True'}),
@@ -291,4 +291,4 @@ class Migration(SchemaMigration):
         }
     }
 
-    complete_apps = ['dariah_core']
+    complete_apps = ['dariah_inkind']

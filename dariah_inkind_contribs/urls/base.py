@@ -1,6 +1,4 @@
-{% extends "content_left_sidebar.html" %}
-
-{% comment %}
+"""
     DARIAH Contribute - DARIAH-EU Contribute: edit your DARIAH contributions.
 
     Copyright 2014 Data Archiving and Networked Services
@@ -16,16 +14,21 @@
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
     See the License for the specific language governing permissions and
     limitations under the License.
-{% endcomment %}
+"""
 
-{% load bootstrap3 %}
-{% load i18n %}
+from django.conf.urls import patterns, include, url
+from django.contrib import admin
+from django.views.generic.base import RedirectView
 
-{% block content %}
-<h1>{% trans 'Confirm deletion of contribution' %} {{ object }}</h1>
-<form action="" method="post">{% csrf_token %}
-    <p>{% blocktrans %}Are you sure you want to delete {{ object }}?{% endblocktrans %}</p>
-    <input type="submit" value="{% trans 'Delete' %}" class="btn btn-danger"/>
-    <a href="{% url 'dariah_core:list' %}" title="{% trans 'Cancel' %}" class="btn btn-default">{% trans 'Cancel' %}</a>
-</form>
-{% endblock %}
+
+admin.autodiscover()
+
+urlpatterns = patterns('',
+    url(r'^grappelli/', include('grappelli.urls')),  # grappelli URLS
+    url(r'^admin/', include(admin.site.urls)),
+    url(r'^autocomplete/', include('autocomplete_light.urls')),
+
+    url(r'^$', RedirectView.as_view(url='/about/', permanent=False)),
+    url(r'^contribution/', include('dariah_inkind.urls', namespace="dariah_inkind")),
+    url(r'^accounts/', include('dariah_accounts.urls')),  # NOTE: this one should NOT have a namespace
+)

@@ -26,7 +26,7 @@ from ..models import Contribution
 
 class ContributionsFeed(Feed):
     title = _("Contributions Feed")
-    link = reverse_lazy('dariah_core:feed')
+    link = reverse_lazy('dariah_inkind:feed')
     description = _("Updates on changes and additions to DARIAH contributions.")
     author_name = _("DARIAH")
     author_link = _("http://dariah.eu")
@@ -50,4 +50,4 @@ class ContributionsFeed(Feed):
 class ContributionsAtomFeed(ContributionsFeed):
     feed_type = Atom1Feed
     subtitle = ContributionsFeed.description
-    link = reverse_lazy('dariah_core:feed_atom')
+    link = reverse_lazy('dariah_inkind:feed_atom')

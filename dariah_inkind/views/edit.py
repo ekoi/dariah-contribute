@@ -127,7 +127,7 @@ class ContributionUnpublish(ContributionPublish):
 
 class ContributionDelete(DeleteView):
     model = Contribution
-    success_url = reverse_lazy('dariah_core:list')
+    success_url = reverse_lazy('dariah_inkind:list')
     success_message = _("Contribution was deleted successfully.")
 
     @method_decorator(login_required)
@@ -192,7 +192,7 @@ class AjaxableResponseMixin(object):
 class DcCreatorCreate(AjaxableResponseMixin, autocomplete_light.CreateView):
     model = DcCreator
     success_message = _("dc:creator %s was created successfully.")
-    success_url = reverse_lazy('dariah_core:list')
+    success_url = reverse_lazy('dariah_inkind:list')
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
@@ -202,7 +202,7 @@ class DcCreatorCreate(AjaxableResponseMixin, autocomplete_light.CreateView):
 class DcContributorCreate(AjaxableResponseMixin, autocomplete_light.CreateView):
     model = DcContributor
     success_message = _("dc:contributor %s was created successfully.")
-    success_url = reverse_lazy('dariah_core:list')
+    success_url = reverse_lazy('dariah_inkind:list')
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):

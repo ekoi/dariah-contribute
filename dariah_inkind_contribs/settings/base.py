@@ -95,8 +95,8 @@ DATABASES = {
 
 # Application definition
 INSTALLED_APPS = (
-    'dariah_contribute',
-    'dariah_core',
+    'dariah_inkind_contribs',
+    'dariah_inkind',
     'dariah_static_data',
     'dariah_accounts',
     'south',
@@ -133,9 +133,9 @@ MIDDLEWARE_CLASSES = (
     'axes.middleware.FailedLoginMiddleware',  # Limit login attempts
 )
 
-ROOT_URLCONF = 'dariah_contribute.urls'
+ROOT_URLCONF = 'dariah_inkind_contribs.urls'
 
-WSGI_APPLICATION = 'dariah_contribute.wsgi.application'
+WSGI_APPLICATION = 'dariah_inkind_contribs.wsgi.application'
 # Python dotted path to the WSGI application used by Django's runserver.
 #WSGI_APPLICATION = 'wsgi.application'
 

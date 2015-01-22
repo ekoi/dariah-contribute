@@ -12,10 +12,10 @@ recursive-include dariah_contribute/locale *
 recursive-include dariah_contribute/static *
 recursive-include dariah_contribute/templates *
 
-recursive-include dariah_core/formats *
-recursive-include dariah_core/locale *
-recursive-include dariah_core/static *
-recursive-include dariah_core/templates *
+recursive-include dariah_inkind/formats *
+recursive-include dariah_inkind/locale *
+recursive-include dariah_inkind/static *
+recursive-include dariah_inkind/templates *
 
 recursive-include dariah_static_data/formats *
 recursive-include dariah_static_data/locale *

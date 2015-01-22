@@ -293,7 +293,7 @@ class Contribution(models.Model):
         return self.dc_title
 
     def get_absolute_url(self):
-        return reverse('dariah_core:detail', kwargs={'pk': self.pk})
+        return reverse('dariah_inkind:detail', kwargs={'pk': self.pk})
 
     def attrs(self):
         patt = re.compile('_id$')

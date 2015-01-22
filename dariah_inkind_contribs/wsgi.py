@@ -16,19 +16,17 @@
     limitations under the License.
 """
 
-from django.conf.urls import patterns, include, url
-from django.contrib import admin
-from django.views.generic.base import RedirectView
+"""
+WSGI config for contributions project.
 
+It exposes the WSGI callable as a module-level variable named ``application``.
 
-admin.autodiscover()
+For more information on this file, see
+https://docs.djangoproject.com/en/1.6/howto/deployment/wsgi/
+"""
 
-urlpatterns = patterns('',
-    url(r'^grappelli/', include('grappelli.urls')),  # grappelli URLS
-    url(r'^admin/', include(admin.site.urls)),
-    url(r'^autocomplete/', include('autocomplete_light.urls')),
+import os
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "dariah_inkind_contribs.settings")
 
-    url(r'^$', RedirectView.as_view(url='/about/', permanent=False)),
-    url(r'^contribution/', include('dariah_core.urls', namespace="dariah_core")),
-    url(r'^accounts/', include('dariah_accounts.urls')),  # NOTE: this one should NOT have a namespace
-)
+from django.core.wsgi import get_wsgi_application
+application = get_wsgi_application()

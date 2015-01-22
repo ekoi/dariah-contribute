@@ -27,7 +27,7 @@ import autocomplete_light
 class DcCreatorAutocomplete(autocomplete_light.AutocompleteModelBase):
     search_fields = ['^first_name', 'last_name_prefix', 'last_name']
     model = DcCreator
-    add_another_url_name = 'dariah_core:dccreator_create'
+    add_another_url_name = 'dariah_inkind:dccreator_create'
 
     attrs = {
         # This will set the input placeholder attribute:
@@ -42,12 +42,12 @@ class DcCreatorAutocomplete(autocomplete_light.AutocompleteModelBase):
     def empty_html_format(self):
         data = {'model': self.model.lowercase_underscore_name(),
                 'url': self.add_another_url_name}
-        return render_to_string('dariah_core/_creator-contrib_autocomplete_empty_html_format.html', data)
+        return render_to_string('dariah_inkind/_creator-contrib_autocomplete_empty_html_format.html', data)
 
 
 class DcContributorAutocomplete(DcCreatorAutocomplete):
     model = DcContributor
-    add_another_url_name = 'dariah_core:dccontributor_create'
+    add_another_url_name = 'dariah_inkind:dccontributor_create'
 
 
 autocomplete_light.register(Tag)

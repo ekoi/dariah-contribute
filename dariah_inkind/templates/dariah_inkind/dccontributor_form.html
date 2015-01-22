@@ -1,4 +1,4 @@
-{% extends 'dariah_core/dccreator_form.html' %}
+{% extends 'dariah_inkind/dccreator_form.html' %}
 
 {% comment %}
     DARIAH Contribute - DARIAH-EU Contribute: edit your DARIAH contributions.
@@ -27,7 +27,7 @@ appended.
 {% endcomment %}
 {% block form_id %}id_dc_contributor_form{% endblock %}
 {% block action %}
-    {% url 'dariah_core:dccontributor_create' %}
+    {% url 'dariah_inkind:dccontributor_create' %}
 {% endblock %}
 {% block title %}
     {% trans 'Add a dc:contributor' %}
