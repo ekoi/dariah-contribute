@@ -97,6 +97,8 @@ DATABASES = {
 INSTALLED_APPS = (
     'dariah_inkind_contribs',
     'dariah_inkind',
+    'dariah_annual_value',
+    'signups',
     'dariah_static_data',
     'dariah_accounts',
     'south',

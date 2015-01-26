@@ -1,5 +1,5 @@
 """
-    DARIAH Contribute - DARIAH-EU Contribute: edit your DARIAH contributions.
+    DARIAH Contribute - DARIAH-EU Contribute: edit your DARIAH contribss.
 
     Copyright 2014 Data Archiving and Networked Services
 

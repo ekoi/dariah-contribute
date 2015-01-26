@@ -1,5 +1,5 @@
 """
-    DARIAH Contribute - DARIAH-EU Contribute: edit your DARIAH contribss.
+    DARIAH Contribute - DARIAH-EU Contribute: edit your DARIAH contributions.
 
     Copyright 2014 Data Archiving and Networked Services
 
@@ -16,11 +16,4 @@
     limitations under the License.
 """
 
-from dariah_static_data.models import TADIRAHTechnique
-from dariah_static_data.management.commands._private_helper import Command as SuperCommand
-
-
-class Command(SuperCommand):
-    filename = 'tadirah_technique.csv'
-    mapping = [('name', 1), ('uri', 1), ('_', 0)]  # [('model_fieldname', required?),...], order same as in CSV
-    model = TADIRAHTechnique
+from django.conf.urls import patterns, url

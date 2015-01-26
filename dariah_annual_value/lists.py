@@ -1,5 +1,5 @@
 """
-    DARIAH Contribute - DARIAH-EU Contribute: edit your DARIAH contribss.
+    DARIAH Contribute - DARIAH-EU Contribute: edit your DARIAH contributions.
 
     Copyright 2014 Data Archiving and Networked Services
 
@@ -16,11 +16,16 @@
     limitations under the License.
 """
 
-from dariah_static_data.models import TADIRAHTechnique
-from dariah_static_data.management.commands._private_helper import Command as SuperCommand
+from django.views.generic.list import ListView
+
+from .models import AnnualValue
 
 
-class Command(SuperCommand):
-    filename = 'tadirah_technique.csv'
-    mapping = [('name', 1), ('uri', 1), ('_', 0)]  # [('model_fieldname', required?),...], order same as in CSV
-    model = TADIRAHTechnique
+class AnnualValueList(ListView):
+    model = AnnualValue
+    paginate_by = 25
+
+    def get_queryset(self):
+        return AnnualValue.year()
+
+
