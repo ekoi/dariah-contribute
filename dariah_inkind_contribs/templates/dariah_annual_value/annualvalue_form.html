@@ -1,0 +1,82 @@
+{% extends "content.html" %}
+
+{% comment %}
+    DARIAH Contribute - DARIAH-EU Contribute: edit your DARIAH contributions.
+
+    Copyright 2014 Data Archiving and Networked Services
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+{% endcomment %}
+
+{% load bootstrap3 %}
+{% load i18n %}
+{% load static %}
+
+{% block content %}
+
+    {% if request.resolver_match.url_name == 'add' %}
+        {% trans 'Add' as title_type %}
+    {% else %}
+        {% trans 'Update' as title_type %}
+    {% endif %}
+
+    <h1>{{ title_type }} {% trans 'Annual Value' %}</h1>
+    {% if title_type == 'Update' %}
+    <table class="table">
+        {% for field, value in get_readonly_fields %}
+        <tr>
+            <td>{{ field }}</td>
+            <td>{{ value }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+    <form id="contribution_form" enctype="multipart/form-data" action="" method="post" role="form">{% csrf_token %}
+        {% bootstrap_form form %}
+        <input type="submit" value="{{ title_type }}" class="btn btn-default"/>
+    </form>
+    <p>{% trans 'Fields marked with a star (*) are compulsory.' %}</p>
+
+    <!-- Modal dc:creator -->
+    <div class="modal fade" id="dc_creator_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                {% trans '(no content)' %}
+            </div>
+        </div>
+    </div>
+    <!-- Modal dc:contributor -->
+    <div class="modal fade" id="dc_contributor_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                {% trans '(no content)' %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extra_script %}
+    {% comment %}
+    Instead of doing {% include 'autocomplete_light/static.html %} import the
+    JS and CSS separately to make sure the CSS is included before our own CSS
+    to be able to overwrite styles.
+    CSS is included in dariah_contribute/templates/base.html.
+    {% endcomment %}
+    {% include 'autocomplete_light/_ajax_csrf.html' %}
+    <script type="text/javascript" src="{% static 'autocomplete_light/autocomplete.js' %}"></script>
+    <script type="text/javascript" src="{% static 'autocomplete_light/widget.js' %}"></script>
+    <script type="text/javascript" src="{% static 'autocomplete_light/addanother.js' %}"></script>
+    <script type="text/javascript" src="{% static 'autocomplete_light/text_widget.js' %}"></script>
+    <script type="text/javascript" src="{% static 'autocomplete_light/remote.js' %}"></script>
+    <script type="text/javascript" src="{% static 'dariah_inkind/js/ajax-add-another.js' %}"></script>
+{% endblock %}

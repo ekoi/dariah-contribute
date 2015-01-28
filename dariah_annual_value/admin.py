@@ -10,11 +10,12 @@ from django import forms
         
         
 class AnnualValueForm(forms.ModelForm):
-    justification = forms.CharField( widget=forms.Textarea, help_text="Write down the justification of the project.")
+    justification = forms.CharField( widget=forms.Textarea, help_text="Help text for 'justification'-annualvalue form")
     class Meta:
         model = AnnualValue
 
 class AnnualValueAdmin(admin.ModelAdmin):
+    justification = forms.CharField( widget=forms.Textarea, help_text="Help text for 'justification'-annualvalue form2")
     form = AnnualValueForm
     list_display = ['id', 'inkind', 'value', 'year', 'justification']
 admin.site.register(AnnualValue, AnnualValueAdmin)

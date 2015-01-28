@@ -17,3 +17,22 @@
 """
 
 from django.conf.urls import patterns, url
+from django.contrib import admin
+
+
+from dariah_annual_value.views import AnnualValueCreate, AnnualValueDetail
+
+admin.autodiscover()
+
+urlpatterns = patterns('',
+    # Examples:
+    #url(r'^$', 'dariah_annual_value.views.join', name='join'),
+    # url(r'^blog/', include('blog.urls')),
+    #url(r'^detail/$', AnnualValueDetailMixin.as_view(), name='detail'),
+   
+    #url(r'^$', 'dariah_annual_value.views.join', name='join'),
+    url(r'^$', AnnualValueCreate.as_view(), name='add'),
+    #url(r'^(?P<pk>\d+)/detail/$', AnnualValueDetailMixin.as_view(), name='detail'),
+    url(r'^(?P<pk>\d+)\.html$', AnnualValueDetail.as_view(), name='detail_html'),
+    url(r'^(?P<pk>\d+)/$', AnnualValueDetail.as_view(), name='detail'),
+)
