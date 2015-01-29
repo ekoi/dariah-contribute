@@ -20,9 +20,10 @@ from django.conf.urls import patterns, url
 from django.contrib import admin
 
 
-from dariah_annual_value.views import AnnualValueCreate, AnnualValueDetail,\
-    MyAnnualValues
-
+from .views.create import AnnualValueCreate
+from .views.detail import AnnualValueDetail
+from .views.lists import MyAnnualValues
+from .views import AnnualValueUpdate
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -30,6 +31,7 @@ urlpatterns = patterns('',
     #url(r'^$', 'dariah_annual_value.views.join', name='join'),
     # url(r'^blog/', include('blog.urls')),
     #url(r'^detail/$', AnnualValueDetailMixin.as_view(), name='detail'),
+    url(r'^(?P<pk>\d+)/update/$', AnnualValueUpdate.as_view(), name='update'),
     url(r'^mine/$', MyAnnualValues.as_view(), name='mine'),
     #url(r'^$', 'dariah_annual_value.views.join', name='join'),
     url(r'^$', AnnualValueCreate.as_view(), name='add'),

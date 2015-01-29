@@ -31,16 +31,7 @@
     {% endif %}
 
     <h1>{{ title_type }} {% trans 'Annual Value' %}</h1>
-    {% if title_type == 'Update' %}
-    <table class="table">
-        {% for field, value in get_readonly_fields %}
-        <tr>
-            <td>{{ field }}</td>
-            <td>{{ value }}</td>
-        </tr>
-        {% endfor %}
-    </table>
-    {% endif %}
+   
     <form id="contribution_form" enctype="multipart/form-data" action="" method="post" role="form">{% csrf_token %}
         {% bootstrap_form form %}
         <input type="submit" value="{{ title_type }}" class="btn btn-default"/>

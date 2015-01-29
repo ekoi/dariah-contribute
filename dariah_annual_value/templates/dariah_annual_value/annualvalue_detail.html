@@ -42,6 +42,15 @@
     
 {% endblock %}
 
+{% block sidebar %}
+    <h1>Actions</h1>
+    <ul>
+        {% if contribution.author != request.user %}
+        <li><a href="{% url 'dariah_annual_value:update' annualvalue.pk %}">{% trans 'Edit' %}</a></li>
+         {% endif %}
+    </ul>
+{% endblock %}
+
 {% block extra_extra_head %}
 <script type="text/javascript">
     $(document).ready(function() {
