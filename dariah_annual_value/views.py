@@ -98,7 +98,7 @@ class AnnualValueDetail(AnnualValueDetailMixin, SingleObjectTemplateResponseMixi
 
 class MyAnnualValues(ListView):
     model = AnnualValue
-    paginate_by = 25
+    paginate_by = 10
 
     def get_queryset(self):
         return AnnualValue.objects.by_author(self.request.user)
