@@ -38,7 +38,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="{% url 'dariah_inkind:list' %}">{% trans 'Browse Contributions' %}</a></li>
                     {% if user.is_authenticated %}
-                    	<li><a href="{% url 'dariah_inkind:mine' %}" title="{% trans 'My Annual Value' %}">{% trans 'My Annual Value' %}</a></li>
+                    	<li><a href="{% url 'dariah_annual_value:mine' %}" title="{% trans 'My Annual Value' %}">{% trans 'My Annual Value' %}</a></li>
                         <li><a href="{% url 'dariah_inkind:mine' %}" title="{% trans 'My Contributions' %}">{% trans 'My Contributions' %}</a></li>
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">

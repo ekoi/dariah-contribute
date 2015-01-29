@@ -3,8 +3,26 @@ from django.db import models
 import datetime
 
 from django.core.urlresolvers import reverse
-
+from django.db.models.query import QuerySet
+from dariah_inkind.views import ContributionList
 #from django.utils.translation import ugettext_lazy as _
+
+
+# Managers
+class AnnualValueMixin(object):
+    
+    def by_author(self, user):
+       
+        return self.filter()
+
+
+class AnnualValueQuerySet(QuerySet, AnnualValueMixin):
+    pass
+
+
+class AnnualValueManager(models.Manager, AnnualValueMixin):
+    def get_query_set(self):
+        return AnnualValueQuerySet(self.model, using=self._db)   
     
 YEAR_CHOICES = []
 for y in range(2000, 2026):
@@ -20,11 +38,15 @@ class AnnualValue(models.Model):
         #@property
         #def value(self):
         #    return "\u20AC%s" % self.value
-        
+        class Meta:
+            verbose_name = 'annualvalue'
         
         def get_absolute_url(self):
             return reverse('dariah_annual_value:detail', kwargs={'pk': self.pk})
         
+        
+        # Managers ################################################################
+        objects = AnnualValueManager()
         
         # Other ###################################################################
         field_order = [  # (name, in form?, meta-metadata field?)
@@ -32,3 +54,5 @@ class AnnualValue(models.Model):
             ('justification', 1, 0),
             ('year', 1, 0),
         ]
+        
+        

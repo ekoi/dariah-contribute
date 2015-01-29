@@ -6,7 +6,7 @@ from django.utils.decorators import method_decorator
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic.detail import BaseDetailView, SingleObjectTemplateResponseMixin
 from django.views.generic.edit import CreateView
-from django.db.models.fields.related import ManyToManyField, ForeignKey
+from django.views.generic.list import ListView
 from django.template import Context, Template
 
 from .forms import AnnualValueForm
@@ -94,3 +94,15 @@ class AnnualValueDetailMixin(BaseDetailView):
     
 class AnnualValueDetail(AnnualValueDetailMixin, SingleObjectTemplateResponseMixin):
     pass
+
+
+class MyAnnualValues(ListView):
+    model = AnnualValue
+    paginate_by = 25
+
+    def get_queryset(self):
+        return AnnualValue.objects.by_author(self.request.user)
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(MyAnnualValues, self).dispatch(*args, **kwargs)
