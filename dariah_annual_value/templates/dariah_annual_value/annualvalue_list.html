@@ -48,8 +48,8 @@
                 </tr>
                 {% for annualvalue in object_list %}
                     <tr>
-                        <td>{{ annualvalue.inkind }}</td>
-                        <td>{{ annualvalue.value }}</td>
+                    	<td><a href="{% url 'dariah_annual_value:detail' annualvalue.pk %}">{{ annualvalue.inkind }}</a></td>
+                       <td>{{ annualvalue.value }}</td>
                         <td>{{ annualvalue.year }}</td>
                     </tr>
                 {% endfor %}
