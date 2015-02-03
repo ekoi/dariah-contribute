@@ -49,7 +49,7 @@
                 {% for annualvalue in object_list %}
                     <tr>
                     	<td><a href="{% url 'dariah_annual_value:detail' annualvalue.pk %}">{{ annualvalue.inkind }}</a></td>
-                       <td>{{ annualvalue.value }}</td>
+                       <td>&euro; {{annualvalue.int_format}},00</td>
                         <td>{{ annualvalue.year }}</td>
                     </tr>
                 {% endfor %}

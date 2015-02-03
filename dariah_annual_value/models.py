@@ -4,15 +4,27 @@ import datetime
 
 from django.core.urlresolvers import reverse
 from django.db.models.query import QuerySet
-from dariah_inkind.views import ContributionList
 #from django.utils.translation import ugettext_lazy as _
+from dariah_inkind.models import Contribution
+from django.contrib.auth import get_user_model
+User = get_user_model()
 
 
 # Managers
 class AnnualValueMixin(object):
+#     def by_author(self, user):
+#         kwargs = {'is_deleted': False,
+#                   'author': user}
+#         return self.filter(**kwargs)
     
     def by_author(self, user):
-       
+        eko = Contribution.objects.by_author(user)
+        print 'xxxxx Annual Mixin'
+        print eko
+        print eko[0].dc_identifier
+        print object
+        print self.model.pk
+        print 'yyyyyy'
         return self.filter()
 
 
@@ -21,17 +33,18 @@ class AnnualValueQuerySet(QuerySet, AnnualValueMixin):
 
 
 class AnnualValueManager(models.Manager, AnnualValueMixin):
+    
     def get_query_set(self):
         return AnnualValueQuerySet(self.model, using=self._db)   
     
 YEAR_CHOICES = []
-for y in range(2000, 2026):
+for y in range(2014, 2026):
     YEAR_CHOICES.append((y,y))
 
 # Create your models here.
 class AnnualValue(models.Model):
         inkind = models.ForeignKey("dariah_inkind.Contribution",  null=False, blank=False)
-        value = models.DecimalField(max_digits=8, decimal_places=2, null=True, blank=True, help_text="In euro")
+        value = models.IntegerField(null=True, blank=True, help_text="In euro")
         justification = models.CharField(max_length=1000, null=True, blank=True, help_text="Help text for 'justification'")
         year = models.IntegerField(('year'), max_length=4, choices=YEAR_CHOICES, default=datetime.datetime.now().year,  help_text="Help text for 'Year'")
         
@@ -44,6 +57,19 @@ class AnnualValue(models.Model):
         def get_absolute_url(self):
             return reverse('dariah_annual_value:detail', kwargs={'pk': self.pk})
         
+        def int_format(self, decimal_points=3, seperator=u'.'):
+            value1 = str(self.value)
+            if len(value1) <= decimal_points:
+                return value1
+            # say here we have value = '12345' and the default params above
+            parts = []
+            while value1:
+                parts.append(value1[-decimal_points:])
+                value1 = value1[:-decimal_points]
+            # now we should have parts = ['345', '12']
+            parts.reverse()
+            # and the return value should be u'12.345'
+            return seperator.join(parts)
         
         # Managers ################################################################
         objects = AnnualValueManager()
