@@ -1,5 +1,5 @@
 """
-    DARIAH Contribute - DARIAH-EU Contribute: edit your DARIAH contributions.
+    DARIAH Contribute - DARIAH-EU Contribute: edit your DARIAH inkinds.
 
     Copyright 2014 Data Archiving and Networked Services
 
@@ -29,7 +29,7 @@ urlpatterns = patterns('',
     url(r'^autocomplete/', include('autocomplete_light.urls')),
 
     url(r'^$', RedirectView.as_view(url='/about/', permanent=False)),
-    url(r'^contribution/', include('dariah_inkind.urls', namespace="dariah_inkind")),
+    url(r'^inkind/', include('dariah_inkind.urls', namespace="dariah_inkind")),
     url(r'^accounts/', include('dariah_accounts.urls')),  # NOTE: this one should NOT have a namespace
     #url(r'^signup/', include('signups.urls')), 
     url(r'^annual-value/', include('dariah_annual_value.urls', namespace="dariah_annual_value")), 

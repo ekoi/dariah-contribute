@@ -1,5 +1,5 @@
 """
-    DARIAH Contribute - DARIAH-EU Contribute: edit your DARIAH contributions.
+    DARIAH Contribute - DARIAH-EU Contribute: edit your DARIAH inkinds.
 
     Copyright 2014 Data Archiving and Networked Services
 
@@ -199,7 +199,7 @@ TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'templates'),
 )
 
-LOGIN_REDIRECT_URL = '/contribution/'
+LOGIN_REDIRECT_URL = '/inkind/'
 
 MAINTENANCE_IGNORE_URLS = (
     r'^' + STATIC_URL + '.*',

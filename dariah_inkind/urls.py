@@ -1,5 +1,5 @@
 """
-    DARIAH Contribute - DARIAH-EU Contribute: edit your DARIAH contributions.
+     DARIAH Contribute - DARIAH-EU Contribute: edit your DARIAH inkinds.
 
     Copyright 2014 Data Archiving and Networked Services
 
@@ -36,29 +36,29 @@ from .views import ContributionsAtomFeed
 
 urlpatterns = patterns('',
     url(r'^(all/)?$', ContributionList.as_view(), name='list'),
-    # example: /contribution/
-    # example: /contribution/all/
+    # example: /inkind/
+    # example: /inkind/all/
     url(r'^mine/$', MyContributions.as_view(), name='mine'),
     url(r'^add/$', ContributionCreate.as_view(), name='add'),
-    # example: /contribution/add/
+    # example: /inkind/add/
     url(r'^(?P<pk>\d+)/update/$', ContributionUpdate.as_view(), name='update'),
-    # example: /contribution/5/update/
+    # example: /inkind/5/update/
     url(r'^(?P<pk>\d+)/delete/$', ContributionDelete.as_view(), name='delete'),
-    # example: /contribution/5/delete/
+    # example: /inkind/5/delete/
     url(r'^(?P<pk>\d+)/publish/$', ContributionPublish.as_view(), name='publish'),
-    # example: /contribution/5/publish/
+    # example: /inkind/5/publish/
     url(r'^(?P<pk>\d+)/unpublish/$', ContributionUnpublish.as_view(), name='unpublish'),
-    # example: /contribution/5/unpublish/
+    # example: /inkind/5/unpublish/
     url(r'^(?P<pk>\d+)\.xml$', ContributionRDF.as_view(), name='detail_rdf'),
-    # example: /contribution/5.xml
+    # example: /inkind/5.xml
     url(r'^(?P<pk>\d+)\.html$', ContributionDetail.as_view(), name='detail_html'),
-    # example: /contribution/5.html
+    # example: /inkind/5.html
     url(r'^(?P<pk>\d+)/$', ContributionHybridDetail.as_view(), name='detail'),
-    # example: /contribution/5/
-    # example: /contribution/5?format=html
-    # example: /contribution/5/?format=html
-    # example: /contribution/5?format=xml
-    # example: /contribution/5/?format=xml
+    # example: /inkind/5/
+    # example: /inkind/5?format=html
+    # example: /inkind/5/?format=html
+    # example: /inkind/5?format=xml
+    # example: /inkind/5/?format=xml
     url(r'^dc_creator/add/$', DcCreatorCreate.as_view(), name='dccreator_create'),
     url(r'^dc_contributor/add/$', DcContributorCreate.as_view(), name='dccontributor_create'),
 
