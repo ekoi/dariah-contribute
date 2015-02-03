@@ -5,34 +5,43 @@ from django.shortcuts import render_to_response, RequestContext, HttpResponseRed
 from django.utils.decorators import method_decorator
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic.detail import BaseDetailView, SingleObjectTemplateResponseMixin
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView,  UpdateView
 from django.views.generic.list import ListView
 from django.template import Context, Template
+from django.core.exceptions import PermissionDenied
 
 from .forms import AnnualValueForm
 from .models import AnnualValue
 
+class AnnualValueUpdate(SuccessMessageMixin, UpdateView):
+    model = AnnualValue
+    form_class = AnnualValueForm
+    success_message = _("Contribution was updated successfully.")
 
-# Create your views here.
-def join(request):
-     
-    form = AnnualValueForm(request.POST or None)
-     
-    if form.is_valid():
-        save_it = form.save(commit=False)
-        save_it.save()
-        messages.success(request, 'We will in touch.')
-        return HttpResponseRedirect('/annual-value/thank-you/')
-     
-    return render_to_response("annualvalue.html", 
-                              locals(),
-                              context_instance=RequestContext(request))
-     
-# def thankyou(request):
-#     print "hello"
-#     return render_to_response("annual-value/thankyou.html", 
-#                               locals(),
-#                               context_instance=RequestContext(request))
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(AnnualValueUpdate, self).dispatch(*args, **kwargs)
+
+    def get(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        if not self.object.has_owner(request.user):
+            raise PermissionDenied
+        return super(AnnualValueUpdate, self).get(self, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super(AnnualValueUpdate, self).get_context_data(**kwargs)
+        c = context['object']
+        context['get_readonly_fields'] = self.get_readonly_fields(c)
+        return context
+
+    def get_readonly_fields(self, c):
+        """An iterable with the field names and values (in the correct order)
+        of the read_only fields to be rendered in the template.
+        """
+        for x in self.form_class.readonly_fields:
+            field = c.__class__._meta.get_field(x)
+            value = getattr(c, x)
+            yield field.verbose_name, value
    
 
 
