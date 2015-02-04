@@ -40,6 +40,9 @@ class AnnualValueManager(models.Manager, AnnualValueMixin):
 YEAR_CHOICES = []
 for y in range(2014, 2026):
     YEAR_CHOICES.append((y,y))
+    
+
+
 
 # Create your models here.
 class AnnualValue(models.Model):
@@ -55,37 +58,33 @@ class AnnualValue(models.Model):
         class Meta:
             verbose_name = 'annualvalue'
         
+        
+        @staticmethod
+        def int_format(value, decimal_points=3, seperator=u'.'):
+            newValue = str(value)
+            if len(newValue) <= decimal_points:
+                return newValue
+            # say here we have value = '12345' and the default params above
+            parts = []
+            while newValue:
+                parts.append(newValue[-decimal_points:])
+                newValue = newValue[:-decimal_points]
+            # now we should have parts = ['345', '12']
+            parts.reverse()
+            # and the return value should be u'12.345'
+            return seperator.join(parts)
+        
         def get_absolute_url(self):
             return reverse('dariah_annual_value:detail', kwargs={'pk': self.pk})
         
-        def material_cost_format(self, decimal_points=3, seperator=u'.'):
-            newValue = str(self.materialcost)
-            if len(newValue) <= decimal_points:
-                return newValue
-            # say here we have value = '12345' and the default params above
-            parts = []
-            while newValue:
-                parts.append(newValue[-decimal_points:])
-                newValue = newValue[:-decimal_points]
-            # now we should have parts = ['345', '12']
-            parts.reverse()
-            # and the return value should be u'12.345'
-            return seperator.join(parts)
+        def get_materialcost_format(self):
+            value = self.int_format(self.materialcost)
+            return value
         
-        def personnel_cost_format(self, decimal_points=3, seperator=u'.'):
-            newValue = str(self.personnelcost)
-            if len(newValue) <= decimal_points:
-                return newValue
-            # say here we have value = '12345' and the default params above
-            parts = []
-            while newValue:
-                parts.append(newValue[-decimal_points:])
-                newValue = newValue[:-decimal_points]
-            # now we should have parts = ['345', '12']
-            parts.reverse()
-            # and the return value should be u'12.345'
-            return seperator.join(parts)
-        
+        def get_personnelcost_format(self):
+            value = self.int_format(self.personnelcost)
+            return value
+            
         # Managers ################################################################
         objects = AnnualValueManager()
         

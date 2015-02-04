@@ -1,13 +1,15 @@
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.views.generic.detail import BaseDetailView, SingleObjectTemplateResponseMixin
-from django.views.generic.list import ListView
+from django.utils.safestring import mark_safe
 from django.template import Context, Template
 
 from ..models import AnnualValue
+
    
 class AnnualValueDetailMixin(BaseDetailView):
     model = AnnualValue
+    
     def get_context_data(self, **kwargs):
         context = super(AnnualValueDetailMixin, self).get_context_data(**kwargs)
         c = context['object']
@@ -26,9 +28,10 @@ class AnnualValueDetailMixin(BaseDetailView):
         for x in fields:
             field = c.__class__._meta.get_field(x[0])
             value = getattr(c, x[0])
+            if field.name == 'materialcost'  or field.name == 'personnelcost':
+                value= mark_safe('&euro; ' + self.model.int_format(value)+ ',00')
+                
             help_text = unicode(field.help_text)
-            # If the field is an iterable (TaggableManager or ManyToManyField)
-            # format the data as a string of comma separated items.
             
             yield field.verbose_name, value,help_text
 
@@ -44,6 +47,7 @@ class AnnualValueDetailMixin(BaseDetailView):
     def render_to_response(self, context):
         # Look for a 'format=json' GET argument
         return SingleObjectTemplateResponseMixin.render_to_response(self, context)
+    
     
 class AnnualValueDetail(AnnualValueDetailMixin, SingleObjectTemplateResponseMixin):
     pass
