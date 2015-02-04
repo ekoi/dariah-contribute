@@ -18,14 +18,10 @@ class AnnualValueMixin(object):
 #         return self.filter(**kwargs)
     
     def by_author(self, user):
-#         eko = Contribution.objects.by_author(user)
-#         print 'xxxxx Annual Mixin'
-#         print eko
-#         print eko[0].dc_identifier
-#         print object
-#         print self.model.pk
-#         print 'yyyyyy'
-        return self.filter()
+        mycontributes = Contribution.objects.by_author(user)
+        print '------', mycontributes 
+        kwargs = {'inkind': mycontributes}
+        return self.filter(**kwargs)
 
 
 class AnnualValueQuerySet(QuerySet, AnnualValueMixin):
@@ -46,7 +42,8 @@ for y in range(2014, 2026):
 
 # Create your models here.
 class AnnualValue(models.Model):
-        inkind = models.ForeignKey("dariah_inkind.Contribution",  null=False, blank=False)
+        
+        inkind = models.ForeignKey("dariah_inkind.Contribution",  null=False, blank=False, help_text="Inkind help text")
         materialcost = models.IntegerField(null=True, blank=True, verbose_name="Total Material Cost", help_text="In euro")
         personnelcost = models.IntegerField(null=True, blank=True, verbose_name="Total Personnel Cost", help_text="In euro")
         justification = models.CharField(max_length=1000, null=True, blank=True, help_text="Help text for 'justification'")
@@ -85,6 +82,7 @@ class AnnualValue(models.Model):
             value = self.int_format(self.personnelcost)
             return value
             
+        
         # Managers ################################################################
         objects = AnnualValueManager()
         
