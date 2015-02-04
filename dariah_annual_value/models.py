@@ -18,13 +18,13 @@ class AnnualValueMixin(object):
 #         return self.filter(**kwargs)
     
     def by_author(self, user):
-        eko = Contribution.objects.by_author(user)
-        print 'xxxxx Annual Mixin'
-        print eko
-        print eko[0].dc_identifier
-        print object
-        print self.model.pk
-        print 'yyyyyy'
+#         eko = Contribution.objects.by_author(user)
+#         print 'xxxxx Annual Mixin'
+#         print eko
+#         print eko[0].dc_identifier
+#         print object
+#         print self.model.pk
+#         print 'yyyyyy'
         return self.filter()
 
 
@@ -44,7 +44,8 @@ for y in range(2014, 2026):
 # Create your models here.
 class AnnualValue(models.Model):
         inkind = models.ForeignKey("dariah_inkind.Contribution",  null=False, blank=False)
-        value = models.IntegerField(null=True, blank=True, help_text="In euro")
+        materialcost = models.IntegerField(null=True, blank=True, verbose_name="Total Material Cost", help_text="In euro")
+        personnelcost = models.IntegerField(null=True, blank=True, verbose_name="Total Personnel Cost", help_text="In euro")
         justification = models.CharField(max_length=1000, null=True, blank=True, help_text="Help text for 'justification'")
         year = models.IntegerField(('year'), max_length=4, choices=YEAR_CHOICES, default=datetime.datetime.now().year,  help_text="Help text for 'Year'")
         
@@ -57,15 +58,29 @@ class AnnualValue(models.Model):
         def get_absolute_url(self):
             return reverse('dariah_annual_value:detail', kwargs={'pk': self.pk})
         
-        def int_format(self, decimal_points=3, seperator=u'.'):
-            value1 = str(self.value)
-            if len(value1) <= decimal_points:
-                return value1
+        def material_cost_format(self, decimal_points=3, seperator=u'.'):
+            newValue = str(self.materialcost)
+            if len(newValue) <= decimal_points:
+                return newValue
             # say here we have value = '12345' and the default params above
             parts = []
-            while value1:
-                parts.append(value1[-decimal_points:])
-                value1 = value1[:-decimal_points]
+            while newValue:
+                parts.append(newValue[-decimal_points:])
+                newValue = newValue[:-decimal_points]
+            # now we should have parts = ['345', '12']
+            parts.reverse()
+            # and the return value should be u'12.345'
+            return seperator.join(parts)
+        
+        def personnel_cost_format(self, decimal_points=3, seperator=u'.'):
+            newValue = str(self.personnelcost)
+            if len(newValue) <= decimal_points:
+                return newValue
+            # say here we have value = '12345' and the default params above
+            parts = []
+            while newValue:
+                parts.append(newValue[-decimal_points:])
+                newValue = newValue[:-decimal_points]
             # now we should have parts = ['345', '12']
             parts.reverse()
             # and the return value should be u'12.345'
@@ -76,7 +91,8 @@ class AnnualValue(models.Model):
         
         # Other ###################################################################
         field_order = [  # (name, in form?, meta-metadata field?)
-            ('value', 1, 0),
+            ('materialcost', 1, 0),
+            ('personnelcost', 1, 0),
             ('justification', 1, 0),
             ('year', 1, 0),
         ]

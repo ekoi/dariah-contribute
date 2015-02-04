@@ -17,6 +17,6 @@ class AnnualValueForm(forms.ModelForm):
 class AnnualValueAdmin(admin.ModelAdmin):
     justification = forms.CharField( widget=forms.Textarea, help_text="Help text for 'justification'-annualvalue form2")
     form = AnnualValueForm
-    list_display = ['id', 'inkind', 'value', 'year', 'justification']
+    list_display = ['id', 'inkind', 'materialcost', 'personnelcost', 'year', 'justification']
+    
 admin.site.register(AnnualValue, AnnualValueAdmin)
-#admin.site.register(AnnualValue, AnnualValueAdmin)
