@@ -108,7 +108,7 @@ INSTALLED_APPS = (
     'taggit',
 
     'django.contrib.flatpages',
-
+    #'django.contrib.humanize',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
