@@ -38,8 +38,7 @@ class ContributionForm(autocomplete_light.ModelForm):
     class Meta:
         model = Contribution
         fields = [x[0] for x in Contribution.field_order if x[1]]
-        widgets = {'dc_subject': TaggitWidget('TagAutocomplete'),
-                   'skos_preflabel_vcc': CheckboxSelectMultiple}
+        widgets = {'dc_subject': TaggitWidget('TagAutocomplete')}
         autocomplete_names = {'skos_preflabel_technique': 'TADIRAHTechniqueAutocomplete',
                               'skos_preflabel_activity': 'TADIRAHActivityAutocomplete',
                               'skos_preflabel_object': 'TADIRAHObjectAutocomplete',

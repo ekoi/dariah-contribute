@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dariah-contribute\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-16 15:22+0200\n"
+"POT-Creation-Date: 2015-02-09 15:02+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Heleen van de Schraaf <heleen.van.de.schraaf@dans.knaw.nl>\n"
 "Language-Team: English <>\n"
@@ -29,7 +29,7 @@ msgstr "Identifier of the contribution, generated automatically."
 
 #: models.py:115
 msgid "dc:title"
-msgstr "Title"
+msgstr "Contribution Title"
 
 #: models.py:117
 msgid "help text for dc:title"
@@ -37,7 +37,7 @@ msgstr "Title of the contribution (in English)"
 
 #: models.py:119
 msgid "dc:date"
-msgstr "Date"
+msgstr "Contribution Year"
 
 #: models.py:123
 msgid "help text for dc:date"
@@ -45,13 +45,12 @@ msgstr "Date of the contribution, please specify the year of the contribution."
 
 #: models.py:125
 msgid "dc:relation"
-msgstr "Website"
+msgstr "Contribution Website"
 
 #: models.py:128
 msgid "help text for dc:relation"
 msgstr ""
-"Link to the location of the contribution, or the website of the main "
-"contributing organisation. Example: http://cleo.openedition.org."
+"Link to the location of the contribution. Example: http://cleo.openedition.org."
 
 #: models.py:130
 msgid "vcard:logo"
@@ -176,7 +175,7 @@ msgstr "Select the relevant disciplines from the list (filter by typing)."
 
 #: models.py:209
 msgid "sioc:has_scope/skos:Concept/skos:prefLabel VCC"
-msgstr "VCCs"
+msgstr "Leading VCC"
 
 #: models.py:212
 msgid "help text for skos:preflabel VCC"
@@ -243,7 +242,7 @@ msgstr "Unsupported feature. Deletion not yet implemented."
 msgid "contribution"
 msgstr "Contribution"
 
-#: models.py:311 templates/dariah_inkind/contribution_list.html:39
+#: models.py:311
 msgid "contributions"
 msgstr ""
 
@@ -323,7 +322,7 @@ msgid "Add"
 msgstr ""
 
 #: templates/dariah_inkind/contribution_form.html:30
-#: templates/dariah_inkind/contribution_list.html:63
+#: templates/dariah_inkind/contribution_list.html:67
 msgid "Update"
 msgstr ""
 
@@ -349,47 +348,61 @@ msgstr ""
 msgid "All"
 msgstr ""
 
+#: templates/dariah_inkind/contribution_list.html:39
+#, fuzzy
+msgid "inkind contributions"
+msgstr "Contribution"
+
 #: templates/dariah_inkind/contribution_list.html:45
-msgid "Contribution (dc:title)"
+msgid "ID"
 msgstr ""
 
 #: templates/dariah_inkind/contribution_list.html:46
-msgid "Author"
+#, fuzzy
+msgid "Title"
+msgstr "Title"
+
+#: templates/dariah_inkind/contribution_list.html:47
+msgid "Country"
 msgstr ""
 
 #: templates/dariah_inkind/contribution_list.html:48
+msgid "Author"
+msgstr ""
+
+#: templates/dariah_inkind/contribution_list.html:50
 msgid "Published?"
 msgstr ""
 
-#: templates/dariah_inkind/contribution_list.html:51
+#: templates/dariah_inkind/contribution_list.html:53
 msgid "Available Actions"
 msgstr ""
 
-#: templates/dariah_inkind/contribution_list.html:59
+#: templates/dariah_inkind/contribution_list.html:63
 msgid "Yes,No"
 msgstr ""
 
-#: templates/dariah_inkind/contribution_list.html:67
+#: templates/dariah_inkind/contribution_list.html:71
 msgid "Unpublish"
 msgstr ""
 
-#: templates/dariah_inkind/contribution_list.html:69
+#: templates/dariah_inkind/contribution_list.html:73
 msgid "Publish"
 msgstr ""
 
-#: templates/dariah_inkind/contribution_list.html:82
+#: templates/dariah_inkind/contribution_list.html:86
 msgid "No contributions are available."
 msgstr ""
 
-#: templates/dariah_inkind/contribution_list.html:88
+#: templates/dariah_inkind/contribution_list.html:92
 msgid "Actions"
 msgstr ""
 
-#: templates/dariah_inkind/contribution_list.html:90
+#: templates/dariah_inkind/contribution_list.html:94
 msgid "View as Atom feed"
 msgstr ""
 
-#: templates/dariah_inkind/contribution_list.html:91
+#: templates/dariah_inkind/contribution_list.html:95
 msgid "View as RSS feed"
 msgstr ""
 

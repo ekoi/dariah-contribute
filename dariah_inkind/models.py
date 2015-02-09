@@ -115,12 +115,12 @@ class Contribution(models.Model):
         _("dc:title"),
         max_length=100,
         help_text=_('help text for dc:title'))
-#     dc_date = models.PositiveIntegerField(
-#         _("dc:date"),
-#         choices=DC_DATE_CHOICES,
-#         max_length=4,  # YYYY IS ISO-8601, see https://en.wikipedia.org/wiki/ISO_8601#Years
-#         blank=True,
-#         help_text=_('help text for dc:date'))
+    dc_date = models.PositiveIntegerField(
+        _("dc:date"),
+        choices=DC_DATE_CHOICES,
+        max_length=4,  # YYYY IS ISO-8601, see https://en.wikipedia.org/wiki/ISO_8601#Years
+        blank=True,
+        help_text=_('help text for dc:date'))
     dc_relation = models.URLField(
         _("dc:relation"),
         max_length=200,
@@ -204,7 +204,7 @@ class Contribution(models.Model):
         null=True,
         help_text=_('help text for skos:preflabel Discipline')
     )
-    skos_preflabel_vcc = models.ManyToManyField(
+    skos_preflabel_vcc = models.ForeignKey(
         'dariah_static_data.TADIRAHVCC',
         verbose_name=_('sioc:has_scope/skos:Concept/skos:prefLabel VCC'),
         blank=True,
@@ -263,7 +263,8 @@ class Contribution(models.Model):
         #('vcard_category', 1, 0),
         ('dc_identifier', 0, 0),
         ('dc_title', 1, 0),
-        #('dc_date', 1, 0),
+        ('dc_date', 1, 0),
+        ('skos_preflabel_vcc', 1, 0),
         ('dc_relation', 1, 0),
         ('vcard_logo', 1, 0),
         ('dc_publisher', 1, 0),
@@ -279,7 +280,6 @@ class Contribution(models.Model):
         ('skos_preflabel_object', 1, 0),
         ('skos_preflabel_technique', 1, 0),
         ('skos_preflabel_discipline', 1, 0),
-        ('skos_preflabel_vcc', 1, 0),
         ('dc_creator', 1, 0),
         ('dc_contributor', 1, 0),
         ('author', 0, 1),

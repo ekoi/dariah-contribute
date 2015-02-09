@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dariah-contribute\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-16 15:22+0200\n"
+"POT-Creation-Date: 2015-02-09 12:33+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Heleen van de Schraaf <heleen.van.de.schraaf@dans.knaw.nl>\n"
 "Language-Team: Dutch <>\n"
@@ -232,7 +232,7 @@ msgstr ""
 msgid "contribution"
 msgstr "contributie"
 
-#: models.py:311 templates/dariah_inkind/contribution_list.html:39
+#: models.py:311
 msgid "contributions"
 msgstr "contributies"
 
@@ -311,7 +311,7 @@ msgid "Add"
 msgstr "Voeg toe"
 
 #: templates/dariah_inkind/contribution_form.html:30
-#: templates/dariah_inkind/contribution_list.html:63
+#: templates/dariah_inkind/contribution_list.html:67
 msgid "Update"
 msgstr "Bewerken"
 
@@ -337,47 +337,60 @@ msgstr "Mijn"
 msgid "All"
 msgstr "Alle"
 
+#: templates/dariah_inkind/contribution_list.html:39
+#, fuzzy
+msgid "inkind contributions"
+msgstr "contributies"
+
 #: templates/dariah_inkind/contribution_list.html:45
-msgid "Contribution (dc:title)"
-msgstr "Contributie (dc:title)"
+msgid "ID"
+msgstr ""
 
 #: templates/dariah_inkind/contribution_list.html:46
+msgid "Title"
+msgstr ""
+
+#: templates/dariah_inkind/contribution_list.html:47
+msgid "Country"
+msgstr ""
+
+#: templates/dariah_inkind/contribution_list.html:48
 msgid "Author"
 msgstr "Auteur"
 
-#: templates/dariah_inkind/contribution_list.html:48
+#: templates/dariah_inkind/contribution_list.html:50
 msgid "Published?"
 msgstr "Gepubliceerd?"
 
-#: templates/dariah_inkind/contribution_list.html:51
+#: templates/dariah_inkind/contribution_list.html:53
 msgid "Available Actions"
 msgstr "Beschikbare acties"
 
-#: templates/dariah_inkind/contribution_list.html:59
+#: templates/dariah_inkind/contribution_list.html:63
 msgid "Yes,No"
 msgstr "Ja,Nee"
 
-#: templates/dariah_inkind/contribution_list.html:67
+#: templates/dariah_inkind/contribution_list.html:71
 msgid "Unpublish"
 msgstr "Publicatie ongedaan maken"
 
-#: templates/dariah_inkind/contribution_list.html:69
+#: templates/dariah_inkind/contribution_list.html:73
 msgid "Publish"
 msgstr "Publiceer"
 
-#: templates/dariah_inkind/contribution_list.html:82
+#: templates/dariah_inkind/contribution_list.html:86
 msgid "No contributions are available."
 msgstr "Er zijn geen contributies beschikbaar."
 
-#: templates/dariah_inkind/contribution_list.html:88
+#: templates/dariah_inkind/contribution_list.html:92
 msgid "Actions"
 msgstr "Acties"
 
-#: templates/dariah_inkind/contribution_list.html:90
+#: templates/dariah_inkind/contribution_list.html:94
 msgid "View as Atom feed"
 msgstr "Toon als Atom feed"
 
-#: templates/dariah_inkind/contribution_list.html:91
+#: templates/dariah_inkind/contribution_list.html:95
 msgid "View as RSS feed"
 msgstr "Toon als RSS feed"
 
@@ -457,3 +470,6 @@ msgstr ""
 #: views/feeds.py:32
 msgid "http://dariah.eu"
 msgstr ""
+
+#~ msgid "Contribution (dc:title)"
+#~ msgstr "Contributie (dc:title)"

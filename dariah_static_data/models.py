@@ -88,12 +88,12 @@ class TADIRAHVCC(models.Model):
 
     class Meta:
         verbose_name = _('TADIRAH VCC')
-        verbose_name_plural = _('TADIRAH VCC')
+#         verbose_name_plural = _('TADIRAH VCC')
 
     def __unicode__(self):
         return "{name} - {description}".format(name=self.name,
                                                description=self.description)
-
+    
 
 class Discipline(models.Model):
     name = models.CharField(
