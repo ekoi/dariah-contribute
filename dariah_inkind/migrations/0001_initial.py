@@ -30,7 +30,7 @@ class Migration(SchemaMigration):
         db.create_table(u'dariah_inkind_contribution', (
             ('dc_identifier', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('dc_title', self.gf('django.db.models.fields.CharField')(max_length=100)),
-            #('dc_date', self.gf('django.db.models.fields.PositiveIntegerField')(max_length=4, blank=True)),
+            ('dc_date', self.gf('django.db.models.fields.PositiveIntegerField')(max_length=4, blank=True)),
             ('dc_relation', self.gf('django.db.models.fields.URLField')(max_length=200, blank=True)),
             ('vcard_logo', self.gf('django.db.models.fields.files.ImageField')(max_length=100, null=True, blank=True)),
             ('dc_publisher', self.gf('django.db.models.fields.CharField')(max_length=200, blank=True)),
@@ -208,7 +208,7 @@ class Migration(SchemaMigration):
             'dc_contributor': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'to': u"orm['dariah_inkind.DcContributor']", 'null': 'True', 'blank': 'True'}),
             'dc_coverage': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['dariah_static_data.Country']", 'null': 'True', 'blank': 'True'}),
             'dc_creator': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'to': u"orm['dariah_inkind.DcCreator']", 'null': 'True', 'blank': 'True'}),
-            #'dc_date': ('django.db.models.fields.PositiveIntegerField', [], {'max_length': '4', 'blank': 'True'}),
+            'dc_date': ('django.db.models.fields.PositiveIntegerField', [], {'max_length': '4', 'blank': 'True'}),
             'dc_description': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
             'dc_identifier': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'dc_publisher': ('django.db.models.fields.CharField', [], {'max_length': '200', 'blank': 'True'}),
