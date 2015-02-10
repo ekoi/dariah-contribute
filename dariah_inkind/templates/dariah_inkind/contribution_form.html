@@ -25,7 +25,7 @@
 {% block content %}
 
     {% if request.resolver_match.url_name == 'add' %}
-        {% trans 'Add' as title_type %}
+        {% trans 'Save' as title_type %}
     {% else %}
         {% trans 'Update' as title_type %}
     {% endif %}
