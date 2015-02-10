@@ -155,10 +155,6 @@ class Contribution(models.Model):
         max_length=50,
         blank=True,
         help_text=_("help text for vcard:organization"))
-#     dc_subject = TaggableManager(
-#         verbose_name=_("dc:subject"),
-#         blank=True,
-#         help_text=_('help text for dc:subject'))
     dcterms_abstract_en = models.TextField(
         _("dcterms:abstract English"),
         help_text=_('help text for dcterms:abstract English'))
@@ -271,7 +267,6 @@ class Contribution(models.Model):
         ('vcard_organization', 1, 0),
         ('dcterms_spatial', 1, 0),
         ('dc_coverage', 1, 0),
-#         ('dc_subject', 1, 0),
         ('dcterms_abstract_en', 1, 0),
         ('dcterms_abstract', 1, 0),
         ('dcterms_abstract_lang', 1, 0),
