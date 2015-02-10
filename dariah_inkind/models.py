@@ -23,7 +23,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.utils import timezone
 from django.core.urlresolvers import reverse
 from pycountry import languages as l
-from taggit.managers import TaggableManager
+# from taggit.managers import TaggableManager
 import os.path
 import re
 import uuid
@@ -349,6 +349,10 @@ class Person(models.Model):
         max_length=50,
         blank=True,
         help_text=_('help text for last name'))
+    foaf_email = models.EmailField(
+        verbose_name=_("Email address"),
+        blank=True,
+        help_text=_('help text for email address'))
     foaf_publications = models.CharField(
         max_length=50,
         blank=True,
