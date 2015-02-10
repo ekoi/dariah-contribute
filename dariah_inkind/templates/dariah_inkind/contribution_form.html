@@ -26,11 +26,13 @@
 
     {% if request.resolver_match.url_name == 'add' %}
         {% trans 'Save' as title_type %}
+        <h1>Add contribution</h1>
     {% else %}
         {% trans 'Update' as title_type %}
+        <h1>Update contribution</h1>
     {% endif %}
 
-    <h1>{{ title_type }} {% trans 'contribution' %}</h1>
+   
     {% if title_type == 'Update' %}
     <table class="table">
         {% for field, value in get_readonly_fields %}
