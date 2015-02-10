@@ -117,9 +117,10 @@ class Contribution(models.Model):
         help_text=_('help text for dc:title'))
     dc_date = models.PositiveIntegerField(
         _("dc:date"),
+        null=True, 
+        blank=True,
         choices=DC_DATE_CHOICES,
         max_length=4,  # YYYY IS ISO-8601, see https://en.wikipedia.org/wiki/ISO_8601#Years
-        blank=True,
         help_text=_('help text for dc:date'))
     dc_relation = models.URLField(
         _("dc:relation"),
