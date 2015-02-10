@@ -139,7 +139,7 @@ msgstr "Description"
 
 #: models.py:178
 msgid "help text for dc:description"
-msgstr "Description of the contribution in English"
+msgstr "What is the contribution (e.g. collection, ontology, online tool, service etc)? What is in it? (e.g. authors,  manuscripts etc) How can it be used?"
 
 #: models.py:181
 msgid "sioc:topic/skos:Concept/skos:prefLabel Activity"
