@@ -183,7 +183,7 @@ msgstr "Check 0, 1 or more boxes for the relevant VCCs/"
 
 #: models.py:216
 msgid "dc:creator"
-msgstr "Person in charge"
+msgstr "Contact person(s)"
 
 #: models.py:219
 msgid "help text for dc:creator"
@@ -191,7 +191,7 @@ msgstr "Please specify the person in charge."
 
 #: models.py:222
 msgid "dc:contributor"
-msgstr "Contributor"
+msgstr "Contributor(s)"
 
 #: models.py:225
 msgid "help text for dc:contributor"
