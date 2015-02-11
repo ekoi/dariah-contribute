@@ -139,22 +139,22 @@ class Contribution(models.Model):
         max_length=200,
         blank=True,
         help_text=_("help text for dc:publisher"))
-    dcterms_spatial = models.CharField(
-        _("dcterms:spatial"),
-        blank=True,
-        max_length=255,
-        help_text=_('help text for dcterms:spatial'))
+#     dcterms_spatial = models.CharField(
+#         _("dcterms:spatial"),
+#         blank=True,
+#         max_length=255,
+#         help_text=_('help text for dcterms:spatial'))
     dc_coverage = models.ForeignKey(
         'dariah_static_data.Country',
         verbose_name=_("dc:coverage"),
         blank=True,
         null=True,
         help_text=_('help text for dc:coverage'))
-    vcard_organization = models.CharField(
-        _("vcard:organization"),
-        max_length=50,
-        blank=True,
-        help_text=_("help text for vcard:organization"))
+#     vcard_organization = models.CharField(
+#         _("vcard:organization"),
+#         max_length=50,
+#         blank=True,
+#         help_text=_("help text for vcard:organization"))
     dcterms_abstract_en = models.TextField(
         _("dcterms:abstract English"),
         help_text=_('help text for dcterms:abstract English'))
@@ -264,8 +264,8 @@ class Contribution(models.Model):
         ('skos_preflabel_vcc', 1, 0),
         ('dc_relation', 1, 0),
         ('vcard_logo', 1, 0),
-        ('vcard_organization', 1, 0),
-        ('dcterms_spatial', 1, 0),
+#         ('vcard_organization', 1, 0),
+#         ('dcterms_spatial', 1, 0),
         ('dc_coverage', 1, 0),
         ('dcterms_abstract_en', 1, 0),
         ('dcterms_abstract', 1, 0),
