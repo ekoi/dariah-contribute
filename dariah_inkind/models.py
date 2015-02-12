@@ -96,6 +96,13 @@ class Contribution(models.Model):
                                                           getattr(x, 'name', None)),
                                                l))
     DC_DATE_CHOICES = [(x, x) for x in reversed(xrange(1900, timezone.now().year + 1))]
+    
+    TYPE_OF_INKIND_CONTRIBS =[('Access','Access'), ('Expertise','Expertise'), ('Interoperability','Interoperability'),
+                              ('Content Hosting','Content Hosting'), ('Tools and Software','Tools and Software'), 
+                              ('Event /Training /Summer School','Event /Training /Summer School'), ('Cooperation','Cooperation'), 
+                              ('Educational Resources','Educational Resources'), ('Data','Data'), 
+                              ('DARIAH Coordination','DARIAH Coordination'), ('Others','Others')]
+    YES_NO = [('Yes','Yes'), ('No','No')]
     # Metadata fields #########################################################
     # dc_type = models.URLField(
     #     _("dc:type"),
@@ -139,6 +146,26 @@ class Contribution(models.Model):
         max_length=200,
         blank=True,
         help_text=_("help text for dc:publisher"))
+    dc_publisher_description_en = models.TextField(
+        _("dc:publisher english description"),
+        blank=True,
+        help_text=_('help text for dc:publisher english description '))
+    dc_publisher_description = models.TextField(
+        _("dc:publisher description"),
+        blank=True,
+        help_text=_('help text for dc:publisher description '))
+    dc_publisher_lang = models.CharField(
+        _("dc:publisher language"),
+        max_length=2,
+        choices=DCTERMS_ABSTRACT_LANG_CHOICES,
+#         default='en',
+        blank=True,
+        help_text=_('help text for dc:publisher language'))
+    dc_publisher_relation = models.URLField(
+        _("dc:publisher relation"),
+        max_length=200,
+        blank=True,
+        help_text=_("help text for dc:publisher relation"))
 #     dcterms_spatial = models.CharField(
 #         _("dcterms:spatial"),
 #         blank=True,
@@ -166,13 +193,33 @@ class Contribution(models.Model):
         _("dcterms:abstract language"),
         max_length=2,
         choices=DCTERMS_ABSTRACT_LANG_CHOICES,
-        default='en',
+#         default='en',
         blank=True,
         help_text=_('help text for dcterms:abstract language'))
     dc_description = models.TextField(
         _("dc:description"),
         blank=True,
         help_text=_('help text for dc:description'))
+    dcterms_typeofindkindcontribs = models.CharField(
+        _("dcterms:type of inkind contribution"),
+        max_length=255,
+        choices=TYPE_OF_INKIND_CONTRIBS,
+        blank=True,
+        help_text=_('help text for "type of inkind contribution"'))
+    dcterms_compliancetoreq = models.TextField(
+        _("dcterms:compliance to requirements"),
+        blank=True,
+        help_text=_('help text for dcterms:compliance to requirements'))
+    dcterms_contribanddariah = models.CharField(
+        _("dcterms:is contribution inline with dariah"),
+        max_length=10,
+        choices=YES_NO,
+        blank=True,
+        help_text=_('For DARIAH principles please see'))
+    dcterms_reason = models.TextField(
+        _("dcterms:reason"),
+        blank=True,
+        help_text=_('help text for dcterms:reason'))
     skos_preflabel_activity = models.ManyToManyField(
         'dariah_static_data.TADIRAHActivity',
         verbose_name=_('sioc:topic/skos:Concept/skos:prefLabel Activity'),
@@ -266,7 +313,6 @@ class Contribution(models.Model):
         ('vcard_logo', 1, 0),
 #         ('vcard_organization', 1, 0),
 #         ('dcterms_spatial', 1, 0),
-        ('dc_coverage', 1, 0),
         ('dcterms_abstract_en', 1, 0),
         ('dcterms_abstract', 1, 0),
         ('dcterms_abstract_lang', 1, 0),
@@ -275,9 +321,18 @@ class Contribution(models.Model):
         ('skos_preflabel_object', 1, 0),
         ('skos_preflabel_technique', 1, 0),
         ('skos_preflabel_discipline', 1, 0),
+        ('dcterms_typeofindkindcontribs',1, 0),
+        ('dcterms_compliancetoreq',1,0),
+        ('dcterms_contribanddariah',1,0),
+        ('dcterms_reason',1,0),
         ('dc_creator', 1, 0),
-        ('dc_contributor', 1, 0),
         ('dc_publisher', 1, 0),
+        ('dc_publisher_description_en', 1, 0),
+        ('dc_publisher_description',1,0),
+        ('dc_publisher_lang',1,0),
+        ('dc_publisher_relation',1,0),
+        ('dc_contributor', 1, 0),
+        ('dc_coverage', 1, 0),
         ('author', 0, 1),
         ('is_published', 1, 1),
         ('published_on', 0, 1),

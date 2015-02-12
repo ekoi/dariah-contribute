@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dariah-contribute\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-09 15:02+0100\n"
+"POT-Creation-Date: 2015-02-12 10:29+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Heleen van de Schraaf <heleen.van.de.schraaf@dans.knaw.nl>\n"
 "Language-Team: English <>\n"
@@ -19,251 +19,300 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: models.py:111
+#: models.py:118
 msgid "dc:identifier"
 msgstr "Identifier"
 
-#: models.py:113
+#: models.py:120
 msgid "help text for dc:identifier"
 msgstr "Identifier of the contribution, generated automatically."
 
-#: models.py:115
+#: models.py:122
 msgid "dc:title"
 msgstr "Contribution Title"
 
-#: models.py:117
+#: models.py:124
 msgid "help text for dc:title"
 msgstr "Title of the contribution (in English)"
 
-#: models.py:119
+#: models.py:126
 msgid "dc:date"
 msgstr "Contribution Year"
 
-#: models.py:123
+#: models.py:131
 msgid "help text for dc:date"
 msgstr "Date of the contribution, please specify the year of the contribution."
 
-#: models.py:125
+#: models.py:133
 msgid "dc:relation"
 msgstr "Contribution Website"
 
-#: models.py:128
+#: models.py:136
 msgid "help text for dc:relation"
 msgstr ""
-"Link to the location of the contribution. Example: http://cleo.openedition.org."
+"Link to the location of the contribution. Example: http://cleo.openedition."
+"org."
 
-#: models.py:130
+#: models.py:138
 msgid "vcard:logo"
 msgstr "Logo"
 
-#: models.py:135
+#: models.py:143
 msgid "help text for vcard:logo"
 msgstr ""
 "Logo associated with the contribution, or the contributing organisation."
 
-#: models.py:137
+#: models.py:145
 msgid "dc:publisher"
 msgstr "Organisation"
 
-#: models.py:140
+#: models.py:148
 msgid "help text for dc:publisher"
 msgstr ""
 "Name of the organisation which is in charge of the contribution (short "
 "name). Example: OpenEdition"
 
-#: models.py:142
-msgid "dcterms:spatial"
-msgstr "Location"
+#: models.py:150
+msgid "dc:publisher english description"
+msgstr "English description organisation"
 
-#: models.py:145
-msgid "help text for dcterms:spatial"
-msgstr ""
-"Geographical location of the organisation. Use URIs from Geonames. example: "
-"http://sws.geonames.org/2995469/about.rdf"
+#: models.py:152
+msgid "help text for dc:publisher english description "
+msgstr "English description of organisation in charge of the contribution. For publication on the DARIAH-EU website."
 
-#: models.py:148
+#: models.py:154
+msgid "dc:publisher description"
+msgstr "Organisation description"
+
+#: models.py:156
+msgid "help text for dc:publisher description "
+msgstr "Description of organisation in charge of the contribution in another language. Please specify language in the following field."
+
+#: models.py:158
+msgid "dc:publisher language"
+msgstr "Language of organisation description"
+
+#: models.py:163
+msgid "help text for dc:publisher language"
+msgstr "Please specify the language of the organisation description"
+
+#: models.py:165
+msgid "dc:publisher relation"
+msgstr "Oganisation website"
+
+#: models.py:168
+msgid "help text for dc:publisher relation"
+msgstr "Link to the website of the main contributing organisation."
+
+#: models.py:176
 msgid "dc:coverage"
 msgstr "Country"
 
-#: models.py:151
+#: models.py:179
 msgid "help text for dc:coverage"
 msgstr "Country responsible for the contribution. Please select from list."
 
-#: models.py:153
-msgid "vcard:organization"
-msgstr "Institution"
-
-#: models.py:156
-msgid "help text for vcard:organization"
-msgstr "Name of the institution."
-
-#: models.py:158
-msgid "dc:subject"
-msgstr "Free keywords"
-
-#: models.py:160
-msgid "help text for dc:subject"
-msgstr "List of free keywords describing the contribution. Separate by comma."
-
-#: models.py:162
+#: models.py:186
 msgid "dcterms:abstract English"
 msgstr "English abstract"
 
-#: models.py:163
+#: models.py:187
 msgid "help text for dcterms:abstract English"
 msgstr ""
 "Abstract of the contribution in English for publication on the DARIAH-EU web "
 "site."
 
-#: models.py:165
+#: models.py:189
 msgid "dcterms:abstract alternative language"
 msgstr "Abstract"
 
-#: models.py:167
+#: models.py:191
 msgid "help text for dcterms:abstract alternative language"
 msgstr ""
 "Abstract of the contribution in a other language. Please specify language in "
 "the following field."
 
-#: models.py:169
+#: models.py:193
 msgid "dcterms:abstract language"
 msgstr "Language of abstract"
 
-#: models.py:174
+#: models.py:198
 msgid "help text for dcterms:abstract language"
 msgstr "Please specify the language of the abstract."
 
-#: models.py:176
+#: models.py:200
 msgid "dc:description"
 msgstr "Description"
 
-#: models.py:178
+#: models.py:202
 msgid "help text for dc:description"
-msgstr "What is the contribution (e.g. collection, ontology, online tool, service etc)? What is in it? (e.g. authors,  manuscripts etc) How can it be used?"
+msgstr ""
+"What is the contribution (e.g. collection, ontology, online tool, service "
+"etc)? What is in it? (e.g. authors,  manuscripts etc) How can it be used?"
 
-#: models.py:181
+#: models.py:204
+msgid "dcterms:type of inkind contribution"
+msgstr "Type of inkind contribution"
+
+#: models.py:208
+msgid "help text for \"type of inkind contribution\""
+msgstr "Please specify the persons involved in the contribution."
+
+#: models.py:210
+msgid "dcterms:compliance to requirements"
+msgstr "Compliance to requirements"
+
+#: models.py:212
+msgid "help text for dcterms:compliance to requirements"
+msgstr "For requirements per type of contribution please see <a data-toggle=\"modal\" data-target=\"#compliance_modal\" href=\"/compliance-to-requirements/\">here</a>"
+
+#: models.py:214
+msgid "dcterms:is contribution inline with dariah"
+msgstr "Is the contribution in line with the DARIAH principles?"
+
+#: models.py:218
+msgid "For DARIAH principles please see"
+msgstr "For DARIAH principles please see <a  data-toggle=\"modal\" data-target=\"#dariah_principle_modal\" href=\"/media/pdf/20141104%20Towards_a_Strategy_for_DARIAH.pdf\">here</a>"
+
+#: models.py:220
+msgid "dcterms:reason"
+msgstr "If no please explain"
+
+#: models.py:222
+msgid "help text for dcterms:reason"
+msgstr ""
+#: models.py:225
 msgid "sioc:topic/skos:Concept/skos:prefLabel Activity"
 msgstr "TADIRAH Activities"
 
-#: models.py:184
+#: models.py:228
 msgid "help text for skos:preflabel Activity"
 msgstr "Select the relevant activities from the list (filter by typing)."
 
-#: models.py:188
+#: models.py:232
 msgid "sioc:topic/skos:Concept/skos:prefLabel Object"
 msgstr "TADIRAH Objects"
 
-#: models.py:191
+#: models.py:235
 msgid "help text for skos:preflabel Object"
 msgstr "Select the relevant activities from the list (filter by typing)."
 
-#: models.py:195
+#: models.py:239
 msgid "sioc:topic/skos:Concept/skos:prefLabel Technique"
 msgstr "TADIRAH Techniques"
 
-#: models.py:198
+#: models.py:242
 msgid "help text for skos:preflabel Technique"
 msgstr "Select the relevant techniques from the list (filter by typing)."
 
-#: models.py:202
+#: models.py:246
 msgid "sioc:topic/skos:Concept/skos:prefLabel Discipline"
 msgstr "Disciplines"
 
-#: models.py:205
+#: models.py:249
 msgid "help text for skos:preflabel Discipline"
 msgstr "Select the relevant disciplines from the list (filter by typing)."
 
-#: models.py:209
+#: models.py:253
 msgid "sioc:has_scope/skos:Concept/skos:prefLabel VCC"
 msgstr "Leading VCC"
 
-#: models.py:212
+#: models.py:256
 msgid "help text for skos:preflabel VCC"
-msgstr "Check 0, 1 or more boxes for the relevant VCCs/"
+msgstr ""
 
-#: models.py:216
+#: models.py:260
 msgid "dc:creator"
 msgstr "Contact person(s)"
 
-#: models.py:219
+#: models.py:263
 msgid "help text for dc:creator"
 msgstr "Please specify the person in charge."
 
-#: models.py:222
+#: models.py:266
 msgid "dc:contributor"
 msgstr "Contributor(s)"
 
-#: models.py:225
+#: models.py:269
 msgid "help text for dc:contributor"
 msgstr "Please specify the persons involved in the contribution."
 
-#: models.py:230
+#: models.py:274
 msgid "author"
 msgstr "author"
 
-#: models.py:234
+#: models.py:278
 msgid "help text for author"
 msgstr "the author of this descrip"
 
-#: models.py:236
+#: models.py:280
 msgid "is published?"
 msgstr "Published (y/n)"
 
-#: models.py:238
+#: models.py:282
 msgid "help text for is_published"
 msgstr ""
 "Mark the checkbox to publish this description. Unmark it to unpublish it."
 
-#: models.py:240
+#: models.py:284
 msgid "published on"
 msgstr "Last published"
 
-#: models.py:244
+#: models.py:288
 msgid "help text for published_on"
 msgstr "Date of last publication"
 
-#: models.py:246
+#: models.py:290
 msgid "last modified on"
 msgstr "Last modiefied"
 
-#: models.py:249
+#: models.py:293
 msgid "help text for last_modified"
 msgstr "Date of last modification"
 
-#: models.py:251
+#: models.py:295
 msgid "is deleted?"
 msgstr ""
 
-#: models.py:254
+#: models.py:298
 msgid "help text for is_deleted"
 msgstr "Unsupported feature. Deletion not yet implemented."
 
-#: models.py:310 templates/dariah_inkind/contribution_form.html:33
+#: models.py:358
 msgid "contribution"
 msgstr "Contribution"
 
-#: models.py:311
+#: models.py:359
 msgid "contributions"
 msgstr ""
 
-#: models.py:338
+#: models.py:386
 msgid "help text for foaf:person"
 msgstr ""
 "A DAI URI identifier of this person, e.g. info:eu-repo/dai/nl/30407618X."
 
-#: models.py:342
+#: models.py:390
 msgid "help text for first name"
 msgstr ""
 
-#: models.py:346
+#: models.py:394
 msgid "help text for last name prefix"
 msgstr ""
 
-#: models.py:350
+#: models.py:398
 msgid "help text for last name"
 msgstr ""
 
-#: models.py:354
+#: models.py:400
+msgid "Email address"
+msgstr ""
+
+#: models.py:402
+#, fuzzy
+msgid "help text for email address"
+msgstr "Date of the contribution, please specify the year of the contribution."
+
+#: models.py:406
 msgid "help text for foaf:publications"
 msgstr ""
 
@@ -317,22 +366,21 @@ msgid "This page in RDF (XML)"
 msgstr ""
 
 #: templates/dariah_inkind/contribution_form.html:28
-#: templates/dariah_inkind/dccreator_form.html:42
-msgid "Add"
+msgid "Save"
 msgstr ""
 
-#: templates/dariah_inkind/contribution_form.html:30
+#: templates/dariah_inkind/contribution_form.html:31
 #: templates/dariah_inkind/contribution_list.html:67
 msgid "Update"
 msgstr ""
 
-#: templates/dariah_inkind/contribution_form.html:48
+#: templates/dariah_inkind/contribution_form.html:50
 #: templates/dariah_inkind/dccreator_form.html:37
 msgid "Fields marked with a star (*) are compulsory."
 msgstr ""
 
-#: templates/dariah_inkind/contribution_form.html:54
-#: templates/dariah_inkind/contribution_form.html:62
+#: templates/dariah_inkind/contribution_form.html:56
+#: templates/dariah_inkind/contribution_form.html:64
 msgid "(no content)"
 msgstr ""
 
@@ -423,6 +471,10 @@ msgstr ""
 msgid "Reset"
 msgstr ""
 
+#: templates/dariah_inkind/dccreator_form.html:42
+msgid "Add"
+msgstr ""
+
 #: views/detail.py:228
 msgid "Location"
 msgstr ""
@@ -480,3 +532,16 @@ msgstr ""
 #: views/feeds.py:32
 msgid "http://dariah.eu"
 msgstr ""
+
+#~ msgid "vcard:organization"
+#~ msgstr "Institution"
+
+#~ msgid "help text for vcard:organization"
+#~ msgstr "Name of the institution."
+
+#~ msgid "dc:subject"
+#~ msgstr "Free keywords"
+
+#~ msgid "help text for dc:subject"
+#~ msgstr ""
+#~ "List of free keywords describing the contribution. Separate by comma."

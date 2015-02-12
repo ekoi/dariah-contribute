@@ -94,10 +94,10 @@ class ContributionRDFResponseMixin(object):
             tadirah_technique = BNode()
             g.add((tadirah_technique, rdf.type, skos.Concept))
             g.add((this_contribution, sioc.topic, tadirah_technique))
-        if c.skos_preflabel_vcc.count():
-            tadirah_vcc = BNode()
-            g.add((tadirah_vcc, rdf.type, skos.Concept))
-            g.add((this_contribution, sioc.has_scope, tadirah_vcc))
+#         if c.skos_preflabel_vcc.count():
+        tadirah_vcc = BNode()
+        g.add((tadirah_vcc, rdf.type, skos.Concept))
+        g.add((this_contribution, sioc.has_scope, tadirah_vcc))
 
         #######################################################################
         # Add tripples about the item to the graph
@@ -116,15 +116,15 @@ class ContributionRDFResponseMixin(object):
             g.add((this_contribution, vcard.logo, URIRef("%s%s" % (site.domain, c.vcard_logo.url))))
         if c.dc_publisher:
             g.add((this_contribution, dc.publisher, Literal(c.dc_publisher, lang=u'en')))
-        if c.dcterms_spatial:
-            g.add((this_contribution, dcterms.spatial, URIRef(c.dcterms_spatial)))
-        if c.dc_coverage:
-            g.add((this_contribution, dc.coverage, URIRef(c.dc_coverage.uri)))
-        if c.vcard_organization:
-            g.add((this_contribution, vcard.organization, Literal(c.vcard_organization, lang=u'en')))
+#         if c.dcterms_spatial:
+#             g.add((this_contribution, dcterms.spatial, URIRef(c.dcterms_spatial)))
+#         if c.dc_coverage:
+#             g.add((this_contribution, dc.coverage, URIRef(c.dc_coverage.uri)))
+#         if c.vcard_organization:
+#             g.add((this_contribution, vcard.organization, Literal(c.vcard_organization, lang=u'en')))
         # Many2Many dc:subject
-        for s in c.dc_subject.all():
-            g.add((this_contribution, dc.subject, Literal(s, lang=u'en')))
+#         for s in c.dc_subject.all():
+#             g.add((this_contribution, dc.subject, Literal(s, lang=u'en')))
         # EndMany2Many
         if c.dcterms_abstract_en:
             g.add((this_contribution, dcterms.abstract, Literal(c.dcterms_abstract_en, lang=u'en')))
@@ -142,8 +142,8 @@ class ContributionRDFResponseMixin(object):
             g.add((tadirah_object, skos.prefLabel, URIRef(x.uri)))
         for x in c.skos_preflabel_technique.all():
             g.add((tadirah_technique, skos.prefLabel, URIRef(x.uri)))
-        for x in c.skos_preflabel_vcc.all():
-            g.add((tadirah_vcc, skos.prefLabel, URIRef(x.uri)))
+#         for x in c.skos_preflabel_vcc.all():
+#             g.add((tadirah_vcc, skos.prefLabel, URIRef(x.uri)))
         # EndMany2Many
 
         # Many2Many dc:creator
