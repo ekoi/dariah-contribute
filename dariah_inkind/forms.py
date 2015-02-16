@@ -19,9 +19,12 @@
 import autocomplete_light
 from django.forms import CheckboxSelectMultiple
 from autocomplete_light.contrib.taggit_field import TaggitWidget
+from django.db.models.base import Model
 autocomplete_light.autodiscover()
 
 from .models import Contribution
+from .models import DcContributor
+from .models import DcCreator
 
 
 class ContributionForm(autocomplete_light.ModelForm):
@@ -45,3 +48,17 @@ class ContributionForm(autocomplete_light.ModelForm):
                               'skos_preflabel_discipline': 'DisciplineAutocomplete',
                               'dc_contributor': 'DcContributorAutocomplete',
                               'dc_creator': 'DcCreatorAutocomplete'}
+        
+class DcCreatorForm(autocomplete_light.ModelForm):
+    required_css_class = 'required'
+    
+    class Meta:
+        model = DcCreator
+        
+class DcContributorForm(autocomplete_light.ModelForm):
+    required_css_class = 'required'
+    
+    class Meta:
+        model = DcContributor
+    
+    

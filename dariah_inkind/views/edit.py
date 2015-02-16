@@ -36,6 +36,8 @@ import autocomplete_light
 
 from ..models import Contribution, DcCreator, DcContributor
 from ..forms import ContributionForm
+from ..forms import DcContributorForm
+from dariah_inkind.forms import DcCreatorForm
 
 
 class ContributionCreate(SuccessMessageMixin, CreateView):
@@ -190,6 +192,7 @@ class AjaxableResponseMixin(object):
 
 
 class DcCreatorCreate(AjaxableResponseMixin, autocomplete_light.CreateView):
+    form_class = DcCreatorForm
     model = DcCreator
     success_message = _("dc:creator %s was created successfully.")
     success_url = reverse_lazy('dariah_inkind:list')
@@ -200,6 +203,7 @@ class DcCreatorCreate(AjaxableResponseMixin, autocomplete_light.CreateView):
 
 
 class DcContributorCreate(AjaxableResponseMixin, autocomplete_light.CreateView):
+    form_class = DcContributorForm
     model = DcContributor
     success_message = _("dc:contributor %s was created successfully.")
     success_url = reverse_lazy('dariah_inkind:list')

@@ -184,6 +184,7 @@ class Contribution(models.Model):
 #         help_text=_("help text for vcard:organization"))
     dcterms_abstract_en = models.TextField(
         _("dcterms:abstract English"),
+        max_length=2000,
         help_text=_('help text for dcterms:abstract English'))
     dcterms_abstract = models.TextField(
         _("dcterms:abstract alternative language"),
@@ -385,12 +386,9 @@ class Contribution(models.Model):
 
 
 class Person(models.Model):
-    foaf_person = models.URLField(
-        blank=True,
-        help_text=_('help text for foaf:person'))
+    
     first_name = models.CharField(
         max_length=50,
-        blank=True,
         help_text=_('help text for first name'))
     last_name_prefix = models.CharField(
         max_length=50,
@@ -398,12 +396,14 @@ class Person(models.Model):
         help_text=_('help text for last name prefix'))
     last_name = models.CharField(
         max_length=50,
-        blank=True,
         help_text=_('help text for last name'))
     foaf_email = models.EmailField(
         verbose_name=_("Email address"),
-        blank=True,
         help_text=_('help text for email address'))
+    foaf_person = models.CharField(
+        max_length=255,
+        blank=True,
+        help_text=_('help text for foaf:person'))
 
     @property
     def uri(self):
