@@ -404,10 +404,6 @@ class Person(models.Model):
         verbose_name=_("Email address"),
         blank=True,
         help_text=_('help text for email address'))
-    foaf_publications = models.CharField(
-        max_length=50,
-        blank=True,
-        help_text=_('help text for foaf:publications'))
 
     @property
     def uri(self):
