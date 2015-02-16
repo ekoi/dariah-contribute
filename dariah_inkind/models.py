@@ -213,8 +213,9 @@ class Contribution(models.Model):
     dcterms_contribanddariah = models.CharField(
         _("dcterms:is contribution inline with dariah"),
         max_length=10,
+        default='No',
         choices=YES_NO,
-        blank=True,
+        blank=False,
         help_text=_('For DARIAH principles please see'))
     dcterms_reason = models.TextField(
         _("dcterms:reason"),
