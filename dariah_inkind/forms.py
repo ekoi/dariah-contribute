@@ -17,8 +17,6 @@
 """
 
 import autocomplete_light
-from django.forms import CheckboxSelectMultiple
-from autocomplete_light.contrib.taggit_field import TaggitWidget
 from django.db.models.base import Model
 autocomplete_light.autodiscover()
 
@@ -41,7 +39,6 @@ class ContributionForm(autocomplete_light.ModelForm):
     class Meta:
         model = Contribution
         fields = [x[0] for x in Contribution.field_order if x[1]]
-        widgets = {'dc_subject': TaggitWidget('TagAutocomplete')}
         autocomplete_names = {'skos_preflabel_technique': 'TADIRAHTechniqueAutocomplete',
                               'skos_preflabel_activity': 'TADIRAHActivityAutocomplete',
                               'skos_preflabel_object': 'TADIRAHObjectAutocomplete',
