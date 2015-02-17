@@ -31,6 +31,7 @@ __all__ = [
     'ContributionsAtomFeed',
     'MyContributions',
     'ContributionList',
+    'DcCreatorDetail'
 ]
 
 from .detail import ContributionDetail
@@ -47,3 +48,4 @@ from .feeds import ContributionsFeed
 from .feeds import ContributionsAtomFeed
 from .lists import MyContributions
 from .lists import ContributionList
+from .dccreatordetail import DcCreatorDetail
