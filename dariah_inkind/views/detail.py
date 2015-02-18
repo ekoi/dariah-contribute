@@ -193,7 +193,10 @@ class ContributionDetailMixin(BaseDetailView):
         else:
             fields = filter(lambda x: not x[2], c.field_order)
         for x in fields:
-            field = c.__class__._meta.get_field(x[0])
+            c1 = c.__class__
+            c2 = c1._meta
+            c3 = c2.get_field(x[0])
+            field = c3
             value = getattr(c, x[0])
             is_safe = False
             help_text = unicode(field.help_text)

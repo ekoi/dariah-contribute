@@ -423,6 +423,7 @@ class Person(models.Model):
     def __unicode__(self):
         return self.foaf_name
 
+
     @classmethod
     def lowercase_underscore_name(cls):
         """Transform class name from CamelCase to lowercase_with_underscores."""
@@ -430,12 +431,15 @@ class Person(models.Model):
 
     class Meta:
         abstract = True
-
+    
+    field_order = [('first_name', 1, 0),('last_name_prefix', 1, 0), ('last_name', 1, 0), ('foaf_email', 1, 0), ('foaf_person', 1, 0)]
 
 class DcCreator(Person):
     class Meta:
         verbose_name = 'dc:creator'
         verbose_name_plural = 'dc:creator'
+        
+    field_order = [('first_name', 1, 0),('last_name_prefix', 1, 0), ('last_name', 1, 0), ('foaf_email', 1, 0), ('foaf_person', 1, 0)]
 
 
 class DcContributor(Person):

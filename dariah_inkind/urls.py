@@ -33,6 +33,7 @@ from .views import DcContributorCreate
 from .views import ContributionsFeed
 from .views import ContributionsAtomFeed
 from .views import DcCreatorDetail
+from .views import DcContributorDetail
 
 
 urlpatterns = patterns('',
@@ -68,4 +69,5 @@ urlpatterns = patterns('',
     url(r'^feed/atom/$', ContributionsAtomFeed(), name='feed_atom'),
     
     url(r'^dc_creator/(?P<pk>\d+)/$', DcCreatorDetail.as_view(), name='dcdetail'),
+    url(r'^dc_contributor/(?P<pk>\d+)/$', DcContributorDetail.as_view(), name='dcdetail'),
 )

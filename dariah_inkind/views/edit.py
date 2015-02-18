@@ -179,9 +179,15 @@ class AjaxableResponseMixin(object):
         # it might do some processing (in the case of CreateView, it will
         # call form.save() for example).
         response = super(AjaxableResponseMixin, self).form_valid(form)
+        obj_class_name = ''
+        if type(self.object) is DcContributor:
+            obj_class_name = 'DcContributor'
+        else:
+            obj_class_name = 'DcCreator'
         data = {
             'pk': self.object.pk,
             'name': str(self.object),
+            'obj_class_name':obj_class_name,
         }
         if self.success_message:
             messages.success(self.request, self.success_message % (data['name']))

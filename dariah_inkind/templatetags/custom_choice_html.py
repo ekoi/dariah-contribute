@@ -17,38 +17,14 @@
 """
 
 from django import template
-from django.core.exceptions import ValidationError
-from django.core.validators import URLValidator
 from django.utils import safestring
 from dariah_inkind.models import DcContributor
 
 
 register = template.Library()
 
-
 @register.filter
-def is_url(value):
-    """Checks if the given value is a URL."""
-    v = URLValidator()
-    try:
-        v(value)
-    except ValidationError:
-        return False
-    return True
-
-@register.simple_tag
-def add_active(name):
-    """ Return the string 'active' current request.path is same as name
-    Keyword aruguments:
-    request -- Django request object
-    name -- name of the url or the actual path
-    by_path -- True if name contains a url instead of url name
-    """
-    print '==================================\n', name
-    return 'EKO' + name
-
-@register.filter
-def autocomplete_light_choice_html2(choice, autocomplete):
+def choice_html(choice, autocomplete):
     """Return autocomplete.choice_html(choice)"""
     value = autocomplete.choice_html(choice)
     new_foaf_name = ''

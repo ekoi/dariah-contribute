@@ -36,14 +36,20 @@ $('body').on('submit', 'form.modal-form', function (event) {
             // Add message to original form to tell user create was successful
             $('label[for=' + form_id_name + ']').after(data.django_messages);
             // Add new item to hidden select and deck
-            add_new_element_to_deck(form_id_name, data.pk, data.name);
+            add_new_element_to_deck(form_id_name, data.pk, data.name, data.obj_class_name);
         }
     }).done(function( msg ) {
     });
     return false;
 });
 
-function add_new_element_to_deck(form_id_name, newId, newRepr){
+function add_new_element_to_deck(form_id_name, newId, newRepr, obj_class_name){
+	var newChoiceTxt = '';
+    if (obj_class_name=='DcContributor')
+    	newChoiceTxt='<a href="/inkind/dc_contributor/' + newId + '">' + newRepr + '</a>';
+    else
+    	newChoiceTxt='<a href="/inkind/dc_creator/' + newId + '">' + newRepr + '</a>';
+    
     // Add option to hidden select and deck
     // This code was taken and slightly adapted from the original
     // `autocomplete_light code <https://github.com/yourlabs/django-autocomplete-light/blob/80b1d689f482c85764909d2908f3bcb0bbc32237/autocomplete_light/static/autocomplete_light/addanother.js>`_
@@ -51,7 +57,7 @@ function add_new_element_to_deck(form_id_name, newId, newRepr){
     var elem = document.getElementById(form_id_name);
     if (elem) {
         if ($(elem).is('select')) {
-            var o = new Option(newRepr, newId);
+            var o = new Option(newChoiceTxt, newId);
             elem.options[elem.options.length] = o;
             o.selected = true;
         }
