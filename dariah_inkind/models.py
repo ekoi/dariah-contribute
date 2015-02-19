@@ -27,6 +27,7 @@ from pycountry import languages as l
 import os.path
 import re
 import uuid
+import datetime
 
 from django.contrib.auth import get_user_model
 User = get_user_model()
@@ -95,7 +96,8 @@ class Contribution(models.Model):
                                            map(lambda x: (getattr(x, 'alpha2', None),
                                                           getattr(x, 'name', None)),
                                                l))
-    DC_DATE_CHOICES = [(x, x) for x in reversed(xrange(1900, timezone.now().year + 1))]
+    DC_DATE_CHOICES = [] 
+    for y in range(2014, 2026): DC_DATE_CHOICES.append((y,y))
     
     TYPE_OF_INKIND_CONTRIBS =[('Access','Access'), ('Expertise','Expertise'), ('Interoperability','Interoperability'),
                               ('Content Hosting','Content Hosting'), ('Tools and Software','Tools and Software'), 
@@ -124,9 +126,8 @@ class Contribution(models.Model):
         help_text=_('help text for dc:title'))
     dc_date = models.PositiveIntegerField(
         _("dc:date"),
-        null=True, 
-        blank=True,
         choices=DC_DATE_CHOICES,
+        default=datetime.datetime.now().year,
         max_length=4,  # YYYY IS ISO-8601, see https://en.wikipedia.org/wiki/ISO_8601#Years
         help_text=_('help text for dc:date'))
     dc_relation = models.URLField(
