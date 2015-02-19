@@ -108,9 +108,14 @@ yourlabs.Widget.prototype.selectChoice = function(choice) {
     else {
         var elid = choice[(choice.length-1)].parentElement.parentElement.id;
         if (elid.search("id_dc_contributor") > -1)
-        	choice[(choice.length-1)].innerHTML='<a href="/inkind/dc_contributor/' + value + '">' + choice[(choice.length-1)].innerHTML + '</a>';
+        	
+//        	choice[(choice.length-1)].innerHTML='<a data-toggle="modal" data-target="#dc_contributor_detail_modal" href="/inkind/dc_contributor/' 
+//        										+ value + '">' + choice[(choice.length-1)].innerHTML + '</a>';
+        	choice[(choice.length-1)].innerHTML='<a href="/inkind/dc_contributor/' + value + '" target="_blank">' + choice[(choice.length-1)].innerHTML + '</a>';
         else
-        	choice[(choice.length-1)].innerHTML='<a href="/inkind/dc_creator/' + value + '">' + choice[(choice.length-1)].innerHTML + '</a>';
+//        	choice[(choice.length-1)].innerHTML='<a data-toggle="modal" data-target="#dc_creator_detail_modal" href="/inkind/dc_contributor/' 
+//												+ value + '">' + choice[(choice.length-1)].innerHTML + '</a>';
+            choice[(choice.length-1)].innerHTML='<a href="/inkind/dc_creator/' + value + '" target="_blank">' + choice[(choice.length-1)].innerHTML + '</a>';
     }
     
     if (!value) {

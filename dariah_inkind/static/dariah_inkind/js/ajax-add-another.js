@@ -44,11 +44,17 @@ $('body').on('submit', 'form.modal-form', function (event) {
 });
 
 function add_new_element_to_deck(form_id_name, newId, newRepr, obj_class_name){
+//	if (obj_class_name=='DcContributor')
+//    	newChoiceTxt= '<a data-toggle="modal" data-target="#dc_contributor_detail_modal" href="/inkind/dc_contributor/' 
+//			+ newId + '">' + newRepr + '</a>';
+//    else
+//    	newChoiceTxt= '<a data-toggle="modal" data-target="#dc_creatorr_detail_modal" href="/inkinddc_creator/' 
+//			+ newId + '">' + newRepr + '</a>';
 	var newChoiceTxt = '';
     if (obj_class_name=='DcContributor')
-    	newChoiceTxt='<a href="/inkind/dc_contributor/' + newId + '">' + newRepr + '</a>';
+    	newChoiceTxt='<a href="/inkind/dc_contributor/' + newId + '" target="_blank">' + newRepr + '</a>';
     else
-    	newChoiceTxt='<a href="/inkind/dc_creator/' + newId + '">' + newRepr + '</a>';
+    	newChoiceTxt='<a href="/inkind/dc_creator/' + newId + '" target="_blank">' + newRepr + '</a>';
     
     // Add option to hidden select and deck
     // This code was taken and slightly adapted from the original

@@ -24,7 +24,7 @@
 {% block title %}{% trans 'DARIAH Contribute' %}{% endblock %}
 {% block bootstrap3_content %}
     
-    <div class="container">
+    <div class="container" style="width:300px;important;">
     {% if user.is_authenticated %}
    {% block main %}{% trans '(no content)' %}{% endblock %}
     {% else %}
