@@ -180,7 +180,7 @@ msgstr "If no please explain"
 
 #: models.py:222
 msgid "help text for dcterms:reason"
-msgstr ""
+msgstr "&nbsp;"
 #: models.py:225
 msgid "sioc:topic/skos:Concept/skos:prefLabel Activity"
 msgstr "TADIRAH Activities"
@@ -219,7 +219,7 @@ msgstr "Leading VCC"
 
 #: models.py:256
 msgid "help text for skos:preflabel VCC"
-msgstr ""
+msgstr "&nbsp;"
 
 #: models.py:260
 msgid "dc:creator"
