@@ -18,50 +18,28 @@
     limitations under the License.
 {% endcomment %}
 
+{% load bootstrap3 %}
 {% load i18n %}
-{% load is_url %}
 {% load static %}
 
 {% block bootstrap3_content %}
+<form id="{% block form_id %}id_dc_creator_form{% endblock %}" class="modal-form" enctype="multipart/form-data" action="{% block action %}{% url 'dariah_inkind:dccreator_create' %}{% endblock %}" method="post" role="form">{% csrf_token %}
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">{% trans 'Close' %}</span></button>
         <h4 class="modal-title">
             {% block title %}
-                {% trans 'Person' %}
+                {% trans 'Add a new dc:creator' %}
             {% endblock %}
         </h4>
     </div>
     <div class="modal-body">
-            <table class="table">
-    		{% for field, value, help_text in get_fields %}
-        	<tr>
-            <td>
-                {{ field }}
-                <a href="#" rel="popover" data-toggle="popover" data-trigger="hover" title="" data-content="{{ help_text }}" data-placement="right"><span class="glyphicon glyphicon-question-sign"></span></a>
-            </td>
-            <td>{{ value }}</td>
-        </tr>
-    	{% endfor %}
-    </table>
-     <p>&nbsp;</p>
+            {% bootstrap_form form %}
+            <p>{% trans 'Fields marked with a star (*) are compulsory.' %}</p>
     </div>
     <div class="modal-footer">
+        <input type="reset" class="btn btn-default resetModal" style="display:none;" value="{% trans 'Reset' %}" />
         <button type="button" class="btn btn-default closeModal" data-dismiss="modal">{% trans 'Close' %}</button>
+        <input type="submit" value="{% trans 'Save' %}" class="btn btn-primary"/>
     </div>
-    
-    {% spaceless %}
-    {% endspaceless %}
-    
+</form>
 {% endblock %}
-
-{% block extra_extra_head %}
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('[rel=popover]').popover();
-    });
-</script>
-{% endblock %}
-
-
-
-

@@ -12,7 +12,7 @@ from dariah_inkind.models import Contribution
 class AnnualValueUpdate(SuccessMessageMixin, UpdateView):
     model = AnnualValue
     form_class = AnnualValueForm
-    success_message = _("Contribution was updated successfully.")
+    success_message = _("Annual value was updated successfully.")
     
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):

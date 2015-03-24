@@ -19,16 +19,18 @@
 from django.template.loader import render_to_string
 
 from taggit.models import Tag
-from .models import DcCreator, DcContributor
+
+from dariah_person.models import Person
 
 import autocomplete_light
+from dariah_inkind.models import Contribution, DcCreator, DcContributor
+
 
 
 class DcCreatorAutocomplete(autocomplete_light.AutocompleteModelBase):
     search_fields = ['^first_name', 'last_name_prefix', 'last_name']
-    model = DcCreator
     add_another_url_name = 'dariah_inkind:dccreator_create'
-
+    choices=Person.objects.all()
     attrs = {
         # This will set the input placeholder attribute:
         'placeholder': 'Start typing...',
@@ -46,10 +48,13 @@ class DcCreatorAutocomplete(autocomplete_light.AutocompleteModelBase):
 
 
 class DcContributorAutocomplete(DcCreatorAutocomplete):
-    model = DcContributor
     add_another_url_name = 'dariah_inkind:dccontributor_create'
 
+# class DcPersonAutocomplete(DcCreatorAutocomplete):
+#     add_another_url_name = 'dariah_inkind:dccontributor_create'
 
 autocomplete_light.register(Tag)
 autocomplete_light.register(DcCreator, DcCreatorAutocomplete)
 autocomplete_light.register(DcContributor, DcContributorAutocomplete)
+# autocomplete_light.register(DcPerson, DcPersonAutocomplete)
+

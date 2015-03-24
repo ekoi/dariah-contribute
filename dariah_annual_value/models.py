@@ -46,7 +46,7 @@ class AnnualValue(models.Model):
         inkind = models.ForeignKey("dariah_inkind.Contribution",  null=False, blank=False, help_text="Inkind help text")
         materialcost = models.IntegerField(null=True, blank=True, verbose_name="Total Material Cost", help_text="In euro")
         personnelcost = models.IntegerField(null=True, blank=True, verbose_name="Total Personnel Cost", help_text="In euro")
-        justification = models.CharField(max_length=1000, null=True, blank=True, help_text="Help text for 'justification'")
+        justification = models.TextField(null=True, blank=True, help_text="Help text for 'justification'")
         year = models.IntegerField(('year'), max_length=4, choices=YEAR_CHOICES, default=datetime.datetime.now().year,  help_text="Help text for 'Year'")
         
         #@property

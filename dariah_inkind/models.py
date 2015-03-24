@@ -30,6 +30,7 @@ import uuid
 import datetime
 
 from django.contrib.auth import get_user_model
+from dariah_person.models import Person
 User = get_user_model()
 
 from .storage import OverwriteStorage
@@ -259,16 +260,18 @@ class Contribution(models.Model):
         help_text=_('help text for skos:preflabel VCC')
     )
     dc_creator = models.ManyToManyField(
-        'DcCreator',
+        'dariah_person.Person',
         verbose_name=_("dc:creator"),
         blank=True,
         null=True,
+        related_name='creator',
         help_text=_('help text for dc:creator'))
     dc_contributor = models.ManyToManyField(
-        'DcContributor',
+        'dariah_person.Person',
         verbose_name=_("dc:contributor"),
         blank=True,
         null=True,
+        related_name='contributor',
         help_text=_('help text for dc:contributor'))
 
     # Meta-Metadata fields ####################################################
@@ -386,64 +389,69 @@ class Contribution(models.Model):
         super(Contribution, self).save(*args, **kwargs)
 
 
-class Person(models.Model):
-    
-    first_name = models.CharField(
-        max_length=50,
-        help_text=_('help text for first name'))
-    last_name_prefix = models.CharField(
-        max_length=50,
-        blank=True,
-        help_text=_('help text for last name prefix'))
-    last_name = models.CharField(
-        max_length=50,
-        help_text=_('help text for last name'))
-    foaf_email = models.EmailField(
-        verbose_name=_("Email address"),
-        help_text=_('help text for email address'))
-    foaf_person = models.CharField(
-        max_length=255,
-        blank=True,
-        help_text=_('help text for foaf:person'))
-
-    @property
-    def uri(self):
-        return self.foaf_person
-
-    @property
-    def foaf_name(self):
-        if self.last_name_prefix:
-            name = "%s %s %s" % (self.first_name,
-                                 self.last_name_prefix,
-                                 self.last_name)
-        else:
-            name = "%s %s" % (self.first_name,
-                              self.last_name)
-        return name
-
-    def __unicode__(self):
-        return self.foaf_name
-
-
-    @classmethod
-    def lowercase_underscore_name(cls):
-        """Transform class name from CamelCase to lowercase_with_underscores."""
-        return re.sub('(((?<=[a-z])[A-Z])|([A-Z](?![A-Z]|$)))', '_\\1', cls.__name__).lower().strip('_')
-
-    class Meta:
-        abstract = True
-    
-    field_order = [('first_name', 1, 0),('last_name_prefix', 1, 0), ('last_name', 1, 0), ('foaf_email', 1, 0), ('foaf_person', 1, 0)]
+# class Person(models.Model):
+#     
+#     first_name = models.CharField(
+#         max_length=50,
+#         help_text=_('help text for first name'))
+#     last_name_prefix = models.CharField(
+#         max_length=50,
+#         blank=True,
+#         help_text=_('help text for last name prefix'))
+#     last_name = models.CharField(
+#         max_length=50,
+#         help_text=_('help text for last name'))
+#     foaf_email = models.EmailField(
+#         verbose_name=_("Email address"),
+#         help_text=_('help text for email address'))
+#     foaf_person = models.CharField(
+#         max_length=255,
+#         blank=True,
+#         help_text=_('help text for foaf:person'))
+# 
+#     @property
+#     def uri(self):
+#         return self.foaf_person
+# 
+#     @property
+#     def foaf_name(self):
+#         if self.last_name_prefix:
+#             name = "%s %s %s" % (self.first_name,
+#                                  self.last_name_prefix,
+#                                  self.last_name)
+#         else:
+#             name = "%s %s" % (self.first_name,
+#                               self.last_name)
+#         return name
+# 
+#     def __unicode__(self):
+#         return self.foaf_name
+# 
+# 
+#     @classmethod
+#     def lowercase_underscore_name(cls):
+#         """Transform class name from CamelCase to lowercase_with_underscores."""
+#         return re.sub('(((?<=[a-z])[A-Z])|([A-Z](?![A-Z]|$)))', '_\\1', cls.__name__).lower().strip('_')
+# 
+#     class Meta:
+#         abstract = True
+#     
+#     field_order = [('first_name', 1, 0),('last_name_prefix', 1, 0), ('last_name', 1, 0), ('foaf_email', 1, 0), ('foaf_person', 1, 0)]
 
 class DcCreator(Person):
     class Meta:
         verbose_name = 'dc:creator'
         verbose_name_plural = 'dc:creator'
-        
+           
     field_order = [('first_name', 1, 0),('last_name_prefix', 1, 0), ('last_name', 1, 0), ('foaf_email', 1, 0), ('foaf_person', 1, 0)]
-
-
+  
+  
 class DcContributor(Person):
     class Meta:
         verbose_name = 'dc:contributor'
         verbose_name_plural = 'dc:contributor'
+        
+# class DcPerson(Person):
+#     class Meta:
+#         verbose_name = 'dc:person'
+#         verbose_name_plural = 'dc:persons'

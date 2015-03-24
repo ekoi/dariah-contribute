@@ -19,6 +19,8 @@
 from django import template
 from django.utils import safestring
 from dariah_inkind.models import DcContributor
+from dariah_inkind.models import DcCreator
+from dariah_person.models import Person
 
 
 register = template.Library()
@@ -33,10 +35,19 @@ def choice_html(choice, autocomplete):
 #     else:
 #         new_foaf_name='<a href="/inkind/dc_creator/' + str(choice.id) + '" target="_blank">' + choice.foaf_name + '</a>'
 #     
-    if type(choice) is DcContributor:
-        new_foaf_name= '<a data-toggle="modal" data-target="#dc_contributor_detail_modal" href="/inkind/dc_contributor/' + str(choice.id) + '">' + choice.foaf_name + '</a>';
-    else:
+    print '>>>>>>>', type(choice)
+    if type(choice) is Person:
+        print choice
+        
+    if type(choice) is Person:
+        new_foaf_name= '<a data-toggle="modal" data-target="#dc_contributor_detail_modal" href="/inkind/dc_person/' + str(choice.id) + '">' + choice.foaf_name + '</a>';
+        newValue = value.replace(choice.foaf_name, new_foaf_name)
+        print '===========', newValue
+    elif type(choice) is DcCreator:
         new_foaf_name= '<a data-toggle="modal" data-target="#dc_creator_detail_modal" href="/inkind/dc_creator/' + str(choice.id) + '">' + choice.foaf_name + '</a>';
-     
-    newValue = value.replace(choice.foaf_name, new_foaf_name)
+        newValue = value.replace(choice.foaf_name, new_foaf_name)
+        print '-----------', newValue
+    else:
+        newValue = autocomplete.choice_html(choice)
+        print '+++++++++++', newValue
     return safestring.mark_safe(newValue)

@@ -247,12 +247,12 @@ msgstr "the author of this descrip"
 
 #: models.py:280
 msgid "is published?"
-msgstr "Published (y/n)"
+msgstr "Submit to DARIAH EU (y/n)"
 
 #: models.py:282
 msgid "help text for is_published"
 msgstr ""
-"Mark the checkbox to publish this description. Unmark it to unpublish it."
+" By marking the checkbox you submit this contribution to DARIAH-EU for evaluation. When your contribution is submitted you cannot make changes to it."
 
 #: models.py:284
 msgid "published on"

@@ -16,17 +16,20 @@
     limitations under the License.
 """
 
+from django.conf.urls import patterns, url
 from django.contrib import admin
-from .models import Contribution
-from dariah_person.models import Person
 
 
-class ContributionAdmin(admin.ModelAdmin):
-    list_display = ['dc_identifier', 'dc_title', 'is_published', 'is_deleted']
-    list_filter = ['published_on', ]
-    readonly_fields = ['author', 'last_modified_on', 'dc_identifier', 'is_deleted']
-    filter_horizontal = ['dc_creator', 'dc_contributor']
+from .views.create import PersonCreate
+from .views.detail import PersonDetail
+from .views.lists import MyPersons
+from .views import PersonUpdate
+admin.autodiscover()
 
-
-admin.site.register(Person)
-admin.site.register(Contribution, ContributionAdmin)
+urlpatterns = patterns('',
+    url(r'^(?P<pk>\d+)/update/$', PersonUpdate.as_view(), name='update'),
+    url(r'^mine/$', MyPersons.as_view(), name='mine'),
+    url(r'^$', PersonCreate.as_view(), name='add'),
+    url(r'^(?P<pk>\d+)\.html$', PersonDetail.as_view(), name='detail_html'),
+    url(r'^(?P<pk>\d+)/$', PersonDetail.as_view(), name='detail'),
+)

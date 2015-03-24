@@ -18,6 +18,7 @@
 
 import autocomplete_light
 from django.db.models.base import Model
+# from dariah_inkind.models import DcPerson
 autocomplete_light.autodiscover()
 
 from .models import Contribution
@@ -57,5 +58,11 @@ class DcContributorForm(autocomplete_light.ModelForm):
     
     class Meta:
         model = DcContributor
-    
+        
+# class DcPersonForm(autocomplete_light.ModelForm):
+#     required_css_class = 'required'
+#     
+#     class Meta:
+#         model = DcPerson
+#     
     

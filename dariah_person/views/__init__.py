@@ -1,5 +1,5 @@
 """
-    DARIAH Contribute - DARIAH-EU Contribute: edit your DARIAH contributions.
+    DARIAH Contribute - DARIAH-EU Contribute: edit your DARIAH Persons.
 
     Copyright 2014 Data Archiving and Networked Services
 
@@ -16,17 +16,13 @@
     limitations under the License.
 """
 
-from django.contrib import admin
-from .models import Contribution
-from dariah_person.models import Person
+__all__ = [
+    'PersonDetail',
+    'MyPersons',
+    'PersonUpdate',
+]
 
+from .detail import PersonDetail
+from .update import PersonUpdate
 
-class ContributionAdmin(admin.ModelAdmin):
-    list_display = ['dc_identifier', 'dc_title', 'is_published', 'is_deleted']
-    list_filter = ['published_on', ]
-    readonly_fields = ['author', 'last_modified_on', 'dc_identifier', 'is_deleted']
-    filter_horizontal = ['dc_creator', 'dc_contributor']
-
-
-admin.site.register(Person)
-admin.site.register(Contribution, ContributionAdmin)
+from .lists import MyPersons

@@ -51,3 +51,4 @@ from .lists import MyContributions
 from .lists import ContributionList
 from .dccreatordetail import DcCreatorDetail
 from .dccontributordetail import DcContributorDetail
+from .dcpersondetail import DcPersonDetail

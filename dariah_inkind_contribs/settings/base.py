@@ -95,6 +95,7 @@ DATABASES = {
 
 # Application definition
 INSTALLED_APPS = (
+    'dariah_person',
     'dariah_inkind_contribs',
     'dariah_annual_value',
     'dariah_inkind',
