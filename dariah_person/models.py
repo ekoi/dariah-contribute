@@ -60,11 +60,11 @@ class Person(models.Model):
     @property
     def foaf_name(self):
         if self.last_name_prefix:
-            name = "%s %s %s (%s)" % (self.first_name,
+            name = u"%s %s %s (%s)" % (self.first_name,
                                  self.last_name_prefix,
                                  self.last_name, self.foaf_email)
         else:
-            name = "%s %s (%s)" % (self.first_name,
+            name = u"%s %s (%s)" % (self.first_name,
                               self.last_name, self.foaf_email)
         return name
 
