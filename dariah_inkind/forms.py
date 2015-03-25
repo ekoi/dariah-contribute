@@ -17,7 +17,6 @@
 """
 
 import autocomplete_light
-from django.db.models.base import Model
 # from dariah_inkind.models import DcPerson
 autocomplete_light.autodiscover()
 
