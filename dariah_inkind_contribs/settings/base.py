@@ -95,6 +95,7 @@ DATABASES = {
 
 # Application definition
 INSTALLED_APPS = (
+    'tinymce',
     'dariah_person',
     'dariah_inkind_contribs',
     'dariah_annual_value',
@@ -107,7 +108,8 @@ INSTALLED_APPS = (
     'grappelli',
     'autocomplete_light',
     'taggit',
-
+    
+    
     'django.contrib.flatpages',
     #'django.contrib.humanize',
     'django.contrib.admin',
