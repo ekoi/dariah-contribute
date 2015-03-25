@@ -21,10 +21,11 @@ from django.utils.translation import ugettext as _
 from django.views.generic.detail import BaseDetailView, SingleObjectTemplateResponseMixin
 
 from ..models import DcContributor
+from dariah_person.models import Person
 
 
 class DcContributorDetailMixin(BaseDetailView):
-    model = DcContributor
+    model = Person
 
     def get_context_data(self, **kwargs):
         context = super(DcContributorDetailMixin, self).get_context_data(**kwargs)
