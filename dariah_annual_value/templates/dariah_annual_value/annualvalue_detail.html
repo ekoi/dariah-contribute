@@ -31,7 +31,7 @@
                 {{ field }}
                 <a href="#" rel="popover" data-toggle="popover" data-trigger="hover" title="" data-content="{{ help_text }}" data-placement="right"><span class="glyphicon glyphicon-question-sign"></span></a>
             </td>
-            <td>{{ value }}</td>
+            <td>{{ value|safe }}</td>
         </tr>
     {% endfor %}
     </table>
