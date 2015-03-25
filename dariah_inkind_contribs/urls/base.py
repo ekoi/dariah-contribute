@@ -33,4 +33,5 @@ urlpatterns = patterns('',
     url(r'^accounts/', include('dariah_accounts.urls')),  # NOTE: this one should NOT have a namespace
     url(r'^annual-value/', include('dariah_annual_value.urls', namespace="dariah_annual_value")), 
     url(r'^person/', include('dariah_person.urls', namespace="dariah_person")),
+    url(r'^tinymce/', include('tinymce.urls')),
 )
