@@ -164,7 +164,7 @@ msgstr "Compliance to requirements"
 
 #: models.py:212
 msgid "help text for dcterms:compliance to requirements"
-msgstr "For requirements per type of contribution please see <a data-toggle=\"modal\" data-target=\"#compliance_modal\" href=\"/compliance-to-requirements/\">here</a>"
+msgstr "For requirements per type of contribution please see <a href='/compliance-to-requirements/' target='_blank'>here</a>"
 
 #: models.py:214
 msgid "dcterms:is contribution inline with dariah"
@@ -172,7 +172,7 @@ msgstr "Is the contribution in line with the DARIAH principles?"
 
 #: models.py:218
 msgid "For DARIAH principles please see"
-msgstr "For DARIAH principles please see <a  data-toggle=\"modal\" data-target=\"#dariah_principle_modal\" href=\"/media/pdf/20141104%20Towards_a_Strategy_for_DARIAH.pdf\">here</a>"
+msgstr "For DARIAH principles please see <a href='/towards-a-Strategy-for-DARIAH/' target='_blank'>here</a>"
 
 #: models.py:220
 msgid "dcterms:reason"
