@@ -190,7 +190,7 @@ class AjaxableResponseMixin(object):
             'obj_class_name':obj_class_name,
         }
         if self.success_message:
-            messages.success(self.request, self.success_message % (data['name']))
+            messages.success(self.request, self.success_message % (data['name']).decode('utf-8'))
         if self.request.is_ajax():
             data['django_messages'] = render_to_string('bootstrap3/messages.html', {}, RequestContext(self.request))
             return self.render_to_json_response(data)
