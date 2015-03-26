@@ -17,4 +17,4 @@
     limitations under the License.
 """
 
-__version__ = '1.0-6.dev'
+__version__ = '1.0-7.dev'
