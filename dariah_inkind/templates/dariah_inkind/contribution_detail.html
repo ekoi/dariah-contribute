@@ -36,7 +36,7 @@
             {% elif is_safe %}
             <td>{{ value|safe }}</td>
             {% else %}
-            <td>{{ value }}</td>
+            <td>{{ value|safe }}</td>
             {% endif %}
         </tr>
     {% endfor %}
