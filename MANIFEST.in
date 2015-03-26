@@ -7,6 +7,11 @@ exclude dariah_contribute/settings/local.py
 recursive-include docs *
 recursive-exclude docs/_build *
 
+recursive-include dariah_person/formats *
+recursive-include dariah_person/locale *
+recursive-include dariah_person/static *
+recursive-include dariah_person/templates *
+
 recursive-include dariah_annual_value/formats *
 recursive-include dariah_annual_value/locale *
 recursive-include dariah_annual_value/static *
