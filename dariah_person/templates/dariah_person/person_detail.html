@@ -1,4 +1,4 @@
-{% extends "content_left_sidebar.html" %}
+{% extends request.is_ajax|yesno:'dariah_inkind/fake_bootstrap.html,bootstrap.html' %}
 
 {% comment %}
     DARIAH Contribute - DARIAH-EU Contribute: edit your DARIAH contributions.
@@ -22,38 +22,53 @@
 {% load is_url %}
 {% load static %}
 
-{% block content %}
-    <h3>{{ person.id }}</h3>
-    <table class="table">
-    {% for field, value, help_text in get_fields %}
-        <tr>
+{% block bootstrap3_content %}
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('[rel=popover]').popover();
+    });
+    $('body').on('hidden.bs.modal', '.modal', function () {
+        $(this).removeData('bs.modal');
+    });
+</script>
+<div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">{% trans 'Close' %}</span></button>
+        <h4 class="modal-title">
+            {% block title %}
+                {% trans 'Person' %}
+            {% endblock %}
+        </h4>
+    </div>
+    <div class="modal-body">
+            <table class="table">
+    		{% for field, value, help_text in get_fields %}
+        	<tr>
             <td>
                 {{ field }}
                 <a href="#" rel="popover" data-toggle="popover" data-trigger="hover" title="" data-content="{{ help_text }}" data-placement="right"><span class="glyphicon glyphicon-question-sign"></span></a>
             </td>
             <td>{{ value }}</td>
         </tr>
-    {% endfor %}
+    	{% endfor %}
     </table>
      <p>&nbsp;</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default closeModal" data-dismiss="modal">{% trans 'Close' %}</button>
+    </div>
+    
     {% spaceless %}
     {% endspaceless %}
     
-{% endblock %}
-
-{% block sidebar %}
-    <h1>Actions</h1>
-    <ul>
-        {% if contribution.author != request.user %}
-        <li><a href="{% url 'dariah_person:update' person.pk %}">{% trans 'Edit' %}</a></li>
-         {% endif %}
-    </ul>
 {% endblock %}
 
 {% block extra_extra_head %}
 <script type="text/javascript">
     $(document).ready(function() {
         $('[rel=popover]').popover();
+    });
+    $('body').on('hidden.bs.modal', '.modal', function () {
+        $(this).removeData('bs.modal');
     });
 </script>
 {% endblock %}
