@@ -11,3 +11,4 @@ rdflib==4.1.2
 pytz==2014.4
 pycountry==1.8
 pillow==2.5.3
+django-tinymce
